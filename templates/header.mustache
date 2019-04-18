@@ -1,0 +1,94 @@
+<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+<noscript><iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
+<!-- End Google Tag Manager -->
+<ul id="wb-tphp">
+    <li class="wb-slc"><a class="wb-sl" href="#wb-cont">{{# str }} skiptomain, theme_test {{/ str }}</a></li>
+    <li class="wb-slc"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_test {{/ str }}</a></li>
+    {{{ skiptosectnav }}}
+</ul>
+<header role="banner">
+    <div id="wb-bnr" class="container">
+        {{{ langmenu }}}
+        <div class="row">
+            <div class="brand col-xs-8 col-sm-9 col-md-6">
+                <a href="https://www.canada.ca/en.html"><img src="{{{ wet-boew }}}/GCWeb/assets/sig-blk-{{{ lang }}}.svg" alt=""><span class="wb-inv">{{# str }} governmentofcanada, theme_test {{/ str }}</span></a>
+            </div>
+            {{#showsearch}}
+                <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+                    <h2>{{# str }} searchandmenus, theme_test {{/ str }}</h2>
+                    <ul class="list-inline text-right chvrn">
+                        <li><a href="#mb-pnl" title="{{{ searchurl }}}" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">{{# str }} searchandmenus, theme_test {{/ str }}</span></span></span></a></li>
+                    </ul>
+                    <div id="mb-pnl"></div>
+                </section>
+                <section id="wb-srch" class="col-xs-6 text-right visible-md visible-lg">
+                    <h2>{{# str }} search, theme_test {{/ str }}</h2>
+                    <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
+                        <div class="form-group">
+                            <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_test {{/ str }}</label>
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="search" type="search" value="" size="27" maxlength="150" placeholder="{{# str }} searchplaceholder, theme_test {{/ str }}">
+                            {{{ searchsettings }}}
+                            <datalist id="wb-srch-q-ac">
+                                <!--[if lte IE 9]>
+                                <select>
+                                    <![endif]-->
+                                    <!--[if lte IE 9]>
+                                </select>
+                                <![endif]-->
+                            </datalist>
+                        </div>
+                        <div class="form-group submit">
+                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_test {{/ str }}</span></button>
+                        </div>
+                    </form>
+                </section>
+            {{/showsearch}}
+         </div>
+    </div>
+    {{#showmegamenu}}
+    <nav role="navigation" id="wb-sm" data-ajax-replace="{{{wet-boew}}}/ajax/sitemenu-{{lang}}.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+        <div class="container nvbar">
+            <h2>{{# str }} topicsmenu, theme_test {{/ str }}</h2>
+            <div class="row">
+                <ul class="list-inline menu">
+                    {{{ topicsmenulist }}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {{/showmegamenu}}
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>{{# str }} youarehere, theme_test {{/ str }}</h2>
+        <div class="container">
+            <div class="row">
+                <ol class="breadcrumb">
+                    {{{ breadcrumbs }}}
+                </ol>
+            </div>
+        </div>
+    </nav>
+    <!--
+    <section id="wb-so">
+        <h2 class="wb-inv">{{signoninfo}}</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {{#showregister}}
+                        <a class="btn btn-default" href="{{{ registerurl }}}">{{# str }} register, theme_test {{/ str }}</a>
+                    {{/showregister}}
+                    {{#showlogon}}
+                        <a class="btn btn-primary" href="{{{ signonurl }}}">{{# str }} signon, theme_test {{/ str }}</a>
+                    {{/showlogon}}
+                    {{#showaccountsettings}}
+                        AHAHAH<a class="btn btn-default" href="{{{ accountsettingsurl }}}">{{# str }} accountsettings, theme_test {{/ str }}</a>
+                    {{/showaccountsettings}}
+                    {{#showsignout}}
+                        <a class="btn btn-primary" href="{{{ signouturl }}}">{{# str }} signout, theme_test {{/ str }}</a>
+                    {{/showsignout}}
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+</header>

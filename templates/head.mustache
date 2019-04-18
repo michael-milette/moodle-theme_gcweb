@@ -1,0 +1,193 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Page header.
+}}
+{{{ output.doctype }}}<!--[if lt IE 9]>
+<html class="no-js lt-ie9" {{{ output.htmlattributes }}}>
+<![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" {{{ output.htmlattributes }}}>
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!-- Web Experience Toolkit (WET) / wet-boew.github.io/wet-boew/License-en.html -->
+    <!-- Boîte à outils de l'expérience Web (BOEW) / wet-boew.github.io/wet-boew/Licence-fr.html -->
+    <title>{{{ output.page_title }}}</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <!--[if gte IE 9 | !IE ]><!-->
+    <link href="{{{ output.favicon }}}" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="{{{ wet-boew }}}/GCWeb/css/theme.min.css">
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <link href="{{{ output.favicon }}}" rel="shortcut icon" />
+    <link rel="stylesheet" href="{{{ wet-boew }}}/GCWeb/css/ie8-theme.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{{ wet-boew }}}/wet-boew/js/ie8-wet-boew.min.js"></script>
+    <![endif]-->
+    <!--[if lte IE 9]>
+    <![endif]-->
+    <noscript>
+        <link rel="stylesheet" href="{{{ wet-boew }}}/wet-boew/css/noscript.min.css" />
+    </noscript>
+    <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+    <script>dataLayer1 = [];</script>
+    <!-- End Google Tag Manager -->
+    {{{ output.standard_head_html }}}
+    <style>
+    body {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 23px;
+        background-color: #f9f9f9;
+    }
+    .dropdown-menu {
+        font-size: inherit
+    }
+    #page {
+        margin-top: 10px;
+    }
+    .container-fluid {
+        padding: 0;
+    }
+    #rememberusername {
+        margin-left: -12px;
+    }
+    .summary ul {
+        margin-left:10px;
+    }
+
+    .usermenu {
+      display: inline-block
+    }
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        font-weight: 700;
+        font-family: Helvetica,Arial,sans-serif;
+    }
+    h1 {
+        font-size: 34px;
+    }
+    .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.btn-default.dropdown-toggle.focus, .open>.btn-default.dropdown-toggle:focus, .open>.btn-default.dropdown-toggle:hover {
+        color: #335075;
+        background-color: #bbbfc5;
+        border-color: #989da6;
+    }
+    .btn-default:visited {
+        color: #335075;
+    }
+    .btn-default.active, .btn-default:active, .open>.btn-default.dropdown-toggle {
+        background-image: none;
+    }
+    .btn.active, .btn:active {
+        outline: 0;
+        background-image: none;
+        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+        box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    }
+    a:visited {
+        color: #7834bc;
+    }
+    .btn {
+        border: 1px outset #ccc;
+        font-size: 16px;
+        border-radius: 4px;
+        margin-left:5px;
+    }
+    #wb-srch-sub {
+        margin-left:0;
+    }
+    .nav a, a.btn {
+        text-decoration: none;
+    }
+
+    .btn-default {
+        color: #335075;
+        background-color: #eaebed;
+        border-color: #dcdee1;
+    }
+    div.btn form button.btn {
+      border: none;
+    }    
+    .nav>li>a.btn-danger:visited,
+    .btn-danger:hover,
+    .btn-danger,
+    .nav>li>a.btn-primary:visited,
+    .btn-primary {
+        color: #fff;
+    }
+    .btn-danger:focus,
+    .nav>li>a.btn-danger:focus,
+    .btn-danger:hover,
+    .nav>li>a.btn-danger:hover {
+        color: #000000;
+    }
+    .navbar-nav>li .btn {
+        padding: 5px 10px 0 10px;
+    }
+    .navbar-nav>li div.btn {
+      	padding-top: 0;
+    }
+    .navbar-nav>li button.btn {
+        margin: 0;
+        padding: 0;
+    }
+
+    .icon {
+      min-height:0;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+    .usermenu .icon {
+        margin-right: 0;
+        min-height:0;
+        min-width:0;
+    }
+    .usermenu .dropdown .caret {
+        display: inline;
+        width: auto;
+        height: auto;
+        margin-left: 0px;
+        vertical-align: baseline;
+        border: none;
+    }
+    .course-content ul.section,
+    div .contentwithoutlink,
+    .section .label .mod-indent-outer {
+        margin: 0;
+        padding: 0!important;
+    }
+    .row {
+      display: block;
+    }
+    .nav-link {
+        padding: .5rem 0;
+    }
+    form#customisethis {
+      display: inline;
+    }
+    .course_category_tree {
+        margin-bottom: 40px;
+    }
+    .form-control {
+        font-size:inherit;
+    }
+    .page-context-header .page-header-image, .page-context-header .page-header-headings {
+        float:none;
+    }
+    </style>
+</head>

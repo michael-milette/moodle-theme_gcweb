@@ -1,0 +1,100 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Page footer.
+}}
+        <footer role="contentinfo" id="wb-info">
+            <div id="course-footer">{{{ output.course_footer }}}</div>
+            {{# output.page_doc_link }}
+                <p class="helplink">{{{ output.page_doc_link }}}</p>
+            {{/ output.page_doc_link }}
+            {{{ output.login_info }}}
+            <div class="tool_usertours-resettourcontainer"></div>
+            {{{ output.home_link }}}
+            {{{ output.standard_footer_html }}}
+            <nav role="navigation" class="container wb-navcurr">
+                <h2 class="wb-inv">About government</h2>
+                <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                    <li><a href="https://www.canada.ca/en/contact.html">Contact us</a></li>
+                    <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+                    <li><a href="https://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
+                    <li><a href="https://www.canada.ca/en/news.html">News</a></li>
+                    <li><a href="https://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
+                    <li><a href="https://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+                    <li><a href="https://pm.gc.ca/eng">Prime Minister</a></li>
+                    <li><a href="https://www.canada.ca/en/government/system.html">How government works</a></li>
+                    <li><a href="https://open.canada.ca/en/">Open government</a></li>
+                </ul>
+            </nav>
+            <div class="brand">
+                <div class="container">
+                    <div class="row">
+                        <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
+                            <h2 class="wb-inv">About this site</h2>
+                            <ul>
+                                <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                                <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                                <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
+                                <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                                <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                            </ul>
+                        </nav>
+                        <div class="col-xs-6 visible-sm visible-xs tofpg">
+                            <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
+                        </div>
+                        <div class="col-xs-6 col-md-3 col-lg-2 text-right">
+                            <img src="{{{ wet-boew }}}/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--[if gte IE 9 | !IE ]><!-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+        <script src="{{{ wet-boew }}}/wet-boew/js/wet-boew.min.js"></script>
+        <!--<![endif]-->
+        <!--[if lt IE 9]>
+        <script src="{{{ wet-boew }}}/wet-boew/js/ie8-wet-boew2.min.js"></script>
+        <![endif]-->
+        <script src="{{{ wet-boew }}}/GCWeb/js/theme.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
+        <!-- jQuery library -->
+        <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script -->
+        {{!
+        <!-- Popper JS -->
+        <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        }}
+        <nav class="nav navbar-nav d-md-none">
+            {{# output.custom_menu_flat }}
+                <ul class="list-unstyled pt-3">
+                    {{> theme_boost/custom_menu_footer }}
+                </ul>
+            {{/ output.custom_menu_flat }}
+        </nav>
+    </main>
+{{{ output.standard_end_of_body_html }}}
+{{#js}}
+require(['theme_boost/loader']);
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+});
+{{/js}}
+</body>
+</html>
