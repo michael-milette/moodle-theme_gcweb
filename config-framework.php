@@ -9,7 +9,7 @@ $_PAGE['extrahead'] = $OUTPUT->standard_head_html();
 $_PAGE['extrahead'] = substr($_PAGE['extrahead'], strpos($_PAGE['extrahead'], '>') + 1); // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 // Search engine
-$_PAGE['showsearch'] = empty($PAGE->layout_options['nosearch']);
+$_PAGE['showsearch'] = empty($PAGE->layout_options['nosearch']) && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
 $_PAGE['searchurl'] = $CFG->wwwroot . '/course/search.php';
 
 // Show language menu

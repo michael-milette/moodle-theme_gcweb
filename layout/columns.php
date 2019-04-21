@@ -67,10 +67,8 @@ $templatecontext = [
     'showregister' => (isguestuser() || !isloggedin()), // TODO: Determine if registration is enabled.
     'registerurl' => empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl,
 
-    'showsignon' => (isguestuser() || !isloggedin()),
+    'loggedin' => (!isguestuser() && isloggedin()),
     'signonurl' => empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/' : $CFG->alternateloginurl,
-
-    'showsignout' => (!isguestuser() && isloggedin()),
     'signouturl' => $CFG->wwwroot . '/login/logout.php',
 
     'showaccountsettings' => !(isguestuser() || !isloggedin()),

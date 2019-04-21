@@ -80,59 +80,73 @@
     h1 {
         font-size: 34px;
     }
-    .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.btn-default.dropdown-toggle.focus, .open>.btn-default.dropdown-toggle:focus, .open>.btn-default.dropdown-toggle:hover {
-        color: #335075;
-        background-color: #bbbfc5;
-        border-color: #989da6;
-    }
-    .btn-default:visited {
-        color: #335075;
-    }
-    .btn-default.active, .btn-default:active, .open>.btn-default.dropdown-toggle {
-        background-image: none;
-    }
-    .btn.active, .btn:active {
-        outline: 0;
-        background-image: none;
-        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-        box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-    }
+
     a:visited {
         color: #7834bc;
     }
+
+    #wb-srch-sub {
+        margin-left:0;
+    }
+
     .btn {
         border: 1px outset #ccc;
         font-size: 16px;
         border-radius: 4px;
         margin-left:5px;
     }
-    #wb-srch-sub {
-        margin-left:0;
-    }
-    .nav a, a.btn {
-        text-decoration: none;
-    }
 
-    .btn-default {
+    .nav>li>a.btn-danger,
+    .btn-danger,
+    .nav>li>a.btn-primary,
+    .btn-primary {
+        color: #fff;
+    }
+    .nav>li>a.btn-danger:focus,
+    .btn-danger:focus,
+    .nav>li>a.btn-danger:hover,
+    .btn-danger:hover,
+    .nav>li>a.btn-primary:focus,
+    .btn-primary:focus,
+    .nav>li>a.btn-primary:hover,
+    .btn-primary:hover {
+        color: #000000;
+    }
+    .btn.btn-link {
+        border:none;
+    }
+    x.btn-default {
         color: #335075;
         background-color: #eaebed;
         border-color: #dcdee1;
     }
+    x.btn-default:active:hover,
+    x.btn-default:active:focus,
+    x.open>.btn-default.dropdown-toggle:focus,
+    x.open>.btn-default.dropdown-toggle:hover {
+        color: #335075;
+        background-color: #bbbfc5;
+        border-color: #989da6;
+    }
+    x.btn-default:visited {
+        color: #335075;
+    }
+    x.btn-default.active,
+    x.open>.btn-default.dropdown-toggle {
+        background-image: none;
+    }
+    x.btn:active {
+        outline: 0;
+        background-image: none;
+        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+        box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    }
+    x.nav a, a.btn {
+        text-decoration: none;
+    }
+
     div.btn form button.btn {
       border: none;
-    }    
-    .nav>li>a.btn-danger:visited,
-    .btn-danger:hover,
-    .btn-danger,
-    .nav>li>a.btn-primary:visited,
-    .btn-primary {
-        color: #fff;
-    }
-    .btn-danger:focus,
-    .nav>li>a.btn-danger:focus,
-    .btn-danger:hover,
-    .nav>li>a.btn-danger:hover {
-        color: #000000;
     }
     .navbar-nav>li .btn {
         padding: 5px 10px 0 10px;
@@ -188,6 +202,51 @@
     }
     .page-context-header .page-header-image, .page-context-header .page-header-headings {
         float:none;
+    }
+    .sitelink {
+        display: none;
+    }
+    .helplink,
+    .logininfo,
+    .tool_usertours-resettourcontainer,
+    .usertour,
+    .homelink,
+    .tool_dataprivacy {
+        display: inline-block;
+    }
+    .helplink:after,
+    .logininfo:after,
+    .tool_usertours-resettourcontainer:after,
+    .homelink:after {
+      content: " | ";
+    }
+    .coursebox .content .courseimage img {
+        max-width: 80%;
+        max-height: none;
+    }
+    .dropdown-menu {
+        min-width:fit-content;
+    }
+
+    #page-user-profile .page-context-header .page-header-image,
+    #page-user-profile .page-context-header .page-header-headings {
+        display: inline-block;
+    }
+    .topics .dropdown-toggle:after {
+        margin-left: -0.80em;
+        vertical-align: 0.1em;
+    }
+    .block-controls .dropdown-toggle:after {
+        margin-left: -0.5em;
+    }
+    .editing .section .activity .editing_move {
+        left: -15px;
+    }
+    .activity.label {
+        margin-left:30px;
+    }
+    .block ul {
+        padding-left: 1.8rem;
     }
     </style>
 </head>

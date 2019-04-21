@@ -18,52 +18,37 @@
     Page navbar.
 }}
 <nav class="navbar navbar-light bg-white navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-
-        <div data-region="drawer-toggle" class="d-inline-block mr-3">
-            <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
-        </div>
-
-        <ul class="navbar-nav d-none d-md-flex">
-            <!-- custom_menu -->
-            {{{ output.custom_menu }}}
-            <!-- page_heading_menu -->
-            {{{ output.page_heading_menu }}}
-        </ul>
-        <ul class="nav navbar-nav ml-auto">
-            <!-- navbar_plugin_output -->
-            <li class="nav-item">
-            {{{ output.navbar_plugin_output }}}
-            </li>
-            {{#showaccountsettings}}
-            <!-- user_menu -->
-            <li class="nav-item d-flex align-items-center">
-                {{{ output.user_menu }}}
-            </li>
-            {{/showaccountsettings}}
+    <div data-region="drawer-toggle" class="d-inline-block mr-3">
+        <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+    </div>
+    <ul class="navbar-nav d-none d-md-flex">
+        <!-- custom_menu -->
+        {{{ output.custom_menu }}}
+        <!-- page_heading_menu -->
+        {{{ output.page_heading_menu }}}
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+        <!-- navbar_plugin_output -->
+        <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
+        {{#showaccountsettings}}
+        <!-- user_menu -->
+        <li class="nav-item d-flex align-items-center">{{{ output.user_menu }}}</li>
+        {{/showaccountsettings}}
+        {{^loggedin}}
             {{#showregister}}
-                <li class="nav-item">
-                    <a class="btn btn-default" href="{{{ registerurl }}}">{{# str }} register, theme_test {{/ str }}</a>
-                </li>
+                <li class="nav-item"><a class="btn btn-default" href="{{{ registerurl }}}">{{# str }} register, theme_test {{/ str }}</a></li>
             {{/showregister}}
-            {{#showsignon}}
-                <li class="nav-item">
-                    <a class="btn btn-primary" href="{{{ signonurl }}}">{{# str }} signon, theme_test {{/ str }}</a>
-                </li>
-            {{/showsignon}}
+            <li class="nav-item"><a class="btn btn-primary" href="{{{ signonurl }}}">{{# str }} signon, theme_test {{/ str }}</a></li>
+        {{/loggedin}}
+        {{#loggedin}}
             {{#showaccountsettings}}
-                <li>
-                    <a class="btn btn-default" href="{{{ accountsettingsurl }}}">{{# str }} accountsettings, theme_test {{/ str }}</a>
-                </li>
+                <li><a class="btn btn-default" href="{{{ accountsettingsurl }}}">{{# str }} accountsettings, theme_test {{/ str }}</a></li>
             {{/showaccountsettings}}
-            {{#showsignout}}
-                <li>
-                    <a class="btn btn-primary" href="{{{ signouturl }}}">{{# str }} signout, theme_test {{/ str }}</a>
-                </li>
-            {{/showsignout}}
-                <li>
-                    {{{ pagebutton }}}
-                </li>
-        </ul>
-        <!-- search_box -->
+            <li><a class="btn btn-primary" href="{{{ signouturl }}}">{{# str }} signout, theme_test {{/ str }}</a></li>
+        {{/loggedin}}
+        <li>{{{ pagebutton }}}</li>
+    </ul>
 </nav>
-
+                    <div class="context-header-settings-menu">
+                        {{{settingsmenu}}}
+                    </div>
