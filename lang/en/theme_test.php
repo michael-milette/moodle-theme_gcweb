@@ -5,7 +5,7 @@
 defined('MOODLE_INTERNAL') || die();
  
 // A description shown in the admin theme selector.
-$string['choosereadme'] = 'Theme Test is a child theme of the Classic.';
+$string['choosereadme'] = 'Theme Test is a child theme of Boost.';
 // The name of our plugin.
 $string['pluginname'] = 'Test';
 $string['privacy:metadata'] = 'The Test theme does not store any personal data about any user.';
@@ -58,3 +58,12 @@ $string['other'] = "Other";
 $string['submit'] = "Submit";
 $string['thankyou'] = "Thank you for your help!";
 $string['enquiries'] = 'You will not receive a reply. For enquiries, please <a href="https://www.canada.ca/en/contact.html">contact us</a>.';
+
+$string['topicsmenulist'] = '<li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration</a></li>
+<li><a href="https://travel.gc.ca/">Travel</a></li>
+<li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+<li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+<li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+<li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+<li><a href="https://www.canada.ca/en/services.html">More services</a></li>';

@@ -85,6 +85,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // XHTML
         return $navbarcontent;
     }
+
     public function full_header() {
         global $PAGE, $COURSE;
         $html = html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'clearfix'));
@@ -140,9 +141,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     /**
      * Returns lang menu or '', this method also checks forcing of languages in courses.
-     *
      * This function calls {@link core_renderer::render_single_select()} to actually display the language menu.
-     *
      * @return string The lang menu HTML or empty string
      */
     public function wet_lang_menu() {
@@ -164,10 +163,30 @@ class core_renderer extends \theme_boost\output\core_renderer {
             return '';
         }
 
-        $s = new single_select($this->page->url, 'lang', $langs, $currlang, null);
-        $s->label = get_accesshide(get_string('language'));
-        $s->class = 'langmenu';
-        return $this->render($s);
+        $s = '';
+        $s .= '<section id="wb-lng" class="visible-md visible-lg text-right">';
+        $s .= '    <h2 class="wb-inv">' . get_string('languageselection', 'theme_test') . '</h2>';
+        $s .= '    <div class="row">';
+        $s .= '        <div class="col-md-12">';
+        $s .= '            <ul class="list-inline margin-bottom-none">';
+        foreach($langs as $lang => $language) {
+            if($lang != $currlang) {
+                if(strpos($language, '(')) {
+                    $language = trim(substr($language, 0, strpos($language, '(')-4));
+                }
+                if(strpos($language, ' - ')) {
+                    $language = trim(substr($language, 0, strpos($language, ' - ')));
+                }
+                $url = new moodle_url($this->page->url, ['lang' => $lang ]);
+                $s .= '                <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>';
+            }
+        }
+        $s .= '            </ul>';
+        $s .= '        </div>';
+        $s .= '    </div>';
+        $s .='</section>';
+
+        return $s;
     }
 
 }

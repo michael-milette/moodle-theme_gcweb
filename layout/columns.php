@@ -23,28 +23,14 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-include __DIR__ . '/../framework/theme-gcweb/settings.php';
-include __DIR__ . '/../config-framework.php';
+include __DIR__ . '/../framework/settings.php';
 
 $_PAGE['skiptosectnav'] = '';
 if(!empty($_PAGE['showsectmenu'])) {
     $_PAGE['skiptosectnav'] = '<li class="wb-slc"><a class="wb-sl" href="#wb-info">' . $_STRINGS['skiptosectnav'] . '</a></li>';
 }
 
-$_PAGE['langmenu'] = '';
-if($_PAGE['langmenu']) {
-    $_PAGE['langmenu'] .= '<section id="wb-lng" class="visible-md visible-lg text-right">';
-    $_PAGE['langmenu'] .= '    <h2 class="wb-inv">' . $_STRINGS['languageselection'] . '</h2>';
-    $_PAGE['langmenu'] .= '    <div class="row">';
-    $_PAGE['langmenu'] .= '        <div class="col-md-12">';
-    $_PAGE['langmenu'] .= '            <ul class="list-inline margin-bottom-none">';
-    $_PAGE['langmenu'] .= '                <li><a lang="fr" href="content-fr.html">' . $_STRINGS['french'] . '</a></li>';
-    $_PAGE['langmenu'] .= '            </ul>';
-    $_PAGE['langmenu'] .= '        </div>';
-    $_PAGE['langmenu'] .= '    </div>';
-    $_PAGE['langmenu'] .='</section>';
-}
-
+$_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -53,15 +39,15 @@ $templatecontext = [
     'haspreblocks' => $_PAGE['hassidepre'],
     'haspostblocks' => $_PAGE['hassidepost'],
     'bodyattributes' => $OUTPUT->body_attributes(),
-    'wet-boew' => $_SITE['wet-boew'],
+    'wet-boew' => $_PAGE['wet-boew'],
     'langmenu' => $_PAGE['langmenu'],
-    'lang' => $_SITE['lang'],
+    'lang' => current_language(),
+    'lastmodified' => date('Y-m-d', $PAGE->course->timemodified),
     'showmegamenu' => $_PAGE['showmegamenu'],
     'showsearch' => $_PAGE['showsearch'],
     'searchurl' => $_PAGE['searchurl'],
-    'shortname' => $_SITE['shortname'],
-    'searchsettings' => $_SITE['searchsettings'],
-    'topicsmenulist' => $_STRINGS['topicsmenulist'],
+    'searchsettings' => $_PAGE['searchsettings'],
+    'topicsmenulist' => get_string('topicsmenulist', 'theme_test'),
     'breadcrumbs' => $_PAGE['breadcrumbs'],
 
     'showregister' => (isguestuser() || !isloggedin()), // TODO: Determine if registration is enabled.
@@ -73,7 +59,9 @@ $templatecontext = [
 
     'showaccountsettings' => !(isguestuser() || !isloggedin()),
     'accountsettingsurl' => $CFG->wwwroot . '/user/profile.php',
-    'pagebutton' =>  str_replace('singlebutton', 'btn btn-default', $this->page_heading_button())
+    'pagebutton' =>  str_replace('singlebutton', 'btn btn-default', $this->page_heading_button()),
+    'showproblembutton' => $_PAGE['showproblembutton'],
+    'showsharebutton' => $_PAGE['showsharebutton']
 ];
 
 echo $OUTPUT->render_from_template('theme_test/columns', $templatecontext);
