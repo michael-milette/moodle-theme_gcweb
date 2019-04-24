@@ -13,7 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-namespace theme_test\output;
+namespace theme_wetboew_gcweb\output;
 use coding_exception;
 use html_writer;
 use tabobject;
@@ -41,7 +41,7 @@ require_once ($CFG->dirroot . "/course/renderer.php");
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
- * @package    theme_test
+ * @package    theme_wetboew_gcweb
  * @copyright  2019 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -94,7 +94,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $html .= html_writer::end_tag('header');
         return $html;
 
-        // // $theme = theme_config::load('test');
+        // // $theme = theme_config::load('wetboew_gcweb');
         // $header = new stdClass();
         // // $header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
             // // 'id' => $PAGE->course->id
@@ -104,7 +104,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // // $header->pageheadingbutton = $this->page_heading_button();
         // $header->courseheader = $this->course_header();
         // // $header->headerimage = $this->headerimage();
-        // return $this->render_from_template('theme_test/header', $header);
+        // return $this->render_from_template('theme_wetboew_gcweb/header', $header);
     }
 
     /**
@@ -165,7 +165,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         $s = '';
         $s .= '<section id="wb-lng" class="visible-md visible-lg text-right">';
-        $s .= '    <h2 class="wb-inv">' . get_string('languageselection', 'theme_test') . '</h2>';
+        $s .= '    <h2 class="wb-inv">' . get_string('languageselection', 'theme_wetboew_gcweb') . '</h2>';
         $s .= '    <div class="row">';
         $s .= '        <div class="col-md-12">';
         $s .= '            <ul class="list-inline margin-bottom-none">';

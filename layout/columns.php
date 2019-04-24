@@ -17,7 +17,7 @@
 /**
  * The columns layout for the classic theme.
  *
- * @package   theme_test
+ * @package   theme_wetboew_gcweb
  * @copyright 2019 TNG Consulting Inc.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -47,7 +47,7 @@ $templatecontext = [
     'showsearch' => $_PAGE['showsearch'],
     'searchurl' => $_PAGE['searchurl'],
     'searchsettings' => $_PAGE['searchsettings'],
-    'topicsmenulist' => get_string('topicsmenulist', 'theme_test'),
+    'topicsmenulist' => get_string('topicsmenulist', 'theme_wetboew_gcweb'),
     'breadcrumbs' => $_PAGE['breadcrumbs'],
 
     'showregister' => (isguestuser() || !isloggedin()), // TODO: Determine if registration is enabled.
@@ -64,5 +64,5 @@ $templatecontext = [
     'showsharebutton' => $_PAGE['showsharebutton']
 ];
 
-echo $OUTPUT->render_from_template('theme_test/columns', $templatecontext);
+echo $OUTPUT->render_from_template('theme_wetboew_gcweb/columns', $templatecontext);
 

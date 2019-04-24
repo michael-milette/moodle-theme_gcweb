@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_test/columns
+    @template theme_wetboew_gcweb/columns
 
     Admin time setting template.
 
@@ -46,11 +46,11 @@
         "haspostblocks":true
     }
 }}
-{{> theme_test/head }}
-{{> theme_test/body}}
+{{> theme_wetboew_gcweb/head }}
+{{> theme_wetboew_gcweb/body}}
 
     <div id="page" class="container-fluid">
-{{>theme_test/navbar}}
+{{>theme_wetboew_gcweb/navbar}}
         {{{ output.full_header }}}
 
         <div id="page-content" class="row {{#haspreblocks}} blocks-pre {{/haspreblocks}} {{#haspostblocks}} blocks-post {{/haspostblocks}}">
@@ -86,17 +86,17 @@
     {{{ output.standard_after_main_region_html }}}
     <div class="pagedetails">
         <dl id="wb-dtmd">
-            <dt>{{# str }} datemodified, theme_test {{/ str }}&#32;</dt>
+            <dt>{{# str }} datemodified, theme_wetboew_gcweb {{/ str }}&#32;</dt>
             <dd><time property="dateModified">{{{ lastmodified }}}</time></dd>
         </dl>
         <div class="row">
             {{#showproblembutton}}
-                {{> theme_test/problembutton }}
+                {{> theme_wetboew_gcweb/problembutton }}
             {{/showproblembutton}}
             {{#showsharebutton}}
                 <div class="wb-share col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
             {{/showsharebutton}}
         </div>
     </div>
-{{> theme_test/footer }}
+{{> theme_wetboew_gcweb/footer }}
 

@@ -1,5 +1,5 @@
 <?php
-// This file is part of the test theme for Moodle
+// This file is part of the WET-BOEW GCWeb theme for Moodle
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,19 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for theme_test.
+ * Privacy Subsystem implementation for theme_wetboew_gcweb.
  *
- * @package   theme_test
+ * @package   theme_wetboew_gcweb
  * @copyright 2019 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_test\privacy;
+namespace theme_wetboew_gcweb\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The test theme does not store any data.
+ * The WET-BOEW GCWeb theme does not store any data.
  *
  * @copyright  2018 Andrew Nicols <andrew@nicols.co.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

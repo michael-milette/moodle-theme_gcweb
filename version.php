@@ -12,7 +12,7 @@ $plugin->requires = 2018051700;
  
 // This is the component name of the plugin - it always starts with 'theme_'
 // for themes and should be the same as the name of the folder.
-$plugin->component = 'theme_test';
+$plugin->component = 'theme_wetboew_gcweb';
  
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [

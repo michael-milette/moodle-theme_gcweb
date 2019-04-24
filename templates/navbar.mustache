@@ -36,15 +36,15 @@
         {{/showaccountsettings}}
         {{^loggedin}}
             {{#showregister}}
-                <li class="nav-item"><a class="btn btn-default" href="{{{ registerurl }}}">{{# str }} register, theme_test {{/ str }}</a></li>
+                <li class="nav-item"><a class="btn btn-default" href="{{{ registerurl }}}">{{# str }} register, theme_wetboew_gcweb {{/ str }}</a></li>
             {{/showregister}}
-            <li class="nav-item"><a class="btn btn-primary" href="{{{ signonurl }}}">{{# str }} signon, theme_test {{/ str }}</a></li>
+            <li class="nav-item"><a class="btn btn-primary" href="{{{ signonurl }}}">{{# str }} signon, theme_wetboew_gcweb {{/ str }}</a></li>
         {{/loggedin}}
         {{#loggedin}}
             {{#showaccountsettings}}
-                <li><a class="btn btn-default" href="{{{ accountsettingsurl }}}">{{# str }} accountsettings, theme_test {{/ str }}</a></li>
+                <li><a class="btn btn-default" href="{{{ accountsettingsurl }}}">{{# str }} accountsettings, theme_wetboew_gcweb {{/ str }}</a></li>
             {{/showaccountsettings}}
-            <li><a class="btn btn-primary" href="{{{ signouturl }}}">{{# str }} signout, theme_test {{/ str }}</a></li>
+            <li><a class="btn btn-primary" href="{{{ signouturl }}}">{{# str }} signout, theme_wetboew_gcweb {{/ str }}</a></li>
         {{/loggedin}}
         <li>{{{ pagebutton }}}</li>
     </ul>
