@@ -1,7 +1,7 @@
 <?php
 $_PAGE['searchsettings'] = ''; // For additional hidden form fields.
 //$_PAGE['shortname'] = 'Canada.ca';
-$_PAGE['wet-boew'] = '/wetboew-ised/theme/wetboew_gcweb/framework';     // Path to WETBOEW themes relative to root.
+$_PAGE['wet-boew'] = $CFG->wwwroot . '/theme/wetboew_gcweb/framework';     // Path to WETBOEW themes relative to root.
 
 /* Default settings for page */
 $_PAGE['showsearch'] = true;
