@@ -189,4 +189,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $s;
     }
 
+    /**
+     * Returns the URL for the favicon.
+     *
+     * @since Moodle 2.5.1 2.6
+     * @return string The favicon URL
+     */
+    public function favicon() {
+        global $CFG, $PAGE;
+        return $CFG->wwwroot . '/theme/' . $PAGE->theme->name . '/framework/GCWeb/assets/favicon.ico';
+    }
+
 }
