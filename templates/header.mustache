@@ -40,7 +40,10 @@
             <div class="row">
                 <!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
                 <section class="col-xs-12 col-sm-7">
-                    <h2 class="wb-inv">{{{ sitename }}}</h2>
+                    <h2 class="wb-inv">{{{ sitename }}}HA</h2>
+                    <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                        <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+                    </div>
                     <a class="app-name" href="{{{ wwwroot }}}">{{{ sitename }}}</a>
                 </section>
                 <nav class="col-sm-5 hidden-xs hidden-print">
@@ -68,12 +71,15 @@
         </div>
     </div>
     {{#showmegamenu}}
+        {{! <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement"> }}
     <nav id="wb-sm" data-ajax-replace="{{{wet-boew}}}/ajax/sitemenu-{{lang}}.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
         <div class="container nvbar">
             <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>
             <div class="row">
                 <ul class="list-inline menu">
-                    {{{ topicsmenulist }}}
+                    {{! Custom Menu }}
+                    {{! topicsmenulist }}
+                    {{{ output.custom_menu }}}
                 </ul>
             </div>
         </div>
