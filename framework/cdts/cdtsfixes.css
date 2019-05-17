@@ -1,0 +1,99 @@
+/********** CDTS fixes file **********/
+/********** Follow the correct format and link to Github issue for info **********/
+
+/********** AJOUTÉ PAR NICK LE 2017/08/31 **********/
+/********** Date modified/Screen identifier/Version **********/
+#wb-dtmd dt, #wb-dtmd dd {
+	float: left
+}
+
+#wb-dtmd dt {
+	clear: both
+}
+
+#wb-dtmd dd {
+	margin-left: 5px
+}
+
+/********** AJOUTÉ PAR NICK LE 2017/08/25 **********/
+/********** Barre bleue qui remplace le menu en transactional et espace gris avant le footer **********/
+#wb-sm {
+	min-height: 55px;
+}
+
+#transactFooter {
+	min-height: 75px;
+}
+
+/* 
+ * Pink day - April 10, 2019
+
+Should we add a transition????
+transition: background 0.2s;
+
+ */
+
+ .pinkDay .gcweb-menu button[aria-haspopup=true],
+ .pinkDay #wb-srch button,
+ .pinkDay .srchbox button,
+ .pinkDay #wb-sm,
+ .pinkDay .app-bar .btn:focus, .pinkDay .app-bar .btn:hover {
+	 background-color: #AD005F;
+	 border-color:#AD005F;
+ }
+
+.pinkDay .app-bar {
+	background-color: #570030;
+}
+
+.pinkDay #wb-sm .menu > li > a {
+	color: #fff;
+}
+
+.pinkDay #wb-sm .menu > li a:focus,
+.pinkDay #wb-sm .menu > li a:hover,
+.pinkDay #wb-sm .menu .active,
+.pinkDay #wb-sm .menu .selected,
+.pinkDay #wb-sm .menu .wb-navcurr {
+	background: #570030 !important;
+}
+
+ .pinkDay .gcweb-menu button[aria-haspopup=true]:focus,
+ .pinkDay .gcweb-menu button[aria-haspopup=true]:hover,
+ .pinkDay #wb-srch button:focus, .pinkDay .srchbox button:focus,
+ .pinkDay #wb-srch button:hover, .pinkDay .srchbox button:hover {
+	 background-color: #570030;
+ }
+ .pinkDay .home .gcweb-menu button[aria-haspopup=true] {
+	 background-color: #ffffff;
+	 border-color:#ffffff;
+ }
+ 
+ .pinkDay .gcweb-menu, .home .gcweb-menu {
+	 border-top-color: #AD005F;
+ }
+ .pinkDay .home .gcweb-menu button[aria-haspopup=true] {
+	 color: #AD005F;
+ }
+ .pinkDay .home .gcweb-menu button[aria-haspopup=true]:focus,
+ .pinkDay .home .gcweb-menu button[aria-haspopup=true]:hover {
+	 background-color: #AD005F;
+	 border-color:#AD005F;
+	 color: #ffffff;
+ }
+ 
+ .pinkDay #wb-info .landscape {
+	 background-color: #AD005F;
+ }
+ .pinkDay .home .home-banner .innerbox {
+	 background-color: #570030;
+	 transition: background 0.2s;
+ }
+ .pinkDay .home .home-banner .promo {
+	 background-color: #AD005F;
+	 transition: background 0.2s;
+ }
+ .pinkDay .home .home-banner .innerbox h1 {
+	 border-bottom-color: #fff;
+	 transition: background 0.2s;
+ }
