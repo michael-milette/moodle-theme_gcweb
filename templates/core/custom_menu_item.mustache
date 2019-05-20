@@ -1,0 +1,24 @@
+{{^divider}}
+{{#haschildren}}
+<li>
+    <a class="item" aria-haspopup="true" href="#" role="menuitem">
+        {{{text}}}<span class="expicon glyphicon glyphicon-chevron-down"></span>
+    </a>
+    <ul class="sm list-unstyled">
+        {{#children}}
+            {{^divider}}
+                <li><a class="item" role="menuitem" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}>{{{text}}}</a></li>
+            {{/divider}}
+            {{#divider}}
+                <li><div class="dropdown-divider" role="presentation"></div></li>
+            {{/divider}}
+        {{/children}}
+    </ul>
+</li>
+{{/haschildren}}
+{{^haschildren}}
+<li>
+    <a class="item" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}} role="menuitem">{{{text}}}</a>
+</li>
+{{/haschildren}}
+{{/divider}}

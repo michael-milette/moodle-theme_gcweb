@@ -4,7 +4,7 @@
 <!-- End Google Tag Manager -->
 <div id="def-top">
 <ul id="wb-tphp">
-    <li class="wb-slc"><a class="wb-sl" href="#wb-cont">{{# str }} skiptomain, theme_wetboew_internet {{/ str }}</a></li>
+    <li class="wb-slc"><a class="wb-sl" href="#maincontent">{{# str }} skiptomain, theme_wetboew_internet {{/ str }}</a></li>
     <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_wetboew_internet {{/ str }}</a></li>
     {{{ skiptosectnav }}}
 </ul>
@@ -40,7 +40,7 @@
             <div class="row">
                 <!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
                 <section class="col-xs-12 col-sm-7">
-                    <h2 class="wb-inv">{{{ sitename }}}HA</h2>
+                    <h2 class="wb-inv">{{{ sitename }}}</h2>
                     <div data-region="drawer-toggle" class="d-inline-block mr-3">
                         <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
                     </div>
@@ -48,6 +48,10 @@
                 </section>
                 <nav class="col-sm-5 hidden-xs hidden-print">
                     <h2 class="wb-inv">Account menu</h2>
+                    <ul class="nav navbar-nav ml-auto list-unstyled">
+                        <!-- navbar_plugin_output -->
+                        <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
+                    </ul>
                     <ul class="app-list-account list-unstyled">
                     {{#showaccountsettings}}
                     <!-- user_menu -->
@@ -64,6 +68,7 @@
                             <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
                         {{/showaccountsettings}}
                         <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
+                        <li>{{{ pagebutton }}}</li>
                     {{/loggedin}}
                     </ul>
                 </nav>

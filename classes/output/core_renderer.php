@@ -20,6 +20,7 @@ use tabobject;
 use tabtree;
 use custom_menu_item;
 use custom_menu;
+use filter_manager;
 use block_contents;
 use navigation_node;
 use action_link;
@@ -195,5 +196,28 @@ class core_renderer extends \theme_boost\output\core_renderer {
         global $CFG, $PAGE;
         return $CFG->wwwroot . '/theme/' . $PAGE->theme->name . '/framework/GCWeb/assets/favicon.ico';
     }
+    /*
+     * Overriding the custom_menu function ensures the custom menu is
+     * always shown, even if no menu items are configured in the global
+     * theme settings page.
+     */
+    public function custom_menu($custommenuitems = '') {
+        global $CFG, $PAGE;
 
+        if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
+            $custommenuitems = $CFG->custommenuitems;
+        }
+        // Don't filter menus on Theme Settings page or it will filter the custommenuitems field in the page and loose the tags.
+        // Don't apply auto-linking filters.
+        $filtermanager = filter_manager::instance();
+        $filteroptions = array('originalformat' => FORMAT_HTML, 'noclean' => true);
+        $skipfilters = array('activitynames', 'data', 'glossary', 'sectionnames', 'bookchapters');
+
+        // Filter Custom Menu.
+        $custommenuitems = $filtermanager->filter_text($custommenuitems,
+                $PAGE->context, $filteroptions, $skipfilters);
+        $custommenu = new custom_menu($custommenuitems, current_language());
+        //echo '<pre>';var_dump($custommenu);die;
+        return $this->render_custom_menu($custommenu);
+    }
 }
