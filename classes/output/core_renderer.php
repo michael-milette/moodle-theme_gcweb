@@ -217,7 +217,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $custommenuitems = $filtermanager->filter_text($custommenuitems,
                 $PAGE->context, $filteroptions, $skipfilters);
         $custommenu = new custom_menu($custommenuitems, current_language());
-        //echo '<pre>';var_dump($custommenu);die;
         return $this->render_custom_menu($custommenu);
     }
 }

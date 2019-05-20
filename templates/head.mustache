@@ -84,32 +84,34 @@
         margin-left:5px;
       padding-top: 6px;
     }
-    
+
     /* Icons */
     .icon {
       min-height:0;
     }
-    
+
     /* Nav link box */
    .nav-link {
         padding: .5rem 0;
     }
-    
+
     /* Notification and Message drawer icons */
-    .nav-item a:visited,
+    .navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
+        color:lightgray;
+    }
     .navbar-nav {
-      margin-top:8px;
-      color:lightgray;
-    } 
+        margin-top:15px;
+        color:lightgray;
+    }
     .nav-item i:hover {
-      color:white;
+        color:white;
     }
 
     /* Default for all links */
     a {
         text-decoration: underline;
     }
-    
+
     /* Usermenu */
     .usermenu .icon {
         margin-right: 0;
@@ -182,6 +184,11 @@
     }
     .dropdown-menu {
         min-width:fit-content;
+    }
+
+    /* Card titles */
+    h5, .h5 {
+        font-size: 3rem;
     }
 
 </style>
