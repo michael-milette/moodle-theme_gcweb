@@ -50,7 +50,7 @@
             </footer>
         </div>
         <!--[if gte IE 9 | !IE ]><!-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+        <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script -->
         <!-- Latest compiled and minified CSS -->
         <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
         <!-- jQuery library -->
@@ -58,7 +58,7 @@
         {{!
         <!-- Popper JS -->
         <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script -->
         }}
         <nav class="nav navbar-nav d-md-none">
             {{# output.custom_menu_flat }}
@@ -74,6 +74,17 @@ require(['theme_boost/loader']);
 require(['theme_boost/drawer'], function(mod) {
     mod.init();
 });
+//require(['theme_wetboew_internet/pink']);
+//require(['theme_wetboew_internet/wetboew']);
+//require(['theme_wetboew_internet/theme']);
+//require(['theme_wetboew_internet/cdtscustom']);
 {{/js}}
+    <!-- <script src="{{{ wet-boew }}}/cdts/pink.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="{{{ wet-boew }}}/js/wet-boew.min.js"></script>
+    <span id="wb-rsz" class="wb-init">&nbsp;</span>
+    <script src="{{{ wet-boew }}}/js/theme.min.js"></script>
+    <script src="{{{ wet-boew }}}/cdts/cdtscustom.js"></script>
+
 </body>
 </html>

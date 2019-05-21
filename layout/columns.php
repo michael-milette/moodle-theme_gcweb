@@ -31,6 +31,7 @@ if(!empty($_PAGE['showsectmenu'])) {
 }
 
 $_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,

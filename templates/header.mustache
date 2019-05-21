@@ -77,13 +77,14 @@
     </div>
     {{#showmegamenu}}
         {{! <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement"> }}
-    <nav id="wb-sm" data-ajax-replace="{{{wet-boew}}}/ajax/sitemenu-{{lang}}.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+    <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
         <div class="container nvbar">
             <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>
             <div class="row">
                 <ul class="list-inline menu">
                     {{! Custom Menu }}
                     {{! topicsmenulist }}
+                    <!-- custom_menu -->
                     {{{ output.custom_menu }}}
                 </ul>
             </div>

@@ -194,7 +194,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     public function favicon() {
         global $CFG, $PAGE;
-        return $CFG->wwwroot . '/theme/' . $PAGE->theme->name . '/framework/GCWeb/assets/favicon.ico';
+        return $CFG->wwwroot . '/theme/' . $PAGE->theme->name . '/framework/assets/favicon.ico';
     }
     /*
      * Overriding the custom_menu function ensures the custom menu is
