@@ -30,152 +30,155 @@
     <link rel="stylesheet" href="{{{ wet-boew }}}/cdts/cdtsfixes.css">
     <link rel="stylesheet" href="{{{ wet-boew }}}/cdts/cdtsapps.css">
     {{{ output.standard_head_html }}}
-<style>
-    body {
-      font-size: 16px;
-      font-family: "Noto Sans", sans-serif;
-    }
+    <style>
+        body {
+          font-size: 16px;
+          font-family: "Noto Sans", sans-serif;
+        }
 
-    /* Make content wide */
-    .container {
-        max-width: 90%;
-    }
+        /* Make content wide */
+        .container {
+            max-width: 90%;
+        }
 
-    .container-fluid {
-        padding: 0;
-    }
+        .container-fluid {
+            padding: 0;
+        }
 
-    /* Headings */
-    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-        font-weight: 600;
-        font-family: Lato,sans-serif;
-    }
-    .h1, h1 {
-        font-size: 1.9em;
-    }
+        /* Headings */
+        .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            font-family: Lato,sans-serif;
+        }
+        .h1, h1 {
+            font-size: 1.9em;
+        }
 
-    /* Login box */
-    #rememberusername {
-        margin-left: -12px;
-    }
+        /* Login box */
+        #rememberusername {
+            margin-left: -12px;
+        }
 
-    /* buttons */
-    .btn {
-        border: 1px outset #ccc;
-        font-size: 15px;
-        border-radius: 4px;
-        margin-left:5px;
-      padding-top: 6px;
-    }
+        /* buttons */
+        .btn {
+            /* border: 1px outset #ccc; */
+            font-size: 15px;
+            border-radius: 4px;
+            margin-left:5px;
+            padding-top: 6px;
+        }
 
-    /* Icons */
-    .icon {
-      min-height:0;
-    }
+        /* Icons */
+        .icon {
+          min-height:0;
+        }
 
-    /* Nav link box */
-   .nav-link {
-        padding: .5rem 0;
-    }
+        /* Nav link box */
+       .nav-link {
+            padding: .5rem 0;
+        }
 
-    /* Notification and Message drawer icons */
-    .navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
-        color:lightgray;
-    }
-    .navbar-nav {
-        margin-top:15px;
-        color:lightgray;
-    }
-    .nav-item i:hover {
-        color:white;
-    }
+        /* Notification and Message drawer icons */
+        .navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
+            color:lightgray;
+        }
+        .navbar-nav {
+            margin-top:15px;
+            color:lightgray;
+        }
+        .nav-item i:hover {
+            color:white;
+        }
 
-    /* Default for all links */
-    a {
-        text-decoration: underline;
-    }
+        /* Default for all links */
+        a {
+            text-decoration: underline;
+        }
 
-    /* Usermenu */
-    .usermenu .icon {
-        margin-right: 0;
-        min-height:0;
-        min-width:0;
-    }
-    .usermenu .dropdown .caret {
-        display: inline;
-        width: auto;
-        height: auto;
-        margin-left: 0px;
-        vertical-align: baseline;
-        border: none;
-    }
-    .usermenu .dropdown a:first {
-      color:white;
-      font-size: 16px;
-    }
+        /* Usermenu */
+        .usermenu .icon {
+            margin-right: 0;
+            min-height:0;
+            min-width:0;
+        }
+        .usermenu .dropdown .caret {
+            display: inline;
+            width: auto;
+            height: auto;
+            margin-left: 0px;
+            vertical-align: baseline;
+            border: none;
+        }
+        .usermenu .dropdown a:first {
+          color:white;
+          font-size: 16px;
+        }
 
-    /* Menu */
-    #wb-sm .menu {
-        background: inherit;
-    }
+        /* Menu */
+        #wb-sm .menu {
+            background: inherit;
+        }
 
-    /* Search form */
-	.form-control {
-        font-size:inherit;
-    }
-    #wb-srch form {
-        float:right;
-    }
+        /* Search form */
+        .form-control {
+            font-size:inherit;
+        }
+        #wb-srch form {
+            float:right;
+        }
 
-    /* Headers */
-	.page-context-header .page-header-image, .page-context-header .page-header-headings {
-        float:none;
-    }
+        /* Headers */
+        .page-context-header .page-header-image, .page-context-header .page-header-headings {
+            float:none;
+        }
 
-    /* Footer box links */
-    .sitelink {
-        display: none;
-    }
+        /* Footer box links */
+        .sitelink {
+            display: none;
+        }
 
-    .helplink,
-    .logininfo,
-    .tool_usertours-resettourcontainer,
-    .usertour,
-    .homelink,
-    .tool_dataprivacy {
-        display: inline-block;
-    }
-    .helplink:after,
-    .logininfo:after,
-    .tool_usertours-resettourcontainer:after,
-    .homelink:after {
-      content: " | ";
-    }
+        .helplink,
+        .logininfo,
+        .tool_usertours-resettourcontainer,
+        .usertour,
+        .homelink,
+        .tool_dataprivacy {
+            display: inline-block;
+        }
+        .helplink:after,
+        .logininfo:after,
+        .tool_usertours-resettourcontainer:after,
+        .homelink:after {
+          content: " | ";
+        }
 
-    /* All courses page */
-    .coursebox .content .courseimage img {
-        max-width: 80%;
-        max-height: none;
-    }
+        /* All courses page */
+        .coursebox .content .courseimage img {
+            max-width: 80%;
+            max-height: none;
+        }
 
-    /* Dropdown usermenu */
-    div.dropdown a#dropdown-1 {
-        color:white;
-    }
-    div.dropdown a {
-        font-size:16px;
-    }
-    .dropdown-menu {
-        min-width:fit-content;
-    }
+        /* Dropdown usermenu */
+        div.dropdown a#dropdown-1 {
+            color:white;
+        }
+        div.dropdown a {
+            font-size:16px;
+        }
+        .dropdown-menu {
+            min-width:fit-content;
+        }
 
-    /* Card titles */
-    h5, .h5 {
-        font-size: 3rem;
-    }
+        /* Card titles */
+        h5, .h5 {
+            font-size: 3rem;
+        }
 
-    #page {
-        margin-top: 0;
-    }
-</style>
+        #page {
+            margin-top: 0;
+        }
+        .mform .row {
+          display: block;
+        }
+    </style>
 </head>
