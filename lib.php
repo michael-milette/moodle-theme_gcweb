@@ -36,3 +36,28 @@ function theme_wetboew_internet_get_main_scss_content($theme) {
     // Combine them together.
     return $pre . "\n" . $scss . "\n" . $post;
 }
+
+/**
+ *  @brief Better Titles
+ *  
+ *  @param [in] $defaulttitle Default title if not found in list of links.
+ *  @return Returns an alternate page title depending on the URL
+ */
+function theme_wetboew_internet_betterpagetitle($defaulttitle = '') {
+    $urls = array(
+        '/backup/import.php' => get_string('importdata'),
+        '/calendar/view.php' => get_string('calendar', 'calendar'),
+        '/login/index.php' => get_string('signon', 'theme_wetboew_internet'),
+        '/login/logout.php' => get_string('signout', 'theme_wetboew_internet'),
+        '/login/signup.php' => get_string('startsignup'),
+        '/mod/' => get_string('activity') . ' : '.$defaulttitle,
+        '/my/index.php' => get_string('mycourses'),
+        '/user/edit.php' => get_string('editmyprofile'),
+    );
+    foreach($urls as $url => $title) {
+        if (stripos($_SERVER['SCRIPT_NAME'], $url) !== false) {
+            $defaulttitle = $title;
+        }
+    }
+    return $defaulttitle;
+}

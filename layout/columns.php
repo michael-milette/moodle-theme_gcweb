@@ -32,8 +32,12 @@ if(!empty($_PAGE['showsectmenu'])) {
 
 $_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
 
+$_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+$_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($OUTPUT->full_header());
+
 $templatecontext = [
-    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
+    'sitename' => $_PAGE['sitename'],
+    'pagetitle' => $_PAGE['pagetitle'],
     'output' => $OUTPUT,
     'sidepreblocks' => $_PAGE['blockspre'],
     'sidepostblocks' => $_PAGE['blockspost'],
