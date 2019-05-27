@@ -17,57 +17,55 @@
 {{!
     Page footer.
 }}
-        <div id="def-footer">
-            <footer role="contentinfo" id="wb-info">
-                <div id="course-footer">{{{ output.course_footer }}}</div>
-                {{# output.page_doc_link }}
-                    <p class="helplink">{{{ output.page_doc_link }}}</p>
-                {{/ output.page_doc_link }}
-                {{{ output.login_info }}}
-                <div class="tool_usertours-resettourcontainer"></div>
-                {{{ output.home_link }}}
-                {{{ output.standard_footer_html }}}
-                <div class="brand">
-                    <div class="container">
-                        <div class="row">
-                            <nav class="col-md-10 ftr-urlt-lnk">
-                                <h2 class="wb-inv">About this Web application</h2>
-                                <ul>
-                                    <li><a href="https://www.canada.ca/en/contact.html">Contact information</a></li>
-                                    <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
-                                    <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
-                                </ul>
-                            </nav>
-                            <div class="col-xs-6 visible-sm visible-xs tofpg">
-                                <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
-                            </div>
-                            <div class="col-xs-6 col-md-2 text-right">
-                                <img src="{{{ wet-boew }}}/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
-                            </div>
-                        </div>
+    </main>
+    <footer id="wb-info" class="wb-navcurr-inited">
+        <div id="course-footer">{{{ output.course_footer }}}</div>
+        {{# output.page_doc_link }}
+            <p class="helplink">{{{ output.page_doc_link }}}</p>
+        {{/ output.page_doc_link }}
+        {{{ output.login_info }}}
+        <div class="tool_usertours-resettourcontainer"></div>
+        {{{ output.home_link }}}
+        {{{ output.standard_footer_html }}}
+        <div class="brand">
+            <div class="container">
+                <div class="row">
+                    <nav class="col-md-10 ftr-urlt-lnk">
+                        <h2 class="wb-inv">About this Web application</h2>
+                        <ul>
+                            <li><a href="https://www.canada.ca/en/contact.html">Contact information</a></li>
+                            <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                            <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                        </ul>
+                    </nav>
+                    <div class="col-xs-6 visible-sm visible-xs tofpg">
+                        <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
+                    </div>
+                    <div class="col-xs-6 col-md-2 text-right">
+                        <img src="{{{ wet-boew }}}/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
-        <!--[if gte IE 9 | !IE ]><!-->
-        <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script -->
-        <!-- Latest compiled and minified CSS -->
-        <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
-        <!-- jQuery library -->
-        <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script -->
-        {{!
-        <!-- Popper JS -->
-        <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script -->
-        <!-- script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script -->
-        }}
-        <nav class="nav navbar-nav d-md-none">
-            {{# output.custom_menu_flat }}
-                <ul class="list-unstyled pt-3">
-                    {{> theme_boost/custom_menu_footer }}
-                </ul>
-            {{/ output.custom_menu_flat }}
-        </nav>
-    </main>
+    </footer>
+    <!--[if gte IE 9 | !IE ]><!-->
+    <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
+    <!-- jQuery library -->
+    <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script -->
+    {{!
+    <!-- Popper JS -->
+    <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script -->
+    <!-- script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script -->
+    }}
+    <nav class="nav navbar-nav d-md-none">
+        {{# output.custom_menu_flat }}
+            <ul class="list-unstyled pt-3">
+                {{> theme_boost/custom_menu_footer }}
+            </ul>
+        {{/ output.custom_menu_flat }}
+    </nav>
 {{{ output.standard_end_of_body_html }}}
 {{#js}}
 require(['theme_boost/loader']);
@@ -85,6 +83,6 @@ require(['theme_boost/drawer'], function(mod) {
     <span id="wb-rsz" class="wb-init">&nbsp;</span>
     <script src="{{{ wet-boew }}}/js/theme.min.js"></script>
     <script src="{{{ wet-boew }}}/cdts/cdtscustom.js"></script>
-
+</div>
 </body>
 </html>

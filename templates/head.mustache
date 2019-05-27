@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{{ wet-boew }}}/css/theme.min.css">
     <link rel="stylesheet" href="{{{ wet-boew }}}/cdts/cdtsfixes.css">
     <link rel="stylesheet" href="{{{ wet-boew }}}/cdts/cdtsapps.css">
-    {{{ output.standard_head_html }}}
+    {{{ standard_head_html }}}
     <style>
         body {
           font-size: 16px;
@@ -109,7 +109,7 @@
             vertical-align: baseline;
             border: none;
         }
-        .usermenu .dropdown a:first {
+        .usermenu .dropdown a:first-child {
           color:white;
           font-size: 16px;
         }
@@ -165,8 +165,10 @@
         div.dropdown a {
             font-size:16px;
         }
+        
         .dropdown-menu {
             min-width:fit-content;
+            font-size: 1.5rem
         }
 
         /* Card titles */
@@ -229,15 +231,22 @@
             font-size: 1.1rem
         }
 
-        /* Dropdown menus */
-        .dropdown-menu {
-            font-size: 1.5rem
-        }
-        
         /* User profile heading */
         .lead, .userprofile .profile_tree section h3 {
             font-size: inherit;
             font-weight: bold;
+        }
+
+        #adminsettings h3 {
+            font-size: inherit;
+         }
+
+        .pagination-sm .page-link {
+            font-size: 1.5rem;
+        }
+        /* Moodle footer info */
+        #wb-info {
+              text-align: center;
         }
     </style>
 </head>

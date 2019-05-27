@@ -24,7 +24,7 @@
                         <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
                             <div class="form-group">
                                 <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label>
-                                <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
+                                <input id="wb-srch-q" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
                                 {{{ searchsettings }}}
                             </div>
                             <div class="form-group submit">
@@ -80,7 +80,7 @@
             <div class="container nvbar">
                 <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>
                 <div class="row">
-                    <ul class="list-inline menu">
+                    <ul class="list-inline menu" role="menubar">
                         {{! Custom Menu }}
                         {{! topicsmenulist }}
                         <!-- custom_menu -->
@@ -94,9 +94,7 @@
             <h2>{{# str }} youarehere, theme_wetboew_internet {{/ str }}</h2>
             <div class="container">
                 <div class="row">
-                    <ol class="breadcrumb">
-                        {{{ breadcrumbs }}}
-                    </ol>
+                    {{{ breadcrumbs }}}
                 </div>
             </div>
         </nav>

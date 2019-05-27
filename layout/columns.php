@@ -39,6 +39,7 @@ $templatecontext = [
     'sitename' => $_PAGE['sitename'],
     'pagetitle' => $_PAGE['pagetitle'],
     'output' => $OUTPUT,
+    'standard_head_html' => str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $OUTPUT->standard_head_html()),
     'sidepreblocks' => $_PAGE['blockspre'],
     'sidepostblocks' => $_PAGE['blockspost'],
     'haspreblocks' => $_PAGE['hassidepre'],
