@@ -95,17 +95,23 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $html .= html_writer::end_tag('header');
         return $html;
 
-        // // $theme = theme_config::load('wetboew_internet');
-        // $header = new stdClass();
-        // // $header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
-            // // 'id' => $PAGE->course->id
-        // // )) , $this->context_header());
-        // $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
-        // $header->navbar = $this->navbar();
-        // // $header->pageheadingbutton = $this->page_heading_button();
-        // $header->courseheader = $this->course_header();
-        // // $header->headerimage = $this->headerimage();
-        // return $this->render_from_template('theme_wetboew_internet/header', $header);
+        // $theme = theme_config::load('wetboew_internet');
+        $header = new stdClass();
+        $header->settingsmenu = $this->context_header_settings_menu();
+        $header->contextheader = $this->context_header();
+        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
+        $header->navbar = $this->navbar();
+        $header->pageheadingbutton = $this->page_heading_button();
+        $header->courseheader = $this->course_header();
+        // $header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
+            // 'id' => $PAGE->course->id
+        // )) , $this->context_header());
+        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
+        $header->navbar = $this->navbar();
+        // $header->pageheadingbutton = $this->page_heading_button();
+        $header->courseheader = $this->course_header();
+        // $header->headerimage = $this->headerimage();
+        return $this->render_from_template('theme_wetboew_internet/header', $header);
     }
 
     /**

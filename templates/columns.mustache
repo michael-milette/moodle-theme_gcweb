@@ -52,7 +52,11 @@
     <div id="page" class="container-fluid">
 {{>theme_wetboew_internet/navbar}}
         {{{ pagetitle }}}
-
+        {{#settingsmenu}}
+            <div class="context-header-settings-menu" style="display:block;height:100px;border:1px solid red;">
+                {{{settingsmenu}}}
+            </div>
+        {{/settingsmenu}}
         <div id="page-content" class="row {{#haspreblocks}} blocks-pre {{/haspreblocks}} {{#haspostblocks}} blocks-post {{/haspostblocks}}">
             <div id="region-main-box" class="region-main">
                 {{#hasregionmainsettingsmenu}}

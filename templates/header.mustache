@@ -3,103 +3,103 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
 <!-- End Google Tag Manager -->
 <div id="def-top">
-<ul id="wb-tphp">
-    <li class="wb-slc"><a class="wb-sl" href="#maincontent">{{# str }} skiptomain, theme_wetboew_internet {{/ str }}</a></li>
-    <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_wetboew_internet {{/ str }}</a></li>
-    {{{ skiptosectnav }}}
-</ul>
-<header class="gc-app">
-    <div id="wb-bnr" class="container">
-        {{{ langmenu }}}
-        <div class="row">
-            <div class="brand col-xs-5 col-md-4">
-                <a href="https://www.canada.ca/{{{ lang }}}.html">
-                    <img src="{{{ wet-boew }}}/assets/sig-blk-{{{ lang }}}.svg" alt="">
-                    <span class="wb-inv">{{# str }} governmentofcanada, theme_wetboew_internet {{/ str }}</span>
-                </a>
-            </div>
-            {{#showsearch}}
-                <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
-                    <h2>{{# str }} search, theme_wetboew_internet {{/ str }}</h2>
-                    <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
-                        <div class="form-group">
-                            <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label>
-                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
-                            {{{ searchsettings }}}
-                        </div>
-                        <div class="form-group submit">
-                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></button>
-                        </div>
-                    </form>
-                </section>
-            {{/showsearch}}
-         </div>
-    </div>
-    <div class="app-bar">
-        <div class="container">
+    <ul id="wb-tphp">
+        <li class="wb-slc"><a class="wb-sl" href="#maincontent">{{# str }} skiptomain, theme_wetboew_internet {{/ str }}</a></li>
+        <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_wetboew_internet {{/ str }}</a></li>
+        {{{ skiptosectnav }}}
+    </ul>
+    <header class="gc-app">
+        <div id="wb-bnr" class="container">
+            {{{ langmenu }}}
             <div class="row">
-                <!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
-                <section class="col-xs-12 col-sm-7">
-                    <h2 class="wb-inv">{{{ sitename }}}</h2>
-                    <div data-region="drawer-toggle" class="d-inline-block mr-3">
-                        <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
-                    </div>
-                    <a class="app-name" href="{{{ wwwroot }}}">{{{ sitename }}}</a>
-                </section>
-                <nav class="col-sm-5 hidden-xs hidden-print">
-                    <h2 class="wb-inv">Account menu</h2>
-                    <ul class="nav navbar-nav ml-auto list-unstyled">
-                        <!-- navbar_plugin_output -->
-                        <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
-                    </ul>
-                    <ul class="app-list-account list-unstyled">
-                    {{#showaccountsettings}}
-                    <!-- user_menu -->
-                    <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
-                    {{/showaccountsettings}}
-                    {{^loggedin}}
-                        {{#showregister}}
-                            <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_wetboew_internet {{/ str }}</a></li>
-                        {{/showregister}}
-                        <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_wetboew_internet {{/ str }}</a></li>
-                    {{/loggedin}}
-                    {{#loggedin}}
+                <div class="brand col-xs-5 col-md-4">
+                    <a href="https://www.canada.ca/{{{ lang }}}.html">
+                        <img src="{{{ wet-boew }}}/assets/sig-blk-{{{ lang }}}.svg" alt="">
+                        <span class="wb-inv">{{# str }} governmentofcanada, theme_wetboew_internet {{/ str }}</span>
+                    </a>
+                </div>
+                {{#showsearch}}
+                    <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
+                        <h2>{{# str }} search, theme_wetboew_internet {{/ str }}</h2>
+                        <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
+                            <div class="form-group">
+                                <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label>
+                                <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
+                                {{{ searchsettings }}}
+                            </div>
+                            <div class="form-group submit">
+                                <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></button>
+                            </div>
+                        </form>
+                    </section>
+                {{/showsearch}}
+             </div>
+        </div>
+        <div class="app-bar">
+            <div class="container">
+                <div class="row">
+                    <!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
+                    <section class="col-xs-12 col-sm-7">
+                        <h2 class="wb-inv">{{{ sitename }}}</h2>
+                        <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                            <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+                        </div>
+                        <a class="app-name" href="{{{ wwwroot }}}">{{{ sitename }}}</a>
+                    </section>
+                    <nav class="col-sm-5 hidden-xs hidden-print">
+                        <h2 class="wb-inv">Account menu</h2>
+                        <ul class="nav navbar-nav ml-auto list-unstyled">
+                            <!-- navbar_plugin_output -->
+                            <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
+                        </ul>
+                        <ul class="app-list-account list-unstyled">
                         {{#showaccountsettings}}
-                            <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
+                        <!-- user_menu -->
+                        <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
                         {{/showaccountsettings}}
-                        <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
-                    {{/loggedin}}
+                        {{^loggedin}}
+                            {{#showregister}}
+                                <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_wetboew_internet {{/ str }}</a></li>
+                            {{/showregister}}
+                            <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_wetboew_internet {{/ str }}</a></li>
+                        {{/loggedin}}
+                        {{#loggedin}}
+                            {{#showaccountsettings}}
+                                <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
+                            {{/showaccountsettings}}
+                            <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
+                        {{/loggedin}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        {{#showmegamenu}}
+            {{! <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement"> }}
+        <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+            <div class="container nvbar">
+                <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>
+                <div class="row">
+                    <ul class="list-inline menu">
+                        {{! Custom Menu }}
+                        {{! topicsmenulist }}
+                        <!-- custom_menu -->
+                        {{{ output.custom_menu }}}
                     </ul>
-                </nav>
+                </div>
             </div>
-        </div>
-    </div>
-    {{#showmegamenu}}
-        {{! <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement"> }}
-    <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
-        <div class="container nvbar">
-            <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>
-            <div class="row">
-                <ul class="list-inline menu">
-                    {{! Custom Menu }}
-                    {{! topicsmenulist }}
-                    <!-- custom_menu -->
-                    {{{ output.custom_menu }}}
-                </ul>
+        </nav>
+        {{/showmegamenu}}
+        <nav id="wb-bc" property="breadcrumb">
+            <h2>{{# str }} youarehere, theme_wetboew_internet {{/ str }}</h2>
+            <div class="container">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        {{{ breadcrumbs }}}
+                    </ol>
+                </div>
             </div>
-        </div>
-    </nav>
-    {{/showmegamenu}}
-    <nav id="wb-bc" property="breadcrumb">
-        <h2>{{# str }} youarehere, theme_wetboew_internet {{/ str }}</h2>
-        <div class="container">
-            <div class="row">
-                <ol class="breadcrumb">
-                    {{{ breadcrumbs }}}
-                </ol>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 </div>
 

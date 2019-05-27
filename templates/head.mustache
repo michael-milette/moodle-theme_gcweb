@@ -180,5 +180,64 @@
         .mform .row {
           display: block;
         }
+        
+        /* Hide links to Moodle page activities on the front page */
+        #page-site-index:not(.editing) #page-content .modtype_page {
+            display: none;
+        }
+
+        /* Headings */
+        .h2, h2 {
+            font-size: 1.8em;
+            margin-top: 2.5rem;
+        }
+        .h3, h3, #adminsettings h3{
+            font-size: 1.2em;
+            margin-top: 2.2rem;
+        }
+        .h4, h4 {
+            font-size: 1.1em;
+            margin-top: 1.9rem;
+        }
+        .h5, h5 {
+            font-size: 1em;
+            margin-top: 1.6rem;
+        }
+        .h6, h6 {
+            font-size: .95em;
+            font-weight: 400;
+            margin-top: 1.3rem;
+        }
+
+        /* All unordered lists */
+        ul {
+            margin-left: 4rem;
+        }
+
+        /* Labels in a form */
+        label {
+            margin-top: 1.5rem;
+        }
+
+        /* Turn off the border around the main content section */
+        #region-main {
+            border: none;
+        }
+
+        /* form labels on settings page */
+        .form-label .form-shortname {
+            font-size: 1.1rem
+        }
+
+        /* Dropdown menus */
+        .dropdown-menu {
+            font-size: 1.5rem
+        }
+        
+        /* User profile heading */
+        .lead, .userprofile .profile_tree section h3 {
+            font-size: inherit;
+            font-weight: bold;
+        }
     </style>
 </head>
