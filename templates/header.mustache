@@ -1,5 +1,7 @@
 <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
-<noscript><iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
 <!-- End Google Tag Manager -->
 <div id="def-top">
@@ -48,7 +50,7 @@
                     </section>
                     <nav class="col-sm-5 hidden-xs hidden-print">
                         <h2 class="wb-inv">Account menu</h2>
-                        <ul class="nav navbar-nav ml-auto list-unstyled">
+                        <ul class="YAK nav navbar-nav ml-auto list-unstyled">
                             <!-- navbar_plugin_output -->
                             <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
                         </ul>
@@ -74,9 +76,100 @@
                 </div>
             </div>
         </div>
+        <div class="app-bar-mb container visible-xs-block hidden-print">
+            <nav>
+                <h2 class="wb-inv">Menu and search</h2>
+                <ul class="app-list-main list-unstyled">
+                    <li class="wb-mb-links" id="wb-glb-mn">
+                        <a href="#mb-pnl" aria-controls="mb-pnl" class="btn overlay-lnk" role="button">Menu</a>
+                        <h2>Menu</h2>
+                    </li>
+                    <li><a href="#app-srch-mb" title="Search" aria-controls="app-srch-mb" class="btn overlay-lnk" role="button"><span class="glyphicon-search glyphicon" aria-hidden="true"></span><span class="wb-inv">Search</span></a></li>
+                    {{#showaccountsettings}}
+                    <!-- user_menu -->
+                    <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
+                    {{/showaccountsettings}}
+                </ul>
+                <div id="mb-pnl" class="wb-overlay modal-content overlay-def wb-panel-r wb-overlay-inited user-closed" aria-hidden="true" tabindex="-1">
+                    <header class="modal-header">
+                        <div class="modal-title">Menu</div>
+                    </header>
+                    <div class="modal-body">
+                        <section class="srch-pnl">
+                            <h3>Search</h3>
+                            <form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
+                                <div class="form-group">
+                                    <label for="wb-srch-q-imprt" class="wb-inv">Search website</label><input id="wb-srch-q-imprt" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search">
+                                    <datalist id="wb-srch-q-ac-imprt">
+                                        <!--[if lte IE 9]>
+                                        <select>
+                                            <![endif]--><!--[if lte IE 9]>
+                                        </select>
+                                        <![endif]-->
+                                    </datalist>
+                                </div>
+                                <div class="form-group submit"><button type="submit" id="wb-srch-sub-imprt" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button></div>
+                            </form>
+                        </section>
+                        <section class="lng-ofr">
+                            <h3>Language selection</h3>
+                            <ul class="list-inline">
+                                <li><a lang="fr" href="apptop_all-fr.shtml">Français</a></li>
+                            </ul>
+                        </section>
+                        <nav role="navigation" typeof="SiteNavigationElement" id="sm-pnl" class="sm-pnl wb-menu wb-menu-inited wb-navcurr-inited wb-init">
+                            <h3>Main navigation menu</h3>
+                            <ul class="list-unstyled mb-menu" role="menu">
+                                {{{ output.custom_menu }}}
+                            </ul>
+                        </nav>
+                        <nav role="navigation" typeof="SiteNavigationElement" id="info-pnl" class="info-pnl wb-menu wb-menu-inited wb-init">
+                            <h3>About this Web application</h3>
+                            <ul class="list-unstyled mb-menu" role="menu">
+                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="1" tabindex="0" href="https://www.canada.ca/en/contact.html">Contact information</a></li>
+                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="2" tabindex="-1" href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="3" tabindex="-1" href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="4" tabindex="-1" href="https://ssl-templates.services.gc.ca/app/cls/WET/gcweb/v4_0_30/cdts/appTop/apptop_all-en.shtml#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="modal-footer"><button type="button" class="btn btn-sm btn-primary pull-left overlay-close" style="" title="Close (escape key)">Close<span class="wb-inv">(escape key)</span></button></div>
+                    <button type="button" class="mfp-close overlay-close" title="Close: Menu (escape key)">×<span class="wb-inv"> Close: Menu (escape key)</span></button>
+                </div>
+                <section id="app-srch-mb" class="wb-overlay modal-content overlay-def wb-bar-t wb-init wb-overlay-inited user-closed" aria-hidden="true" tabindex="-1">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Search</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
+                            <div class="input-group">
+                                <label for="app-srch-q-mb" class="wb-inv">Search website</label><input id="app-srch-q-mb" list="app-srch-q-ac-mb" class="app-srch-q-mb form-control" name="q" type="search" value="" size="27" maxlength="150">
+                                <datalist id="app-srch-q-ac-mb">
+                                    <!--[if lte IE 9]>
+                                    <select>
+                                        <![endif]--><!--[if lte IE 9]>
+                                    </select>
+                                    <![endif]-->
+                                </datalist>
+                                <span class="input-group-btn"><button type="submit" id="app-srch-sub-mb" class="btn btn-primary btn-small" name="app-srch-sub-mb"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button></span>
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button" class="mfp-close overlay-close" title="Close: Search (escape key)">×<span class="wb-inv"> Close: Search (escape key)</span></button>
+                </section>
+            </nav>
+            <nav>
+                <h2 class="wb-inv">Account menu</h2>
+                <ul class="app-list-account list-unstyled">
+                    <li><a href="#" class="btn"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Account settings</a></li>
+                    <li><a href="#" class="btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign out</a></li>
+                </ul>
+            </nav>
+        </div>
+<!-- ------------------------------------------ -->
         {{#showmegamenu}}
             {{! <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement"> }}
-        <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+        <nav id="wb-sm" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
             <div class="container nvbar">
                 <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>
                 <div class="row">
