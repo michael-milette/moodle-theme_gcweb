@@ -23,27 +23,24 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+
+user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
+require_once($CFG->libdir . '/behat/lib.php');
+
 include __DIR__ . '/../framework/settings.php';
-
-$_PAGE['skiptosectnav'] = '';
-if(!empty($_PAGE['showsectmenu'])) {
-    $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">' . $_STRINGS['skiptosectnav'] . '</a></li>';
-}
-
-$_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
-
-$_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-$_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($OUTPUT->full_header());
 
 $templatecontext = [
     'sitename' => $_PAGE['sitename'],
-    'pagetitle' => $_PAGE['pagetitle'],
     'output' => $OUTPUT,
+    'pagetitle' => $_PAGE['pagetitle'],
     'standard_head_html' => str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $OUTPUT->standard_head_html()),
+    'standard_top_of_body_html' => preg_replace('/<div>.*<\/div>/s', '', $OUTPUT->standard_top_of_body_html()),
     'sidepreblocks' => $_PAGE['blockspre'],
     'sidepostblocks' => $_PAGE['blockspost'],
     'haspreblocks' => $_PAGE['hassidepre'],
     'haspostblocks' => $_PAGE['hassidepost'],
+    'regionmainsettingsmenu' => $_PAGE['regionmainsettingsmenu'],
+    'hasblocks' => true,
     'bodyattributes' => $OUTPUT->body_attributes(),
     'wet-boew' => $_PAGE['wet-boew'],
     'langmenu' => $_PAGE['langmenu'],
@@ -67,8 +64,13 @@ $templatecontext = [
     'accountsettingsurl' => $CFG->wwwroot . '/user/profile.php',
     'pagebutton' =>  str_replace('singlebutton', 'btn btn-default', $this->page_heading_button()),
     'showproblembutton' => $_PAGE['showproblembutton'],
-    'showsharebutton' => $_PAGE['showsharebutton']
+    'showsharebutton' => $_PAGE['showsharebutton'],
+    
+    'navdraweropen' => $_PAGE['navdraweropen'],
+    'regionmainsettingsmenu' => $_PAGE['regionmainsettingsmenu'],
+    'hasregionmainsettingsmenu' => !empty($_PAGE['regionmainsettingsmenu'])
 ];
 
+$templatecontext['flatnavigation'] = $PAGE->flatnav;
 echo $OUTPUT->render_from_template('theme_wetboew_internet/columns', $templatecontext);
 

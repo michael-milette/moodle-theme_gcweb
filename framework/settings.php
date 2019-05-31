@@ -55,7 +55,24 @@ if (strpos($_PAGE['htmlattributes'], 'xml') !== false) { // Trim off: xml:lang="
 }
 
 // BODY tag attributes.
-$_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
+if (isloggedin()) {
+    $_PAGE['navdraweropen']= (get_user_preferences('drawer-open-nav', 'true') == 'true');
+} else {
+    $_PAGE['navdraweropen'] = false;
+}
+$extraclasses = [];
+if ($_PAGE['navdraweropen']) {
+    $extraclasses[] = 'drawer-open-left';
+}
+$_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
+
+/* If secondary nav */
+$_PAGE['skiptosectnav'] = '';
+if(!empty($_PAGE['showsectmenu'])) {
+    $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">' . $_STRINGS['skiptosectnav'] . '</a></li>';
+}
+
+$_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
 
 // Signon: 1 show logged-in, 0 don't show, -1 logged-out.
 $_PAGE['signon'] = (isguestuser() || !isloggedin()) ? -1 : 1;
@@ -78,8 +95,6 @@ if(!$_PAGE['signon']) {
 } else {
     $_PAGE['usermenu'] = '';
 }
-
-//die($_PAGE['usermenu']);
 if(strpos($_PAGE['usermenu'], '<form')) {
     $_PAGE['usermenu'] = '<div class="singlebutton"><form id="customisethis"' . substr($_PAGE['usermenu'], strpos($_PAGE['usermenu'], '<form') + 5);
     $_PAGE['usermenu'] = substr($_PAGE['usermenu'], 0, strrpos($_PAGE['usermenu'], 'form>') + 5) . '</div>';
@@ -89,18 +104,30 @@ if(strpos($_PAGE['usermenu'], '<form')) {
 $_PAGE['usermenu'] = $_PAGE['signon'] ? $OUTPUT->user_menu() . $OUTPUT->navbar_plugin_output() . $_PAGE['usermenu'] : '';
 
 // Blocks
-$_PAGE['hascontentpre']  = $PAGE->blocks->region_has_content('content-pre', $OUTPUT);
-$_PAGE['hascontentpost'] = $PAGE->blocks->region_has_content('content-post', $OUTPUT);
-$_PAGE['contentpre'] = $OUTPUT->blocks('content-pre');
-$_PAGE['contentpost'] = $OUTPUT->blocks('content-post');
+if ($_PAGE['hascontentpre']  = $PAGE->blocks->region_has_content('content-pre', $OUTPUT)) {
+    $_PAGE['contentpre'] = $OUTPUT->blocks('content-pre');
+} else {
+    $_PAGE['contentpre'] = '';
+}
+if ($_PAGE['hascontentpost'] = $PAGE->blocks->region_has_content('content-post', $OUTPUT)) {
+    $_PAGE['contentpost'] = $OUTPUT->blocks('content-post');
+} else {
+    $_PAGE['contentpost'] = '';
+}
 
 $_PAGE['blockspre'] = $OUTPUT->blocks('side-pre');
-$_PAGE['blockspost'] = $OUTPUT->blocks('side-post');
 $_PAGE['hassidepre'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
+$_PAGE['blockspost'] = $OUTPUT->blocks('side-post');
 $_PAGE['hassidepost'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT);
+
+$_PAGE['hasblocks'] = strpos($_PAGE['blockspre'], 'data-block=') !== false || strpos($_PAGE['blockspost'], 'data-block=') !== false;
+
 $_PAGE['maincolwidth'] = 12;
 $_PAGE['sidecolwidth'] = 4;
 $_PAGE['maincolwidth'] = $_PAGE['maincolwidth'] - ($_PAGE['hassidepre'] * $_PAGE['sidecolwidth']) - ($_PAGE['hassidepost'] * $_PAGE['sidecolwidth']);
+
+$_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
+
 
 // Mega menu
 $_PAGE['showmegamenu'] = true;
@@ -110,6 +137,10 @@ $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
 
 // Sidebars
 $_PAGE['maxcolumns'] = 2;
+
+// Site name and page title.
+$_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+$_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($OUTPUT->full_header());
 
 // $_PAGE['showsecnav'] = true;
 // $_PAGE['description'] = '';

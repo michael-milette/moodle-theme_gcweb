@@ -17,7 +17,6 @@
 {{!
     Page footer.
 }}
-        </main>
         <footer id="wb-info" class="wb-navcurr-inited">
             <div id="course-footer">{{{ output.course_footer }}}</div>
             {{# output.page_doc_link }}
@@ -75,6 +74,7 @@
         <script src="{{{ wet-boew }}}/wet-boew/js/wet-boew.min.js"></script>
         <script src="{{{ wet-boew }}}/GCWeb/js/theme.min.js"></script>
         <script src="{{{ wet-boew }}}/cdts/cdtscustom.js"></script>
+        {{> theme_boost/nav-drawer }}
     </div>
 </body>
 </html>

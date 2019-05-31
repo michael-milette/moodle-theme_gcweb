@@ -103,14 +103,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
-        // $header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
-            // 'id' => $PAGE->course->id
-        // )) , $this->context_header());
+        $header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
+            'id' => $PAGE->course->id
+        )) , $this->context_header());
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
-        // $header->pageheadingbutton = $this->page_heading_button();
+        $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
-        // $header->headerimage = $this->headerimage();
+        $header->headerimage = $this->headerimage();
         return $this->render_from_template('theme_wetboew_internet/header', $header);
     }
 

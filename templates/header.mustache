@@ -161,14 +161,22 @@
             <nav>
                 <h2 class="wb-inv">Account menu</h2>
                 <ul class="app-list-account list-unstyled">
-                    <li><a href="#" class="btn"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Account settings</a></li>
-                    <li><a href="#" class="btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign out</a></li>
+                    {{^loggedin}}
+                        {{#showregister}}
+                            <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_wetboew_internet {{/ str }}</a></li>
+                        {{/showregister}}
+                        <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_wetboew_internet {{/ str }}</a></li>
+                    {{/loggedin}}
+                    {{#loggedin}}
+                        {{#showaccountsettings}}
+                            <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
+                        {{/showaccountsettings}}
+                        <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
+                    {{/loggedin}}
                 </ul>
             </nav>
         </div>
-<!-- ------------------------------------------ -->
         {{#showmegamenu}}
-            {{! <nav id="wb-sm" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement"> }}
         <nav id="wb-sm" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
             <div class="container nvbar">
                 <h2>{{# str }} topicsmenu, theme_wetboew_internet {{/ str }}</h2>

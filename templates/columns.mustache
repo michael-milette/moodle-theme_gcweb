@@ -47,60 +47,72 @@
     }
 }}
 {{> theme_wetboew_internet/head }}
-{{> theme_wetboew_internet/body}}
+<body vocab="http://schema.org/" typeof="WebPage" {{{ bodyattributes }}}>
+    {{{ standard_top_of_body_html }}}
+    {{> theme_wetboew_internet/header}}
+    <div id="page-wrapper">
+        <main role="main" property="mainContentOfPage" class="container">
 
-    <div id="page" class="container-fluid">
-{{>theme_wetboew_internet/navbar}}
-        {{{ pagetitle }}}
-        {{#settingsmenu}}
-            <div class="context-header-settings-menu" style="display:block;height:100px;border:1px solid red;">
-                {{{settingsmenu}}}
-            </div>
-        {{/settingsmenu}}
-        <div id="page-content" class="row {{#haspreblocks}} blocks-pre {{/haspreblocks}} {{#haspostblocks}} blocks-post {{/haspostblocks}}">
-            <div id="region-main-box" class="region-main">
-                {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
+            <div id="page" class="container-fluid">
+                {{{ output.full_header }}}
+            
+                {{! Extra buttons}}
+                {{>theme_wetboew_internet/navbar}}
+                {{#settingsmenu}}
+                    <div class="context-header-settings-menu" style="display:block;height:100px;border:1px solid red;">
+                        {{! Gear menu }}
+                        {{{settingsmenu}}}
+                    </div>
+                {{/settingsmenu}}
+                
+                {{! { pagetitle } }}
+                <div id="page-content" class="row {{#haspreblocks}} blocks-pre {{/haspreblocks}} {{#haspostblocks}} blocks-post {{/haspostblocks}}">
+                    <div id="region-main-box" class="region-main">
+                        {{#hasregionmainsettingsmenu}}
+                        <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
+                            <div> {{{ output.region_main_settings_menu }}} </div>
+                        </div>
+                        {{/hasregionmainsettingsmenu}}
+                        <section id="region-main" class="region-main-content">
+                            {{#hasregionmainsettingsmenu}}
+                                <div class="region_main_settings_menu_proxy"></div>
+                            {{/hasregionmainsettingsmenu}}
+                            {{{ output.course_content_header }}}
+                            {{{ output.main_content }}}
+                            {{{ output.activity_navigation }}}
+                            {{{ output.course_content_footer }}}
+                        </section>
+                    </div>
+                    {{#hasblocks}}
+                    <div class="columnleft blockcolumn {{#haspreblocks}} has-blocks {{/haspreblocks}}">
+                        <section data-region="blocks-column" class="hidden-print">
+                            {{{ sidepreblocks }}}
+                        </section>
+                    </div>
+
+                    <div class="columnright blockcolumn {{#haspostblocks}} has-blocks {{/haspostblocks}}">
+                        <section data-region="blocks-column" class="hidden-print">
+                            {{{ sidepostblocks }}}
+                        </section>
+                    </div>
+                    {{/hasblocks}}
                 </div>
-                {{/hasregionmainsettingsmenu}}
-                <section id="region-main" class="region-main-content">
-                    {{#hasregionmainsettingsmenu}}
-                        <div class="region_main_settings_menu_proxy"></div>
-                    {{/hasregionmainsettingsmenu}}
-                    {{{ output.course_content_header }}}
-                    {{{ output.main_content }}}
-                    {{{ output.activity_navigation }}}
-                    {{{ output.course_content_footer }}}
-                </section>
             </div>
-            <div class="columnleft blockcolumn {{#haspreblocks}} has-blocks {{/haspreblocks}}">
-                <section data-region="blocks-column" class="hidden-print">
-                    {{{ sidepreblocks }}}
-                </section>
+            {{{ output.standard_after_main_region_html }}}
+            <div class="pagedetails">
+                <div class="row">
+                    {{#showproblembutton}}
+                        {{> theme_wetboew_internet/problembutton }}
+                    {{/showproblembutton}}
+                    {{#showsharebutton}}
+                        <div class="wb-share col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
+                    {{/showsharebutton}}
+                </div>
+                <dl id="wb-dtmd">
+                    <dt>{{# str }} datemodified, theme_wetboew_internet {{/ str }}&#32;</dt>
+                    <dd><time property="dateModified">{{{ lastmodified }}}</time></dd>
+                </dl>
             </div>
-
-            <div class="columnright blockcolumn {{#haspostblocks}} has-blocks {{/haspostblocks}}">
-                <section data-region="blocks-column" class="hidden-print">
-                    {{{ sidepostblocks }}}
-                </section>
-            </div>
-        </div>
-    </div>
-    {{{ output.standard_after_main_region_html }}}
-    <div class="pagedetails">
-        <div class="row">
-            {{#showproblembutton}}
-                {{> theme_wetboew_internet/problembutton }}
-            {{/showproblembutton}}
-            {{#showsharebutton}}
-                <div class="wb-share col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
-            {{/showsharebutton}}
-        </div>
-        <dl id="wb-dtmd">
-            <dt>{{# str }} datemodified, theme_wetboew_internet {{/ str }}&#32;</dt>
-            <dd><time property="dateModified">{{{ lastmodified }}}</time></dd>
-        </dl>
-    </div>
-{{> theme_wetboew_internet/footer }}
+            {{> theme_wetboew_internet/footer }}
+        </main>
 

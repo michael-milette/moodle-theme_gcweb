@@ -72,15 +72,14 @@ $THEME->layouts = [
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
         'file' => 'columns.php',
-        'regions' => ['side-pre', 'side-post', 'content-pre', 'content-post'],
+        'regions' => ['side-pre', 'content-pre', 'content-post'],
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
         'file' => 'columns.php',
-        'regions' => ['side-pre', 'side-post', 'content-pre', 'content-post'],
-        'defaultregion' => 'side-post',
-        'options' => ['langmenu' => true],
+        'regions' => ['side-pre', 'content-pre', 'content-post'],
+        'defaultregion' => 'side-pre',
     ),
     'coursecategory' => array(
         'file' => 'columns.php',
@@ -96,9 +95,8 @@ $THEME->layouts = [
     // The site home page.
     'frontpage' => array(
         'file' => 'columns.php',
-        'regions' => ['side-pre', 'side-post', 'content-pre', 'content-post'],
+        'regions' => ['side-pre', 'content-pre', 'content-post'],
         'defaultregion' => 'side-pre',
-        'options' => ['nofullheader' => true],
     ),
     // Server administration scripts.
     'admin' => array(
@@ -109,9 +107,8 @@ $THEME->layouts = [
     // My dashboard page.
     'mydashboard' => array(
         'file' => 'columns.php',
-        'regions' => ['side-pre', 'side-post', 'content-pre', 'content-post'],
+        'regions' => ['side-pre', 'content-pre', 'content-post'],
         'defaultregion' => 'side-pre',
-        'options' => ['nonavbar' => true, 'langmenu' => true, 'nocontextheader' => true],
     ),
     // My public page.
     'mypublic' => array(
@@ -122,7 +119,6 @@ $THEME->layouts = [
     'login' => array(
         'file' => 'columns.php',
         'regions' => [],
-        'options' => ['langmenu' => true]
     ),
  
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
