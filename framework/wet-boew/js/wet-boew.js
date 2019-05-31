@@ -12523,7 +12523,7 @@ $document.on( clickEvents, linkSelector, function( event ) {
 	var testHref = event.currentTarget.getAttribute( "href" );
 
 	// Same page links only
-	if ( testHref.charAt( 0 ) === "#" && !event.isDefaultPrevented() &&
+	if ( testHref.charAt( 0 ) === "#"  && testHref.length !== 1 && !event.isDefaultPrevented() &&
 		( $linkTarget = $( "#" + wb.jqEscape( testHref.substring( 1 ) ) ) ).length !== 0 ) {
 		wb.ignoreHashChange = true;
 		$linkTarget.trigger( setFocusEvent );
