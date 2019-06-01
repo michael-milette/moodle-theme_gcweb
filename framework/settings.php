@@ -1,7 +1,9 @@
 <?php
+global $_PAGE;
+
 $_PAGE['searchsettings'] = ''; // For additional hidden form fields.
 //$_PAGE['shortname'] = 'Canada.ca';
-$_PAGE['wet-boew'] = $CFG->wwwroot . '/theme/wetboew_internet/framework';     // Path to WETBOEW themes relative to root.
+$_PAGE['wetboew'] = $CFG->wwwroot . '/theme/wetboew_internet/framework';     // Path to WETBOEW themes relative to root.
 
 /* Default settings for page */
 $_PAGE['showsearch'] = true;
@@ -18,9 +20,10 @@ $_PAGE['extrafooter'] = ''; // Inserted just before </body>.
 // date strings, and just let them show with a zero prefix.
 $CFG->nofixday = true;
 
-// Extra head content. Will be inserted just before </HEAD>.
-$_PAGE['extrahead'] = $OUTPUT->standard_head_html();
-$_PAGE['extrahead'] = substr($_PAGE['extrahead'], strpos($_PAGE['extrahead'], '>') + 1); // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+// Insert extra head content just before </HEAD>.
+$_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
+// Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+$_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $_PAGE['standard_head_html']);
 
 // Search engine
 $_PAGE['showsearch'] = empty($PAGE->layout_options['nosearch']) && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
@@ -91,7 +94,7 @@ if (has_capability('moodle/user:editownprofile', context_system::instance())) {
 
 // User menu - If signed in.
 if(!$_PAGE['signon']) {
-    $_PAGE['usermenu'] = $OUTPUT->full_header();//$OUTPUT->page_heading_menu();
+    $_PAGE['usermenu'] = '';//TODO: $OUTPUT->full_header();//$OUTPUT->page_heading_menu();
 } else {
     $_PAGE['usermenu'] = '';
 }
@@ -127,7 +130,7 @@ $_PAGE['sidecolwidth'] = 4;
 $_PAGE['maincolwidth'] = $_PAGE['maincolwidth'] - ($_PAGE['hassidepre'] * $_PAGE['sidecolwidth']) - ($_PAGE['hassidepost'] * $_PAGE['sidecolwidth']);
 
 $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
-
+$_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 
 // Mega menu
 $_PAGE['showmegamenu'] = true;
@@ -140,7 +143,25 @@ $_PAGE['maxcolumns'] = 2;
 
 // Site name and page title.
 $_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-$_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($OUTPUT->full_header());
+$_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($PAGE->title);
+$_PAGE['output'] = $OUTPUT;
+$_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
+
+$_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
+$_PAGE['topicsmenulist'] = get_string('topicsmenulist', 'theme_wetboew_internet');
+$_PAGE['showregister'] = (isguestuser() || !isloggedin()); // TODO: Determine if registration is enabled.
+$_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
+$_PAGE['loggedin'] = (!isguestuser() && isloggedin());
+$_PAGE['signonurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/' : $CFG->alternateloginurl;
+$_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php';
+$_PAGE['showaccountsettings'] = !(isguestuser() || !isloggedin());
+$_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';
+$_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
+$_PAGE['lang'] = current_language();
+$_PAGE['hasblocks'] = false;
+
+$_PAGE['flatnavigation'] = $PAGE->flatnav;
+$_PAGE['custom_menu'] = $OUTPUT->custom_menu();
 
 // $_PAGE['showsecnav'] = true;
 // $_PAGE['description'] = '';
@@ -163,7 +184,7 @@ $_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($OUTPUT->full_heade
 
 // $_SITE['webroot'] = 'http://localhost/wet-boew-ised/theme/wetboew_internet/framework';     // Root URL of website.
 // // $_SITE['fileroot'] = './';    // Root Folder of website.
-// $_SITE['wet-boew'] = '../framework/themes-dist/' . $_SITE['theme'];     // Path to WETBOEW themes relative to root.
+// $_SITE['wetboew'] = '../framework/themes-dist/' . $_SITE['theme'];     // Path to WETBOEW themes relative to root.
 // $_SITE['wet-boewphp'] = '../framework/wet-boew-php'; // Path to WET-BOEW-PHP relative to root.
 
 // /* Default settings for page */

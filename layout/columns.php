@@ -31,46 +31,46 @@ include __DIR__ . '/../framework/settings.php';
 
 $templatecontext = [
     'sitename' => $_PAGE['sitename'],
-    'output' => $OUTPUT,
+    'output' => $_PAGE['output'],
     'pagetitle' => $_PAGE['pagetitle'],
-    'standard_head_html' => str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $OUTPUT->standard_head_html()),
-    'standard_top_of_body_html' => preg_replace('/<div>.*<\/div>/s', '', $OUTPUT->standard_top_of_body_html()),
+    'standard_head_html' => $_PAGE['standard_head_html'],
     'sidepreblocks' => $_PAGE['blockspre'],
     'sidepostblocks' => $_PAGE['blockspost'],
     'haspreblocks' => $_PAGE['hassidepre'],
     'haspostblocks' => $_PAGE['hassidepost'],
     'regionmainsettingsmenu' => $_PAGE['regionmainsettingsmenu'],
-    'hasblocks' => false,
-    'bodyattributes' => $OUTPUT->body_attributes(),
-    'wet-boew' => $_PAGE['wet-boew'],
+    'hasregionmainsettingsmenu' => $_PAGE['hasregionmainsettingsmenu'],
+    'hasblocks' => $_PAGE['hasblocks'],
+    'bodyattributes' => $_PAGE['bodyattributes'],
+    'wetboew' => $_PAGE['wetboew'],
     'langmenu' => $_PAGE['langmenu'],
-    'lang' => current_language(),
-    'lastmodified' => date('Y-m-d', $PAGE->course->timemodified),
+    'lang' => $_PAGE['lang'],
+    'lastmodified' => $_PAGE['lastmodified'],
     'showmegamenu' => $_PAGE['showmegamenu'],
     'showsearch' => $_PAGE['showsearch'],
     'searchurl' => $_PAGE['searchurl'],
     'searchsettings' => $_PAGE['searchsettings'],
-    'topicsmenulist' => get_string('topicsmenulist', 'theme_wetboew_internet'),
+    'topicsmenulist' => $_PAGE['topicsmenulist'],
     'breadcrumbs' => $_PAGE['breadcrumbs'],
 
-    'showregister' => (isguestuser() || !isloggedin()), // TODO: Determine if registration is enabled.
-    'registerurl' => empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl,
+    'showregister' => $_PAGE['showregister'],
+    'registerurl' => $_PAGE['registerurl'],
 
-    'loggedin' => (!isguestuser() && isloggedin()),
-    'signonurl' => empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/' : $CFG->alternateloginurl,
-    'signouturl' => $CFG->wwwroot . '/login/logout.php',
+    'loggedin' => $_PAGE['loggedin'],
+    'signonurl' => $_PAGE['signonurl'],
+    'signouturl' => $_PAGE['signouturl'],
 
-    'showaccountsettings' => !(isguestuser() || !isloggedin()),
-    'accountsettingsurl' => $CFG->wwwroot . '/user/profile.php',
-    'pagebutton' =>  str_replace('singlebutton', 'btn btn-default', $this->page_heading_button()),
+    'showaccountsettings' => $_PAGE['showaccountsettings'],
+    'accountsettingsurl' => $_PAGE['accountsettingsurl'],
+    'pagebutton' =>  $_PAGE['pagebutton'],
     'showproblembutton' => $_PAGE['showproblembutton'],
     'showsharebutton' => $_PAGE['showsharebutton'],
-    
+
     'navdraweropen' => $_PAGE['navdraweropen'],
-    'regionmainsettingsmenu' => $_PAGE['regionmainsettingsmenu'],
-    'hasregionmainsettingsmenu' => !empty($_PAGE['regionmainsettingsmenu'])
+    'custom_menu' => $_PAGE['custom_menu'],
+    
+    'flatnavigation' => $_PAGE['flatnavigation']
 ];
 
-$templatecontext['flatnavigation'] = $PAGE->flatnav;
 echo $OUTPUT->render_from_template('theme_wetboew_internet/columns', $templatecontext);
 

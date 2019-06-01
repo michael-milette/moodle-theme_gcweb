@@ -49,23 +49,22 @@
 {{> theme_wetboew_internet/head }}
 <body vocab="http://schema.org/" typeof="WebPage" {{{ bodyattributes }}}>
     {{{ standard_top_of_body_html }}}
+    {{! { output.full_header } }}
     {{> theme_wetboew_internet/header}}
     <div id="page-wrapper">
         <main role="main" property="mainContentOfPage" class="container">
 
             <div id="page" class="container-fluid">
-                {{{ output.full_header }}}
             
                 {{! Extra buttons}}
                 {{>theme_wetboew_internet/navbar}}
-                {{#settingsmenu}}
+                {{#settingsmenu}}{{! Gear menu. }}
                     <div class="context-header-settings-menu" style="display:block;height:100px;border:1px solid red;">
-                        {{! Gear menu }}
                         {{{settingsmenu}}}
                     </div>
                 {{/settingsmenu}}
                 
-                {{! { pagetitle } }}
+                <h1>{{{ pagetitle }}}</h1>
                 <div id="page-content" class="row {{#haspreblocks}} blocks-pre {{/haspreblocks}} {{#haspostblocks}} blocks-post {{/haspostblocks}}">
                     <div id="region-main-box" class="region-main">
                         {{#hasregionmainsettingsmenu}}

@@ -26,9 +26,9 @@
     <title>{{{ output.page_title }}}</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link href="{{{ output.favicon }}}" rel="icon" type="image/x-icon">
-    <link rel="stylesheet" href="{{{ wet-boew }}}/GCWeb/css/theme.min.css">
-    <link rel="stylesheet" href="{{{ wet-boew }}}/cdts/cdtsfixes.css">
-    <link rel="stylesheet" href="{{{ wet-boew }}}/cdts/cdtsapps.css">
+    <link rel="stylesheet" href="{{{ wetboew }}}/GCWeb/css/theme.min.css">
+    <link rel="stylesheet" href="{{{ wetboew }}}/cdts/cdtsfixes.css">
+    <link rel="stylesheet" href="{{{ wetboew }}}/cdts/cdtsapps.css">
     {{{ standard_head_html }}}
     <style>
         body {
@@ -59,6 +59,27 @@
         }
         .h1, h1 {
             font-size: 1.9em;
+        }
+        .h2, h2 {
+            font-size: 1.8em;
+            margin-top: 2.5rem;
+        }
+        .h3, h3, #adminsettings h3{
+            font-size: 1.2em;
+            margin-top: 2.2rem;
+        }
+        .h4, h4 {
+            font-size: 1.1em;
+            margin-top: 1.9rem;
+        }
+        .h5, h5 {
+            font-size: 1em;
+            margin-top: 1.6rem;
+        }
+        .h6, h6 {
+            font-size: .95em;
+            font-weight: 400;
+            margin-top: 1.3rem;
         }
 
         /* Login box */
@@ -193,29 +214,6 @@
         /* Hide links to Moodle page activities on the front page */
         #page-site-index:not(.editing) #page-content .modtype_page {
             display: none;
-        }
-
-        /* Headings */
-        .h2, h2 {
-            font-size: 1.8em;
-            margin-top: 2.5rem;
-        }
-        .h3, h3, #adminsettings h3{
-            font-size: 1.2em;
-            margin-top: 2.2rem;
-        }
-        .h4, h4 {
-            font-size: 1.1em;
-            margin-top: 1.9rem;
-        }
-        .h5, h5 {
-            font-size: 1em;
-            margin-top: 1.6rem;
-        }
-        .h6, h6 {
-            font-size: .95em;
-            font-weight: 400;
-            margin-top: 1.3rem;
         }
 
         /* All unordered lists */

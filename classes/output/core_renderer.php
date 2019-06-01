@@ -88,29 +88,49 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function full_header() {
-        global $PAGE, $COURSE;
-        $html = html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'clearfix'));
-        $html .= $this->context_header();
-        $html .= html_writer::tag('div', $this->course_header(), array('id' => 'course-header'));
-        $html .= html_writer::end_tag('header');
-        return $html;
+        global $PAGE, $COURSE, $_PAGE;
+
+        // $html = html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'clearfix'));
+        // $html .= $this->context_header();
+        // $html .= html_writer::tag('div', $this->course_header(), array('id' => 'course-header'));
+        // $html .= html_writer::end_tag('header');
+        // return $html;
 
         // $theme = theme_config::load('wetboew_internet');
         $header = new stdClass();
+        $header->langmenu = $_PAGE['langmenu'];
+        $header->wetboew = $_PAGE['wetboew'];
+        $header->lang = current_language();
+        $header->showsearch = $_PAGE['showsearch'];
+        $header->searchurl = $_PAGE['searchurl'];
+        $header->searchsettings = $_PAGE['searchsettings'];
+        $header->sitename = $_PAGE['sitename'];
+        $header->navdraweropen = $_PAGE['navdraweropen'];
+        $header->showaccountsettings = $_PAGE['showaccountsettings'];
+        $header->loggedin = $_PAGE['loggedin'];
+        $header->showregister = $_PAGE['showregister'];
+        $header->registerurl = $_PAGE['registerurl'];
+        $header->signonurl = $_PAGE['signonurl'];
+        $header->accountsettingsurl = $_PAGE['accountsettingsurl'];
+        $header->signouturl = $_PAGE['signouturl'];
+        $header->showmegamenu = $_PAGE['showmegamenu'];
+        $header->breadcrumbs = $_PAGE['breadcrumbs'];
+        $header->custom_menu = $_PAGE['custom_menu'];
+
         $header->settingsmenu = $this->context_header_settings_menu();
         $header->contextheader = $this->context_header();
-        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
-        $header->navbar = $this->navbar();
-        $header->pageheadingbutton = $this->page_heading_button();
-        $header->courseheader = $this->course_header();
         $header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
             'id' => $PAGE->course->id
         )) , $this->context_header());
+        //$header->headerimage = $this->headerimage();
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
-        $header->headerimage = $this->headerimage();
+
+        /* If secondary nav */
+        $header->skiptosectnav = $_PAGE['skiptosectnav'];
+
         return $this->render_from_template('theme_wetboew_internet/header', $header);
     }
 
