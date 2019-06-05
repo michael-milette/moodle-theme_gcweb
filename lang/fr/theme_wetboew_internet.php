@@ -32,6 +32,7 @@ $string['mainmenu'] = 'Menu de navigation principal';
 $string['topicsmenu'] = 'Menu de la section';
 $string['youarehere'] = 'Vous êtes ici&nbsp;:';
 
+$string['accountmenu'] = 'Menu du compte';
 $string['register'] = 'Inscription';
 $string['signoninfo'] = 'Sign-on information';
 $string['signedinas'] = 'Connectez en tant que';
