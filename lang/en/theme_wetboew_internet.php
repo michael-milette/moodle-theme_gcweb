@@ -1,14 +1,12 @@
 <?php
-// Every file should have GPL and copyright in the header - we skip it in tutorials but you should not skip it for real.
- 
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
  
 // A description shown in the admin theme selector.
-$string['choosereadme'] = 'Theme GCWeb CDTS is a child theme of Boost.';
+$string['choosereadme'] = 'The WET-BOEW-Moodle GCWeb Internet theme is a child theme of Boost.';
 // The name of our plugin.
-$string['pluginname'] = 'WET-BOEW GCWeb CDTS';
-$string['privacy:metadata'] = 'The GCWeb CDTS theme does not store any personal data about any user.';
+$string['pluginname'] = 'WET-BOEW-Moodle GCWeb Internet';
+$string['privacy:metadata'] = 'The WET-BOEW-Moodle GCWeb Internet theme does not store any personal data about any user.';
 
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Left';
@@ -18,19 +16,19 @@ $string['region-content-post'] = 'Bottom';
 
 /* Theme specific strings. */
 $string['skiptomain'] = 'Skip to main content';
-$string['skiptoabout'] = 'Skip to "About government"';
+$string['skiptoabout'] = 'Skip to "About"';
 $string['skiptosectnav'] = 'Skip to section menu';
 
 $string['languageselection'] = 'Language selection';
-$string['french'] = 'French';
 
 $string['governmentofcanada'] = 'Government of Canada / <span lang="fr">Gouvernement du Canada</span>';
 
-$string['searchandmenus'] = 'Search and menus';
+$string['searchandmenus'] = 'Menu and search';
 $string['searchwebsite'] = 'Search website';
 $string['searchplaceholder'] = 'Search courses';
 $string['search'] = 'Search';
 
+$string['mainmenu'] = 'Main navigation menu';
 $string['topicsmenu'] = 'Topics menu';
 $string['youarehere'] = 'You are here:';
 
@@ -59,11 +57,9 @@ $string['submit'] = "Submit";
 $string['thankyou'] = "Thank you for your help!";
 $string['enquiries'] = 'You will not receive a reply. For enquiries, please <a href="https://www.canada.ca/en/contact.html">contact us</a>.';
 
-$string['topicsmenulist'] = '<li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
-<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration</a></li>
-<li><a href="https://travel.gc.ca/">Travel</a></li>
-<li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
-<li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
-<li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
-<li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
-<li><a href="https://www.canada.ca/en/services.html">More services</a></li>';
+$string['footerheading'] = 'About this Web application';
+$string['footerlist'] = '<li><a href="https://www.canada.ca/en/contact.html">Contact information</a></li>
+<li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>';
+
+$string['symbol'] = 'Symbol of the Government of Canada';

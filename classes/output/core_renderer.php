@@ -187,13 +187,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $langs = get_string_manager()->get_list_of_translations();
 
         if (count($langs) < 2) {
-            return '';
+            return ''; // Do not display language menu if only one language.
         }
 
         $s = '';
-        $s .= '<section id="wb-lng" class="text-right">';
-        $s .= '    <h2 class="wb-inv">' . get_string('languageselection', 'theme_wetboew_internet') . '</h2>';
-        $s .= '    <ul class="list-inline margin-bottom-none">';
         foreach($langs as $lang => $language) {
             if($lang != $currlang) {
                 if(strpos($language, '(')) {
@@ -202,13 +199,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 if(strpos($language, ' - ')) {
                     $language = trim(substr($language, 0, strpos($language, ' - ')));
                 }
-                $lang = str_replace('_', '-', $lang);
                 $url = new moodle_url($this->page->url, ['lang' => $lang ]);
-                $s .= '                <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>';
+                $s .= '                    <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>';
             }
         }
-        $s .= '    </ul>';
-        $s .='</section>';
 
         return $s;
     }

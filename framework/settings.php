@@ -35,7 +35,7 @@ $_PAGE['langmenu']  = ($_PAGE['langmenu'] && $_SERVER['REQUEST_METHOD'] != 'POST
 
 // Show Problem button
 $_PAGE['showproblembutton'] = true;
-$_PAGE['showsharebutton'] = true;
+$_PAGE['showsharebutton'] = false; // WET "Share" button is not compatible with fr_ca language.
 
 // Page title tag and the page's H1 heading.
 $_TITLES = [
@@ -148,7 +148,6 @@ $_PAGE['output'] = $OUTPUT;
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
-$_PAGE['topicsmenulist'] = get_string('topicsmenulist', 'theme_wetboew_internet');
 $_PAGE['showregister'] = (isguestuser() || !isloggedin()); // TODO: Determine if registration is enabled.
 $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
 $_PAGE['loggedin'] = (!isguestuser() && isloggedin());

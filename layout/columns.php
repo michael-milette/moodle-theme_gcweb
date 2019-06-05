@@ -50,7 +50,6 @@ $templatecontext = [
     'showsearch' => $_PAGE['showsearch'],
     'searchurl' => $_PAGE['searchurl'],
     'searchsettings' => $_PAGE['searchsettings'],
-    'topicsmenulist' => $_PAGE['topicsmenulist'],
     'breadcrumbs' => $_PAGE['breadcrumbs'],
 
     'showregister' => $_PAGE['showregister'],
@@ -68,6 +67,7 @@ $templatecontext = [
 
     'navdraweropen' => $_PAGE['navdraweropen'],
     'custom_menu' => $_PAGE['custom_menu'],
+    'links' => false,
     
     'flatnavigation' => $_PAGE['flatnavigation']
 ];
