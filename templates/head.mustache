@@ -260,5 +260,21 @@
         #wb-info {
               text-align: center;
         }
+
+        /* Fix for forum topics list. */
+        .media-body {
+            width: 100%;
+        }
+        /* Fix for forum search form. */
+        @media (min-width: 768px) {
+            .forumsearch .form-inline .input-group>.form-control {
+                width: auto;
+            }
+        }
+        @media (min-width: 768px) {
+            .forumsearch .form-inline .input-group {
+                display: inherit;
+            }
+        }
     </style>
 </head>

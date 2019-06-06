@@ -34,25 +34,25 @@ $string['youarehere'] = 'Vous êtes ici&nbsp;:';
 
 $string['accountmenu'] = 'Menu du compte';
 $string['register'] = 'Inscription';
-$string['signoninfo'] = 'Sign-on information';
+$string['signoninfo'] = 'Information de connexion';
 $string['signedinas'] = 'Connectez en tant que';
 $string['accountsettings'] = 'Menu des paramètres du compte';
 $string['signon'] = 'Ouvrir une session';
 $string['signout'] = 'Fermer la session';
 
 $string['topofpage'] = 'Haut de la page';
-$string['datemodified'] = 'Date de modification:';
+$string['datemodified'] = 'Date de modification&nbsp;:';
 
 /* Problem Button */
 $string['reportaproblem'] = "Signaler un problème sur cette page";
 $string['selectallthatapply'] = "Veuillez cocher toutes les réponses pertinentes :";
 $string['somethingisbroken'] = "Quelque chose ne fonctionne pas";
-$string['providemoredetail'] = "Provide more details (optional):";
+$string['providemoredetail'] = "Fournir plus de détails (facultatif)&nbsp;:";
 $string['spellinggrammarmistakes'] = "Il y a des erreurs d’orthographe ou de grammaire";
-$string['informationwrong'] = "L’information est erronée";
-$string['informationoutdated'] = "L’information n’est plus à jour";
+$string['informationwrong'] = "L'information est erronée";
+$string['informationoutdated'] = "L'information n’est plus à jour";
 $string['notwhatlookingfor'] = "Je ne trouve pas ce que je cherche";
-$string['describewhatlookingfor'] = "Describe what you’re looking for (optional):";
+$string['describewhatlookingfor'] = "Décrivez ce que vous recherchez (facultatif)&nbsp;:";
 $string['other'] = "Autre";
 $string['submit'] = "Soumettre";
 $string['thankyou'] = "Merci pour votre aide!";
