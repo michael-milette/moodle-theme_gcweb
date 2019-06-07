@@ -1,16 +1,16 @@
-<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
-<noscript>
-    <iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
-<!-- End Google Tag Manager -->
+{{#analytics}}
+    {{{ analytics }}}
+{{/analytics}}
+    <div id="course-header">
+    </div>
+
 <div id="def-top">
     <ul id="wb-tphp">
         <li class="wb-slc"><a class="wb-sl" href="#maincontent">{{# str }} skiptomain, theme_wetboew_internet {{/ str }}</a></li>
         <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_wetboew_internet {{/ str }}</a></li>
         {{{ skiptosectnav }}}
     </ul>
-    <header class="gc-app">
+    <header id="page-header" class="clearfix gc-app">
         <div id="wb-bnr" class="container">
             {{#langmenu}}
             <section id="wb-lng" class="text-right">
@@ -129,23 +129,21 @@
                         </section>
                         {{/langmenu}}
                         <nav role="navigation" typeof="SiteNavigationElement" id="sm-pnl" class="sm-pnl wb-menu wb-menu-inited wb-navcurr-inited wb-init">
-                            <h3>Main navigation menu</h3>
+                            <h3>{{# str }} mainmenu, theme_wetboew_internet {{/ str }}</h3>
                             <ul class="list-unstyled mb-menu" role="menu">
                                 {{{ output.custom_menu }}}
                             </ul>
                         </nav>
                         <nav role="navigation" typeof="SiteNavigationElement" id="info-pnl" class="info-pnl wb-menu wb-menu-inited wb-init">
-                            <h3>About this Web application</h3>
+                            <h3>{{# str }} footerheading, theme_wetboew_internet {{/ str }}</h3>
                             <ul class="list-unstyled mb-menu" role="menu">
-                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="1" tabindex="0" href="https://www.canada.ca/en/contact.html">Contact information</a></li>
-                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="2" tabindex="-1" href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
-                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="3" tabindex="-1" href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
-                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" aria-posinset="4" tabindex="-1" href="https://ssl-templates.services.gc.ca/app/cls/WET/gcweb/v4_0_30/cdts/appTop/apptop_all-en.shtml#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a></li>
+                                {{# str }} footerlist, theme_wetboew_internet {{/ str }}
+                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" href="#wb-cont">{{# str }} topofpage, theme_wetboew_internet {{/ str }} <span class="glyphicon glyphicon-chevron-up"></span></a></li>
                             </ul>
                         </nav>
                     </div>
-                    <div class="modal-footer"><button type="button" class="btn btn-sm btn-primary pull-left overlay-close" style="" title="Close (escape key)">Close<span class="wb-inv">(escape key)</span></button></div>
-                    <button type="button" class="mfp-close overlay-close" title="Close: Menu (escape key)">×<span class="wb-inv"> Close: Menu (escape key)</span></button>
+                    <div class="modal-footer"><button type="button" class="btn btn-sm btn-primary pull-left overlay-close" style="" title="{{# str }} close, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})">{{# str }} close, theme_wetboew_internet {{/ str }}<span class="wb-inv">({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button></div>
+                    <button type="button" class="mfp-close overlay-close" title="{{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} menu, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})">×<span class="wb-inv"> {{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} menu, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button>
                 </div>
                 {{#showsearch}}
                 <section id="app-srch-mb" class="wb-overlay modal-content overlay-def wb-bar-t wb-init wb-overlay-inited user-closed" aria-hidden="true" tabindex="-1">
@@ -167,7 +165,7 @@
                             </div>
                         </form>
                     </div>
-                    <button type="button" class="mfp-close overlay-close" title="Close: Search (escape key)">×<span class="wb-inv"> Close: Search (escape key)</span></button>
+                    <button type="button" class="mfp-close overlay-close" title="Close: Search (escape key)">×<span class="wb-inv"> {{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} search, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button>
                 </section>
                 {{/showsearch}}
             </nav>
@@ -195,10 +193,8 @@
                 <h2>{{# str }} mainmenu, theme_wetboew_internet {{/ str }}</h2>
                 <div class="row">
                     <ul class="list-inline menu" role="menubar">
-                        {{! Custom Menu }}
-                        {{! topicsmenulist }}
-                        <!-- custom_menu -->
-                        {{{ custom_menu }}}
+                        {{! Custom Menu - Main menu - Mega Menu }}
+                        {{{ output.custom_menu }}}
                     </ul>
                 </div>
             </div>
@@ -212,6 +208,9 @@
                 </div>
             </div>
         </nav>
+        <div id="course-header">
+            {{{courseheader}}}
+        </div>
     </header>
 </div>
 

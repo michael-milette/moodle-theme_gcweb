@@ -31,6 +31,9 @@ $string['search'] = 'Search';
 $string['mainmenu'] = 'Main navigation menu';
 $string['topicsmenu'] = 'Topics menu';
 $string['youarehere'] = 'You are here:';
+$string['menu'] = 'Menu';
+$string['esckey'] = 'escape key';
+$string['close'] = 'Close';
 
 $string['accountmenu'] = 'Account menu';
 $string['register'] = 'Register';

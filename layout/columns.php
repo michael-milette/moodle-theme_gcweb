@@ -30,7 +30,6 @@ require_once($CFG->libdir . '/behat/lib.php');
 include __DIR__ . '/../framework/settings.php';
 
 $templatecontext = [
-    'sitename' => $_PAGE['sitename'],
     'output' => $_PAGE['output'],
     'pagetitle' => $_PAGE['pagetitle'],
     'standard_head_html' => $_PAGE['standard_head_html'],
@@ -46,27 +45,11 @@ $templatecontext = [
     'langmenu' => $_PAGE['langmenu'],
     'lang' => $_PAGE['lang'],
     'lastmodified' => $_PAGE['lastmodified'],
-    'showmegamenu' => $_PAGE['showmegamenu'],
-    'showsearch' => $_PAGE['showsearch'],
-    'searchurl' => $_PAGE['searchurl'],
-    'searchsettings' => $_PAGE['searchsettings'],
-    'breadcrumbs' => $_PAGE['breadcrumbs'],
-
-    'showregister' => $_PAGE['showregister'],
-    'registerurl' => $_PAGE['registerurl'],
-
-    'loggedin' => $_PAGE['loggedin'],
-    'signonurl' => $_PAGE['signonurl'],
-    'signouturl' => $_PAGE['signouturl'],
-
-    'showaccountsettings' => $_PAGE['showaccountsettings'],
-    'accountsettingsurl' => $_PAGE['accountsettingsurl'],
     'pagebutton' =>  $_PAGE['pagebutton'],
     'showproblembutton' => $_PAGE['showproblembutton'],
     'showsharebutton' => $_PAGE['showsharebutton'],
 
     'navdraweropen' => $_PAGE['navdraweropen'],
-    'custom_menu' => $_PAGE['custom_menu'],
     'links' => false,
     
     'flatnavigation' => $_PAGE['flatnavigation']
