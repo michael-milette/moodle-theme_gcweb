@@ -118,17 +118,6 @@ if ($_PAGE['hascontentpost'] = $PAGE->blocks->region_has_content('content-post',
     $_PAGE['contentpost'] = '';
 }
 
-$_PAGE['blockspre'] = $OUTPUT->blocks('side-pre');
-$_PAGE['hassidepre'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
-$_PAGE['blockspost'] = $OUTPUT->blocks('side-post');
-$_PAGE['hassidepost'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT);
-
-$_PAGE['hasblocks'] = strpos($_PAGE['blockspre'], 'data-block=') !== false || strpos($_PAGE['blockspost'], 'data-block=') !== false;
-
-$_PAGE['maincolwidth'] = 12;
-$_PAGE['sidecolwidth'] = 4;
-$_PAGE['maincolwidth'] = $_PAGE['maincolwidth'] - ($_PAGE['hassidepre'] * $_PAGE['sidecolwidth']) - ($_PAGE['hassidepost'] * $_PAGE['sidecolwidth']);
-
 $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
 $_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 
@@ -144,7 +133,6 @@ $_PAGE['maxcolumns'] = 2;
 // Site name and page title.
 $_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
 $_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($PAGE->title);
-$_PAGE['output'] = $OUTPUT;
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
@@ -157,7 +145,7 @@ $_PAGE['showaccountsettings'] = !(isguestuser() || !isloggedin());
 $_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
 $_PAGE['lang'] = current_language();
-$_PAGE['hasblocks'] = false;
+$_PAGE['hasblocks'] = true;
 
 $_PAGE['flatnavigation'] = $PAGE->flatnav;
 $_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
@@ -167,6 +155,18 @@ $_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS 
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\': new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!=\'dataLayer1\'?\'&l=\'+l:\'\';j.async=true;j.src=\'//www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);})(window,document,\'script\',\'dataLayer1\',\'GTM-TLGQ9K\');</script>
 <!-- End Google Tag Manager -->
 ';
+
+$_PAGE['blockspre'] = $OUTPUT->blocks('side-pre');
+$_PAGE['hassidepre'] = strpos($_PAGE['blockspre'], 'data-block=') !== false;
+//$_PAGE['hassidepre'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
+$_PAGE['blockspost'] = $OUTPUT->blocks('side-post');
+$_PAGE['hassidepost'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT);
+$_PAGE['hasblocks'] = $_PAGE['hassidepre'] || $_PAGE['hassidepost'];
+
+$_PAGE['maincolwidth'] = 12;
+$_PAGE['sidecolwidth'] = 4;
+$_PAGE['maincolwidth'] = $_PAGE['maincolwidth'] - ($_PAGE['hassidepre'] * $_PAGE['sidecolwidth']) - ($_PAGE['hassidepost'] * $_PAGE['sidecolwidth']);
+$_PAGE['sidebar'] = 'right';
 
 // $_PAGE['showsecnav'] = true;
 // $_PAGE['description'] = '';

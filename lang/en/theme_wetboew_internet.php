@@ -1,7 +1,7 @@
 <?php
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
- 
+
 // A description shown in the admin theme selector.
 $string['choosereadme'] = 'The WET-BOEW-Moodle GCWeb Internet theme is a child theme of Boost.';
 // The name of our plugin.

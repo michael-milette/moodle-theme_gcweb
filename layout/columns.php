@@ -30,7 +30,7 @@ require_once($CFG->libdir . '/behat/lib.php');
 include __DIR__ . '/../framework/settings.php';
 
 $templatecontext = [
-    'output' => $_PAGE['output'],
+    'output' => $OUTPUT,
     'pagetitle' => $_PAGE['pagetitle'],
     'standard_head_html' => $_PAGE['standard_head_html'],
     'sidepreblocks' => $_PAGE['blockspre'],
@@ -48,10 +48,11 @@ $templatecontext = [
     'pagebutton' =>  $_PAGE['pagebutton'],
     'showproblembutton' => $_PAGE['showproblembutton'],
     'showsharebutton' => $_PAGE['showsharebutton'],
+    'sidebar' => $_PAGE['sidebar'],
 
     'navdraweropen' => $_PAGE['navdraweropen'],
     'links' => false,
-    
+
     'flatnavigation' => $_PAGE['flatnavigation']
 ];
 

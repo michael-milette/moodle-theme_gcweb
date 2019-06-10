@@ -200,7 +200,7 @@
         div.dropdown a {
             font-size:16px;
         }
-        
+
         .dropdown-menu {
             min-width:fit-content;
             font-size: 1.5rem
@@ -217,7 +217,7 @@
         .mform .row {
           display: block;
         }
-        
+
         /* Hide links to Moodle page activities on the front page */
         #page-site-index:not(.editing) #page-content .modtype_page {
             display: none;
@@ -280,6 +280,12 @@
             display: flex;
             justify-content: flex-end;
             max-width: none;
+        }
+
+        /* Remove duplicate background for buttons in navbar */
+        #navbar>div.btn {
+            background-color: transparent;
+            border: none;
         }
     </style>
 </head>

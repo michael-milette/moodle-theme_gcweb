@@ -54,26 +54,24 @@
         <main role="main" property="mainContentOfPage" class="container">
 
             <div id="page" class="container-fluid">
-            
-                {{! Extra buttons}}
+                {{! Extra buttons and gear menu }}
                 {{>theme_wetboew_internet/navbar}}
-                {{#settingsmenu}}{{! Gear menu. }}
-                    <div class="context-header-settings-menu" style="display:block;height:100px;border:1px solid red;">
-                        {{{settingsmenu}}}
-                    </div>
+                {{#settingsmenu}}
+                <div class="context-header-settings-menu">
+                    {{{settingsmenu}}}
+                </div>
                 {{/settingsmenu}}
-                
                 <h1>{{{ pagetitle }}}</h1>
-                <div id="page-content" class="row {{#haspreblocks}} blocks-pre {{/haspreblocks}} {{#haspostblocks}} blocks-post {{/haspostblocks}}">
-                    <div id="region-main-box" class="region-main">
+                <div id="page-content" class="row">
+                    <div id="region-main-box" class="col{{#hasblocks}} col-xl-9 col-lg-8 col-md-7{{/hasblocks}}">
                         {{#hasregionmainsettingsmenu}}
-                        <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
+                        <div id="region-main-settings-menu" class="d-print-none">
                             <div> {{{ output.region_main_settings_menu }}} </div>
                         </div>
                         {{/hasregionmainsettingsmenu}}
                         <section id="region-main" class="region-main-content">
                             {{#hasregionmainsettingsmenu}}
-                                <div class="region_main_settings_menu_proxy"></div>
+                            <div class="region_main_settings_menu_proxy"></div>
                             {{/hasregionmainsettingsmenu}}
                             {{{ output.course_content_header }}}
                             {{{ output.main_content }}}
@@ -82,15 +80,14 @@
                         </section>
                     </div>
                     {{#hasblocks}}
-                    <div class="columnleft blockcolumn {{#haspreblocks}} has-blocks {{/haspreblocks}}">
+                    <div class="col-xl-3 col-lg-4 col-md-5">
                         <section data-region="blocks-column" class="hidden-print">
+                            {{#haspreblocks}}
                             {{{ sidepreblocks }}}
-                        </section>
-                    </div>
-
-                    <div class="columnright blockcolumn {{#haspostblocks}} has-blocks {{/haspostblocks}}">
-                        <section data-region="blocks-column" class="hidden-print">
+                            {{/haspreblocks}}
+                            {{#haspostblocks}}
                             {{{ sidepostblocks }}}
+                            {{/haspostblocks}}
                         </section>
                     </div>
                     {{/hasblocks}}
@@ -111,8 +108,8 @@
                     <dd><time property="dateModified">{{{ lastmodified }}}</time></dd>
                 </dl>
             </div>
-            {{> theme_wetboew_internet/footer }}
         </main>
+        {{> theme_wetboew_internet/footer }}
     </div>
 </body>
 </html>

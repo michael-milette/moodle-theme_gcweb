@@ -13,7 +13,9 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace theme_wetboew_internet\output;
+
 use coding_exception;
 use html_writer;
 use tabobject;
@@ -36,8 +38,10 @@ use url_select;
 use context_course;
 use pix_icon;
 use theme_config;
+
 defined('MOODLE_INTERNAL') || die;
-require_once ($CFG->dirroot . "/course/renderer.php");
+
+//require_once ($CFG->dirroot . "/course/renderer.php");
 
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
@@ -48,6 +52,49 @@ require_once ($CFG->dirroot . "/course/renderer.php");
  */
 
 class core_renderer extends \theme_boost\output\core_renderer {
+
+    /**
+     * Returns lang menu or '', this method also checks forcing of languages in courses.
+     * This function calls {@link core_renderer::render_single_select()} to actually display the language menu.
+     * @return string The lang menu HTML or empty string
+     */
+    public function wet_lang_menu() {
+        global $CFG;
+
+        if (empty($CFG->langmenu)) {
+            return '';
+        }
+
+        if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
+            // do not show lang menu if language forced
+            return '';
+        }
+
+        $currlang = current_language();
+        $langs = get_string_manager()->get_list_of_translations();
+
+        if (count($langs) < 2) {
+            return ''; // Do not display language menu if only one language.
+        }
+
+        $s = '';
+        foreach($langs as $lang => $language) {
+            if($lang != $currlang) {
+                if(strpos($language, '(')) {
+                    $language = trim(substr($language, 0, strpos($language, '(')-4));
+                }
+                if(strpos($language, ' - ')) {
+                    $language = trim(substr($language, 0, strpos($language, ' - ')));
+                }
+                $url = new moodle_url($this->page->url, ['lang' => $lang ]);
+                $s .= '                    <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>';
+            }
+        }
+
+        return $s;
+    }
+
+
     /**
      * Return the navbar content so that it can be echoed out by the layout
      *
@@ -87,16 +134,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $navbarcontent;
     }
 
-    public function action_menu() {
+    public function settings_menu() {
         return $this->context_header_settings_menu();
     }
-    
+
     public function full_header() {
-        global $PAGE, $_PAGE;
+        global $PAGE, $_PAGE, $OUTPUT;
 
         // $theme = theme_config::load('wetboew_internet');
         $header = new stdClass();
-        $header->output = $_PAGE['output'];
+        $header->output = $OUTPUT;
         $header->langmenu = $_PAGE['langmenu'];
         $header->wetboew = $_PAGE['wetboew'];
         $header->lang = current_language();
@@ -164,47 +211,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Returns lang menu or '', this method also checks forcing of languages in courses.
-     * This function calls {@link core_renderer::render_single_select()} to actually display the language menu.
-     * @return string The lang menu HTML or empty string
-     */
-    public function wet_lang_menu() {
-        global $CFG;
-
-        if (empty($CFG->langmenu)) {
-            return '';
-        }
-
-        if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
-            // do not show lang menu if language forced
-            return '';
-        }
-
-        $currlang = current_language();
-        $langs = get_string_manager()->get_list_of_translations();
-
-        if (count($langs) < 2) {
-            return ''; // Do not display language menu if only one language.
-        }
-
-        $s = '';
-        foreach($langs as $lang => $language) {
-            if($lang != $currlang) {
-                if(strpos($language, '(')) {
-                    $language = trim(substr($language, 0, strpos($language, '(')-4));
-                }
-                if(strpos($language, ' - ')) {
-                    $language = trim(substr($language, 0, strpos($language, ' - ')));
-                }
-                $url = new moodle_url($this->page->url, ['lang' => $lang ]);
-                $s .= '                    <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>';
-            }
-        }
-
-        return $s;
-    }
-
-    /**
      * Returns the URL for the favicon.
      *
      * @since Moodle 2.5.1 2.6
@@ -237,4 +243,5 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $custommenu = new custom_menu($custommenuitems, current_language());
         return $this->render_custom_menu($custommenu);
     }
+
 }

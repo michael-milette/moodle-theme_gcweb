@@ -1,7 +1,7 @@
-<?php 
+<?php
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
- 
+
 // A description shown in the admin theme selector.
 $string['choosereadme'] = 'Le thème WET-BOEW-Moodle Internet est un thème enfant du thème Boost.';
 // The name of our plugin.
