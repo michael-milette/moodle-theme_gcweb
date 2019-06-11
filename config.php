@@ -177,8 +177,7 @@ $THEME->layouts = [
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'theme' => 'boost',
-        'file' => 'columns2.php',
+        'file' => 'columns.php',
         'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
     ),
