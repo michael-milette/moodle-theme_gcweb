@@ -145,7 +145,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header = new stdClass();
         $header->output = $OUTPUT;
         $header->langmenu = $_PAGE['langmenu'];
-        $header->wetboew = $_PAGE['wetboew'];
+        $header->wetboew = $_PAGE['themewww'] . '/framework';
         $header->lang = current_language();
         $header->showsearch = $_PAGE['showsearch'];
         $header->searchurl = $_PAGE['searchurl'];

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Picture config.
+ * WETBOEW Internet theme config.
  *
  * @package   theme_wetboew_internet
  * @copyright 2019 TNG Consulting Inc.
@@ -60,6 +60,16 @@ $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 // Call css/scss processing functions and renderers.
 $THEME->prescsscallback = 'theme_wetboew_internet_get_pre_scss';
+
+// This is a list of blocks that are required to exist on all pages for this theme to function correctly. For example
+// bootstrap base requires the settings and navigation blocks because otherwise there would be no way to navigate to all the
+// pages in Moodle. Boost does not require these blocks because it provides other ways to navigate built into the theme.
+$THEME->requiredblocks = '';
+
+// This is a feature that tells the blocks library not to use the "Add a block" block. We don't want this in boost based themes
+// because it forces a block region into the page when editing is enabled and it takes up too much room.
+$THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
+$THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
 
 // Since we are using 2 parent themes the correct location of the layout files needs to be defined. For this theme we need the multiple
 // column layouts.

@@ -1,9 +1,34 @@
 <?php
+// This file is part of the WET-BOEW-Moodle Internet theme for Moodle
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * The columns layout for the WET-BOEW-Moodle Internet theme.
+ *
+ * @package   theme_wetboew_internet
+ * @copyright 2016-2019 TNG Consulting Inc.
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+ 
+ defined('MOODLE_INTERNAL') || die();
+
 global $_PAGE;
 
 $_PAGE['searchsettings'] = ''; // For additional hidden form fields.
 //$_PAGE['shortname'] = 'Canada.ca';
-$_PAGE['wetboew'] = $CFG->wwwroot . '/theme/wetboew_internet/framework';     // Path to WETBOEW themes relative to root.
+$_PAGE['themewww'] = $CFG->wwwroot . '/theme/wetboew_internet';     // Absolute path to this theme.
 
 /* Default settings for page */
 $_PAGE['showsearch'] = true;
@@ -106,18 +131,6 @@ if(strpos($_PAGE['usermenu'], '<form')) {
 }
 $_PAGE['usermenu'] = $_PAGE['signon'] ? $OUTPUT->user_menu() . $OUTPUT->navbar_plugin_output() . $_PAGE['usermenu'] : '';
 
-// Blocks
-if ($_PAGE['hascontentpre']  = $PAGE->blocks->region_has_content('content-pre', $OUTPUT)) {
-    $_PAGE['contentpre'] = $OUTPUT->blocks('content-pre');
-} else {
-    $_PAGE['contentpre'] = '';
-}
-if ($_PAGE['hascontentpost'] = $PAGE->blocks->region_has_content('content-post', $OUTPUT)) {
-    $_PAGE['contentpost'] = $OUTPUT->blocks('content-post');
-} else {
-    $_PAGE['contentpost'] = '';
-}
-
 $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
 $_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 
@@ -145,7 +158,6 @@ $_PAGE['showaccountsettings'] = !(isguestuser() || !isloggedin());
 $_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
 $_PAGE['lang'] = current_language();
-$_PAGE['hasblocks'] = true;
 
 $_PAGE['flatnavigation'] = $PAGE->flatnav;
 $_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
@@ -156,6 +168,18 @@ $_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS 
 <!-- End Google Tag Manager -->
 ';
 
+// Blocks
+if ($_PAGE['hascontentpre']  = $PAGE->blocks->region_has_content('content-pre', $OUTPUT)) {
+    $_PAGE['contentpre'] = $OUTPUT->blocks('content-pre');
+} else {
+    $_PAGE['contentpre'] = '';
+}
+if ($_PAGE['hascontentpost'] = $PAGE->blocks->region_has_content('content-post', $OUTPUT)) {
+    $_PAGE['contentpost'] = $OUTPUT->blocks('content-post');
+} else {
+    $_PAGE['contentpost'] = '';
+}
+
 $_PAGE['blockspre'] = $OUTPUT->blocks('side-pre');
 $_PAGE['hassidepre'] = strpos($_PAGE['blockspre'], 'data-block=') !== false;
 //$_PAGE['hassidepre'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
@@ -163,9 +187,6 @@ $_PAGE['blockspost'] = $OUTPUT->blocks('side-post');
 $_PAGE['hassidepost'] = empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT);
 $_PAGE['hasblocks'] = $_PAGE['hassidepre'] || $_PAGE['hassidepost'];
 
-$_PAGE['maincolwidth'] = 12;
-$_PAGE['sidecolwidth'] = 4;
-$_PAGE['maincolwidth'] = $_PAGE['maincolwidth'] - ($_PAGE['hassidepre'] * $_PAGE['sidecolwidth']) - ($_PAGE['hassidepost'] * $_PAGE['sidecolwidth']);
 $_PAGE['sidebar'] = 'right';
 
 // $_PAGE['showsecnav'] = true;
