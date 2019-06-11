@@ -50,6 +50,7 @@
 <body vocab="http://schema.org/" typeof="WebPage" {{{ bodyattributes }}}>
     {{{ output.standard_top_of_body_html }}}
     {{{ output.full_header }}}
+ 
     <div id="page-wrapper">
         <main role="main" property="mainContentOfPage" class="container">
 
@@ -61,7 +62,11 @@
                     {{{settingsmenu}}}
                 </div>
                 {{/settingsmenu}}
-                <h1>{{{ pagetitle }}}</h1>
+                <h1>
+                <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                    <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+                </div>
+                {{{ pagetitle }}}</h1>
                 <div id="page-content" class="row">
                     <div id="region-main-box" class="col{{#hasblocks}} col-xl-9 col-lg-8 col-md-7{{/hasblocks}}">
                         {{#hasregionmainsettingsmenu}}
