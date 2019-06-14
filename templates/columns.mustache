@@ -63,9 +63,11 @@
                 </div>
                 {{/settingsmenu}}
                 <h1>
+                {{#loggedin}}
                 <div data-region="drawer-toggle" class="d-inline-block mr-3">
                     <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
                 </div>
+                {{/loggedin}}
                 {{{ pagetitle }}}</h1>
                 <div id="page-content" class="row">
                     <div id="region-main-box" class="col{{#hasblocks}} col-xl-9 col-lg-8 col-md-7{{/hasblocks}}">

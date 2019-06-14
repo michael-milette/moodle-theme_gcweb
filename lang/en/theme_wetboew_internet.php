@@ -3,10 +3,38 @@
 defined('MOODLE_INTERNAL') || die();
 
 // A description shown in the admin theme selector.
-$string['choosereadme'] = 'The WET-BOEW-Moodle GCWeb Internet theme is a child theme of Boost.';
+$string['choosereadme'] = '
+<div class="clearfix">
+<div class="well">
+ <h2><abbr title="Web Experience Toolkit for Moodle">WET-BOEW-MOODLE-Internet</abbr> theme</h2>
+ <p><img class="img-polaroid" src="wetboew_internet/pix/screenshot.png" /></p>
+</div>
+<div class="well">
+ <h2>Credits</h2>
+ <h3>About</h3>
+ <p>WET-BOEW-MOODLE-Internet is a responsive Moodle theme based on the latest <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
+ <p>This theme is licensed under the GPL (GNU General Public License). You can find a complete licence copy in: <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a></p>
+ <p>Authors: Michael Milette<br>
+ Contact: <a href="mailto:info@tngconsulting.ca">info@tngconsulting.ca</a><br>
+ Website: <a href="http://www.tngconsulting.ca">www.tngconsulting.ca</a>
+ </p>
+ <h3>Bugs Report</h3>
+ <p>You can report bugs using the GitHub Issue Tracker at <a href="https://github.com/wet-boew/wet-boew-moodle/issues">https://github.com/wet-boew/wet-boew-moodle/issues</a>.</p>
+ <h3>Documentation</h3>
+ <p>Documentation is available in <a href="https://github.com/wet-boew/wet-boew-moodle/">the project README file</a> and in <a href="https://github.com/wet-boew/wet-boew-moodle/wiki">the project Wiki</a></p>
+ <h3>Demo</h3>
+ <p>A demo instance is planned in the future.</p>
+ <h3>Terms and conditions of use</h3>
+ <p>Unless otherwise noted, the overall WET-BOEW-MOODLE project, wiki content, documentation and source code is Copyright © 2016 onwards by TNG Consulting Inc. Inc. with parts which may be contributed/copyrighted by others. WET-BOEW-MOODLE is provided freely as open source software, can be redistributed and/or modified it under the terms of the GNU General Public License version 3.0 or later.</p>
+ <p>It is distributed in the hope that it will be useful. However, there is no warranty, implied or otherwise, of merchantability or fitness for any purpose. See the GNU General Public License for details.</p>
+ <p>If for any reason a copy of the GNU General Public License was not included with this project, you can view it online by going to: https://www.gnu.org/licenses/gpl-3.0.en.html</p>
+</div>
+</div>';
+
 // The name of our plugin.
 $string['pluginname'] = 'WET-BOEW-Moodle GCWeb Internet';
 $string['privacy:metadata'] = 'The WET-BOEW-Moodle GCWeb Internet theme does not store any personal data about any user.';
+$string['configtitle'] = 'WET-BOEW-Internet';
 
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Left';

@@ -70,7 +70,7 @@
                         {{/loggedin}}
                         {{#loggedin}}
                             {{#showaccountsettings}}
-                                <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
+                                <li><a class="btn" href="{{{ accountsettingsurl }}}?id={{userid}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
                             {{/showaccountsettings}}
                             <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
                         {{/loggedin}}
@@ -123,12 +123,14 @@
                             </ul>
                         </section>
                         {{/langmenu}}
+                        {{#hasnavbar}}
                         <nav role="navigation" typeof="SiteNavigationElement" id="sm-pnl" class="sm-pnl wb-menu wb-menu-inited wb-navcurr-inited wb-init">
                             <h3>{{# str }} mainmenu, theme_wetboew_internet {{/ str }}</h3>
                             <ul class="list-unstyled mb-menu" role="menu">
                                 {{{ output.custom_menu }}}
                             </ul>
                         </nav>
+                        {{/hasnavbar}}
                         <nav role="navigation" typeof="SiteNavigationElement" id="info-pnl" class="info-pnl wb-menu wb-menu-inited wb-init">
                             <h3>{{# str }} footerheading, theme_wetboew_internet {{/ str }}</h3>
                             <ul class="list-unstyled mb-menu" role="menu">
@@ -182,7 +184,7 @@
                 </ul>
             </nav>
         </div>
-        {{#showmegamenu}}
+        {{#hasnavbar}}
         <nav id="wb-sm" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
             <div class="pnl-strt container nvbar">
                 <h2>{{# str }} mainmenu, theme_wetboew_internet {{/ str }}</h2>
@@ -194,7 +196,7 @@
                 </div>
             </div>
         </nav>
-        {{/showmegamenu}}
+        {{/hasnavbar}}
         <nav id="wb-bc" property="breadcrumb">
             <h2>{{# str }} youarehere, theme_wetboew_internet {{/ str }}</h2>
             <div class="container">

@@ -31,6 +31,7 @@ $_PAGE['searchsettings'] = ''; // For additional hidden form fields.
 $_PAGE['themewww'] = $CFG->wwwroot . '/theme/wetboew_internet';     // Absolute path to this theme.
 
 /* Default settings for page */
+$_PAGE['lang'] = current_language();
 $_PAGE['showsearch'] = true;
 $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
@@ -53,10 +54,17 @@ $_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" cont
 // Search engine
 $_PAGE['showsearch'] = empty($PAGE->layout_options['nosearch']) && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
 $_PAGE['searchurl'] = $CFG->wwwroot . '/course/search.php';
-
+//die(empty($PAGE->layout_options['langmenu']) ? "true":"false");
 // Show language menu
-$_PAGE['langmenu'] = empty($_PAGE['langmenu']) ? true : $_PAGE['langmenu']; // TODO: determine this from Moodle's list of installed locales.
-$_PAGE['langmenu']  = ($_PAGE['langmenu'] && $_SERVER['REQUEST_METHOD'] != 'POST'); // No language switching after a form POST.
+if (!empty($CFG->langmenu)
+        && (!isset($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu'] != false)
+        && ($PAGE->course == SITEID or empty($PAGE->course->lang)) 
+        && count($langs = get_string_manager()->get_list_of_translations()) > 1
+        && $_SERVER['REQUEST_METHOD'] != 'POST') { // No language switching after a form POST.
+    $_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
+} else {
+    $_PAGE['langmenu'] = '';
+}
 
 // Show Problem button
 $_PAGE['showproblembutton'] = true;
@@ -100,8 +108,6 @@ if(!empty($_PAGE['showsectmenu'])) {
     $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">' . $_STRINGS['skiptosectnav'] . '</a></li>';
 }
 
-$_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
-
 // Signon: 1 show logged-in, 0 don't show, -1 logged-out.
 $_PAGE['signon'] = (isguestuser() || !isloggedin()) ? -1 : 1;
 
@@ -134,9 +140,6 @@ $_PAGE['usermenu'] = $_PAGE['signon'] ? $OUTPUT->user_menu() . $OUTPUT->navbar_p
 $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
 $_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 
-// Mega menu
-$_PAGE['showmegamenu'] = true;
-
 // Footer
 $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
 
@@ -157,7 +160,6 @@ $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php';
 $_PAGE['showaccountsettings'] = !(isguestuser() || !isloggedin());
 $_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
-$_PAGE['lang'] = current_language();
 
 $_PAGE['flatnavigation'] = $PAGE->flatnav;
 $_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->

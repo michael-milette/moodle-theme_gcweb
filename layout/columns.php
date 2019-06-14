@@ -49,6 +49,7 @@ $templatecontext = [
     'showproblembutton' => $_PAGE['showproblembutton'],
     'showsharebutton' => $_PAGE['showsharebutton'],
     'sidebar' => $_PAGE['sidebar'],
+    'loggedin' => (!isguestuser() && isloggedin()),
 
     'navdraweropen' => $_PAGE['navdraweropen'],
     'links' => false,

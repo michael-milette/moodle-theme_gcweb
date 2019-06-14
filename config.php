@@ -90,7 +90,6 @@ $THEME->layouts = [
         'file' => 'columns.php',
         'regions' => ['side-pre', 'content-pre', 'content-post'],
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true),
     ),
     'coursecategory' => array(
         'file' => 'columns.php',
@@ -108,7 +107,6 @@ $THEME->layouts = [
         'file' => 'columns.php',
         'regions' => ['side-pre', 'content-pre', 'content-post'],
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true),
     ),
     // Server administration scripts.
     'admin' => array(
@@ -121,7 +119,7 @@ $THEME->layouts = [
         'file' => 'columns.php',
         'regions' => ['side-pre', 'content-pre', 'content-post'],
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true, 'langmenu' => true, 'nocontextheader' => true),
+        'options' => ['nocontextheader' => false],
     ),
     // My public page.
     'mypublic' => array(
@@ -132,7 +130,7 @@ $THEME->layouts = [
     'login' => array(
         'file' => 'columns.php',
         'regions' => [],
-        'options' => array('langmenu' => true),
+        'options' => ['nonavbar' => true],
     ),
 
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
@@ -140,7 +138,7 @@ $THEME->layouts = [
         'theme' => 'boost',
         'file' => 'columns1.php',
         'regions' => [],
-        'options' => ['nofooter' => true, 'nonavbar' => true]
+        'options' => ['nofooter' => true, 'nonavbar' => true, 'langmenu' => false, 'breadcrumbs' => false]
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(

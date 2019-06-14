@@ -54,7 +54,15 @@ defined('MOODLE_INTERNAL') || die;
 class core_renderer extends \theme_boost\output\core_renderer {
 
     /**
-     * Returns lang menu or '', this method also checks forcing of languages in courses.
+     * Returns '' which removes the default Moodle behaviour. We will deal with the language menu in a different way.
+     * @return string empty string
+     */
+    public function lang_menu() {
+        return '';
+    }
+
+    /**
+     * Returns language menu or '', this method also checks forcing of languages in courses.
      * This function calls {@link core_renderer::render_single_select()} to actually display the language menu.
      * @return string The lang menu HTML or empty string
      */
@@ -139,7 +147,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function full_header() {
-        global $PAGE, $_PAGE, $OUTPUT;
+        global $PAGE, $_PAGE, $OUTPUT, $USER;
 
         // $theme = theme_config::load('wetboew_internet');
         $header = new stdClass();
@@ -159,8 +167,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->signonurl = $_PAGE['signonurl'];
         $header->accountsettingsurl = $_PAGE['accountsettingsurl'];
         $header->signouturl = $_PAGE['signouturl'];
-        $header->showmegamenu = $_PAGE['showmegamenu'];
         $header->breadcrumbs = $_PAGE['breadcrumbs'];
+        $header->userid = $USER->id;
 
         //$header->contextheader = $this->context_header();
         //$header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
@@ -198,16 +206,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $icon = 'fa fa-edit';
         }
         return html_writer::tag('a',
-                        html_writer::start_tag('span', array('class' => $icon . ' icon-white')) .
-                        html_writer::end_tag('span'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
-    }
-
-    /**
-     * Returns ''. We will deal with the language menu in a different way.
-     * @return string empty string
-     */
-    public function lang_menu() {
-        return '';
+                html_writer::start_tag('span', array('class' => $icon . ' icon-white')) .
+                html_writer::end_tag('span'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
 
     /**
