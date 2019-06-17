@@ -138,7 +138,7 @@ $THEME->layouts = [
         'theme' => 'boost',
         'file' => 'columns1.php',
         'regions' => [],
-        'options' => ['nofooter' => true, 'nonavbar' => true, 'langmenu' => false, 'breadcrumbs' => false]
+        'options' => ['nofooter' => true, 'nonavbar' => true],
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(

@@ -73,6 +73,7 @@
                                 <li><a class="btn" href="{{{ accountsettingsurl }}}?id={{userid}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
                             {{/showaccountsettings}}
                             <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
+                            <li><a class="btn" href="https://sso-dev.ised-isde.canada.ca/auth/realms/individual/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Flearning-apprentissage.apps.dev.openshift.ised-isde.canada.ca%2Flogin%2Flogout.php%3Fsesskey%3D%7Bsesskey%7D"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
                         {{/loggedin}}
                         </ul>
                     </nav>
