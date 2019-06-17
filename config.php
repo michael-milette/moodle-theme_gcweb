@@ -149,9 +149,8 @@ $THEME->layouts = [
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
-        'theme' => 'boost',
         'file' => 'embedded.php',
-        'regions' => []
+        'regions' => [],
     ),
     // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
     // This must not have any blocks, links, or API calls that would lead to database or cache interaction.
@@ -163,6 +162,7 @@ $THEME->layouts = [
     ),
     // Should display the content and basic headers only.
     'print' => array(
+        'theme' => 'boost',
         'file' => 'content.php',
         'regions' => [],
         'options' => ['nofooter' => true, 'nonavbar' => false]

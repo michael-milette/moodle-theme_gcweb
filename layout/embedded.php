@@ -29,4 +29,4 @@ $templatecontext = [
     'output' => $OUTPUT
 ];
 
-echo $OUTPUT->render_from_template('theme_boost/embedded', $templatecontext);
+echo $OUTPUT->render_from_template('theme_wetboew_internet/embedded', $templatecontext);
