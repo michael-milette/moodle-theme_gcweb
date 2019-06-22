@@ -148,7 +148,7 @@ $_PAGE['maxcolumns'] = 2;
 
 // Site name and page title.
 $_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-$_PAGE['pagetitle'] = theme_wetboew_internet_betterpagetitle($PAGE->title);
+$_PAGE['pagetitle'] = $OUTPUT->pagetitle($PAGE->title);
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
