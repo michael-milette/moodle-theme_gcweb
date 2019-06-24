@@ -198,6 +198,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         switch ($this->page->pagelayout) {
             case 'course':
             case 'incourse':
+            case $this->page->pagetype == 'course-edit':
                 $course = $this->page->course;
                 $coursecontext = context_course::instance($course->id);
                 $title = format_string($course->fullname, true, ['context' => $coursecontext]);
