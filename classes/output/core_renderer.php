@@ -186,6 +186,44 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_from_template('theme_wetboew_internet/header', $header);
     }
 
+    public function pagetitle($title) {
+        global $SITE, $DB;
+
+        switch ($this->page->pagelayout) {
+            case 'course':
+            case 'incourse':
+                $course = $this->page->course;
+                $coursecontext = context_course::instance($course->id);
+                $title = format_string($course->fullname, true, ['context' => $coursecontext]);
+                break;
+            case 'coursecategory':
+                $id = optional_param('categoryid',0,PARAM_INT);;
+                if($id) {
+                    $title = $DB->get_field('course_categories', 'name', array('id' => 1), MUST_EXIST);
+                } else {
+                    $title = get_string('fulllistofcourses');
+                }
+                break;
+            case 'frontpage':
+                $title = '';
+                break;
+            case 'login':
+                $title = get_string('signon', 'theme_wetboew_internet');
+                break;
+             case 'admin':
+                $title = $SITE->fullname;
+                break;
+             case 'base':
+                switch ($this->page->pagetype) {
+                    case 'login-logout':
+                        $title = get_string('signout', 'theme_wetboew_internet');
+                        break;
+                }
+        }
+
+        return $title;
+    }
+
     /**
      *  @brief Better Titles
      *
