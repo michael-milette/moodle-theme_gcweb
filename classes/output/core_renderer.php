@@ -95,7 +95,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     $language = trim(substr($language, 0, strpos($language, ' - ')));
                 }
                 $url = new moodle_url($this->page->url, ['lang' => $lang ]);
-                $s .= '                    <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>';
+                $s .= '                    <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>' . PHP_EOL;
             }
         }
 
@@ -186,6 +186,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_from_template('theme_wetboew_internet/header', $header);
     }
 
+    /**
+     *  @brief Better Titles
+     *
+     *  @param [string] $title Default title if not found in list of links.
+     *  @return Returns an alternate page title depending on the page layout and type.
+     */
     public function pagetitle($title) {
         global $SITE, $DB;
 
@@ -211,7 +217,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $title = get_string('signon', 'theme_wetboew_internet');
                 break;
              case 'admin':
-                $title = $SITE->fullname;
+                $course = $this->page->course;
+                $coursecontext = context_course::instance($SITE->fullname);
+                $title = format_string($SITE->fullname, true, ['context' => $coursecontext]);
                 break;
              case 'base':
                 switch ($this->page->pagetype) {
