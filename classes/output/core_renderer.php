@@ -196,6 +196,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         global $SITE, $DB;
 
         switch ($this->page->pagelayout) {
+            case substr($this->page->pagetype, 0, 4) == 'mod-':
+                $title = format_string($this->page->cm->name);
+                break;
             case 'course':
             case 'incourse':
             case $this->page->pagetype == 'course-edit':
