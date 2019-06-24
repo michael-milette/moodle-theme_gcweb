@@ -201,7 +201,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 break;
             case 'course':
             case 'incourse':
+            case $this->page->pagetype == 'filter-manage':
             case $this->page->pagetype == 'course-edit':
+            case $this->page->pagetype == 'course-completion':
+            case substr($this->page->pagetype, 0, 6) == 'grade-':
+            case substr($this->page->pagetype, 0, 6) == 'enrol-':
                 $course = $this->page->course;
                 $coursecontext = context_course::instance($course->id);
                 $title = format_string($course->fullname, true, ['context' => $coursecontext]);
