@@ -197,7 +197,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         switch ($this->page->pagelayout) {
             case substr($this->page->pagetype, 0, 4) == 'mod-':
-                $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
+                if ($COURSE->format == 'singleactivity') {
+                    $title = format_string($COURSE->fullname);
+                } else {
+                    $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
+                }
                 break;
             case 'course':
             case 'incourse':
