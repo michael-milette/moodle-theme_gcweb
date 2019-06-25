@@ -91,7 +91,7 @@ if (strpos($_PAGE['htmlattributes'], 'xml') !== false) { // Trim off: xml:lang="
 }
 
 // BODY tag attributes.
-if (isloggedin()) {
+if (isloggedin() && !isguestuser()) {
     $_PAGE['navdraweropen']= (get_user_preferences('drawer-open-nav', 'true') == 'true');
 } else {
     $_PAGE['navdraweropen'] = false;
