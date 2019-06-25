@@ -193,11 +193,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *  @return Returns an alternate page title depending on the page layout and type.
      */
     public function pagetitle($title) {
-        global $SITE, $DB;
+        global $SITE, $DB, $COURSE;
 
         switch ($this->page->pagelayout) {
             case substr($this->page->pagetype, 0, 4) == 'mod-':
-                $title = format_string($this->page->cm->name);
+                $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
                 break;
             case 'course':
             case 'incourse':
