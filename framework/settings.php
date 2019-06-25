@@ -147,7 +147,7 @@ $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
 $_PAGE['maxcolumns'] = 2;
 
 // Site name and page title.
-$_PAGE['sitename'] = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+$_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
 $_PAGE['pagetitle'] = $OUTPUT->pagetitle($PAGE->title);
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 
