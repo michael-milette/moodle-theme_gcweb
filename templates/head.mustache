@@ -90,12 +90,15 @@
 
         /* buttons */
         .btn {
-            /* border: 1px outset #ccc; */
+            border: 1px outset #ccc;
             font-size: 15px;
             border-radius: 4px;
             margin-left:5px;
             padding-top: 6px;
             white-space:normal;
+        }
+        .btn-link { /* no border for icons */
+            border: none;
         }
 
         /* Icons */
@@ -331,11 +334,15 @@
         .dropdown a.dropdown-toggle>b.caret {
               display:none;
         }
-        
+
         /* Dashboard: Recently accessed courses - wrap instead of scroll. */
         .dashboard-card-deck.one-row {
             flex-flow: wrap;
             overflow-x: unset;
+        }
+
+        .close, .moodle-dialogue-base .closebutton {
+           font-size: 3rem;
         }
     </style>
 </head>
