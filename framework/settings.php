@@ -152,7 +152,7 @@ $_PAGE['pagetitle'] = $OUTPUT->pagetitle($PAGE->title);
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
-$_PAGE['showregister'] = (isguestuser() || !isloggedin()); // TODO: Determine if registration is enabled.
+$_PAGE['showregister'] = (isguestuser() || !isloggedin()) && signup_is_enabled();
 $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
 $_PAGE['loggedin'] = (!isguestuser() && isloggedin());
 $_PAGE['signonurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/' : $CFG->alternateloginurl;
