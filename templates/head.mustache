@@ -341,14 +341,37 @@
             overflow-x: unset;
         }
 
+        /* Adjust size of close button. */
         .close, .moodle-dialogue-base .closebutton {
            font-size: 3rem;
         }
-        
+
+        /* Fix font size for pluginname and version on plugins page. */
         #page-admin-plugins #plugins-control-panel .pluginname .componentname,
         #page-admin-plugins #plugins-control-panel .version .versionnumber {
             font-size: 1.2rem;
             color:#666666!important;
+        }
+
+        /* Fix overflow in main content region. */
+        #region-main {
+            overflow-x: visible;
+        }
+
+        /* Fix overflow in sidebar blocks. */
+        .no-overflow {
+            overflow: hidden;
+        }
+
+        /* To make text stick to the top of the screen. */
+        .sticky {
+            text-align:center;
+            line-height: 2em;
+            font-weight:bold;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index:9999;
         }
     </style>
 </head>
