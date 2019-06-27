@@ -154,7 +154,7 @@ $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
 $_PAGE['showregister'] = (isguestuser() || !isloggedin());
 if ($_PAGE['showregister']) {
-    require_once $CFG->lib . '/authlib.php';
+    require_once $CFG->libdir . '/authlib.php';
     $_PAGE['showregister'] = signup_is_enabled();
 }
 $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
