@@ -198,7 +198,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         switch ($this->page->pagelayout) {
             case substr($this->page->pagetype, 0, 4) == 'mod-':
                 if ($COURSE->format == 'singleactivity') {
-                    $title = format_string($COURSE->fullname);
+                    $title = format_string($COURSE->fullname, false);
                 } else {
                     $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
                 }
@@ -212,13 +212,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
             case substr($this->page->pagetype, 0, 6) == 'enrol-':
                 $course = $this->page->course;
                 $coursecontext = context_course::instance($course->id);
-                $title = format_string($course->fullname, true, ['context' => $coursecontext]);
+                $title = format_string($course->fullname, false, ['context' => $coursecontext]);
                 break;
             case 'coursecategory':
                 $id = optional_param('categoryid', 0, PARAM_INT);;
                 if($id) {
                     $title = $DB->get_field('course_categories', 'name', array('id' => $id), MUST_EXIST);
-                    $title = format_string($title);
+                    $title = format_string($title, false);
                 } else {
                     $title = get_string('fulllistofcourses');
                 }
@@ -230,7 +230,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $title = get_string('signon', 'theme_wetboew_internet');
                 break;
              case 'admin':
-                $title = format_string($SITE->fullname);
+                $title = format_string($SITE->fullname, false);
                 break;
              case 'base':
                 switch ($this->page->pagetype) {
@@ -301,4 +301,21 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_custom_menu($custommenu);
     }
 
+    public function standard_top_of_body_html() {
+        global $CFG;
+        $additionalhtmltopofbody = $CFG->additionalhtmltopofbody;
+        $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody, FORMAT_HTML);
+        $output = parent::standard_top_of_body_html();
+        $CFG->additionalhtmltopofbody = $additionalhtmltopofbody;
+        return $output;
+    }
+
+    public function standard_end_of_body_html() {
+        global $CFG;
+        $additionalhtmlfooter = $CFG->additionalhtmlfooter;
+        $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter, FORMAT_HTML);
+        $output = parent::standard_end_of_body_html();
+        $CFG->additionalhtmlfooter = $additionalhtmlfooter;
+        return $output;
+    }
 }
