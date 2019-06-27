@@ -217,7 +217,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
             case 'coursecategory':
                 $id = optional_param('categoryid', 0, PARAM_INT);;
                 if($id) {
-                    $title = $DB->get_field('course_categories', 'name', array('id' => 1), MUST_EXIST);
+                    $title = $DB->get_field('course_categories', 'name', array('id' => $id), MUST_EXIST);
+                    $title = format_string($title);
                 } else {
                     $title = get_string('fulllistofcourses');
                 }
