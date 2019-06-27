@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
  
- defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die();
 
 global $_PAGE;
 
@@ -152,7 +152,11 @@ $_PAGE['pagetitle'] = $OUTPUT->pagetitle($PAGE->title);
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
-$_PAGE['showregister'] = (isguestuser() || !isloggedin()) && signup_is_enabled();
+$_PAGE['showregister'] = (isguestuser() || !isloggedin());
+if ($_PAGE['showregister']) {
+    require_once $CFG->lib . '/authlib.php';
+    $_PAGE['showregister'] = signup_is_enabled();
+}
 $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
 $_PAGE['loggedin'] = (!isguestuser() && isloggedin());
 $_PAGE['signonurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/' : $CFG->alternateloginurl;
