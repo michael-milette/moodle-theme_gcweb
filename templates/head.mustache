@@ -18,7 +18,8 @@
     Page header.
 }}
 {{{ output.doctype }}}
-<html{{{ output.htmlattributes }}}>
+<!--[if lt IE 9]><html class="no-js lt-ie9" {{{ htmlattributes }}}><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{{ htmlattributes }}}><!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / wet-boew.github.io/wet-boew/License-en.html -->

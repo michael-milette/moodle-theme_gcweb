@@ -108,38 +108,33 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string XHTML navbar
      */
-    public function navbar() {
+    public function xnavbar() {
         return $this->render_from_template('core/navbar', $this->page->navbar);
     }
-    public function xnavbar() {
+
+    /*
+     * Render the breadcrumb
+     * @param array $items
+     * @param string $breadcrumbs
+     *
+     * return string
+     */
+    public function navbar($precrumbs = '') {
+        $breadcrumbs = "";
         $items = $this->page->navbar->get_items();
-        $itemcount = count($items);
-        if ($itemcount === 0) {
+        if (empty($items)) {
             return '';
         }
-
-        $htmlblocks = array();
-        // Iterate the navarray and display each node
-        $separator = get_separator();
-        for ($i=0;$i < $itemcount;$i++) {
-            $item = $items[$i];
-            $item->hideicon = true;
-            if ($i===0) {
-                $content = html_writer::tag('li', $this->render($item));
-            } else {
-                $content = html_writer::tag('li', $separator.$this->render($item));
+        static $first = true;
+        foreach ($items as $item) {
+            if ($first) {
+                $breadcrumbs .= $precrumbs;
+                $first = false;
             }
-            $htmlblocks[] = $content;
+            $item->hideicon = true;
+            $breadcrumbs .= html_writer::tag('li', $this->render($item));
         }
-
-        //accessibility: heading for navbar list  (MDL-20446)
-        $navbarcontent = html_writer::tag('span', get_string('pagepath'),
-                array('class' => 'accesshide', 'id' => 'navbar-label'));
-        $navbarcontent .= html_writer::tag('nav',
-                html_writer::tag('ul', join('', $htmlblocks)),
-                array('aria-labelledby' => 'navbar-label'));
-        // XHTML
-        return $navbarcontent;
+        return html_writer::tag('ol', $breadcrumbs, ['class' => 'breadcrumb']);
     }
 
     public function settings_menu() {
@@ -227,7 +222,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $title = '';
                 break;
             case 'login':
-                $title = get_string('signon', 'theme_wetboew_internet');
+               switch ($this->page->pagetype) {
+                    case 'login-logout':
+                        $title = get_string('signout', 'theme_wetboew_internet');
+                        break;
+                    case 'login-signup':
+                        $title = get_string('register', 'theme_wetboew_internet') . ' : ' . $title;
+                        break;
+                }
                 break;
              case 'admin':
                 $title = format_string($SITE->fullname, false);

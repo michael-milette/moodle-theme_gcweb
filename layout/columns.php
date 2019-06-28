@@ -40,6 +40,7 @@ $templatecontext = [
     'regionmainsettingsmenu' => $_PAGE['regionmainsettingsmenu'],
     'hasregionmainsettingsmenu' => $_PAGE['hasregionmainsettingsmenu'],
     'hasblocks' => $_PAGE['hasblocks'],
+    'htmlattributes' => $_PAGE['htmlattributes'],
     'bodyattributes' => $_PAGE['bodyattributes'],
     'wetboew' => $_PAGE['themewww'] . '/framework',
     'langmenu' => $_PAGE['langmenu'],
@@ -48,7 +49,6 @@ $templatecontext = [
     'pagebutton' =>  $_PAGE['pagebutton'],
     'showproblembutton' => $_PAGE['showproblembutton'],
     'showsharebutton' => $_PAGE['showsharebutton'],
-    'sidebar' => $_PAGE['sidebar'],
     'loggedin' => (!isguestuser() && isloggedin()),
 
     'navdraweropen' => $_PAGE['navdraweropen'],
