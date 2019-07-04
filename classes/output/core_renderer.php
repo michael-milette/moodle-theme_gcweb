@@ -119,18 +119,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * return string
      */
-    public function navbar($precrumbs = '') {
-        $breadcrumbs = "";
+    public function navbar($breadcrumbs = '') {
         $items = $this->page->navbar->get_items();
-        if (empty($items)) {
-            return '';
-        }
-        static $first = true;
         foreach ($items as $item) {
-            if ($first) {
-                $breadcrumbs .= $precrumbs;
-                $first = false;
-            }
             $item->hideicon = true;
             $breadcrumbs .= html_writer::tag('li', $this->render($item));
         }
@@ -142,13 +133,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function full_header() {
-        global $PAGE, $_PAGE, $OUTPUT, $USER;
+        global $CFG, $PAGE, $_PAGE, $OUTPUT, $USER;
 
         // $theme = theme_config::load('wetboew_internet');
         $header = new stdClass();
         $header->output = $OUTPUT;
         $header->langmenu = $_PAGE['langmenu'];
         $header->wetboew = $_PAGE['themewww'] . '/framework';
+        $header->wwwroot = $CFG->wwwroot;
         $header->lang = current_language();
         $header->showsearch = $_PAGE['showsearch'];
         $header->searchurl = $_PAGE['searchurl'];

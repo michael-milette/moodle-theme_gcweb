@@ -35,7 +35,7 @@ $_PAGE['lang'] = current_language();
 $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
 $_PAGE['description'] = '';
-$_PAGE['breadcrumbs'] = '<li><a href="https://canada.ca/">Canada.ca</a></li>';
+$_PAGE['breadcrumbs'] = '<li><a href="https://canada.ca/">Canada.ca</a></li><li><a href="http://www.ic.gc.ca/">{mlang en}<abbr title="Innovation, Science and Economic Development Canada">ISED</abbr>{mlang}{mlang fr-ca}<abbr title="Innovation, Sciences et Développement économique Canada">ISDE</abbr>{mlang}</a></li>';
 $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());// date("Y-m-d", filemtime(__FILE__));
 $_PAGE['extrahead'] = '';   // Inserted just before </head>.
 $_PAGE['extraheader'] = ''; // Inserted right after </body>.
@@ -71,10 +71,11 @@ if (!empty($CFG->langmenu)
 // Show Problem button
 
 $_PAGE['showproblembutton'] = true;
-$_PAGE['showsharebutton'] = false; // WET "Share" button is not compatible with fr_ca language.
+$_PAGE['showsharebutton'] = false; // WET "Share" button is not compatible with fr-ca language.
 
 // Breadcrumbs
 
+$_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, ['noclean' => true]);
 $_PAGE['breadcrumbs'] = $OUTPUT->navbar($_PAGE['breadcrumbs']);
 
 // Document type.

@@ -22,10 +22,8 @@
             {{/langmenu}}
             <div class="row">
                 <div class="brand col-xs-5 col-md-4">
-                    <a href="https://www.canada.ca/{{{ lang }}}.html">
-                        <img src="{{{ wetboew }}}/assets/sig-blk-{{{ lang }}}.svg" alt="">
-                        <span class="wb-inv">{{# str }} governmentofcanada, theme_wetboew_internet {{/ str }}</span>
-                    </a>
+                    <img src="{{{ wetboew }}}/assets/sig-blk-{{{ lang }}}.svg" alt="">
+                    <span class="wb-inv">{{# str }} governmentofcanada, theme_wetboew_internet {{/ str }}</span>
                 </div>
                 {{#showsearch}}
                     <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
@@ -96,7 +94,7 @@
                     <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
                     {{/showaccountsettings}}
                 </ul>
-                <div id="mb-pnl" class="wb-overlay modal-content overlay-def wb-panel-r wb-overlay-inited user-closed" aria-hidden="true" tabindex="-1">
+                <div id="mb-pnl" aria-hidden="true">
                     <header class="modal-header">
                         <div class="modal-title">Menu</div>
                     </header>
@@ -147,7 +145,7 @@
                     <button type="button" class="mfp-close overlay-close" title="{{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} menu, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})">×<span class="wb-inv"> {{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} menu, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button>
                 </div>
                 {{#showsearch}}
-                <section id="app-srch-mb" class="wb-overlay modal-content overlay-def wb-bar-t wb-init wb-overlay-inited user-closed" aria-hidden="true" tabindex="-1">
+                <section id="app-srch-mb" class="wb-overlay modal-content overlay-def wb-bar-t wb-init wb-overlay-inited" aria-hidden="true">
                     <div class="modal-header">
                         <h3 class="modal-title">{{# str }} search, theme_wetboew_internet {{/ str }}</h3>
                     </div>
@@ -162,7 +160,7 @@
                                     </select>
                                     <![endif]-->
                                 </datalist>
-                                <span class="input-group-btn"><button type="submit" id="app-srch-sub-mb" class="btn btn-primary btn-small" name="app-srch-sub-mb"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}/span></button></span>
+                                <span class="input-group-btn"><button type="submit" id="app-srch-sub-mb" class="btn btn-primary btn-small" name="app-srch-sub-mb"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></button></span>
                             </div>
                         </form>
                     </div>

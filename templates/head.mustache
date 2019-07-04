@@ -373,5 +373,39 @@
             position: sticky;
             z-index:9999;
         }
+
+        /* Fix alignment of drawer toggle button. */
+        #navbar .d-inline-block.mr-3 {
+          margin-top: 7px;
+        }
+
+        /* Remove course search from navbar (when searching courses andlogged out). */
+        #coursesearchnavbar {
+            display:none;
+        }
+
+        /* Activity Navigation buttons. (bottom of activities) */
+        .activity-navigation .btn-link {
+            border: 1px solid;
+        }
+        /* Just the next activity button. */
+        a#next-activity-link:visited {
+            color: white;
+        }
+        #next-activity-link {
+            color: white;
+            background-color: #335075;
+            border-color: #335075;
+        }
+        a#next-activity-link:hover {
+            background-color: #0e63ae;
+            border-color: #0e63ae;
+            text-decoration: none;
+        }
+
+        /* Dashboard cards - show more of the image height. */
+        .dashboard-card-deck .dashboard-card .dashboard-card-img {
+            height: 17rem;
+        }
     </style>
 </head>
