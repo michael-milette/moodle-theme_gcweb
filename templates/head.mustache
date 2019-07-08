@@ -38,6 +38,21 @@
           font-family: "Noto Sans", sans-serif;
         }
 
+        /* Fix mobile menu */
+        .modal-content {
+            position: relative;
+            display: none;
+            flex-direction: row;
+            width: auto;
+            pointer-events: auto;
+            background-color: initial;
+            -webkit-background-clip: border-box;
+            background-clip:border-box;
+            border: 0;
+            border-radius: 0;
+            outline: 0;
+        }
+
         /* Make content wide */
         @media (max-width: 767px) {
             .container {
@@ -377,6 +392,9 @@
         /* Fix alignment of drawer toggle button. */
         #navbar .d-inline-block.mr-3 {
           margin-top: 7px;
+        }        
+        .pagelayout-frontpage #navbar .d-inline-block.mr-3 {
+          margin-top: 0px;
         }
 
         /* Remove course search from navbar (when searching courses andlogged out). */

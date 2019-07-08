@@ -94,56 +94,7 @@
                     <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
                     {{/showaccountsettings}}
                 </ul>
-                <div id="mb-pnl" aria-hidden="true">
-                    <header class="modal-header">
-                        <div class="modal-title">Menu</div>
-                    </header>
-                    <div class="modal-body">
-                        {{#showsearch}}
-                        <section class="srch-pnl">
-                            <h3>{{# str }} search, theme_wetboew_internet {{/ str }}</h3>
-                            <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
-                                <div class="form-group">
-                                    <label for="wb-srch-q-imprt" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label><input id="wb-srch-q-imprt" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
-                                    <datalist id="wb-srch-q-ac-imprt">
-                                        <!--[if lte IE 9]>
-                                        <select>
-                                            <![endif]--><!--[if lte IE 9]>
-                                        </select>
-                                        <![endif]-->
-                                    </datalist>
-                                </div>
-                                <div class="form-group submit"><button type="submit" id="wb-srch-sub-imprt" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></button></div>
-                            </form>
-                        </section>
-                        {{/showsearch}}
-                        {{#langmenu}}
-                        <section class="lng-ofr">
-                            <h3>{{# str }} languageselection, theme_wetboew_internet {{/ str }}</h3>
-                            <ul class="list-inline">
-                                {{{ langmenu }}}
-                            </ul>
-                        </section>
-                        {{/langmenu}}
-                        {{#hasnavbar}}
-                        <nav role="navigation" typeof="SiteNavigationElement" id="sm-pnl" class="sm-pnl wb-menu wb-menu-inited wb-navcurr-inited wb-init">
-                            <h3>{{# str }} mainmenu, theme_wetboew_internet {{/ str }}</h3>
-                            <ul class="list-unstyled mb-menu" role="menu">
-                                {{{ output.custom_menu }}}
-                            </ul>
-                        </nav>
-                        {{/hasnavbar}}
-                        <nav role="navigation" typeof="SiteNavigationElement" id="info-pnl" class="info-pnl wb-menu wb-menu-inited wb-init">
-                            <h3>{{# str }} footerheading, theme_wetboew_internet {{/ str }}</h3>
-                            <ul class="list-unstyled mb-menu" role="menu">
-                                {{# str }} footerlist, theme_wetboew_internet {{/ str }}
-                                <li class="no-sect"><a class="mb-item" role="menuitem" aria-setsize="4" href="#wb-cont">{{# str }} topofpage, theme_wetboew_internet {{/ str }} <span class="glyphicon glyphicon-chevron-up"></span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="modal-footer"><button type="button" class="btn btn-sm btn-primary pull-left overlay-close" style="" title="{{# str }} close, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})">{{# str }} close, theme_wetboew_internet {{/ str }}<span class="wb-inv">({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button></div>
-                    <button type="button" class="mfp-close overlay-close" title="{{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} menu, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})">×<span class="wb-inv"> {{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} menu, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button>
-                </div>
+                <div id="mb-pnl" aria-hidden="true">{{! Mobile menu panel }}</div>
                 {{#showsearch}}
                 <section id="app-srch-mb" class="wb-overlay modal-content overlay-def wb-bar-t wb-init wb-overlay-inited" aria-hidden="true">
                     <div class="modal-header">
