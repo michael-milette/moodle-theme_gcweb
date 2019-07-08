@@ -88,6 +88,8 @@ $_PAGE['htmlattributes'] = $OUTPUT->htmlattributes();
 if (strpos($_PAGE['htmlattributes'], 'xml') !== false) { // Trim off: xml:lang="en".
     $_PAGE['htmlattributes'] = substr($_PAGE['htmlattributes'], 0, strpos($_PAGE['htmlattributes'], 'xml:lang="'));
 }
+// Change HTML lang="fr-ca" to just "fr" for compatibility with WET-BOEW in French.
+$_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
 
 // BODY tag attributes.
 
