@@ -39,8 +39,8 @@
         }
 
         /* Fix mobile menu */
-        .modal-content {
-            position: relative;
+       #mb-pnl.modal-content {
+            position: fixed;
             display: none;
             flex-direction: row;
             width: auto;
@@ -52,6 +52,20 @@
             border-radius: 0;
             outline: 0;
         }
+        #mb-pnl.modal-content.open {
+            display: inline-block!important;
+        }
+
+        /* Fix mobile search field */
+        #app-srch-mb.modal-content {
+            display: none;         
+        }
+        #app-srch-mb.modal-content.open {
+            display: block!important;
+        }
+        #app-srch-mb.overlay-def .modal-header {
+            background: #243850!important;
+        } 
 
         /* Make content wide */
         @media (max-width: 767px) {

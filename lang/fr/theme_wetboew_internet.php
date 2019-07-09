@@ -18,11 +18,11 @@ $string['choosereadme'] = '
 Contact&nbsp;: info@tngconsulting.ca<br>
 Site Web&nbsp;: www.tngconsulting.ca</p>
 <h3>Rapport de bugs</h3>
-<p>Vous pouvez signaler des bogues &agrave; l\'aide de GitHub Issue Tracker &agrave; l\'adresse https://github.com/wet-boew/wet-boew-moodle/issues.</p>
+<p>Vous pouvez signaler des bogues &agrave; l\'aide de GitHub Gestionnaire d\'incident &agrave; l\'adresse https://github.com/wet-boew/wet-boew-moodle/issues.</p>
 <h3>Documentation</h3>
 <p>La documentation est disponible dans le fichier README du projet et dans le projet Wiki</p>
 <h3>Démo</h3>
-<p>Une instance de démonstration est prévue dans le futur.</p>
+<p>Un site Web de démonstration est prévue dans le future.</p>
 <h3>Termes et conditions d\'utilisation</h3>
 <p>Sauf indication contraire, le projet WET-BOEW-MOODLE dans son ensemble, le contenu du wiki, la documentation et le code source sont protégés par Copyright &copy; 2016 par TNG Consulting Inc., avec des parties pouvant faire l\'objet d\'une contribution / protégées par le droit d\'auteur. WET-BOEW-MOODLE est fourni gratuitement en tant que logiciel open source, peut &ecirc;tre redistribué et / ou modifié selon les termes de la licence publique générale GNU version 3.0 ou ultérieure.</p>
 <p>Il est distribué dans l\'espoir qu\'il vous sera utile. Cependant, il n&rsquo;ya aucune garantie, implicite ou autre, de qualité marchande ou d&rsquo;adéquation &agrave; un usage quelconque. Voir la licence publique générale GNU pour plus de détails.</p>
@@ -30,7 +30,7 @@ Site Web&nbsp;: www.tngconsulting.ca</p>
 </div>';
 // The name of our plugin.
 $string['pluginname'] = 'WET-BOEW-Moodle: Internet';
-$string['privacy:metadata'] = 'Le thème Application Internet ne saufegarde aucun données personel des utilisateurs.';
+$string['privacy:metadata'] = 'Le thème WET-BOEW-Moodle: Internet ne saufegarde aucun données personel des utilisateurs.';
 
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Gauche';
