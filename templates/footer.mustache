@@ -47,44 +47,15 @@
                 </div>
             </div>
         </footer>
-{{!
-        <!--[if gte IE 9 | !IE ]><!-->
-        <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script -->
-        <!-- Latest compiled and minified CSS -->
-        <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
-        <!-- jQuery library -->
-        <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script -->
-        <!-- Popper JS -->
-        <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script -->
-        <!-- script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script -->
-}}
         {{{ output.standard_end_of_body_html }}}
         {{#js}}
         require(['theme_boost/loader']);
         require(['theme_boost/drawer'], function(mod) {
             mod.init();
         });
-        //require(['theme_wetboew_internet/pink']);
-        //require(['theme_wetboew_internet/wetboew']);
-        //require(['theme_wetboew_internet/theme']);
-        //require(['theme_wetboew_internet/cdtscustom']);
         {{/js}}
 
-
-        <!-- TODO: Maybe? -->
         <!--[if gte IE 9 | !IE ]><!-->
-            <!-- <script data-main="{{{ wetboew }}}/cdts/pink.js" src="http://localhost/wetboew-ised/lib/javascript.php/-1/lib/requirejs/require.js"></script> -->
-            <!-- <script data-main="{{{ wetboew }}}/wet-boew/js/wet-boew.min.js" src="http://localhost/wetboew-ised/lib/javascript.php/-1/lib/requirejs/require.js"></script> -->
-            <!-- <span id="wb-rsz" class="wb-init">&nbsp;</span>         -->
-        <!--<![endif]-->
-        <!--[if lt IE 9]>
-            <!-- <script src='{{{ wetboew }}}/wet-boew/js/ie8-wet-boew2.min.js'></script> -->
-        <![endif]-->
-        <!-- <script data-main="{{{ wetboew }}}/GCWeb/js/theme.min.js" src="http://localhost/wetboew-ised/lib/javascript.php/-1/lib/requirejs/require.js"></script> -->
-        <!-- <script data-main="{{{ wetboew }}}/cdts/cdtscustom.js" src="http://localhost/wetboew-ised/lib/javascript.php/-1/lib/requirejs/require.js"></script> -->
-
-        <!--[if gte IE 9 | !IE ]><!-->
-            <!-- <script src="{{{ wetboew }}}/cdts/pink.js"></script> -->
             <script src="{{ wetboew }}/../../../lib/jquery/jquery-3.2.1.min.js"></script>
             <script src="{{{ wetboew }}}/wet-boew/js/wet-boew.min.js"></script>
             <span id="wb-rsz" class="wb-init">&nbsp;</span>
@@ -97,4 +68,3 @@
 
         <div id="level-access-access-assistant-highlight-container" data-ae_invis="true"></div>
         {{> theme_boost/nav-drawer }}
-

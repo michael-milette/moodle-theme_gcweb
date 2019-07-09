@@ -16,8 +16,7 @@ $string['choosereadme'] = '
  <p>This theme is licensed under the GPL (GNU General Public License). You can find a complete licence copy in: <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a></p>
  <p>Authors: Michael Milette<br>
  Contact: <a href="mailto:info@tngconsulting.ca">info@tngconsulting.ca</a><br>
- Website: <a href="http://www.tngconsulting.ca">www.tngconsulting.ca</a>
- </p>
+ Website: <a href="http://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
  <h3>Bugs Report</h3>
  <p>You can report bugs using the GitHub Issue Tracker at <a href="https://github.com/wet-boew/wet-boew-moodle/issues">https://github.com/wet-boew/wet-boew-moodle/issues</a>.</p>
  <h3>Documentation</h3>

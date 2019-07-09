@@ -132,6 +132,12 @@ $THEME->layouts = [
         'regions' => [],
         'options' => ['nonavbar' => true],
     ),
+    // The pagelayout used for reports.
+    'report' => array(
+        'file' => 'columns.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+    ),
 
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
@@ -172,12 +178,6 @@ $THEME->layouts = [
         'theme' => 'boost',
         'file' => 'embedded.php',
         'regions' => [],
-    ),
-    // The pagelayout used for reports.
-    'report' => array(
-        'file' => 'columns.php',
-        'regions' => ['side-pre'],
-        'defaultregion' => 'side-pre',
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(

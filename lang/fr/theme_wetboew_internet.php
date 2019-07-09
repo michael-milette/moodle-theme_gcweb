@@ -3,10 +3,34 @@
 defined('MOODLE_INTERNAL') || die();
 
 // A description shown in the admin theme selector.
-$string['choosereadme'] = 'Le thème WET-BOEW-Moodle Internet est un thème enfant du thème Boost.';
+$string['choosereadme'] = '
+<div class="clearfix">
+<div class="well">
+ <h2>Thème Internet <abbr title="boîte à outils de l’expérience Web pour Moodle">WET-BOEW-MOODLE</abbr></h2>
+ <p><img class="img-polaroid" src="wetboew_internet/pix/screenshot.png" /></p>
+</div>
+<div class="well">
+ <h2>Credits</h2>
+ <h3>À propos</h3>
+<p>WET-BOEW-MOODLE-Internet est un th&egrave;me réactif de Moodle basé sur les derni&egrave;res normes Web pour le gouvernement du Canada et le th&egrave;me Boost de Moodle.</p>
+<p>Ce th&egrave;me est distribué sous licence GPL (GNU General Public License). Vous pouvez trouver une copie compl&egrave;te de la licence sur: http://www.gnu.org/licenses/</p>
+<p>Auteurs&nbsp;: Michael Milette<br />
+Contact&nbsp;: info@tngconsulting.ca<br>
+Site Web&nbsp;: www.tngconsulting.ca</p>
+<h3>Rapport de bugs</h3>
+<p>Vous pouvez signaler des bogues &agrave; l\'aide de GitHub Issue Tracker &agrave; l\'adresse https://github.com/wet-boew/wet-boew-moodle/issues.</p>
+<h3>Documentation</h3>
+<p>La documentation est disponible dans le fichier README du projet et dans le projet Wiki</p>
+<h3>Démo</h3>
+<p>Une instance de démonstration est prévue dans le futur.</p>
+<h3>Termes et conditions d\'utilisation</h3>
+<p>Sauf indication contraire, le projet WET-BOEW-MOODLE dans son ensemble, le contenu du wiki, la documentation et le code source sont protégés par Copyright &copy; 2016 par TNG Consulting Inc., avec des parties pouvant faire l\'objet d\'une contribution / protégées par le droit d\'auteur. WET-BOEW-MOODLE est fourni gratuitement en tant que logiciel open source, peut &ecirc;tre redistribué et / ou modifié selon les termes de la licence publique générale GNU version 3.0 ou ultérieure.</p>
+<p>Il est distribué dans l\'espoir qu\'il vous sera utile. Cependant, il n&rsquo;ya aucune garantie, implicite ou autre, de qualité marchande ou d&rsquo;adéquation &agrave; un usage quelconque. Voir la licence publique générale GNU pour plus de détails.</p>
+<p>Si pour une raison quelconque une copie de la licence publique générale GNU n\'était pas incluse dans ce projet, vous pouvez la visualiser en ligne &agrave; l\'adresse suivante: https://www.gnu.org/licenses/gpl-3.0.fr.html</p></div>
+</div>';
 // The name of our plugin.
-$string['pluginname'] = 'WET-BOEW-Moodle GCWeb Internet';
-$string['privacy:metadata'] = 'Le thème GCWeb Application Internet ne saufegarde aucun données personel des utilisateurs.';
+$string['pluginname'] = 'WET-BOEW-Moodle: Internet';
+$string['privacy:metadata'] = 'Le thème Application Internet ne saufegarde aucun données personel des utilisateurs.';
 
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Gauche';

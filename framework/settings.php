@@ -129,6 +129,7 @@ $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->pag
 
 $_PAGE['signonurl'] = '';
 $_PAGE['signouturl'] = '';
+$_PAGE['showsignon'] = true;
 $_PAGE['showregister'] = false;
 $_PAGE['registerurl'] = '';
 $_PAGE['showaccountsettings'] = false;
@@ -148,9 +149,15 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($_PAGE['showregister'] = signup_is_enabled() && $PAGE->pagetype != 'login-signup') {
         $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
     }
-    if ($PAGE->pagetype != 'login-index') {
-        $_PAGE['signonurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/' : $CFG->alternateloginurl;
-        //die('happy');
+    if($_PAGE['showsignon']) {
+        if ($PAGE->pagetype != 'login-index') {
+            if (empty($CFG->alternateloginurl)) {
+                $_PAGE['signonurl'] = $CFG->wwwroot . '/login/';
+            } else {
+                $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+                //die('happy');
+            }
+        }
     }
 }
 

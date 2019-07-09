@@ -28,7 +28,7 @@
                 {{#showsearch}}
                     <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
                         <h2>{{# str }} search, theme_wetboew_internet {{/ str }}</h2>
-                        <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
+                        <form action="{{{ searchurl }}}" method="get" name="cse-search-box" role="search" class="form-inline">
                             <div class="form-group">
                                 <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label>
                                 <input id="wb-srch-q" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
@@ -101,7 +101,7 @@
                         <h3 class="modal-title">{{# str }} search, theme_wetboew_internet {{/ str }}</h3>
                     </div>
                     <div class="modal-body">
-                        <form action="{{{ searchurl }}}" method="post" name="cse-search-box" role="search" class="form-inline">
+                        <form action="{{{ searchurl }}}" method="get" name="cse-search-box" role="search" class="form-inline">
                             <div class="input-group">
                                 <label for="app-srch-q-mb" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label><input id="app-srch-q-mb" list="app-srch-q-ac-mb" class="app-srch-q-mb form-control" name="q" type="search" value="" size="27" maxlength="150">
                                 <datalist id="app-srch-q-ac-mb">
