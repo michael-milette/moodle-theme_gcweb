@@ -47,6 +47,9 @@ $CFG->nofixday = true;
 
 // Insert extra head content just before </HEAD>.
 
+$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+$CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+$CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 $_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
 // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 $_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $_PAGE['standard_head_html']);
@@ -75,7 +78,7 @@ $_PAGE['showsharebutton'] = false; // WET "Share" button is not compatible with 
 
 // Breadcrumbs
 
-$_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, ['noclean' => true]);
+$_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 $_PAGE['breadcrumbs'] = $OUTPUT->navbar($_PAGE['breadcrumbs']);
 
 // Document type.
