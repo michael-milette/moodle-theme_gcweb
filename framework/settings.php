@@ -46,11 +46,21 @@ $_PAGE['extrafooter'] = ''; // Inserted just before </body>.
 $CFG->nofixday = true;
 
 // Insert extra head content just before </HEAD>.
+ 
+$additionalhtmlhead = $CFG->additionalhtmlhead ;
+$additionalhtmltopofbody = $CFG->additionalhtmltopofbody;
+$additionalhtmlfooter = $CFG->additionalhtmlfooter ;
 
 $CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+
 $_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
+
+$CFG->additionalhtmlhead = $additionalhtmlhead;
+$CFG->additionalhtmltopofbody = $additionalhtmltopofbody;
+$CFG->additionalhtmlfooter = $additionalhtmlfooter;
+
 // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 $_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $_PAGE['standard_head_html']);
 
