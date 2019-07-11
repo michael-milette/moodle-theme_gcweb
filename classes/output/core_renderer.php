@@ -296,18 +296,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function standard_top_of_body_html() {
-        global $CFG;
+        global $CFG, $PAGE;
         $additionalhtmltopofbody = $CFG->additionalhtmltopofbody;
-        $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody, FORMAT_HTML);
+        $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody, FORMAT_HTML, ['noclean' => true, $PAGE->context]);
         $output = parent::standard_top_of_body_html();
         $CFG->additionalhtmltopofbody = $additionalhtmltopofbody;
         return $output;
     }
 
     public function standard_end_of_body_html() {
-        global $CFG;
+        global $CFG, $PAGE;
         $additionalhtmlfooter = $CFG->additionalhtmlfooter;
-        $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter, FORMAT_HTML);
+        $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter, FORMAT_HTML, ['noclean' => true, 'context' => $PAGE->context]);
         $output = parent::standard_end_of_body_html();
         $CFG->additionalhtmlfooter = $additionalhtmlfooter;
         return $output;
