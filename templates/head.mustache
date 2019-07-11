@@ -37,7 +37,12 @@
           font-size: 16px;
           font-family: "Noto Sans", sans-serif;
         }
-
+        
+        /* Fix height of page for IE. */
+        #page-wrapper {
+            height: auto;
+        }
+        
         /* Fix mobile menu */
        #mb-pnl.modal-content {
             position: fixed;
@@ -139,7 +144,7 @@
           min-height:0;
         }
 
-        /* Notification and Message drawer icons */
+        /* Notification and Message icons */
         .navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
             color:lightgray;
         }
@@ -408,7 +413,8 @@
         #navbar .d-inline-block.mr-3 {
           margin-top: 7px;
         }        
-        .pagelayout-frontpage #navbar .d-inline-block.mr-3 {
+        .pagelayout-frontpage #navbar .d-inline-block.mr-3,`
+        .pagelayout-course #navbar .d-inline-block.mr-3 {
           margin-top: 0px;
         }
 

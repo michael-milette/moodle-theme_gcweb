@@ -95,7 +95,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     $language = trim(substr($language, 0, strpos($language, ' - ')));
                 }
                 $url = new moodle_url($this->page->url, ['lang' => $lang ]);
-                $s .= '                    <li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>' . PHP_EOL;
+                $lang = str_replace('_', '-', $lang);
+                $s .= '<li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>' . PHP_EOL;
             }
         }
 
