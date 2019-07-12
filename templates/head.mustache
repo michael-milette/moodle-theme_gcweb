@@ -37,12 +37,12 @@
           font-size: 16px;
           font-family: "Noto Sans", sans-serif;
         }
-        
+
         /* Fix height of page for IE. */
         #page-wrapper {
             height: auto;
         }
-        
+
         /* Fix mobile menu */
        #mb-pnl.modal-content {
             position: fixed;
@@ -63,14 +63,14 @@
 
         /* Fix mobile search field */
         #app-srch-mb.modal-content {
-            display: none;         
+            display: none;
         }
         #app-srch-mb.modal-content.open {
             display: block!important;
         }
         #app-srch-mb.overlay-def .modal-header {
             background: #243850!important;
-        } 
+        }
 
         /* Make content wide */
         @media (max-width: 767px) {
@@ -412,8 +412,8 @@
         /* Fix alignment of drawer toggle button. */
         #navbar .d-inline-block.mr-3 {
           margin-top: 7px;
-        }        
-        .pagelayout-frontpage #navbar .d-inline-block.mr-3,`
+        }
+        .pagelayout-frontpage #navbar .d-inline-block.mr-3,
         .pagelayout-course #navbar .d-inline-block.mr-3 {
           margin-top: 0px;
         }
@@ -446,5 +446,14 @@
         .dashboard-card-deck .dashboard-card .dashboard-card-img {
             height: 17rem;
         }
+        
+        /* Change Password error messages. */
+        #page-login-change_password .form-control-feedback {
+            position: relative;
+            width: 100%;
+            height: auto;
+            line-height: unset;
+            text-align: initial;
+        } 
     </style>
 </head>

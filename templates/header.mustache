@@ -53,8 +53,8 @@
                             <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
                         </ul>
                         <ul class="app-list-account list-unstyled">
-                        {{#showaccountsettings}}
-                        <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
+                        {{#showaccountsettings}}{{! usermenu }}
+                        <li class="nav-item align-items-center">MIKE{{{ output.user_menu }}}</li>
                         {{/showaccountsettings}}
                         {{^loggedin}}
                             {{#showregister}}
