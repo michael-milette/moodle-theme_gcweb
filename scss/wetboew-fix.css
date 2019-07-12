@@ -1,0 +1,422 @@
+body {
+  font-size: 16px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* Fix height of page for IE. */
+#page-wrapper {
+    height: auto;
+}
+
+/* Fix mobile menu */
+#mb-pnl.modal-content {
+    position: fixed;
+    display: none;
+    flex-direction: row;
+    width: auto;
+    pointer-events: auto;
+    background-color: initial;
+    -webkit-background-clip: border-box;
+    background-clip:border-box;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+}
+#mb-pnl.modal-content.open {
+    display: inline-block!important;
+}
+
+/* Fix mobile search field */
+#app-srch-mb.modal-content {
+    display: none;
+}
+#app-srch-mb.modal-content.open {
+    display: block!important;
+}
+#app-srch-mb.overlay-def .modal-header {
+    background: #243850!important;
+}
+
+/* Make content wide */
+@media (max-width: 767px) {
+    .container {
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+/* Headings */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    font-family: Lato,sans-serif;
+}
+.h1, h1 {
+    font-size: 1.9em;
+}
+.h2, h2 {
+    font-size: 1.8em;
+    margin-top: 2.5rem;
+}
+.h3, h3, #adminsettings h3{
+    font-size: 1.2em;
+    margin-top: 2.2rem;
+}
+.h4, h4 {
+    font-size: 1.1em;
+    margin-top: 1.9rem;
+}
+.h5, h5 {
+    font-size: 1em;
+    margin-top: 1.6rem;
+}
+.h6, h6 {
+    font-size: .95em;
+    font-weight: 400;
+    margin-top: 1.3rem;
+}
+
+/* Login box */
+#rememberusername {
+    margin-left: -12px;
+}
+
+/* buttons */
+.btn {
+    border: 1px outset #ccc;
+    font-size: 15px;
+    border-radius: 4px;
+    margin-left:5px;
+    padding-top: 6px;
+    white-space:normal;
+}
+.btn-link { /* no border for icons */
+    border: none;
+}
+.btn-warning {
+    background-color: #F2D40D;
+}
+
+/* Icons */
+.icon {
+  min-height:0;
+}
+
+/* Notification and Message icons */
+.navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
+    color:lightgray;
+}
+.navbar-nav {
+    margin-top:15px;
+    color:lightgray;
+}
+.nav-item i:hover {
+    color:white;
+}
+
+/* Default for all links */
+a {
+    text-decoration: underline;
+}
+
+/* Usermenu */
+.usermenu .icon {
+    margin-right: 0;
+    min-height:0;
+    min-width:0;
+}
+.usermenu .dropdown .caret {
+    display: inline;
+    width: auto;
+    height: auto;
+    margin-left: 0px;
+    vertical-align: baseline;
+    border: none;
+}
+.usermenu .dropdown a:first-child {
+  color:white;
+  font-size: 16px;
+}
+.dropdown-menu a.dropdown-item:first-child {
+    color: unset;
+}
+.dropdown-menu a.dropdown-item:first-child:visited {
+    color: #7834bc;
+}
+
+/* Menu */
+#wb-sm .menu {
+    background: inherit;
+}
+
+/* Search form */
+.form-control {
+    font-size:inherit;
+}
+#wb-srch form {
+    float:right;
+}
+
+/* Headers */
+.page-context-header .page-header-image, .page-context-header .page-header-headings {
+    float:none;
+}
+
+/* Footer box links */
+.sitelink {
+    display: none;
+}
+
+.helplink,
+.logininfo,
+.tool_usertours-resettourcontainer,
+.usertour,
+.homelink,
+.tool_dataprivacy {
+    display: inline-block;
+}
+.helplink:after,
+.logininfo:after,
+.tool_usertours-resettourcontainer:after,
+.homelink:after {
+  content: " | ";
+}
+
+/* All courses page */
+.coursebox .content .courseimage img {
+    max-width: 80%;
+    max-height: none;
+}
+
+/* Dropdown usermenu */
+div.dropdown a#dropdown-1 {
+    color:white;
+}
+div.dropdown a {
+    font-size:16px;
+}
+
+.dropdown-menu {
+    min-width:max-content;
+    right:auto;
+    font-size: 1.5rem
+}
+
+/* Card titles */
+h5, .h5 {
+    font-size: 3rem;
+}
+
+#page {
+    margin-top: 0;
+}
+.mform .row {
+  display: block;
+}
+
+/* Hide links to Moodle page activities on the front page */
+#page-site-index:not(.editing) #page-content .modtype_page {
+    display: none;
+}
+
+/* All unordered lists */
+ul {
+    margin-left: 4rem;
+}
+
+/* Labels in a form */
+label {
+    margin-top: 1.5rem;
+}
+
+/* Turn off the border around the main content section */
+#region-main {
+    border: none;
+}
+
+/* form labels on settings page */
+.form-label .form-shortname {
+    font-size: 1.1rem
+}
+
+/* User profile heading */
+.lead, .userprofile .profile_tree section h3 {
+    font-size: inherit;
+    font-weight: bold;
+}
+
+#adminsettings h3 {
+    font-size: inherit;
+ }
+
+.pagination-sm .page-link {
+    font-size: 1.5rem;
+}
+
+/* Last modified date */
+#wb-info {
+    margin-top: 2rem;
+}
+
+/* Moodle footer info */
+#wb-info {
+    text-align: center;
+}
+
+/* Fix for forum topics list. */
+.media-body {
+    width: 100%;
+}
+/* Fix for forum search form. */
+@media (min-width: 768px) {
+    .forumsearch .form-inline .input-group>.form-control {
+        width: auto;
+    }
+}
+@media (min-width: 768px) {
+    .forumsearch .form-inline .input-group {
+        display: inherit;
+    }
+}
+.context-header-settings-menu {
+    display: flex;
+    justify-content: flex-end;
+    max-width: none;
+    height: auto;
+}
+
+/* Remove duplicate background for buttons in navbar */
+#navbar>div.btn {
+    background-color: transparent;
+    border: none;
+}
+
+[data-region="drawer"] {
+    top: 0;
+    height: 100%;
+}
+
+/* Policy acceptance prompt in footer when logged-out. */
+.eupopup-container {
+    font-size:1.6rem;
+}
+.eupopup-body a {
+    color: #41A7FF;
+    padding-top: 10px;
+    display: block;
+}
+.eupopup-button:visited {
+    color: #f6a21d;
+}
+a.eupopup-closebutton {
+    color: #ffffff;
+    font-size: 2rem;
+    background-color: #008000;
+}
+
+/* Login page heading */
+.pagelayout-login h2.card-header {
+    margin-top: 0;
+}
+
+/* Popup help. */
+.popover {
+    font-size: 1.5rem;
+}
+
+/* Show sections hidden from students. */
+li.section.hidden, .block.hidden, .block.invisible {
+    display: block!important;
+}
+.dropdown a.dropdown-toggle>b.caret {
+      display:none;
+}
+
+/* Dashboard: Recently accessed courses - wrap instead of scroll. */
+.dashboard-card-deck.one-row {
+    flex-flow: wrap;
+    overflow-x: unset;
+}
+
+/* Adjust size of close button. */
+.close, .moodle-dialogue-base .closebutton {
+   font-size: 3rem;
+}
+
+/* Fix font size for pluginname and version on plugins page. */
+#page-admin-plugins #plugins-control-panel .pluginname .componentname,
+#page-admin-plugins #plugins-control-panel .version .versionnumber {
+    font-size: 1.2rem;
+    color:#666666!important;
+}
+
+/* Fix overflow in main content region. */
+#region-main {
+    overflow-x: visible;
+}
+
+/* Fix overflow in sidebar blocks. */
+.no-overflow {
+    overflow: hidden;
+}
+
+/* To make text stick to the top of the screen. */
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    z-index:9999;
+}
+
+/* Fix alignment of drawer toggle button. */
+#navbar .d-inline-block.mr-3 {
+  margin-top: 7px;
+}
+.pagelayout-frontpage #navbar .d-inline-block.mr-3,
+.pagelayout-course #navbar .d-inline-block.mr-3 {
+  margin-top: 0px;
+}
+
+/* Remove course search from navbar (when searching courses andlogged out). */
+#coursesearchnavbar {
+    display:none;
+}
+
+/* Activity Navigation buttons. (bottom of activities) */
+.activity-navigation .btn-link {
+    border: 1px solid;
+}
+/* Just the next activity button. */
+a#next-activity-link:visited {
+    color: white;
+}
+#next-activity-link {
+    color: white;
+    background-color: #335075;
+    border-color: #335075;
+}
+a#next-activity-link:hover {
+    background-color: #0e63ae;
+    border-color: #0e63ae;
+    text-decoration: none;
+}
+
+/* Dashboard cards - show more of the image height. */
+.dashboard-card-deck .dashboard-card .dashboard-card-img {
+    height: 17rem;
+}
+
+/* Change Password error messages. */
+#page-login-change_password .form-control-feedback {
+    position: relative;
+    width: 100%;
+    height: auto;
+    line-height: unset;
+    text-align: initial;
+}
