@@ -35,7 +35,7 @@ $_PAGE['lang'] = current_language();
 $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
 $_PAGE['description'] = '';
-$_PAGE['breadcrumbs'] = '<li><a href="https://canada.ca/">Canada.ca</a></li><li><a href="http://www.ic.gc.ca/">{mlang en}<abbr title="Innovation, Science and Economic Development Canada">ISED</abbr>{mlang}{mlang fr-ca}<abbr title="Innovation, Sciences et Développement économique Canada">ISDE</abbr>{mlang}</a></li>';
+$_PAGE['breadcrumbs'] = '<li><a href="https://canada.ca/">Canada.ca</a></li><li><a href="http://www.ic.gc.ca/">{mlang en}Innovation, Science and Economic Development Canada{mlang}{mlang fr-ca}Innovation, Sciences et Développement économique Canada{mlang}</a></li>';
 $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());// date("Y-m-d", filemtime(__FILE__));
 $_PAGE['extrahead'] = '';   // Inserted just before </head>.
 $_PAGE['extraheader'] = ''; // Inserted right after </body>.
@@ -138,11 +138,17 @@ $_PAGE['registerurl'] = '';
 $_PAGE['showaccountsettings'] = false;
 $_PAGE['accountsettingsurl'] = '';
 
+$signouturl = 'https://sso-dev.ised-isde.canada.ca/auth/realms/individual/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Flearning-apprentissage.apps.dev.openshift.ised-isde.canada.ca%2Flogin%2Flogout.php%3Fsesskey%3D' . sesskey();
+
 if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($PAGE->pagetype != 'login-logout') {
-        $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php';
+        if ($USER->auth == 'oauth2' && !empty($signouturl)) {
+            $_PAGE['signouturl'] = $signouturl;
+        } else {
+            $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php';
+        }
     }
-    $_PAGE['showaccountsettings'] = $_PAGE['loggedin'];
+    $_PAGE['showaccountsettings'] = true;
     // URL of Profile settings button.
     if (has_capability('moodle/user:editownprofile', context_system::instance())) {
         $_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';

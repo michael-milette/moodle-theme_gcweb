@@ -50,6 +50,7 @@ $templatecontext = [
     'showproblembutton' => $_PAGE['showproblembutton'],
     'showsharebutton' => $_PAGE['showsharebutton'],
     'loggedin' => (!isguestuser() && isloggedin()),
+    'wwwroot' => $CFG->wwwroot,
 
     'navdraweropen' => $_PAGE['navdraweropen'],
     'links' => false,
