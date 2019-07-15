@@ -187,7 +187,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
             case substr($this->page->pagetype, 0, 4) == 'mod-':
                 if ($COURSE->format == 'singleactivity') {
                     $title = format_string($COURSE->fullname, false);
-                } else {
+                } elseif (isset($this->page->cm->sectionnum)) {
+                    // Viewing the page, not editing the page.
                     $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
                 }
                 break;
