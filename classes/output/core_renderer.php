@@ -184,15 +184,17 @@ class core_renderer extends \theme_boost\output\core_renderer {
         global $SITE, $DB, $COURSE;
 
         switch ($this->page->pagelayout) {
-            case substr($this->page->pagetype, 0, 4) == 'mod-':
+            case substr($this->page->pagetype, 0, 4) == 'mod-': // If a module.
                 if ($COURSE->format == 'singleactivity') {
+                    // Single activity course.
                     $title = format_string($COURSE->fullname, false);
                 } elseif (isset($this->page->cm->sectionnum)) {
                     // Viewing the page, not editing the page.
                     $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
                 }
+                // Otherwise just keep page title as is.
                 break;
-            case 'course':
+            case 'course':    // Any type of courses page.
             case 'incourse':
             case $this->page->pagetype == 'filter-manage':
             case $this->page->pagetype == 'course-edit':
@@ -205,47 +207,52 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 break;
             case 'coursecategory':
                 $id = optional_param('categoryid', 0, PARAM_INT);;
-                if($id) {
+                if($id) { // Category specific.
                     $title = $DB->get_field('course_categories', 'name', array('id' => $id), MUST_EXIST);
                     $title = format_string($title, false);
-                } else {
+                } else { // All courses.
                     $title = get_string('fulllistofcourses');
                 }
                 break;
-            case 'frontpage':
+            case 'frontpage': // No title on home page.
                 $title = '';
                 break;
             case 'login':
                switch ($this->page->pagetype) {
-                    case 'login-index':
+                    case 'login-index': // Sign-in / Login.
                         $title = get_string('signon', 'theme_wetboew_internet');
                         break;
-                    case 'login-logout':
+                    case 'login-logout': // Sign-out.
                         $title = get_string('signout', 'theme_wetboew_internet');
                         break;
-                    case 'login-signup':
+                    case 'login-signup': // Register.
                         $title = get_string('register', 'theme_wetboew_internet') . ' : ' . $title;
                         break;
                 }
                 break;
-             case 'admin':
-               switch ($this->page->pagetype) {
-                    case 'backup-backup':
-                        //$title = get_string('backup', 'theme_wetboew_internet');
-                        break;
-                    case 'backup-restorefile':
-                        $title = get_string('restorecourse', 'backup');
-                        break;
-                    default:
-                        $title = format_string($SITE->fullname, false);
-                }
-                break;
              case 'base':
                 switch ($this->page->pagetype) {
-                    case 'login-logout':
+                    case 'login-logout': // Signout confirmation.
                         $title = get_string('signout', 'theme_wetboew_internet');
                         break;
                 }
+             case 'admin':
+               switch ($this->page->pagetype) {
+                   case 'backup-backup': // Course backup.
+                        break;
+                   case 'admin-user': // Browser list of users.
+                        $title = get_string('userlist', 'admin');
+                        break;
+                   case 'admin-user-editadvanced': // Add a new user.
+                        $title = get_string('addnewuser');
+                        break;
+                    case 'backup-restorefile': // Restore a course.
+                        $title = get_string('restorecourse', 'backup');
+                        break;
+                    default: // All others.
+                        $title = format_string($SITE->fullname, false);
+                }
+                break;
         }
 
         return $title;
