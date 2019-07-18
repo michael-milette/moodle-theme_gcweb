@@ -34,5 +34,21 @@
     {{{ standard_head_html }}}
     <link rel="stylesheet" href="{{{ wetboew }}}/../scss/wetboew-fix-min.css">
     <style>
+    /* Increase endentation of sub-lists on Appearance page (mostly for theme setting pages). */
+    #linkappearance li li {
+      margin-left: 20px;
+    }
+
+    /* Hide login box heading. */
+    .pagelayout-login h2.card-header {
+        display:none;
+    }
+
+    /* Fix position and size of error messages on form submissions. */
+    .form-control-feedback {
+        position: relative;
+        text-align: left;
+        font-size: inherit;
+    }
     </style>
 </head>

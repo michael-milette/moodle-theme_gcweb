@@ -217,6 +217,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 break;
             case 'login':
                switch ($this->page->pagetype) {
+                    case 'login-index':
+                        $title = get_string('signon', 'theme_wetboew_internet');
+                        break;
                     case 'login-logout':
                         $title = get_string('signout', 'theme_wetboew_internet');
                         break;
@@ -226,7 +229,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 }
                 break;
              case 'admin':
-                $title = format_string($SITE->fullname, false);
+               switch ($this->page->pagetype) {
+                    case 'backup-backup':
+                        //$title = get_string('backup', 'theme_wetboew_internet');
+                        break;
+                    case 'backup-restorefile':
+                        $title = get_string('restorecourse', 'backup');
+                        break;
+                    default:
+                        $title = format_string($SITE->fullname, false);
+                }
                 break;
              case 'base':
                 switch ($this->page->pagetype) {

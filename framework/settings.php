@@ -158,17 +158,19 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($_PAGE['showregister'] = signup_is_enabled() && $PAGE->pagetype != 'login-signup') {
         $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
     }
+
     if($_PAGE['showsignon']) {
         if ($PAGE->pagetype != 'login-index') {
             if (empty($CFG->alternateloginurl)) {
                 $_PAGE['signonurl'] = $CFG->wwwroot . '/login/';
             } else {
                 $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-                //die('happy');
             }
         }
     }
 }
+
+// Life tip: die('happy');
 
 $_PAGE['flatnavigation'] = $PAGE->flatnav;
 $_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
