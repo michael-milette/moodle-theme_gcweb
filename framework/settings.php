@@ -21,10 +21,16 @@
  * @copyright 2016-2019 TNG Consulting Inc.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
+
 defined('MOODLE_INTERNAL') || die();
 
 global $_PAGE;
+
+$theme = get_config('theme_wetboew_internet');
+
+// Cause the userdate() function not to fix %d in date strings. Just let them show with a zero prefix.
+
+$CFG->nofixday = true;
 
 $_PAGE['searchsettings'] = ''; // For additional hidden form fields.
 $_PAGE['themewww'] = $CFG->wwwroot . '/theme/wetboew_internet';     // Absolute path to this theme.
@@ -35,18 +41,11 @@ $_PAGE['lang'] = current_language();
 $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
 $_PAGE['description'] = '';
-$_PAGE['breadcrumbs'] = '<li><a href="https://canada.ca/">Canada.ca</a></li><li><a href="http://www.ic.gc.ca/">{mlang en}Innovation, Science and Economic Development Canada{mlang}{mlang fr-ca}Innovation, Sciences et Développement économique Canada{mlang}</a></li>';
+$_PAGE['breadcrumbs'] = $theme->prebreadcrumbs;
 $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());// date("Y-m-d", filemtime(__FILE__));
-$_PAGE['extrahead'] = '';   // Inserted just before </head>.
-$_PAGE['extraheader'] = ''; // Inserted right after </body>.
-$_PAGE['extrafooter'] = ''; // Inserted just before </body>.
-
-// Cause the userdate() function not to fix %d in date strings. Just let them show with a zero prefix.
-
-$CFG->nofixday = true;
 
 // Insert extra head content just before </HEAD>.
- 
+
 $additionalhtmlhead = $CFG->additionalhtmlhead ;
 $CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 $_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
@@ -56,14 +55,14 @@ $_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" cont
 
 // Search engine
 
-$_PAGE['showsearch'] = empty($PAGE->layout_options['nosearch']) && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
+$_PAGE['showsearch'] = $theme->showsearch && empty($PAGE->layout_options['nosearch']) && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
 $_PAGE['searchurl'] = $CFG->wwwroot . '/course/search.php';
 
 // Show language menu
 
 if (!empty($CFG->langmenu)
         && (!isset($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu'] != false)
-        && ($PAGE->course == SITEID or empty($PAGE->course->lang)) 
+        && ($PAGE->course == SITEID or empty($PAGE->course->lang))
         && count($langs = get_string_manager()->get_list_of_translations()) > 1
         && $_SERVER['REQUEST_METHOD'] != 'POST') { // Language switching not available after a form POST.
     $_PAGE['langmenu'] = $OUTPUT->wet_lang_menu();
@@ -73,8 +72,8 @@ if (!empty($CFG->langmenu)
 
 // Show Problem button
 
-$_PAGE['showproblembutton'] = true;
-$_PAGE['showsharebutton'] = false; // WET "Share" button is not compatible with fr-ca language.
+$_PAGE['showproblembutton'] = $theme->showproblem;
+$_PAGE['showsharebutton'] = $theme->showshare; // WET "Share" button is not compatible with fr-ca language.
 
 // Breadcrumbs
 
@@ -97,7 +96,7 @@ $_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
 // BODY tag attributes.
 
 if (isloggedin() && !isguestuser()) {
-    $_PAGE['navdraweropen']= (get_user_preferences('drawer-open-nav', 'true') == 'true');
+    $_PAGE['navdraweropen']= $theme->shownavdrawer && (get_user_preferences('drawer-open-nav', 'true') == 'true');
 } else {
     $_PAGE['navdraweropen'] = false;
 }
@@ -132,13 +131,13 @@ $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->pag
 
 $_PAGE['signonurl'] = '';
 $_PAGE['signouturl'] = '';
-$_PAGE['showsignon'] = true;
+$_PAGE['showsignon'] = $theme->showsignon;
 $_PAGE['showregister'] = false;
 $_PAGE['registerurl'] = '';
 $_PAGE['showaccountsettings'] = false;
 $_PAGE['accountsettingsurl'] = '';
 
-$signouturl = 'https://sso-dev.ised-isde.canada.ca/auth/realms/individual/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Flearning-apprentissage.apps.dev.openshift.ised-isde.canada.ca%2Flogin%2Flogout.php%3Fsesskey%3D' . sesskey();
+$signouturl = $theme->alternatelogouturl;
 
 if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($PAGE->pagetype != 'login-logout') {
@@ -148,14 +147,14 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
             $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php';
         }
     }
-    $_PAGE['showaccountsettings'] = true;
+    $_PAGE['showaccountsettings'] = $theme->showaccountsettings;
     // URL of Profile settings button.
     if (has_capability('moodle/user:editownprofile', context_system::instance())) {
         $_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';
     }
 } else { // Logged-out.
     require_once $CFG->libdir . '/authlib.php';
-    if ($_PAGE['showregister'] = signup_is_enabled() && $PAGE->pagetype != 'login-signup') {
+    if ($_PAGE['showregister'] = $theme->showregister && signup_is_enabled() && $PAGE->pagetype != 'login-signup') {
         $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
     }
 
@@ -173,13 +172,6 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
 // Life tip: die('happy');
 
 $_PAGE['flatnavigation'] = $PAGE->flatnav;
-$_PAGE['analytics'] = '<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
-<noscript>
-    <iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\': new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!=\'dataLayer1\'?\'&l=\'+l:\'\';j.async=true;j.src=\'//www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);})(window,document,\'script\',\'dataLayer1\',\'GTM-TLGQ9K\');</script>
-<!-- End Google Tag Manager -->
-';
 
 // Blocks
 

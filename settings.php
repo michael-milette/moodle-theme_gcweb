@@ -13,7 +13,10 @@
  * If for any reason a copy of the GNU General Public License was not included with this project,
  * you can view it online by going to: https://www.gnu.org/licenses/gpl-3.0.en.html</p>
 **/
+
 /**
+ * Main settings file.
+ *
  * @package    theme_wetboew_internet
  * @copyright  2016 TNG Consulting Inc. unless otherwise noted.
  * @author     Michael Milette <www.tngconsulting.ca>
@@ -22,17 +25,26 @@
  * @license    WET-BOEW: https://github.com/wet-boew/wet-boew/blob/master/License-eng.txt MIT License.
  * @license    Government of Canada graphics: Government of Canada http://www.tbs-sct.gc.ca/fip-pcim/index-eng.asp .
  * @license    3rd party software included with WET-BOEW: Held by the respective copyright holders as noted in those files.
-**/
+ * @credits    theme_boost - MoodleHQ
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Settings have been split into separate files, one for each tab. These are called from this main settings.php file.
 
 defined('MOODLE_INTERNAL') || die;
 
 // Fix date format - enable leading zeros for day.
 $CFG->nofixday  = true;
 
-if ($ADMIN->fulltree) {
-    // Note new tabs layout for admin settings pages.
-    $settings = new theme_boost_admin_settingspage_tabs('themesettingwetboewinternet', get_string('configtitle', 'theme_wetboew_internet'));
+// Theme name
+$themename = 'theme_wetboew_internet';
 
+if ($ADMIN->fulltree) {
+    $themename = 'theme_wetboew_internet';
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingwetboew_internet', get_string('configtitle', $themename));
+    
+    require('settings/general.php');
+    require('settings/css.php');
     // require('settings/presets_settings.php');
     // require('settings/presets_adjustments_settings.php');
     // require('settings/image_settings.php');

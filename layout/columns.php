@@ -48,10 +48,11 @@ $templatecontext = [
     'lastmodified' => $_PAGE['lastmodified'],
     'pagebutton' =>  $_PAGE['pagebutton'],
     'showproblembutton' => $_PAGE['showproblembutton'],
+    'problembuttonurl' => $theme->problembuttonurl,
     'showsharebutton' => $_PAGE['showsharebutton'],
     'loggedin' => (!isguestuser() && isloggedin()),
     'wwwroot' => $CFG->wwwroot,
-
+    'shownavdrawer' => $theme->shownavdrawer,
     'navdraweropen' => $_PAGE['navdraweropen'],
     'links' => false,
 

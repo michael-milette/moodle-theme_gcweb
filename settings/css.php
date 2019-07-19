@@ -21,14 +21,29 @@
  * @copyright  2016 TNG Consulting Inc. <http://www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die;
 
-$name = 'theme_wet-boew/customcss';
-/* TODO:
-$title = get_string('customcss', 'theme_wet-boew');
-$description = get_string('customcssdesc', 'theme_wet-boew');
+// General settings.
+$page = new admin_settingpage($themename . '_advanced', get_string('advancedsettings', 'theme_boost'));
+
+// Define settings: Raw initial SCSS.
+$name = $themename . '/scsspre';
+$title = get_string('rawscsspre', 'theme_boost');
+$description = get_string('rawscsspre_desc', 'theme_boost');
 $default = '';
-$setting = new admin_setting_configtextarea($name, $title, $description, $default);
+$setting = new admin_setting_scsscode($name, $title, $description, $default, PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
-$settings->add($setting);
-*/
+$page->add($setting);
+
+// Define settings: Raw SCSS.
+$name = $themename . '/scss';
+$title = get_string('rawscss', 'theme_boost');
+$description = get_string('rawscss_desc', 'theme_boost');
+$default = '';
+$setting = new admin_setting_scsscode($name, $title, $description, $default, PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Add the page after definiting all the settings!
+$settings->add($page);

@@ -240,6 +240,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                switch ($this->page->pagetype) {
                    case 'backup-backup': // Course backup.
                         break;
+                   case 'admin-setting-themesettingwetboew_internet': // This Theme's settings.
+                        $title = get_string('themesettings', 'admin');
+                        break;
                    case 'admin-user': // Browser list of users.
                         $title = get_string('userlist', 'admin');
                         break;

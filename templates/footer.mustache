@@ -49,9 +49,11 @@
         </footer>
         {{#js}}
         require(['theme_boost/loader']);
+        {{#shownavdrawer}}
         require(['theme_boost/drawer'], function(mod) {
             mod.init();
         });
+        {{/shownavdrawer}}
         {{/js}}
 
         <!--[if gte IE 9 | !IE ]><!-->
@@ -66,5 +68,7 @@
         <script src="{{{ wetboew }}}/cdts/cdtscustom.js"></script>
 
         <div id="level-access-access-assistant-highlight-container" data-ae_invis="true"></div>
+        {{#shownavdrawer}}
         {{> theme_boost/nav-drawer }}
+        {{/shownavdrawer}}
         {{{ output.standard_end_of_body_html }}}

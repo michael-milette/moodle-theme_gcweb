@@ -12,7 +12,7 @@ $string['choosereadme'] = '
 <div class="well">
  <h2>Credits</h2>
  <h3>About</h3>
- <p>WET-BOEW-MOODLE-Internet is a responsive Moodle theme based on the latest <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
+ <p>WET-BOEW-MOODLE-Internet is a responsive Moodle theme based on the latest GCWeb <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
  <p>This theme is licensed under the GPL (GNU General Public License). You can find a complete licence copy in: <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a></p>
  <p>Authors: Michael Milette<br>
  Contact: <a href="mailto:info@tngconsulting.ca">info@tngconsulting.ca</a><br>
@@ -31,8 +31,8 @@ $string['choosereadme'] = '
 </div>';
 
 // The name of our plugin.
-$string['pluginname'] = 'WET-BOEW-Moodle GCWeb Internet';
-$string['privacy:metadata'] = 'The WET-BOEW-Moodle GCWeb Internet theme does not store any personal data about any user.';
+$string['pluginname'] = 'WET-BOEW-Moodle Internet';
+$string['privacy:metadata'] = 'The WET-BOEW-Moodle Internet theme does not store any personal data about any user.';
 $string['configtitle'] = 'WET-BOEW-Internet';
 
 // We need to include a lang string for each block region.
@@ -94,3 +94,37 @@ $string['footerlist'] = '<li><a href="https://www.canada.ca/en/contact.html">Con
 <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>';
 
 $string['symbol'] = 'Symbol of the Government of Canada';
+
+//
+// Configuration Settings
+//
+
+$string['showsignon'] = 'Show sign-on button';
+$string['showsignon_desc'] = 'Show or hide the sign-on button in the header.';
+
+$string['showregister'] = 'Show register button';
+$string['showregister_desc'] = 'Show or hide the register button in the header.';
+
+$string['showaccountsettings'] = 'Show account settings button';
+$string['showaccountsettings_desc'] = 'Show or hide the account settings button in the header.';
+
+$string['showsearch'] = 'Show course search';
+$string['showsearch_desc'] = 'Show or hide the course search field in the header.';
+
+$string['prebreadcrumbs'] = 'Pre-breadcrumbs';
+$string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. For example if this is a sub-section of a website.';
+
+$string['shownavdrawer'] = 'Show nav drawer to students';
+$string['shownavdrawer_desc'] = 'Show or hide the Moodle nav drawer button and drawer to students. Non-editing teachers roles and above will always see it.';
+
+$string['showproblem'] = 'Show Report a problem on this page button';
+$string['showproblem_desc'] = 'Show or hide the Report a problem on this page button.';
+
+$string['problembuttonurl'] = 'Report a problem URL';
+$string['problembuttonurl_desc'] = 'URL for the Report a problem button link. If Report a problem button is enable and there is no link, the default embedded form will be used.';
+
+$string['showshare'] = 'Show share button';
+$string['showshare_desc'] = 'Show share button on pages when you users are not logged in.';
+
+$string['alternatelogouturl'] = 'Alternate Logout URL';
+$string['alternatelogouturl_desc'] = 'Alternate Logout URL will only be used for users logged-in using non-Manual or email-based self-registration accounts.';
