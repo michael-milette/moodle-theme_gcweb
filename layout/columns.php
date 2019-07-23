@@ -28,7 +28,7 @@ user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
 
 include __DIR__ . '/../framework/settings.php';
-//die("Hi!" .$theme->problembuttonurl);
+
 $templatecontext = [
     'output' => $OUTPUT,
     'pagetitle' => $_PAGE['pagetitle'],
