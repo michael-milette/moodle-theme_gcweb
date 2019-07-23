@@ -99,6 +99,8 @@ $string['symbol'] = 'Symbol of the Government of Canada';
 // Configuration Settings
 //
 
+$string['abouttheme'] = 'About this theme';
+
 $string['showsignon'] = 'Show sign-on button';
 $string['showsignon_desc'] = 'Show or hide the sign-on button in the header.';
 
@@ -111,8 +113,11 @@ $string['showaccountsettings_desc'] = 'Show or hide the account settings button 
 $string['showsearch'] = 'Show course search';
 $string['showsearch_desc'] = 'Show or hide the course search field in the header.';
 
+$string['showhomebreadcrumbs'] = 'Breadcrumbs on Home page';
+$string['showhomebreadcrumbs_desc'] = 'Enable breadcrumbs on the home page.';
+
 $string['prebreadcrumbs'] = 'Pre-breadcrumbs';
-$string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. For example if this is a sub-section of a website.';
+$string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. Useful if this is a sub-section of a website.<br>Example: &lt;li&gt;&lt;a href="https://example.com/"&gt;Example&lt;/a&gt;&lt;/li&gt;';
 
 $string['shownavdrawer'] = 'Show nav drawer to students';
 $string['shownavdrawer_desc'] = 'Show or hide the Moodle nav drawer button and drawer to students. Non-editing teachers roles and above will always see it.';
@@ -121,10 +126,13 @@ $string['showproblem'] = 'Show Report a problem on this page button';
 $string['showproblem_desc'] = 'Show or hide the Report a problem on this page button.';
 
 $string['problembuttonurl'] = 'Report a problem URL';
-$string['problembuttonurl_desc'] = 'URL for the Report a problem button link. If Report a problem button is enable and there is no link, the default embedded form will be used.';
+$string['problembuttonurl_desc'] = 'URL for the Report a problem button link. If Report a problem button is enable and there is no link, the default embedded form will be used.<br>Example: https://example.com/problem/ .';
 
 $string['showshare'] = 'Show share button';
 $string['showshare_desc'] = 'Show share button on pages when you users are not logged in.';
 
+$string['confirmlogout'] = 'Confirm logout';
+$string['confirmlogout_desc'] = 'Enable if you want users to be prompted when they attempt to logout.';
+
 $string['alternatelogouturl'] = 'Alternate Logout URL';
-$string['alternatelogouturl_desc'] = 'Alternate Logout URL will only be used for users logged-in using non-Manual or email-based self-registration accounts.';
+$string['alternatelogouturl_desc'] = 'Alternate Logout URL will only be used for users logged-in using non-Manual or email-based self-registration accounts.<br>Example: https://www.example.com/logout';

@@ -76,9 +76,13 @@ $_PAGE['showproblembutton'] = $theme->showproblem;
 $_PAGE['showsharebutton'] = $theme->showshare; // WET "Share" button is not compatible with fr-ca language.
 
 // Breadcrumbs
-
-$_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
-$_PAGE['breadcrumbs'] = $OUTPUT->navbar($_PAGE['breadcrumbs']);
+if ($PAGE->pagetype != 'site-index' || $theme->showhomebreadcrumbs) {
+    // If this is not home page OR showhomebreadcrumbs is enabled.
+    $_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+    $_PAGE['breadcrumbs'] = $OUTPUT->navbar($_PAGE['breadcrumbs']);
+} else {
+    $_PAGE['breadcrumbs'] = '';
+}
 
 // Document type.
 
@@ -93,13 +97,43 @@ if (strpos($_PAGE['htmlattributes'], 'xml') !== false) { // Trim off: xml:lang="
 // Change HTML lang="fr-ca" to just "fr" for compatibility with WET-BOEW in French.
 $_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
 
+// Nav drawer should be available if shownavdrawer is true or user is greater than student.
+$_PAGE['navdraweropen'] = false;
+if(!$theme->shownavdrawer) { // Don't show nav drawer to students, unless...
+    if (isloggedin() && !isguestuser()) {
+        // If logged-in and not a guest user.
+        if (is_role_switched($PAGE->course->id)) {
+            // User switched roles. Figure out archetype.
+            $context = context_course::instance($PAGE->course->id);
+            $archetype = $USER->access['rsw'][$context->path];
+            // Override - Enable nav drawer if archetype is higher than student.
+            $theme->shownavdrawer = ($archetype < 5); // 1 to 4.
+        } else if (is_siteadmin()) { // Is an administrator.
+            $theme->shownavdrawer = true;
+        } else if (is_siteadmin()) { // Is not administrator but more than a student.
+            global $DB;
+            // Get all of the student's roles.
+            $roleassignments = $DB->get_records('role_assignments', ['userid' => $USER->id], '', 'id,roleid');
+            // Identify the archetype of each role.
+            $archetypes = ['manager', 'coursecreator', 'editingteacher', 'teacher'];
+            foreach($roleassignments as $roleid) {
+                // Override - Enable nav drawer if archetype is higher than student.
+                $archetype = $DB->get_record('roles', ['roleid' => $roleid], 'archetype');
+                $theme->shownavdrawer = in_array($archetype, $archetypes);
+                if($theme->shownavdrawer) {
+                    break;
+                }
+            }
+        }
+        $_PAGE['navdraweropen']= (get_user_preferences('drawer-open-nav', 'true') == 'true');
+    } else {
+        // Not logged-in.
+        $_PAGE['navdraweropen'] = $theme->shownavdrawer;
+    }
+}
+
 // BODY tag attributes.
 
-if (isloggedin() && !isguestuser()) {
-    $_PAGE['navdraweropen']= $theme->shownavdrawer && (get_user_preferences('drawer-open-nav', 'true') == 'true');
-} else {
-    $_PAGE['navdraweropen'] = false;
-}
 $extraclasses = [];
 if ($_PAGE['navdraweropen']) {
     $extraclasses[] = 'drawer-open-left';
@@ -117,6 +151,7 @@ $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
 $_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 
 // Footer
+
 $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
 
 // Site name and page title.
@@ -144,7 +179,7 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
         if ($USER->auth == 'oauth2' && !empty($signouturl)) {
             $_PAGE['signouturl'] = $signouturl;
         } else {
-            $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php';
+            $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php' . ($theme->confirmlogout ? '' : '?sesskey=' . sesskey());
         }
     }
     $_PAGE['showaccountsettings'] = $theme->showaccountsettings;

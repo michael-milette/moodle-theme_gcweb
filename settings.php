@@ -42,19 +42,18 @@ $themename = 'theme_wetboew_internet';
 if ($ADMIN->fulltree) {
     $themename = 'theme_wetboew_internet';
     $settings = new theme_boost_admin_settingspage_tabs('themesettingwetboew_internet', get_string('configtitle', $themename));
+
+    // First time or reset, remove any previous setting.
+    if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
+        unset_all_config_for_plugin($themename);
+    }
     
     require('settings/general.php');
-    require('settings/css.php');
-    // require('settings/presets_settings.php');
-    // require('settings/presets_adjustments_settings.php');
-    // require('settings/image_settings.php');
-    // require('settings/colours_settings.php');
-    // require('settings/content_settings.php');
-    // require('settings/menu_settings.php');
-    // require('settings/fpicons_settings.php');
-    // require('settings/modchooser_settings.php');
-    // require('settings/slideshow_settings.php');
-    // require('settings/markettiles_settings.php');
-    // require('settings/footer_settings.php');
-    // require('settings/customlogin_settings.php');
+    // TODO: require('settings/css.php'); // Settings page is done however the theme does not include in the SCSS information.
+    require('settings/about.php');
+
+    // First time or reset, set init flag.
+    if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
+        set_config('init', 1, $themename);
+    }
 }

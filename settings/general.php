@@ -27,20 +27,20 @@ defined('MOODLE_INTERNAL') || die;
 // General settings.
 $page = new admin_settingpage($themename . '_general', get_string('generalsettings', 'theme_boost'));
 
+// If first time, initialize this tab's settings with defaults.
 if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
-    // First time, initialize settings with defaults.
-    unset_all_config_for_plugin($themename);
-    set_config('showsignon', 1, $themename);
-    set_config('showregister', 1, $themename);
-    set_config('showaccountsettings', 1, $themename);
-    set_config('alternatelogouturl', '', $themename);
-    set_config('showsearch', 1, $themename);
-    set_config('prebreadcrumbs', '', $themename);
-    set_config('shownavdrawer', 1, $themename);
-    set_config('showproblem', 1, $themename);
-    set_config('problembuttonurl', '', $themename);
-    set_config('showshare', 0, $themename);
-    set_config('init', 1, $themename);
+    set_config('showsignon', 1, $themename); // Yes.
+    set_config('showregister', 1, $themename); // Yes.
+    set_config('showaccountsettings', 1, $themename); // Yes.
+    set_config('confirmlogout', 0, $themename); // No.
+    set_config('alternatelogouturl', '', $themename); // None.
+    set_config('showsearch', 1, $themename); // Yes.
+    set_config('showhomebreadcrumbs', 1, $themename); // Yes.
+    set_config('prebreadcrumbs', '', $themename); // None.
+    set_config('shownavdrawer', 1, $themename); // Yes.
+    set_config('showproblem', 1, $themename); // Yes.
+    set_config('problembuttonurl', '', $themename); // None.
+    set_config('showshare', 0, $themename); // No.
 }
 
 // Show Sign-on button.
@@ -70,6 +70,15 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
+// Enable logout confirmation screen.
+$name = $themename . '/confirmlogout';
+$title = get_string('confirmlogout', $themename);
+$description = get_string('confirmlogout_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
 // Custom alternate logout URL - only applicable for accounts other than Manual and Email-based self-registration.
 $name = $themename . '/alternatelogouturl';
 $title = get_string('alternatelogouturl', $themename);
@@ -83,6 +92,15 @@ $page->add($setting);
 $name = $themename . '/showsearch';
 $title = get_string('showsearch', $themename);
 $description = get_string('showsearch_desc', $themename);
+$default = 1;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Pre-breadcrumbs.
+$name = $themename . '/showhomebreadcrumbs';
+$title = get_string('showhomebreadcrumbs', $themename);
+$description = get_string('showhomebreadcrumbs_desc', $themename);
 $default = 1;
 $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');
@@ -120,7 +138,7 @@ $name = $themename . '/problembuttonurl';
 $title = get_string('problembuttonurl', $themename);
 $description = get_string('problembuttonurl_desc', $themename);
 $default = '';
-$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW_TRIMMED);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

@@ -69,7 +69,17 @@ $THEME->requiredblocks = '';
 // This is a feature that tells the blocks library not to use the "Add a block" block. We don't want this in boost based themes
 // because it forces a block region into the page when editing is enabled and it takes up too much room.
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
+
 $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
+
+// This is the function that returns the SCSS source for the main file in our theme.
+$THEME->scss = function($theme) {
+    return theme_wetboew_internet_get_main_scss_content($theme);
+};
+$THEME->csstreepostprocessor = 'theme_wetboew_internet_css_tree_post_processor';
+$THEME->extrascsscallback = 'theme_wetboew_internet_get_extra_scss';
+$THEME->prescsscallback = 'theme_wetboew_internet_get_pre_scss';
+$THEME->precompiledcsscallback = 'theme_wetboew_internet_get_precompiled_css';
 
 // Since we are using 2 parent themes the correct location of the layout files needs to be defined. For this theme we need the multiple
 // column layouts.
@@ -187,8 +197,3 @@ $THEME->layouts = [
         'defaultregion' => 'side-pre'
     )
 ];
-
-// This is the function that returns the SCSS source for the main file in our theme.
-$THEME->scss = function($theme) {
-    return theme_wetboew_internet_get_main_scss_content($theme);
-};

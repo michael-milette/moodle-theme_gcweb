@@ -27,6 +27,12 @@ defined('MOODLE_INTERNAL') || die;
 // General settings.
 $page = new admin_settingpage($themename . '_advanced', get_string('advancedsettings', 'theme_boost'));
 
+// If first time, initialize this tab's settings with defaults.
+if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
+    set_config('scsspre', '', $themename); // Empty.
+    set_config('scss', '', $themename); // Empty.
+}
+
 // Define settings: Raw initial SCSS.
 $name = $themename . '/scsspre';
 $title = get_string('rawscsspre', 'theme_boost');
