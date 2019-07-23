@@ -76,10 +76,8 @@ $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
 $THEME->scss = function($theme) {
     return theme_wetboew_internet_get_main_scss_content($theme);
 };
-$THEME->csstreepostprocessor = 'theme_wetboew_internet_css_tree_post_processor';
+//$THEME->csstreepostprocessor = 'theme_wetboew_internet_css_tree_post_processor'; // Causes issues. Requires Clear Cache to take effect.
 $THEME->extrascsscallback = 'theme_wetboew_internet_get_extra_scss';
-$THEME->prescsscallback = 'theme_wetboew_internet_get_pre_scss';
-$THEME->precompiledcsscallback = 'theme_wetboew_internet_get_precompiled_css';
 
 // Since we are using 2 parent themes the correct location of the layout files needs to be defined. For this theme we need the multiple
 // column layouts.
