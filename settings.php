@@ -49,7 +49,7 @@ if ($ADMIN->fulltree) {
     }
     
     require('settings/general.php');
-    // TODO: require('settings/css.php'); // Settings page is done however the theme does not include in the SCSS information.
+    require('settings/css.php'); // TODO: Settings page is done however the theme does not include in the SCSS information.
     require('settings/about.php');
 
     // First time or reset, set init flag.
