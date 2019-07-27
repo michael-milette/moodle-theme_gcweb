@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die();
 $THEME->name = 'wetboew_internet';
 
 // This setting list the style sheets we want to include in our theme. Because we want to use SCSS instead of CSS - we won't
-// list any style sheets. If we did we would list the name of a file in the /styles/ folder for our theme without any css file
+// list any style sheets. If we did we would list the name of a file in the /style/ folder for our theme without any css file
 // extensions.
 $THEME->sheets = [];
 
@@ -59,7 +59,7 @@ $THEME->yuicssmodules = [];
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 // Call css/scss processing functions and renderers.
-$THEME->prescsscallback = 'theme_wetboew_internet_get_pre_scss';
+//$THEME->prescsscallback = 'theme_wetboew_internet_get_pre_scss';
 
 // This is a list of blocks that are required to exist on all pages for this theme to function correctly. For example
 // bootstrap base requires the settings and navigation blocks because otherwise there would be no way to navigate to all the
@@ -73,7 +73,7 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
 
 // This is the function that returns the SCSS source for the main file in our theme.
-$THEME->scss = function($theme) {
+$THEME->scssx = function($theme) {
     return theme_wetboew_internet_get_main_scss_content($theme);
 };
 //$THEME->csstreepostprocessor = 'theme_wetboew_internet_css_tree_post_processor'; // Causes issues. Requires Clear Cache to take effect.

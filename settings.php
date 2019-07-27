@@ -50,6 +50,7 @@ if ($ADMIN->fulltree) {
     
     require('settings/general.php');
     require('settings/css.php'); // TODO: Settings page is done however the theme does not include in the SCSS information.
+    require('settings/profilefields.php');
     require('settings/about.php');
 
     // First time or reset, set init flag.

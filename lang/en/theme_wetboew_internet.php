@@ -136,3 +136,6 @@ $string['confirmlogout_desc'] = 'Enable if you want users to be prompted when th
 
 $string['alternatelogouturl'] = 'Alternate Logout URL';
 $string['alternatelogouturl_desc'] = 'Alternate Logout URL will only be used for users logged-in using non-Manual or email-based self-registration accounts.<br>Example: https://www.example.com/logout';
+
+$string['showprofile_heading'] = 'Select the sections and fields to be displayed when user\'s edit their profile.';
+$string['showprofilesection_desc'] = 'Show the whole section.';

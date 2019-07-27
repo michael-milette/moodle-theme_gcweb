@@ -22,8 +22,92 @@ function theme_wetboew_internet_css_tree_post_processor($tree, $theme) {
  * @return string
  */
 function theme_wetboew_internet_get_extra_scss($theme) {
+    $customcss = '';
+
+    //
+    // Hide User Profile Fields 
+    //
+    
+    // Section: General.
+    if(empty($theme->settings->showprofileemaildisplay)) {
+        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(10),'; // Email display.
+    }
+    if(empty($theme->settings->showprofilecity)) {
+        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(11),'; // City.
+    }
+    if(empty($theme->settings->showprofilecountry)) {
+        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(12),'; // Country.
+    }
+    if(empty($theme->settings->showprofiletimezone)) {
+        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(13),'; // Timezone.
+    }
+    if(empty($theme->settings->showprofiledescription)) {
+        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(14),'; // Description.
+    }
+
+    // Section: User Picture.
+    if(empty($theme->settings->showprofilepictureofuser)) {
+        $customcss .= 'fieldset#id_moodle_picture,';
+    }
+
+    // Section: Additional Names.
+    if(empty($theme->settings->showprofileadditionalnames)) {
+        $customcss .= 'fieldset#id_moodle_additional_names,';
+    }
+
+    // Section: Interests.
+    if(empty($theme->settings->showprofileinterests)) {
+        $customcss .= 'fieldset#id_moodle_interests,';
+    }
+
+    // Section: Optional.
+    if(empty($theme->settings->showprofileoptional)) {
+        $customcss .= 'fieldset#id_moodle_optional,';
+    }
+    if(empty($theme->settings->showprofilewebpage)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(1),'; // Web Page.
+    }
+    if(empty($theme->settings->showprofileicqnumber)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(2),'; // ICQ.
+    }
+    if(empty($theme->settings->showprofileskypeid)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(3),'; // Skype.
+    }
+    if(empty($theme->settings->showprofileaimid)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(4),'; // AIM.
+    }
+    if(empty($theme->settings->showprofileyahooid)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(5),'; // Yahoo.
+    }
+    if(empty($theme->settings->showprofilemsnid)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(6),'; // MSN.
+    }
+    if(empty($theme->settings->showprofileidnumber)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(7),'; // ID number.
+    }
+    if(empty($theme->settings->showprofileinstitution)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(8),'; // Institution.
+    }
+    if(empty($theme->settings->showprofiledepartment)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(9),'; // Department.
+    }
+    if(empty($theme->settings->showprofilephone1)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(10),'; // Phone.
+    }
+    if(empty($theme->settings->showprofilephone2)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(11),'; // Mobile phone.
+    }
+    if(empty($theme->settings->showprofileaddress)) {
+        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(12),'; // Address.
+    }
+
+    // Hide some profile fields.
+    if (!empty($customcss)) {
+        $customcss .= ' {display: none;}';
+    }
+
     // Always return the scss when we have it.
-    return !empty($theme->settings->scss) ? $theme->settings->scss : '';
+    return $customcss . $theme->settings->scss;
 }
 
 /**
@@ -87,28 +171,28 @@ function theme_wetboew_internet_get_main_scss_content($theme) {
  * @param theme_config $theme The theme config object.
  * @return array
  */
-function theme_wetboew_internet_get_pre_scss($theme) {
-    $scss = '';
-    $configurable = [
-        // Config key => [variableName, ...].
-        'brandcolor' => ['primary'],
-    ];
+// function theme_wetboew_internet_get_pre_scss($theme) {
+    // $scss = '';
+    // $configurable = [
+        // // Config key => [variableName, ...].
+        // 'brandcolor' => ['primary'],
+    // ];
 
-    // Prepend variables first.
-    foreach ($configurable as $configkey => $targets) {
-        $value = isset($theme->settings->{$configkey}) ? $theme->settings->{$configkey} : null;
-        if (empty($value)) {
-            continue;
-        }
-        array_map(function($target) use (&$scss, $value) {
-            $scss .= '$' . $target . ': ' . $value . ";\n";
-        }, (array) $targets);
-    }
+    // // Prepend variables first.
+    // foreach ($configurable as $configkey => $targets) {
+        // $value = isset($theme->settings->{$configkey}) ? $theme->settings->{$configkey} : null;
+        // if (empty($value)) {
+            // continue;
+        // }
+        // array_map(function($target) use (&$scss, $value) {
+            // $scss .= '$' . $target . ': ' . $value . ";\n";
+        // }, (array) $targets);
+    // }
 
-    // Prepend pre-scss.
-    if (!empty($theme->settings->scsspre)) {
-        $scss .= $theme->settings->scsspre;
-    }
+    // // Prepend pre-scss.
+    // if (!empty($theme->settings->scsspre)) {
+        // $scss .= $theme->settings->scsspre;
+    // }
 
-    return $scss;
-}
+    // return $scss;
+// }
