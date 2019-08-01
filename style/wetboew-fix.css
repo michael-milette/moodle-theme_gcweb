@@ -53,7 +53,18 @@ body {
     padding: 0;
 }
 
-/* Headings */
+/* Links in general. */
+a {
+    color: #284142;
+}
+a:visited {
+    xcolor: #7834bc;
+}
+a:focus, a:hover {
+    color: #0535d2;
+}
+
+/* Headings. */
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     font-family: Lato,sans-serif;
@@ -141,8 +152,8 @@ a {
     border: none;
 }
 .usermenu .dropdown a:first-child {
-  color:white;
-  font-size: 16px;
+    color:white;
+    font-size: 16px;
 }
 .dropdown-menu a.dropdown-item:first-child {
     color: unset;
