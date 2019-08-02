@@ -183,6 +183,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     public function pagetitle($title) {
         global $SITE, $DB, $COURSE;
 
+        $_PAGE['hometitle'] = $title;
         switch ($this->page->pagelayout) {
             case substr($this->page->pagetype, 0, 4) == 'mod-': // If a module.
                 if ($COURSE->format == 'singleactivity') {
@@ -214,9 +215,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     $title = get_string('fulllistofcourses');
                 }
                 break;
-            case 'frontpage': // No title on home page.
-                $title = '';
-                break;
+            // case 'frontpage': // Home page.
+                // break;
             case 'login':
                switch ($this->page->pagetype) {
                     case 'login-index': // Sign-in / Login.

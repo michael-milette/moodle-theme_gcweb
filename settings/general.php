@@ -36,6 +36,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('alternatelogouturl', '', $themename); // None.
     set_config('showsearch', 1, $themename); // Yes.
     set_config('showhomebreadcrumbs', 1, $themename); // Yes.
+    set_config('showhometitle', 1, $themename); // Yes.
     set_config('prebreadcrumbs', '', $themename); // None.
     set_config('shownavdrawer', 1, $themename); // Yes.
     set_config('showproblem', 1, $themename); // Yes.
@@ -97,7 +98,7 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Pre-breadcrumbs.
+// Show Home Breadcrumbs.
 $name = $themename . '/showhomebreadcrumbs';
 $title = get_string('showhomebreadcrumbs', $themename);
 $description = get_string('showhomebreadcrumbs_desc', $themename);
@@ -111,6 +112,25 @@ $name = $themename . '/prebreadcrumbs';
 $title = get_string('prebreadcrumbs', $themename);
 $description = get_string('prebreadcrumbs_desc', $themename);
 $default = '';
+$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Show Home Page Title (h1).
+$name = $themename . '/showhometitle';
+$title = get_string('showhometitle', $themename);
+$description = get_string('showhometitle_desc', $themename);
+$default = 1;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Home Page Title (h1).
+global $SITE;
+$name = $themename . '/hometitle';
+$title = get_string('hometitle', $themename);
+$description = get_string('hometitle_desc', $themename);
+$default = $SITE->fullname;
 $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);

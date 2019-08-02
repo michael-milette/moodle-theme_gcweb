@@ -326,8 +326,6 @@ ul {
 }
 a.eupopup-closebutton {
     color: #ffffff;
-    font-size: 2rem;
-    background-color: #008000;
 }
 
 /* Login page heading */
@@ -357,6 +355,11 @@ li.section.hidden, .block.hidden, .block.invisible {
 /* Adjust size of close button. */
 .close, .moodle-dialogue-base .closebutton {
    font-size: 3rem;
+}
+
+/* Fix font size for capabilities */
+.path-admin .rolecap .cap-name, .path-admin .rolecap .note {
+    font-size: 1.2rem;
 }
 
 /* Fix font size for pluginname and version on plugins page. */

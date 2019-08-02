@@ -116,6 +116,12 @@ $string['showsearch_desc'] = 'Show or hide the course search field in the header
 $string['showhomebreadcrumbs'] = 'Breadcrumbs on Home page';
 $string['showhomebreadcrumbs_desc'] = 'Enable breadcrumbs on the home page.';
 
+$string['hometitle'] = 'Override Title on Home page';
+$string['hometitle_desc'] = 'Specify a custom page title for the home page.';
+
+$string['showhometitle'] = 'Show title on Home page';
+$string['showhometitle_desc'] = 'Show the page title on the home page.';
+
 $string['prebreadcrumbs'] = 'Pre-breadcrumbs';
 $string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. Useful if this is a sub-section of a website.<br>Example: &lt;li&gt;&lt;a href="https://example.com/"&gt;Example&lt;/a&gt;&lt;/li&gt;';
 

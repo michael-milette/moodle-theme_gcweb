@@ -157,10 +157,22 @@ $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
 // Site name and page title.
 
 $_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-$_PAGE['pagetitle'] = $OUTPUT->pagetitle($PAGE->title);
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
+$_PAGE['pagetitle'] = $OUTPUT->pagetitle($PAGE->title);
+$_PAGE['pagetitlehidden'] = '';
+if ($PAGE->pagelayout == 'frontpage') {
+    $hometitle = $theme->hometitle;
+    if (!empty($hometitle)) {
+        // Substitute title on Home page.
+        $_PAGE['pagetitle'] = format_string($hometitle, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+    }
+    if (empty($theme->showhometitle)) {
+        // Hide title on Home page.
+        $_PAGE['pagetitlehidden'] = ' property="name" class="wb-inv"';
+    }
+}
 
 // Login/Sign-in, Logout/Sign-out, Register, Account Settings buttons.
 

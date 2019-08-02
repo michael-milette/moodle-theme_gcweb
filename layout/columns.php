@@ -32,6 +32,7 @@ include __DIR__ . '/../framework/settings.php';
 $templatecontext = [
     'output' => $OUTPUT,
     'pagetitle' => $_PAGE['pagetitle'],
+    'pagetitlehidden' => $_PAGE['pagetitlehidden'],
     'standard_head_html' => $_PAGE['standard_head_html'],
     'sidepreblocks' => $_PAGE['blockspre'],
     'sidepostblocks' => $_PAGE['blockspost'],
