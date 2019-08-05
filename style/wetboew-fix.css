@@ -470,3 +470,9 @@ table caption {
 .performanceinfo {
   color:white;
 }
+
+/* Make Switch_Role_to horizontal instead of vertical. */
+#page-course-switchrole .m-x-3 {
+    margin-left: 3rem!important;
+    display: inline-block;
+}
