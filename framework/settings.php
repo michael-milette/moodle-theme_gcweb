@@ -70,11 +70,6 @@ if (!empty($CFG->langmenu)
     $_PAGE['langmenu'] = '';
 }
 
-// Show Problem button
-
-$_PAGE['showproblembutton'] = $theme->showproblem;
-$_PAGE['showsharebutton'] = $theme->showshare; // WET "Share" button is not compatible with fr-ca language.
-
 // Breadcrumbs
 if ($PAGE->pagetype != 'site-index' || $theme->showhomebreadcrumbs) {
     // If this is not home page OR showhomebreadcrumbs is enabled.
@@ -97,7 +92,10 @@ if (strpos($_PAGE['htmlattributes'], 'xml') !== false) { // Trim off: xml:lang="
 // Change HTML lang="fr-ca" to just "fr" for compatibility with WET-BOEW in French.
 $_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
 
+//
 // Nav drawer should be available if shownavdrawer is true or user is greater than student.
+//
+
 $_PAGE['navdraweropen'] = false;
 if(!$theme->shownavdrawer) { // Don't show nav drawer to students, unless...
     if (isloggedin() && !isguestuser()) {
@@ -132,7 +130,9 @@ if(!$theme->shownavdrawer) { // Don't show nav drawer to students, unless...
     }
 }
 
+//
 // BODY tag attributes.
+//
 
 $extraclasses = [];
 if ($_PAGE['navdraweropen']) {
@@ -150,11 +150,29 @@ if(!empty($_PAGE['showsectmenu'])) {
 $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
 $_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 
-// Footer
+//
+// Footer.
+//
 
 $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
+// Show Problem button.
+$_PAGE['showproblembutton'] = $theme->showproblem;
+// WET "Share" button is not compatible with fr-ca language.
+$_PAGE['showsharebutton'] = $theme->showshare;
+// Moodle docs link.
+$_PAGE['showmoodledocs'] = $theme->footershowmoodledocs;
+// Home link.
+$_PAGE['showhomelink'] = $theme->footershowhomelink;
+// Login/logout link.
+$_PAGE['showlogininfo'] = $theme->footershowlogininfo;
+// Reset user tours.
+$_PAGE['showresetusertours'] = $theme->footershowresetusertours;
+// Footnote.
+$_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 
+//
 // Site name and page title.
+//
 
 $_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
@@ -179,10 +197,10 @@ if ($PAGE->pagelayout == 'frontpage') {
 $_PAGE['signonurl'] = '';
 $_PAGE['signouturl'] = '';
 $_PAGE['showsignon'] = $theme->showsignon;
-$_PAGE['showregister'] = false;
-$_PAGE['registerurl'] = '';
 $_PAGE['showaccountsettings'] = false;
 $_PAGE['accountsettingsurl'] = '';
+$_PAGE['showregister'] = false;
+$_PAGE['registerurl'] = '';
 
 $signouturl = $theme->alternatelogouturl;
 
@@ -201,8 +219,9 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     }
 } else { // Logged-out.
     require_once $CFG->libdir . '/authlib.php';
-    if ($_PAGE['showregister'] = $theme->showregister && signup_is_enabled() && $PAGE->pagetype != 'login-signup') {
-        $_PAGE['registerurl'] = empty($CFG->alternateloginurl) ? $CFG->wwwroot . '/login/signup.php' : $CFG->alternateloginurl;
+    $_PAGE['showregister'] = (!empty($theme->showregister) && (empty($CFG->authpreventaccountcreation) || signup_is_enabled()) && $PAGE->pagetype != 'login-signup');
+    if ($_PAGE['showregister']) {
+        $_PAGE['registerurl'] = empty($theme->alternateregisterurl) ? $CFG->wwwroot . '/login/signup.php' : $theme->alternateregisterurl;
     }
 
     if($_PAGE['showsignon']) {

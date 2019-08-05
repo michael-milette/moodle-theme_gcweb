@@ -100,10 +100,14 @@ function theme_wetboew_internet_get_extra_scss($theme) {
     if(empty($theme->settings->showprofileaddress)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(12),'; // Address.
     }
-
     // Hide some profile fields.
     if (!empty($customcss)) {
         $customcss .= ' {display: none;}';
+    }
+
+    // Hide local login form on login page.
+    if(empty($theme->settings->showlocallogin)) {
+        $customcss .= '#page-login-index .card-body div.col-md-5:first-child {display:none;}#page-login-index .card-body div.col-md-5 {flex: auto;max-width: 100%;}';
     }
 
     // Always return the scss when we have it.

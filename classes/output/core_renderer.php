@@ -215,8 +215,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     $title = get_string('fulllistofcourses');
                 }
                 break;
-            // case 'frontpage': // Home page.
-                // break;
+            case 'frontpage': // Home page.
+                $title = get_string('home');
+                    break;
             case 'login':
                switch ($this->page->pagetype) {
                     case 'login-index': // Sign-in / Login.

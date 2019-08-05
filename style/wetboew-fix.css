@@ -76,7 +76,7 @@ a:focus, a:hover {
     font-size: 1.8em;
     margin-top: 2.5rem;
 }
-.h3, h3, #adminsettings h3{
+.h3, h3, #adminsettings h3 {
     font-size: 1.2em;
     margin-top: 2.2rem;
 }
@@ -197,7 +197,13 @@ a {
 .logininfo:after,
 .tool_usertours-resettourcontainer:after,
 .homelink:after {
-  content: " | ";
+  content: " &nbsp; ";
+}
+
+.validators ul li {
+  display : inline-block;
+  padding: 20px 20px 0 20px;
+  margin-bottom:0;
 }
 
 /* All courses page */
@@ -260,10 +266,6 @@ ul {
     font-size: inherit;
     font-weight: bold;
 }
-
-#adminsettings h3 {
-    font-size: inherit;
- }
 
 .pagination-sm .page-link {
     font-size: 1.5rem;
@@ -462,4 +464,9 @@ a#next-activity-link:hover {
 
 table caption {
     text-align: center;
+}
+
+/* Footer: Performance information (if enabled) */
+.performanceinfo {
+  color:white;
 }

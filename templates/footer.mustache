@@ -19,23 +19,35 @@
 }}
         <footer id="wb-info">
             <div id="course-footer">{{{ output.course_footer }}}</div>
-            {{# output.page_doc_link }}
-                <p class="helplink">{{{ output.page_doc_link }}}</p>
-            {{/ output.page_doc_link }}
-{{!
-            {{{ output.login_info }!}!}
-            <div class="tool_usertours-resettourcontainer"></div>
-            {{{ output.home_link }!}!}
-}}
-            {{{ output.standard_footer_html }}}
+            <div class="landscape">
+                <nav class="container wb-navcurr">
+                    {{# showmoodledocs }}
+                        {{# output.page_doc_link }}
+                            <p class="helplink">{{{ output.page_doc_link }}}</p>
+                        {{/ output.page_doc_link }}
+                    {{/ showmoodledocs }}
+                    {{# showhomelink }}
+                        {{{ output.home_link }}}
+                    {{/ showhomelink }}
+                    {{# showlogininfo }}
+                        {{ output.login_info }}
+                    {{/ showlogininfo }}
+                    {{{ output.standard_footer_html }}}
+                    {{# showresetusertours }}
+                        <div class="tool_usertours-resettourcontainer"></div>
+                    {{/ showresetusertours }}
+                </nav>
+            </div>
             <div class="brand">
                 <div class="container">
                     <div class="row">
                         <nav class="col-md-10 ftr-urlt-lnk">
-                            <h2 class="wb-inv">{{# str }} footerheading, theme_wetboew_internet {{/ str }}</h2>
+                        {{# footnote }}
+                            <h2 class="wb-inv">{{# str }} footnoteheading, theme_wetboew_internet {{/ str }}</h2>
                             <ul>
-                                {{# str }} footerlist, theme_wetboew_internet {{/ str }}
+                                {{{ footnote }}}
                             </ul>
+                        {{/ footnote }}
                         </nav>
                         <div class="col-xs-6 visible-sm visible-xs tofpg">
                             <a href="#wb-cont">{{# str }} topofpage, theme_wetboew_internet {{/ str }} <span class="glyphicon glyphicon-chevron-up"></span></a>

@@ -55,6 +55,11 @@ $templatecontext = [
     'wwwroot' => $CFG->wwwroot,
     'shownavdrawer' => $theme->shownavdrawer,
     'navdraweropen' => $_PAGE['navdraweropen'],
+    'showmoodledocs' => $_PAGE['showmoodledocs'],
+    'showhomelink' => $_PAGE['showhomelink'],
+    'showlogininfo' => $_PAGE['showlogininfo'],
+    'showresetusertours' => $_PAGE['showresetusertours'],
+    'footnote' => $_PAGE['footnote'],
     'links' => false,
 
     'flatnavigation' => $_PAGE['flatnavigation']
