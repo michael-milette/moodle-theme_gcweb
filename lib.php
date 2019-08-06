@@ -106,7 +106,7 @@ function theme_wetboew_internet_get_extra_scss($theme) {
     }
 
     // Hide local login form on login page.
-    if(empty($theme->settings->showlocallogin)) {
+    if(!empty($theme->settings->hidelocallogin)) {
         $customcss .= '#page-login-index .card-body div.col-md-5:first-child {display:none;}#page-login-index .card-body div.col-md-5 {flex: auto;max-width: 100%;}';
     }
 
