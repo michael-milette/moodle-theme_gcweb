@@ -32,8 +32,10 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('hidelocallogin', 0, $themename); // Yes.
     set_config('confirmlogout', 0, $themename); // No.
     set_config('showhometitle', 1, $themename); // Yes.
-    set_config('hometitle', get_string('home'), $themename); // Home page title: Home.
+    set_config('hometitle', '', $themename); // Home.
+    set_config('titlesitename', 0, $themename); // No.
     set_config('shownavdrawer', 1, $themename); // Yes.
+    set_config('navdraweropen', 'true', $themename); // Open.
 }
 
 // Hide local login form on login page.
@@ -63,13 +65,21 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Home Page Title (h1).
-global $SITE;
+// Home Page Title/heading (h1).
 $name = $themename . '/hometitle';
 $title = get_string('hometitle', $themename);
 $description = get_string('hometitle_desc', $themename);
-$default = $SITE->fullname;
+$default = get_string('home');
 $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Add site name to Page Titles (h1).
+$name = $themename . '/titlesitename';
+$title = get_string('titlesitename', $themename);
+$description = get_string('titlesitename_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
@@ -79,6 +89,16 @@ $title = get_string('shownavdrawer', $themename);
 $description = get_string('shownavdrawer_desc', $themename);
 $default = 1;
 $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Nav Drawer should be open by default?
+$name = $themename . '/navdraweropen';
+$title = get_string('navdraweropen', $themename);
+$description = get_string('navdraweropen_desc', $themename);
+$default = 'true';
+$choices = array('true' => get_string('resourcedisplayopen'), 'false' => get_string('closebuttontitle'));
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

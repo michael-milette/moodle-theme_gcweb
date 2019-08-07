@@ -175,12 +175,37 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     *  @brief Better Titles
+     *  @brief Better page titles.
+     *
+     *  @return Returns an alternate page title depending on the page.
+     */
+    public function pagetitle() {
+        global $PAGE, $SITE;
+        $title = '';
+        if ($PAGE->pagetype == 'site-index') { // frontpage
+            if (empty($hometitle = get_config('wetboew_internet', 'hometitle'))) {
+                $title = get_string('home');
+            } else {
+                $title = $hometitle;
+            }
+        } else { // All other pages.
+            $title = $this->pageheading($PAGE->title);
+        }
+        if (!empty(get_config('wetboew_internet', 'titlesitename'))) {
+            $title .= ' - ' . $SITE->fullname;
+        }
+        $title = format_string($title, false, ['context' => context_course::instance(SITEID), "escape" => false]);
+
+        return $title;
+    }
+
+    /**
+     *  @brief Better page headings.
      *
      *  @param [string] $title Default title if not found in list of links.
-     *  @return Returns an alternate page title depending on the page layout and type.
+     *  @return Returns an alternate page heading (h1) depending on the page layout and type.
      */
-    public function pagetitle($title) {
+    public function pageheading($title) {
         global $SITE, $DB, $COURSE;
 
         $_PAGE['hometitle'] = $title;
@@ -216,8 +241,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 }
                 break;
             case 'frontpage': // Home page.
-                $title = get_string('home');
-                    break;
+                if (empty($title = get_config('wetboew_internet', 'hometitle'))) {
+                    $title = get_string('home');
+                } else {
+                    $title = format_string($title, false);
+                }
+                break;
             case 'login':
                switch ($this->page->pagetype) {
                     case 'login-index': // Sign-in / Login.

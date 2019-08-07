@@ -122,11 +122,17 @@ $string['hometitle_desc'] = 'Specify a custom heading for the Front Page. Does n
 $string['showhometitle'] = 'Show title on Front page';
 $string['showhometitle_desc'] = 'Show the page title on the Front page. If unchecked, title will be hidden.';
 
+$string['titlesitename'] = 'Add site name to title';
+$string['titlesitename_desc'] = 'Add site name to title tag on each page.';
+
 $string['prebreadcrumbs'] = 'Pre-breadcrumbs';
 $string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. Useful if this is a sub-section of a website.<br>Example: &lt;li&gt;&lt;a href="https://example.com/"&gt;Example&lt;/a&gt;&lt;/li&gt;';
 
 $string['shownavdrawer'] = 'Show nav drawer to students';
 $string['shownavdrawer_desc'] = 'Show or hide the Moodle nav drawer button and drawer to students. Non-editing teachers roles and above will always see it.';
+
+$string['navdraweropen'] = 'Nav Drawer Default';
+$string['navdraweropen_desc'] = 'Nav Drawer should be open or close by default on each page when logged in. User preference overrides this.';
 
 $string['showproblem'] = 'Show Report a problem on this page button';
 $string['showproblem_desc'] = 'Show or hide the Report a problem on this page button.';
@@ -168,6 +174,7 @@ $string['hidelocallogin'] = 'Hide local login';
 $string['hidelocallogin_desc'] = 'Hide the local login on login page. NOTE: Only enable this if all users are using an external authentication service such as Oauth2 or SAML or you have an alternate method of logging in.';
 
 $string['styleguide'] = 'Style guide';
+
 $string['styleguidehtml'] = '
 <div class="alert alert-warning">
    <p>This page is still in development. Content is not rendered accurately.</p>
