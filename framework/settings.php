@@ -96,8 +96,8 @@ $_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
 // Nav drawer should be available if shownavdrawer is true or user is greater than student.
 //
 
-$_PAGE['navdraweropen'] = false;
-if(!$theme->shownavdrawer) { // Don't show nav drawer to students, unless...
+$_PAGE['navdraweropen'] = '';
+if(!empty($theme->shownavdrawer)) { // Don't show nav...
     if (isloggedin() && !isguestuser()) {
         // If logged-in and not a guest user.
         if (is_role_switched($PAGE->course->id)) {
@@ -123,10 +123,10 @@ if(!$theme->shownavdrawer) { // Don't show nav drawer to students, unless...
                 }
             }
         }
-        $_PAGE['navdraweropen']= (get_user_preferences('drawer-open-nav', $theme->navdraweropen) == 'true');
+        $_PAGE['navdraweropen'] = get_user_preferences('drawer-open-nav', $theme->navdraweropen) == 'true' ? 'true' : '';
     } else {
-        // Not logged-in.
-        $_PAGE['navdraweropen'] = $theme->shownavdrawer;
+        // Not logged-in or guest.
+        $_PAGE['shownavdrawer'] = !empty($theme->shownavdrawer);
     }
 }
 
@@ -135,7 +135,7 @@ if(!$theme->shownavdrawer) { // Don't show nav drawer to students, unless...
 //
 
 $extraclasses = [];
-if ($_PAGE['navdraweropen']) {
+if (!empty($_PAGE['navdraweropen'])) {
     $extraclasses[] = 'drawer-open-left';
 }
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);

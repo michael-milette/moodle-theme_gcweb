@@ -97,7 +97,7 @@ $name = $themename . '/navdraweropen';
 $title = get_string('navdraweropen', $themename);
 $description = get_string('navdraweropen_desc', $themename);
 $default = 'true';
-$choices = array('true' => get_string('resourcedisplayopen'), 'false' => get_string('closebuttontitle'));
+$choices = array('true' => get_string('resourcedisplayopen'), '' => get_string('closebuttontitle'));
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
