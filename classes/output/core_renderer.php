@@ -183,15 +183,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
         global $PAGE, $SITE;
         $title = '';
         if ($PAGE->pagetype == 'site-index') { // frontpage
-            if (empty($hometitle = get_config('wetboew_internet', 'hometitle'))) {
+            if (empty($hometitle = get_config('theme_wetboew_internet', 'hometitle'))) {
                 $title = get_string('home');
             } else {
                 $title = $hometitle;
             }
         } else { // All other pages.
-            $title = $this->pageheading($PAGE->title);
+            $title = $PAGE->title;
         }
-        if (!empty(get_config('wetboew_internet', 'titlesitename'))) {
+        if (!empty(get_config('theme_wetboew_internet', 'titlesitename'))) {
             $title .= ' - ' . $SITE->fullname;
         }
         $title = format_string($title, false, ['context' => context_course::instance(SITEID), "escape" => false]);

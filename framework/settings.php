@@ -178,7 +178,7 @@ $_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
-$_PAGE['pageheading'] = $OUTPUT->pagetitle();
+$_PAGE['pageheading'] = $OUTPUT->pageheading($PAGE->title);
 $_PAGE['pageheadinghidden'] = '';
 if ($PAGE->pagetype == 'site-index') { // frontpage
     if (empty($theme->showhometitle)) {
