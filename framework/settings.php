@@ -96,38 +96,40 @@ $_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
 // Nav drawer should be available if shownavdrawer is true or user is greater than student.
 //
 
+// Default is not to display the Nav Drawer.
 $_PAGE['navdraweropen'] = '';
-if(!empty($theme->shownavdrawer)) { // Don't show nav...
-    if (isloggedin() && !isguestuser()) {
-        // If logged-in and not a guest user.
-        if (is_role_switched($PAGE->course->id)) {
-            // User switched roles. Figure out archetype.
-            $context = context_course::instance($PAGE->course->id);
-            $archetype = $USER->access['rsw'][$context->path];
+// If logged-in and not a guest user.
+$_PAGE['shownavdrawer'] = isloggedin() && !isguestuser();
+
+// If set to not show nav drawer, go through the exceptions.
+if(empty($theme->shownavdrawer) && $_PAGE['shownavdrawer']) {
+    // If switched roles, figure out archetype.
+    if (is_role_switched($PAGE->course->id)) {
+        $context = context_course::instance($PAGE->course->id);
+        $archetype = $USER->access['rsw'][$context->path];
+        // Override - Enable nav drawer if archetype is higher than student.
+        $theme->shownavdrawer = ($archetype < 5); // 1 to 4.
+        $_PAGE['shownavdrawer'] = $theme->shownavdrawer;
+    } else if (!is_siteadmin()) { // Is not administrator but is more than a student.
+        global $DB;
+        $theme->shownavdrawer = false;
+        // Get all of the user's roles.
+        $roleassignments = $DB->get_records('role_assignments', ['userid' => $USER->id], '', 'id,roleid');
+        // Identify the archetype of each role.
+        $archetypes = ['manager', 'coursecreator', 'editingteacher', 'teacher'];
+        foreach($roleassignments as $role) {
             // Override - Enable nav drawer if archetype is higher than student.
-            $theme->shownavdrawer = ($archetype < 5); // 1 to 4.
-        } else if (is_siteadmin()) { // Is an administrator.
-            $theme->shownavdrawer = true;
-        } else if (is_siteadmin()) { // Is not administrator but more than a student.
-            global $DB;
-            // Get all of the student's roles.
-            $roleassignments = $DB->get_records('role_assignments', ['userid' => $USER->id], '', 'id,roleid');
-            // Identify the archetype of each role.
-            $archetypes = ['manager', 'coursecreator', 'editingteacher', 'teacher'];
-            foreach($roleassignments as $roleid) {
-                // Override - Enable nav drawer if archetype is higher than student.
-                $archetype = $DB->get_record('roles', ['roleid' => $roleid], 'archetype');
-                $theme->shownavdrawer = in_array($archetype, $archetypes);
-                if($theme->shownavdrawer) {
-                    break;
-                }
+            $archetype = $DB->get_record('role', ['id' => $role->roleid], 'archetype');
+            $theme->shownavdrawer = in_array($archetype, $archetypes);
+            if($theme->shownavdrawer) {
+                break;
             }
         }
-        $_PAGE['navdraweropen'] = get_user_preferences('drawer-open-nav', $theme->navdraweropen) == 'true' ? 'true' : '';
-    } else {
-        // Not logged-in or guest.
-        $_PAGE['shownavdrawer'] = !empty($theme->shownavdrawer);
+        $_PAGE['shownavdrawer'] = $theme->shownavdrawer;
     }
+}
+if ($theme->shownavdrawer) {
+    $_PAGE['navdraweropen'] = get_user_preferences('drawer-open-nav', $theme->navdraweropen) == 'true' ? 'true' : '';
 }
 
 //
