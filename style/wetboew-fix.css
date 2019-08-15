@@ -476,3 +476,8 @@ table caption {
     margin-left: 3rem!important;
     display: inline-block;
 }
+
+/* Fix embedded popup (e.g. Moodle Adminer) */
+.embed-responsive {
+    height: auto;
+}
