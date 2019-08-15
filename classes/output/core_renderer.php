@@ -41,8 +41,6 @@ use theme_config;
 
 defined('MOODLE_INTERNAL') || die;
 
-//require_once ($CFG->dirroot . "/course/renderer.php");
-
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
