@@ -1,23 +1,8 @@
-# WET-BOEW-Moodle
+# WET-BOEW-Moodle (GCWeb theme)
 
-Web Experience Toolkit (WET), Moodle variant.
+Web Experience Toolkit (WET), Moodle variant, GCWeb theme.
 
 ![Screenshot of 5 WET-BOEW-MOODLE 4.0 sub-themes](https://github.com/wet-boew/wet-boew-moodle/blob/master/pix/screenshot.png?raw=true)
-
-**Status:**
-* Initial development and specification design.
-* General look and feel now working (see new screenshot).
-* **New Demo site: [wet-boew-moodle.tngconsulting.ca](http://wet-boew-moodle.tngconsulting.ca/)**
-
-TODO list still includes:
-* Resolving some conflicts with Boost base theme.
-* Improve accessibility.
-* Add theme settings.
-* Adding new UI/UX features.
-* Cleanup code.
-* Create splash page and 404 server page.
-* Quality Assurance and WCAG 2.0 level AA testing.
-* Write documentation.
 
 ## What is the Web Experience Toolkit (WET-BOEW)?
 
@@ -29,15 +14,35 @@ If you are familiar with Content Management Systems (CMS) like WordPress™, Dru
 
 One of the most popular Learning Management Systems (LMS) in the world, Moodle is a Free Open Source Software (FOSS) web-based application designed for those who would rather spend their time, money and efforts on developing effective e-learning courses instead of perpetual expensive yearly software licences costing tens or even hundreds of thousands of dollars. High priorities of the Moodle project team include things like accessibility, support for multiple languages and security.
 
-## The WET-BOEW-MOODLE project
+## What is the WET-BOEW-MOODLE project?
 
-The purpose of WET-BOEW-Moodle project on GitHub is to create a world-class accessible theme for Moodle based on version 4.0 of the award winning WET-BOEW framework. It will be a relatively easy to maintain open source WCAG 2.0 Level AA accessible theme for Moodle based on the WET-BOEW 4.0 framework. Most of the configurable settings will be accessible to Moodle administrators through web based configuration pages.
+The purpose of WET-BOEW-Moodle project on GitHub is to create an open source Moodle themes based on version 4.0.30 of the award winning WET-BOEW framework. The initial launch will feature the Government of Canada's GCWeb and GCIntranet themes. Other themes may eventually be added depending on interest and financing. Working towards WCAG 2.0 Level AA compliance is a high priority for this project. The theme will also feature configurable settings for Moodle administrators.
 
-This will hopefully enable organizations to focus their limited educational/training budgets on delivering effective sustainable educational/e-learning content instead of expensive and never ending software licenses.
+By using this theme, organizations to focus their limited educational/training budgets on delivering effective sustainable educational/e-learning content instead of expensive and never ending software licenses.
+
+## What's new?
+
+**Status:**
+* We have completed initial development and specification design.
+* We have made a lot of progress on the GCWeb theme.
+* We are starting development of the GCIntranet theme.
+* We removed the deprecated pre-2019 WET-BOEW themes including Canada.ca, GC Web Usability, GC Intranet, WET-BOEW, OGPL.
+
+TODO list:
+
+* Resolve some conflicts with Boost base theme.
+* Quality Assurance and WCAG 2.0 level AA testing (and fixing).
+* Code cleanup.
+* Update Working Examples demo site: [wet-boew-moodle.tngconsulting.ca](http://wet-boew-moodle.tngconsulting.ca/)
+* Update screenshot
+* Update documentation.
+* Add new UI/UX features.
+* Create splash page and 404 server page.
+* Finish the WET-BOEW-Moodle Style Guide (considering moving this to the WET-BOEW-Moodle Widgets course)
 
 ## Interested in this project?
 
-Let us know by [dropping us a note](https://github.com/wet-boew/wet-boew-moodle/issues/1). It's the best time to get involved when we are at the design stage.
+Let us know by [dropping us a note](https://github.com/wet-boew/wet-boew-moodle/issues/1). It's the best time to get involved when we are at the initial development stage.
 
 We would especially love to hear from:
 * People who are planning on or currently using Moodle within the Government of Canada or the private sector;
@@ -55,24 +60,24 @@ If you are part of Government, education or other large corporations, you can sa
 
 ## System Requirements
 
-WET-BOEW-Moodle will initially be released for Moodle 3.1.x LTS (Long Term Support) but be supported on Apache based web servers only. Details of [Web server, database and web browser requirements](https://docs.moodle.org/dev/Moodle_3.1_release_notes#Server_requirements) can be found on Moodle.org. Support for other versions of Moodle may be added at a later date depending on the level of interest.
+WET-BOEW-Moodle will initially be released for Moodle 3.7 (or 3.8) in fall of 2019. Details of [Web server, database and web browser requirements](https://docs.moodle.org/dev/Moodle_3.7_release_notes#Server_requirements) can be found on Moodle.org. Support for other versions of Moodle may be added at a later date depending on the level of interest.
 
 Note: The WET-BOEW-Moodle theme will also include web based mobile support on iOS and Android devices.
 
-These specifications and requirements may change as the initial development gets under way.
+These specifications and requirements may change as development progresses.
 
 ## Documentation
 
-Documentation will be available in [the project's Wiki](https://github.com/wet-boew/wet-boew-moodle/wiki). This will include:
+Any provided documentation will eventually be available in [the project's Wiki](https://github.com/wet-boew/wet-boew-moodle/wiki). This will include:
 * Changelog
 * Installation
-* Configuration
-* Updating WET-BOEW-MOODLE
+* Theme configuration
+* Updating WET-BOEW-Moodle
 * Uninstallation
 
 ## Have Ideas? Need support? Reporting a bug?
 
-To propose ideas, report a bug or request support, please [create individual](https://github.com/wet-boew/wet-boew-moodle/issues). Keep in mind that support for this project is provided on a voluntary basis and is therefore limited by availability and willingness of volunteers to contribute their time and effort.
+To propose ideas, report a bug or request support, please [create individual](https://github.com/wet-boew/wet-boew-moodle/issues). Keep in mind that support for this project is provided on a voluntary basis and is therefore limited by availability and willingness of volunteers to contribute their time and effort. We are open to, encourage and appreciate pull requests and support in responding to people's questions.
 
 ## Acknowledgements
 
@@ -85,15 +90,19 @@ It is also made possible thanks to the efforts of hundreds of contributors to re
 * [WET-BOEW framework project](https://github.com/wet-boew/wet-boew/)
 * [Moodle](https://www.moodle.org/)
 
-If you would like to contribute financially to this project in order to accelerate its development, please contact @michaelmilette.
+If you would like to contribute your time, effort or contribute financially to this project in order to accelerate its development, please contact @michaelmilette.
 
 The space on Github.com for the WET-BOEW-MOODLE project is contributed by the Government of Canada.
 
+The working examples demo site for the WET-BOEW-Moodle project is sponsored and maintained by TNG Consulting Inc.
+
 ## Limitations
 
-The theme has limited support for WET-BOEW widgets at this stage of the project but we are working on it.
+* The theme has limited support for WET-BOEW widgets. To see the current state of WET-BOEW widget compatibility, download and install the [WET-BOEW-Moodle widgets](https://github.com/michael-milette/wet-boew-moodle-widgets) course in your instance of Moodle configured with a WET-BOEW-Moodle theme.
+* Accessibility is a high priority for the WET-BOEW-Moodle project. However it is not perfect yet.
+* This project does not attempt to correct accessibility issues which may exist in Moodle core code. In order to create a site that is WCAG 2.0 compliant, you will also need to address accessibility issues in Moodle itself.
 
-We will be looking for volunteers to test RTL text support. Until then, this feature will not be tested.
+We are looking for volunteers or financial support to do functional testing, language testing, accessibility testing and RTL testing.
 
 ## License
 

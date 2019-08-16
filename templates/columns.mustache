@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_wetboew_internet/columns
+    @template theme_gcweb/columns
 
     Admin time setting template.
 
@@ -46,7 +46,7 @@
         "haspostblocks":true
     }
 }}
-{{> theme_wetboew_internet/head }}
+{{> theme_gcweb/head }}
 <body vocab="http://schema.org/" typeof="WebPage" {{{ bodyattributes }}}>
     {{{ output.standard_top_of_body_html }}}
     {{{ output.full_header }}}
@@ -56,7 +56,7 @@
 
             <div id="page" class="container-fluid">
                 {{! Extra buttons and gear menu }}
-                {{>theme_wetboew_internet/navbar}}
+                {{>theme_gcweb/navbar}}
                 {{#settingsmenu}}
                 <div class="context-header-settings-menu">
                     {{{settingsmenu}}}
@@ -99,10 +99,10 @@
                 <div class="row">
                     {{#showproblembutton}}
                     {{#problembuttonurl}}
-                    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-4"><a href="{{{ problembuttonurl }}}" class="btn btn-default btn-center">{{# str }} reportaproblem, theme_wetboew_internet {{/ str }}</a></div>
+                    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-4"><a href="{{{ problembuttonurl }}}" class="btn btn-default btn-center">{{# str }} reportaproblem, theme_gcweb {{/ str }}</a></div>
                     {{/problembuttonurl}}
                     {{^problembuttonurl}}
-                    {{> theme_wetboew_internet/problembutton }}
+                    {{> theme_gcweb/problembutton }}
                     {{/problembuttonurl}}
                     {{/showproblembutton}}
                     {{#showsharebutton}}
@@ -110,12 +110,12 @@
                     {{/showsharebutton}}
                 </div>
                 <dl id="wb-dtmd">
-                    <dt>{{# str }} datemodified, theme_wetboew_internet {{/ str }}&#32;</dt>
+                    <dt>{{# str }} datemodified, theme_gcweb {{/ str }}&#32;</dt>
                     <dd><time property="dateModified">{{{ lastmodified }}}</time></dd>
                 </dl>
             </div>
         </main>
-        {{> theme_wetboew_internet/footer }}
+        {{> theme_gcweb/footer }}
     </div>
 </body>
 </html>

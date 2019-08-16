@@ -6,13 +6,13 @@ defined('MOODLE_INTERNAL') || die();
 $string['choosereadme'] = '
 <div class="clearfix">
 <div class="well">
- <h2>Thème Internet <abbr title="boîte à outils de l’expérience Web pour Moodle">WET-BOEW-MOODLE</abbr></h2>
- <p><img class="img-polaroid" src="wetboew_internet/pix/screenshot.png" /></p>
+ <h2>Thème GCWeb <abbr title="boîte à outils de l’expérience Web pour Moodle">WET-BOEW-MOODLE</abbr></h2>
+ <p><img class="img-polaroid" src="gcweb/pix/screenshot.png" /></p>
 </div>
 <div class="well">
  <h2>Credits</h2>
  <h3>À propos</h3>
-<p>WET-BOEW-MOODLE-Internet est un th&egrave;me réactif de Moodle basé sur les derni&egrave;res normes Web pour le gouvernement du Canada et le th&egrave;me Boost de Moodle.</p>
+<p>WET-BOEW-MOODLE est un th&egrave;me réactif de Moodle basé sur les derni&egrave;res normes Web pour le gouvernement du Canada et le th&egrave;me Boost de Moodle.</p>
 <p>Ce th&egrave;me est distribué sous licence GPL (GNU General Public License). Vous pouvez trouver une copie compl&egrave;te de la licence sur: http://www.gnu.org/licenses/</p>
 <p>Auteurs&nbsp;: Michael Milette<br />
 Contact&nbsp;: info@tngconsulting.ca<br>
@@ -29,8 +29,8 @@ Site Web&nbsp;: www.tngconsulting.ca</p>
 <p>Si pour une raison quelconque une copie de la licence publique générale GNU n\'était pas incluse dans ce projet, vous pouvez la visualiser en ligne &agrave; l\'adresse suivante: https://www.gnu.org/licenses/gpl-3.0.fr.html</p></div>
 </div>';
 // The name of our plugin.
-$string['pluginname'] = 'WET-BOEW-Moodle: Internet';
-$string['privacy:metadata'] = 'Le thème WET-BOEW-Moodle: Internet ne saufegarde aucun données personel des utilisateurs.';
+$string['pluginname'] = 'WET-BOEW-Moodle: GCWeb';
+$string['privacy:metadata'] = 'Le thème WET-BOEW-Moodle: GCWeb ne saufegarde aucun données personel des utilisateurs.';
 
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Gauche';

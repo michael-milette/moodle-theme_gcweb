@@ -6,13 +6,13 @@ defined('MOODLE_INTERNAL') || die();
 $string['choosereadme'] = '
 <div class="clearfix">
 <div class="well">
- <h2><abbr title="Web Experience Toolkit for Moodle">WET-BOEW-MOODLE-Internet</abbr> theme</h2>
- <p><img class="img-polaroid" src="wetboew_internet/pix/screenshot.png" /></p>
+ <h2><abbr title="Web Experience Toolkit for Moodle">WET-BOEW-MOODLE</abbr> GCWeb theme</h2>
+ <p><img class="img-polaroid" src="gcweb/pix/screenshot.png" /></p>
 </div>
 <div class="well">
  <h2>Credits</h2>
  <h3>About</h3>
- <p>WET-BOEW-MOODLE-Internet is a responsive Moodle theme based on the latest GCWeb <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
+ <p>WET-BOEW-MOODLE GCWeb is a responsive Moodle theme based on the latest GCWeb <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
  <p>This theme is licensed under the GPL (GNU General Public License). You can find a complete licence copy in: <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a></p>
  <p>Authors: Michael Milette<br>
  Contact: <a href="mailto:info@tngconsulting.ca">info@tngconsulting.ca</a><br>
@@ -31,9 +31,9 @@ $string['choosereadme'] = '
 </div>';
 
 // The name of our plugin.
-$string['pluginname'] = 'WET-BOEW-Moodle Internet';
-$string['privacy:metadata'] = 'The WET-BOEW-Moodle Internet theme does not store any personal data about any user.';
-$string['configtitle'] = 'WET-BOEW-Internet';
+$string['pluginname'] = 'WET-BOEW-Moodle GCWeb';
+$string['privacy:metadata'] = 'The WET-BOEW-Moodle GCWeb theme does not store any personal data about any user.';
+$string['configtitle'] = 'WET-BOEW-GCWeb';
 
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Left';

@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for theme_wetboew_internet.
+ * Privacy Subsystem implementation for theme_gcweb.
  *
- * @package   theme_wetboew_internet
+ * @package   theme_gcweb
  * @copyright 2019 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_wetboew_internet\privacy;
+namespace theme_gcweb\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 

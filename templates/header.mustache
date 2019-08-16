@@ -1,14 +1,14 @@
 <div id="def-top">
     <ul id="wb-tphp">
-        <li class="wb-slc"><a class="wb-sl" href="#maincontent">{{# str }} skiptomain, theme_wetboew_internet {{/ str }}</a></li>
-        <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_wetboew_internet {{/ str }}</a></li>
+        <li class="wb-slc"><a class="wb-sl" href="#maincontent">{{# str }} skiptomain, theme_gcweb {{/ str }}</a></li>
+        <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{{# str }} skiptoabout, theme_gcweb {{/ str }}</a></li>
         {{{ skiptosectnav }}}
     </ul>
     <header id="page-header" class="clearfix gc-app">
         <div id="wb-bnr" class="container">
             {{#langmenu}}
             <section id="wb-lng" class="text-right">
-                <h2 class="wb-inv">{{# str }} languageselection, theme_wetboew_internet {{/ str }}</h2>
+                <h2 class="wb-inv">{{# str }} languageselection, theme_gcweb {{/ str }}</h2>
                 <ul class="list-inline margin-bottom-none">
                     {{{ langmenu }}}
                 </ul>
@@ -17,19 +17,19 @@
             <div class="row">
                 <div class="brand col-xs-5 col-md-4">
                     <img src="{{{ wetboew }}}/assets/sig-blk-{{{ lang }}}.svg" alt="">
-                    <span class="wb-inv">{{# str }} governmentofcanada, theme_wetboew_internet {{/ str }}</span>
+                    <span class="wb-inv">{{# str }} governmentofcanada, theme_gcweb {{/ str }}</span>
                 </div>
                 {{#showsearch}}
                     <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
-                        <h2>{{# str }} search, theme_wetboew_internet {{/ str }}</h2>
+                        <h2>{{# str }} search, theme_gcweb {{/ str }}</h2>
                         <form action="{{{ searchurl }}}" method="get" name="cse-search-box" role="search" class="form-inline">
                             <div class="form-group">
-                                <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label>
-                                <input id="wb-srch-q" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_wetboew_internet {{/ str }}">
+                                <label for="wb-srch-q" class="wb-inv">{{# str }} searchwebsite, theme_gcweb {{/ str }}</label>
+                                <input id="wb-srch-q" class="wb-srch-q form-control" name="search" type="search" value="" size="34" maxlength="170" placeholder="{{# str }} searchplaceholder, theme_gcweb {{/ str }}">
                                 {{{ searchsettings }}}
                             </div>
                             <div class="form-group submit">
-                                <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></button>
+                                <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_gcweb {{/ str }}</span></button>
                             </div>
                         </form>
                     </section>
@@ -44,7 +44,7 @@
                        <a class="app-name" href="{{{ wwwroot }}}">{{{ sitename }}}</a>
                     </section>
                     <nav class="col-sm-5 hidden-xs hidden-print">
-                        <h2 class="wb-inv">{{# str }} accountmenu, theme_wetboew_internet {{/ str }}</h2>
+                        <h2 class="wb-inv">{{# str }} accountmenu, theme_gcweb {{/ str }}</h2>
                         <ul class="YAK nav navbar-nav ml-auto list-unstyled">
                             <!-- navbar_plugin_output -->
                             <li class="nav-item">{{{ output.navbar_plugin_output }}}</li>
@@ -55,18 +55,18 @@
                         {{/showaccountsettings}}
                         {{^loggedin}}
                             {{#showregister}}
-                                <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_wetboew_internet {{/ str }}</a></li>
+                                <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_gcweb {{/ str }}</a></li>
                             {{/showregister}}
                             {{#signonurl}}
-                            <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_wetboew_internet {{/ str }}</a></li>
+                            <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_gcweb {{/ str }}</a></li>
                             {{/signonurl}}
                         {{/loggedin}}
                         {{#loggedin}}
                             {{#showaccountsettings}}
-                                <li><a class="btn" href="{{{ accountsettingsurl }}}?id={{userid}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
+                                <li><a class="btn" href="{{{ accountsettingsurl }}}?id={{userid}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_gcweb {{/ str }}</a></li>
                             {{/showaccountsettings}}
                             {{#signouturl}}
-                            <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
+                            <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_gcweb {{/ str }}</a></li>
                             {{/signouturl}}
                         {{/loggedin}}
                         </ul>
@@ -76,13 +76,13 @@
         </div>
         <div class="app-bar-mb container visible-xs-block hidden-print">
             <nav>
-                <h2 class="wb-inv">{{# str }} searchandmenus, theme_wetboew_internet {{/ str }}</h2>
+                <h2 class="wb-inv">{{# str }} searchandmenus, theme_gcweb {{/ str }}</h2>
                 <ul class="app-list-main list-unstyled">
                     <li class="wb-mb-links" id="wb-glb-mn">
                         <a href="#mb-pnl" aria-controls="mb-pnl" class="btn overlay-lnk" role="button">Menu</a>
                         <h2>Menu</h2>
                     </li>
-                    <li><a href="#app-srch-mb" title="Search" aria-controls="app-srch-mb" class="btn overlay-lnk" role="button"><span class="glyphicon-search glyphicon" aria-hidden="true"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></a></li>
+                    <li><a href="#app-srch-mb" title="Search" aria-controls="app-srch-mb" class="btn overlay-lnk" role="button"><span class="glyphicon-search glyphicon" aria-hidden="true"></span><span class="wb-inv">{{# str }} search, theme_gcweb {{/ str }}</span></a></li>
                     {{#showaccountsettings}}
                     <li class="nav-item align-items-center">{{{ output.user_menu }}}</li>
                     {{/showaccountsettings}}
@@ -91,12 +91,12 @@
                 {{#showsearch}}
                 <section id="app-srch-mb" class="wb-overlay modal-content overlay-def wb-bar-t wb-init wb-overlay-inited" aria-hidden="true">
                     <div class="modal-header">
-                        <h3 class="modal-title">{{# str }} search, theme_wetboew_internet {{/ str }}</h3>
+                        <h3 class="modal-title">{{# str }} search, theme_gcweb {{/ str }}</h3>
                     </div>
                     <div class="modal-body">
                         <form action="{{{ searchurl }}}" method="get" name="cse-search-box" role="search" class="form-inline">
                             <div class="input-group">
-                                <label for="app-srch-q-mb" class="wb-inv">{{# str }} searchwebsite, theme_wetboew_internet {{/ str }}</label><input id="app-srch-q-mb" list="app-srch-q-ac-mb" class="app-srch-q-mb form-control" name="q" type="search" value="" size="27" maxlength="150">
+                                <label for="app-srch-q-mb" class="wb-inv">{{# str }} searchwebsite, theme_gcweb {{/ str }}</label><input id="app-srch-q-mb" list="app-srch-q-ac-mb" class="app-srch-q-mb form-control" name="q" type="search" value="" size="27" maxlength="150">
                                 <datalist id="app-srch-q-ac-mb">
                                     <!--[if lte IE 9]>
                                     <select>
@@ -104,31 +104,31 @@
                                     </select>
                                     <![endif]-->
                                 </datalist>
-                                <span class="input-group-btn"><button type="submit" id="app-srch-sub-mb" class="btn btn-primary btn-small" name="app-srch-sub-mb"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_wetboew_internet {{/ str }}</span></button></span>
+                                <span class="input-group-btn"><button type="submit" id="app-srch-sub-mb" class="btn btn-primary btn-small" name="app-srch-sub-mb"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">{{# str }} search, theme_gcweb {{/ str }}</span></button></span>
                             </div>
                         </form>
                     </div>
-                    <button type="button" class="mfp-close overlay-close" title="Close: Search (escape key)">×<span class="wb-inv"> {{# str }} close, theme_wetboew_internet {{/ str }}: {{# str }} search, theme_wetboew_internet {{/ str }} ({{# str }} esckey, theme_wetboew_internet {{/ str }})</span></button>
+                    <button type="button" class="mfp-close overlay-close" title="Close: Search (escape key)">×<span class="wb-inv"> {{# str }} close, theme_gcweb {{/ str }}: {{# str }} search, theme_gcweb {{/ str }} ({{# str }} esckey, theme_gcweb {{/ str }})</span></button>
                 </section>
                 {{/showsearch}}
             </nav>
             <nav>
-                <h2 class="wb-inv">{{# str }} accountmenu, theme_wetboew_internet {{/ str }}</h2>
+                <h2 class="wb-inv">{{# str }} accountmenu, theme_gcweb {{/ str }}</h2>
                 <ul class="app-list-account list-unstyled">
                     {{^loggedin}}
                         {{#showregister}}
-                            <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_wetboew_internet {{/ str }}</a></li>
+                            <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_gcweb {{/ str }}</a></li>
                         {{/showregister}}
                         {{#signonurl}}
-                            <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_wetboew_internet {{/ str }}</a></li>
+                            <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_gcweb {{/ str }}</a></li>
                         {{/signonurl}}
                     {{/loggedin}}
                     {{#loggedin}}
                         {{#showaccountsettings}}
-                            <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_wetboew_internet {{/ str }}</a></li>
+                            <li><a class="btn" href="{{{ accountsettingsurl }}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_gcweb {{/ str }}</a></li>
                         {{/showaccountsettings}}
                         {{#signouturl}}
-                            <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_wetboew_internet {{/ str }}</a></li>
+                            <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_gcweb {{/ str }}</a></li>
                         {{/signouturl}}
                     {{/loggedin}}
                 </ul>
@@ -137,7 +137,7 @@
         {{#hasnavbar}}
         <nav id="wb-sm" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
             <div class="pnl-strt container nvbar">
-                <h2>{{# str }} mainmenu, theme_wetboew_internet {{/ str }}</h2>
+                <h2>{{# str }} mainmenu, theme_gcweb {{/ str }}</h2>
                 <div class="row">
                     <ul class="list-inline menu" role="menubar">
                         {{! Custom Menu - Main menu - Mega Menu }}
@@ -149,7 +149,7 @@
         {{/hasnavbar}}
         {{#breadcrumbs}}
         <nav id="wb-bc" property="breadcrumb">
-            <h2>{{# str }} youarehere, theme_wetboew_internet {{/ str }}</h2>
+            <h2>{{# str }} youarehere, theme_gcweb {{/ str }}</h2>
             <div class="container">
                 <div class="row">
                     {{{ breadcrumbs }}}

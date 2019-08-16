@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * WETBOEW Internet theme config.
+ * WET-BOEW GCWeb theme config.
  *
- * @package   theme_wetboew_internet
+ * @package   theme_gcweb
  * @copyright 2019 TNG Consulting Inc.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
 
 // The first setting we need is the name of the theme. This should be the last part of the component name, and the same
 // as the directory name for our theme.
-$THEME->name = 'wetboew_internet';
+$THEME->name = 'gcweb';
 
 // This setting list the style sheets we want to include in our theme. Because we want to use SCSS instead of CSS - we won't
 // list any style sheets. If we did we would list the name of a file in the /style/ folder for our theme without any css file
@@ -59,7 +59,7 @@ $THEME->yuicssmodules = [];
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 // Call css/scss processing functions and renderers.
-//$THEME->prescsscallback = 'theme_wetboew_internet_get_pre_scss';
+//$THEME->prescsscallback = 'theme_gcweb_get_pre_scss';
 
 // This is a list of blocks that are required to exist on all pages for this theme to function correctly. For example
 // bootstrap base requires the settings and navigation blocks because otherwise there would be no way to navigate to all the
@@ -74,10 +74,10 @@ $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
 
 // This is the function that returns the SCSS source for the main file in our theme.
 $THEME->scssx = function($theme) {
-    return theme_wetboew_internet_get_main_scss_content($theme);
+    return theme_gcweb_get_main_scss_content($theme);
 };
-//$THEME->csstreepostprocessor = 'theme_wetboew_internet_css_tree_post_processor'; // Causes issues. Requires Clear Cache to take effect.
-$THEME->extrascsscallback = 'theme_wetboew_internet_get_extra_scss';
+//$THEME->csstreepostprocessor = 'theme_gcweb_css_tree_post_processor'; // Causes issues. Requires Clear Cache to take effect.
+$THEME->extrascsscallback = 'theme_gcweb_get_extra_scss';
 
 // Since we are using 2 parent themes the correct location of the layout files needs to be defined. For this theme we need the multiple
 // column layouts.

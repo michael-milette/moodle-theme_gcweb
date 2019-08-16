@@ -17,7 +17,7 @@
 /**
  * Settings for Custom CSS.
  *
- * @package    theme_wet-boew
+ * @package    theme_gcweb
  * @copyright  2016 TNG Consulting Inc. <http://www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,7 +30,7 @@ $page = new admin_settingpage($themename . '_styleguide', get_string('styleguide
 // Style Guide.
 $name = $themename . '/styleguide';
 $title = '';
-$description = get_string('styleguidehtml', 'theme_wetboew_internet');
+$description = get_string('styleguidehtml', 'theme_gcweb');
 $setting = new admin_setting_heading($name, $title, $description);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
