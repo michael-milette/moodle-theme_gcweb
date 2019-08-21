@@ -100,9 +100,20 @@ function theme_gcweb_get_extra_scss($theme) {
     if(empty($theme->settings->showprofileaddress)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(12),'; // Address.
     }
-    // Hide some profile fields.
+
+    // Hide links to Moodle page activities on the front page.
+    if(!empty($theme->settings->hidefrontpagelinkstopages)) {
+        $customcss .= '#page-site-index:not(.editing) #page-content .modtype_page,';
+    }
+
+    // If there is something to hide, hide it.
     if (!empty($customcss)) {
-        $customcss .= ' {display: none;}';
+        $customcss .= ' displaynone {display: none;}';
+    }
+
+    // If course list view layout is set to cards. (ALPHA)
+    if($theme->settings->courselistlayout == 'card') {
+        $customcss .= '.coursebox {width: 30%;border: 1px solid lightgrey;display: inline-block;margin: 1%;vertical-align: top;height: 600px;overflow-y: hidden;}.frontpage-course-list-all .content,.content .content {display: -webkit-flex; /* Safari */-webkit-flex-direction: row; /* Safari 6.1+ */ display: flex;flex-direction: column-reverse;}.pagelayout-frontpage .content .content {flex-direction: column;}.coursebox .content .summary,.coursebox .content .courseimage {width: 100%;}';
     }
 
     // Hide local login form on login page.

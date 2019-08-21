@@ -134,6 +134,12 @@ $string['shownavdrawer_desc'] = 'Show or hide the Moodle nav drawer button and d
 $string['navdraweropen'] = 'Nav Drawer Default';
 $string['navdraweropen_desc'] = 'Nav Drawer should be open or close by default on each page when logged in. User preference overrides this.';
 
+$string['hidefrontpagelinkstopages'] = 'Hide links to pages on Front Page';
+$string['hidefrontpagelinkstopages_desc'] = 'If enabled, links to pages on the Front Page will be hidden.';
+
+$string['courselistlayout'] = 'Course list layout';
+$string['courselistlayout_desc'] = 'Affects lists of all courses on Front Page and All Courses page.';
+
 $string['showproblem'] = 'Show Report a problem on this page button';
 $string['showproblem_desc'] = 'Show or hide the Report a problem on this page button.';
 

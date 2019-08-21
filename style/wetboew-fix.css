@@ -241,9 +241,9 @@ div.dropdown a {
   display: block;
 }
 
-/* Hide links to Moodle page activities on the front page */
-#page-site-index:not(.editing) #page-content .modtype_page {
-    display: none;
+/* Adjust position of move activity icon when editing a course. */
+body.editing li.activity>div, body.editing .path-course-view li-.activity>div {
+    padding: 0 16px;
 }
 
 /* All unordered lists */
@@ -472,7 +472,7 @@ table caption {
 }
 
 /* Make Switch_Role_to horizontal instead of vertical. */
-#page-course-switchrole .m-x-3 {
+#page-course-switchrole .m-x-3, #page-course-switchrole .mx-3 {
     margin-left: 3rem!important;
     display: inline-block;
 }

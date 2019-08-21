@@ -36,6 +36,8 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('titlesitename', 0, $themename); // No.
     set_config('shownavdrawer', 1, $themename); // Yes.
     set_config('navdraweropen', 'true', $themename); // Open.
+    set_config('hidefrontpagelinkstopages', 0, $themename); // No.
+    set_config('courselistlayout', 'list', $themename); // List.
 }
 
 // Hide local login form on login page.
@@ -56,7 +58,7 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Show Home Page Title (h1).
+// Show Front Page/Home Page Title (h1).
 $name = $themename . '/showhometitle';
 $title = get_string('showhometitle', $themename);
 $description = get_string('showhometitle_desc', $themename);
@@ -65,7 +67,7 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Home Page Title/heading (h1).
+// Front Page/Home Page Title/heading (h1).
 $name = $themename . '/hometitle';
 $title = get_string('hometitle', $themename);
 $description = get_string('hometitle_desc', $themename);
@@ -74,7 +76,16 @@ $setting = new admin_setting_configtext($name, $title, $description, $default, P
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Add site name to Page Titles (h1).
+// Hide Front Page/Home Page links to pages.
+$name = $themename . '/hidefrontpagelinkstopages';
+$title = get_string('hidefrontpagelinkstopages', $themename);
+$description = get_string('hidefrontpagelinkstopages_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Add site name to Page Titles (title).
 $name = $themename . '/titlesitename';
 $title = get_string('titlesitename', $themename);
 $description = get_string('titlesitename_desc', $themename);
@@ -98,6 +109,16 @@ $title = get_string('navdraweropen', $themename);
 $description = get_string('navdraweropen_desc', $themename);
 $default = 'true';
 $choices = array('true' => get_string('resourcedisplayopen'), '' => get_string('closebuttontitle'));
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Course list layout.
+$name = $themename . '/courselistlayout';
+$title = get_string('courselistlayout', $themename);
+$description = get_string('courselistlayout_desc', $themename);
+$default = 'list';
+$choices = array('list' => get_string('list', 'block_myoverview'), 'card' => get_string('card', 'block_myoverview'));
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
