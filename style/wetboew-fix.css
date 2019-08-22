@@ -645,7 +645,7 @@ input[type=checkbox], input[type=radio] {
     position: static;
 }
 
-/* For for WET lists: WET media objects */
+/* For for WET media objects that should be pulled to the right. */
 .media {
   display: list-item;
 }
