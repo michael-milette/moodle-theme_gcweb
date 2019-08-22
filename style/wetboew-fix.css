@@ -1,6 +1,11 @@
+@charset "utf-8";
+
 body {
-  font-size: 16px;
   font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.4375;
+  color: #333333;
+  background-color: #fff;
 }
 
 /* Fix height of page for IE. */
@@ -56,9 +61,6 @@ body {
 /* Links in general. */
 a {
     color: #284142;
-}
-a:visited {
-    xcolor: #7834bc;
 }
 a:focus, a:hover {
     color: #0535d2;
