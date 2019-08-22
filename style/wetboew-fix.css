@@ -631,3 +631,11 @@ a[rel~="external"]:after {
 input[type=checkbox], input[type=radio] {
     margin: 3px 0 0 -12.5;
 }
+
+/* Fix subtitles and captions section of Insert Media dialogue. */
+.nav {
+    display: block;
+}
+.form-check-input {
+    position: static;
+}
