@@ -645,7 +645,33 @@ input[type=checkbox], input[type=radio] {
     position: static;
 }
 
-/* For lists: WET media objects */
+/* For for WET lists: WET media objects */
 .media {
   display: list-item;
+}
+
+/* Fix for WET labels. */
+.label-default {
+    color: black;
+    background-color: #EEEEEE;
+}
+.label-primary {
+    color: black;
+    background-color: #E8F2F4;
+}
+.label-success {
+    color: black;
+    background-color: #D8EECA;
+}
+.label-info {
+    color: black;
+    background-color: #D7FAFF;
+}
+.label-warning {
+    color: black;
+    background-color: #F9F4D4;
+}
+.label-danger {
+    color: black;
+    background-color: #F3E9E8;
 }
