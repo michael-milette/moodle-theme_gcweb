@@ -625,4 +625,9 @@ a[rel~="external"]:after {
 /* Align menu and breadcrumbs. */
 .wb-menu .menu, ol.breadcrumb {
     margin-left: 15px;
-} 
+}
+
+/* Fix alignment of checkboxes and radio buttons. */
+input[type=checkbox], input[type=radio] {
+    margin: 3px 0 0 -12.5;
+}
