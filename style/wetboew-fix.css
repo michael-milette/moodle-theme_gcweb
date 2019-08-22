@@ -621,3 +621,8 @@ a[rel~="external"]:after {
     display: inline-block;
     font-size: 1.6rem
 }
+
+/* Align menu and breadcrumbs. */
+.wb-menu .menu, ol.breadcrumb {
+    margin-left: 15px;
+} 
