@@ -606,3 +606,18 @@ table caption {
 .embed-responsive {
     height: auto;
 }
+
+/* Fix Report a Problem button alignment. */
+.pagedetails summary.btn {
+    margin-left: -15px;
+}
+
+/* Add extenal icon for links with rel=external. */
+a[rel~="external"]:after {
+    font-family: FontAwesome;
+    content: "\f08e";
+    text-decoration:none;
+    padding-left: 7px;
+    display: inline-block;
+    font-size: 1.6rem
+}
