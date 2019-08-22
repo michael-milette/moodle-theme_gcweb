@@ -148,6 +148,11 @@ h6, .h6 {
     font-size: 14px;
 }
 
+/* Font-size. */
+small, .small {
+    font-size: 70%;
+}
+
 /* Login box */
 #rememberusername {
     margin-left: -12px;
@@ -638,4 +643,9 @@ input[type=checkbox], input[type=radio] {
 }
 .form-check-input {
     position: static;
+}
+
+/* For lists: WET media objects */
+.media {
+  display: list-item;
 }
