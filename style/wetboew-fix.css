@@ -153,20 +153,86 @@ h6, .h6 {
     margin-left: -12px;
 }
 
-/* buttons */
+/* Buttons. */
 .btn {
     border: 1px outset #ccc;
-    font-size: 15px;
+    font-size: 16px;
     border-radius: 4px;
     margin-left:5px;
     padding-top: 6px;
     white-space:normal;
+    padding: 6px 12px;
+    line-height: 1.4375;
+    border-radius: 4px;
 }
 .btn-link { /* no border for icons */
     border: none;
 }
+.btn-default {
+    background-color: #EAEBED;
+}
+.btn-default:hover {
+    background-color: #BBBFC5;
+}
+main .btn-primary, .btn-primary {
+    background-color: #2572B4;
+}
+main .btn-primary:hover, .btn-primary:hover {
+    background-color: #1C578A;
+}
+.btn-success {
+    background-color: #1B6C1C;
+}
+.btn-success:hover {
+    background-color: #114311;
+}
+.btn-info {
+    color: white;
+    background-color: #4D4D4D;
+}
+.btn-info:hover {
+    background-color: #222222;
+}
 .btn-warning {
     background-color: #F2D40D;
+    border:1px solid #181501;
+}
+.btn-warning:hover {
+    background-color: #C2AA0A;
+}
+.btn-danger, .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active, .show>.btn-danger.dropdown-toggle {
+    background-color: #BC3331;
+}
+.btn-danger:hover, .btn-danger:not(:disabled):not(.disabled):hover, .btn-danger:not(:disabled):not(.disabled):hover, .show>.btn-danger.dropdown-toggle:hover {
+    background-color: #942826;
+}
+.btn-lg {
+    font-size: 18px;
+}
+.btn-sm, .btn-xs {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+.btn-xs {
+    padding: 1px 5px;
+}
+a.disabled:hover, a.disabled {
+    font-style: normal;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.btn-group-sm>.btn, .btn-sm {
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.btn-group, .btn-group-vertical {
+    display: table;
 }
 
 /* Icons */
