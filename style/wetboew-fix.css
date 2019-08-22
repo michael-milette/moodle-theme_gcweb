@@ -392,13 +392,18 @@ ul {
 }
 
 /* Last modified date */
-#wb-info {
-    margin-top: 2rem;
-}
-
 /* Moodle footer info */
 #wb-info {
+    margin-top: 2rem;
     text-align: center;
+}
+
+/* Adjust footnote font size. */
+#wb-info nav li {
+    font-size: .875em;
+}
+#wb-info nav li a {
+    font-size: inherit;
 }
 
 /* Fix for forum topics list. */
