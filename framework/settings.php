@@ -137,8 +137,9 @@ if ($theme->shownavdrawer) {
 //
 
 $extraclasses = [];
-if (!empty($_PAGE['navdraweropen'])) {
-    $extraclasses[] = 'drawer-open-left';
+// If course list view layout is set to cards. (ALPHA)
+if($theme->courselistlayout == 'card') {
+    $extraclasses[] = 'coursecardview';
 }
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
 
@@ -177,7 +178,6 @@ $_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => tr
 //
 
 $_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-$_PAGE['bodyattributes'] = $OUTPUT->body_attributes();
 $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
 $_PAGE['pageheading'] = $OUTPUT->pageheading($PAGE->title);

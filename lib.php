@@ -111,11 +111,6 @@ function theme_gcweb_get_extra_scss($theme) {
         $customcss .= ' displaynone {display: none;}';
     }
 
-    // If course list view layout is set to cards. (ALPHA)
-    if($theme->settings->courselistlayout == 'card') {
-        $customcss .= '.coursebox{width:30%;border:1px solid lightgrey;display:inline-block;margin:1%;vertical-align:top;padding:0;height:700px;overflow-y:hidden}.frontpage-course-list-all .content,.content .content{display:-webkit-flex;-webkit-flex-direction:row;display:flex;flex-direction:column-reverse}.pagelayout-frontpage .content .content{flex-direction:column}.coursebox .content .summary,.coursebox .content .courseimage{width:100%}.coursebox .content .customfields-container{width:100%}.coursebox .courseimage img{max-width:100%!important}.coursebox>.info>h3.coursename{display:inline;float:none;margin:0}.coursebox>.info>.coursename a{display:inline;background-image:none;padding-left:0}.coursebox .content .coursecat,.coursebox .content .summary,.coursebox .content .courseimage,.coursebox .content .coursefile,.coursebox .content .teachers,.coursebox.remotecoursebox .remotecourseinfo,.coursebox .content .customfields-container{margin:5px 0}.coursebox .info,.coursebox .content .summary{padding:5px 10px;min-height:75px}';
-    }
-
     // Hide local login form on login page.
     if(!empty($theme->settings->hidelocallogin)) {
         $customcss .= '#page-login-index .card-body div.col-md-5:first-child {display:none;}#page-login-index .card-body div.col-md-5 {flex: auto;max-width: 100%;}';

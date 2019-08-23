@@ -331,12 +331,6 @@ a {
   margin-bottom:0;
 }
 
-/* All courses page */
-.coursebox .content .courseimage img {
-    max-width: 80%;
-    max-height: none;
-}
-
 /* Dropdown usermenu */
 div.dropdown a#dropdown-1 {
     color:white;
@@ -634,7 +628,7 @@ a[rel~="external"]:after {
 
 /* Fix alignment of checkboxes and radio buttons. */
 input[type=checkbox], input[type=radio] {
-    margin: 3px 0 0 -12.5;
+    margin: 3px 0 0 -12.5px;
 }
 
 /* Fix subtitles and captions section of Insert Media dialogue. */
@@ -675,3 +669,69 @@ input[type=checkbox], input[type=radio] {
     color: black;
     background-color: #F3E9E8;
 }
+
+/* Course listing: Fix List view on Front Page and All Courses pages. */
+.coursebox .content .courseimage img {
+    max-width: 80%;
+    max-height: none;
+}
+/* Course listing: Cards view on Front Page and All Courses pages.
+   Using flex because IE11 has compatibility issues with grid. */
+.coursecardview .courses {
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+.coursecardview .coursebox {
+    max-width: 380px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    margin: 0 20px 20px 0;
+    padding: 0;
+}
+.coursecardview .coursebox .content {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+}
+.coursecardview .coursebox .content .courseimage {
+    order: -1;
+}
+.coursecardview .coursebox .info,
+.coursecardview .coursebox .content,
+.coursecardview .coursebox .content .teachers,
+.coursecardview .coursebox .content .coursefile,
+.coursecardview .coursebox .content .customfields-container,
+.coursecardview .coursebox .content .summary,
+.coursecardview .coursebox .content .coursecat,
+.coursecardview .coursebox .content .courseimage,
+.coursecardview .coursebox .content .courseimage img {
+    width:100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+}
+.coursecardview .coursebox .info {
+    min-height: 75px;
+}
+.coursecardview .coursebox .content,
+.coursecardview .coursebox .content .courseimage,
+.coursecardview .coursebox .content .courseimage img {
+    padding:0;
+}
+.coursecardview .coursebox>.info>h3.coursename,
+.coursecardview .coursebox>.info>.coursename a {
+    display: inline;
+    float: none;
+    margin: 0;
+    background-image: none;
+    padding-left: 0;
+}
+/* Will crop course images if they are all different sizes.
+.coursecardview .coursebox .courseimage {
+    max-height: 220px;
+    overflow-y: hidden;
+}
+*/
