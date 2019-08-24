@@ -1,24 +1,24 @@
 <?php
-/**
- * This file is part of the wet-boew-moodle project.
- *
- * Copyright © 2016 onwards by TNG Consulting Inc.
- *
- * The WET-BOEW-MOODLE GCWeb theme for Moodle is provided freely as open source software, can be redistributed
- * and/or modified it under the terms of the GNU General Public License version 3.0 or later.
- *
- * This software is distributed in the hope that it will be useful. However, there is no warranty,
- * implied or otherwise, of merchantability or fitness for any purpose.
- *
- * If for any reason a copy of the GNU General Public License was not included with this project,
- * you can view it online by going to: https://www.gnu.org/licenses/gpl-3.0.en.html</p>
-**/
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
+//
+// WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// WET-BOEW-Moodle (GCWeb) is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
  * Main settings file.
  *
  * @package    theme_gcweb
- * @copyright  2016 TNG Consulting Inc. unless otherwise noted.
+ * @copyright  2016-2019 TNG Consulting Inc. unless otherwise noted.
  * @author     Michael Milette <www.tngconsulting.ca>
  * @license    WET-BOEW-MOODLE: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  * @license    Moodle: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -36,7 +36,7 @@ defined('MOODLE_INTERNAL') || die;
 // Fix date format - enable leading zeros for day.
 $CFG->nofixday  = true;
 
-// Theme name
+// Theme name.
 $themename = 'theme_gcweb';
 
 if ($ADMIN->fulltree) {
@@ -47,7 +47,7 @@ if ($ADMIN->fulltree) {
     if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
         unset_all_config_for_plugin($themename);
     }
-    
+
     require('settings/general.php');
     require('settings/css.php'); // TODO: Settings page is done however the theme does not include in the SCSS information.
     require('settings/profilefields.php');

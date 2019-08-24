@@ -1,4 +1,27 @@
 <?php
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
+//
+// WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// WET-BOEW-Moodle (GCWeb) is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * WET-BOEW GCWeb theme library.
+ *
+ * @package   theme_gcweb
+ * @copyright 2016-2019 TNG Consulting Inc.
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
@@ -25,84 +48,84 @@ function theme_gcweb_get_extra_scss($theme) {
     $customcss = '';
 
     //
-    // Hide User Profile Fields 
+    // Hide User Profile Fields.
     //
-    
+
     // Section: General.
-    if(empty($theme->settings->showprofileemaildisplay)) {
+    if (empty($theme->settings->showprofileemaildisplay)) {
         $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(10),'; // Email display.
     }
-    if(empty($theme->settings->showprofilecity)) {
+    if (empty($theme->settings->showprofilecity)) {
         $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(11),'; // City.
     }
-    if(empty($theme->settings->showprofilecountry)) {
+    if (empty($theme->settings->showprofilecountry)) {
         $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(12),'; // Country.
     }
-    if(empty($theme->settings->showprofiletimezone)) {
+    if (empty($theme->settings->showprofiletimezone)) {
         $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(13),'; // Timezone.
     }
-    if(empty($theme->settings->showprofiledescription)) {
+    if (empty($theme->settings->showprofiledescription)) {
         $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(14),'; // Description.
     }
 
     // Section: User Picture.
-    if(empty($theme->settings->showprofilepictureofuser)) {
+    if (empty($theme->settings->showprofilepictureofuser)) {
         $customcss .= 'fieldset#id_moodle_picture,';
     }
 
     // Section: Additional Names.
-    if(empty($theme->settings->showprofileadditionalnames)) {
+    if (empty($theme->settings->showprofileadditionalnames)) {
         $customcss .= 'fieldset#id_moodle_additional_names,';
     }
 
     // Section: Interests.
-    if(empty($theme->settings->showprofileinterests)) {
+    if (empty($theme->settings->showprofileinterests)) {
         $customcss .= 'fieldset#id_moodle_interests,';
     }
 
     // Section: Optional.
-    if(empty($theme->settings->showprofileoptional)) {
+    if (empty($theme->settings->showprofileoptional)) {
         $customcss .= 'fieldset#id_moodle_optional,';
     }
-    if(empty($theme->settings->showprofilewebpage)) {
+    if (empty($theme->settings->showprofilewebpage)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(1),'; // Web Page.
     }
-    if(empty($theme->settings->showprofileicqnumber)) {
+    if (empty($theme->settings->showprofileicqnumber)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(2),'; // ICQ.
     }
-    if(empty($theme->settings->showprofileskypeid)) {
+    if (empty($theme->settings->showprofileskypeid)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(3),'; // Skype.
     }
-    if(empty($theme->settings->showprofileaimid)) {
+    if (empty($theme->settings->showprofileaimid)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(4),'; // AIM.
     }
-    if(empty($theme->settings->showprofileyahooid)) {
+    if (empty($theme->settings->showprofileyahooid)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(5),'; // Yahoo.
     }
-    if(empty($theme->settings->showprofilemsnid)) {
+    if (empty($theme->settings->showprofilemsnid)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(6),'; // MSN.
     }
-    if(empty($theme->settings->showprofileidnumber)) {
+    if (empty($theme->settings->showprofileidnumber)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(7),'; // ID number.
     }
-    if(empty($theme->settings->showprofileinstitution)) {
+    if (empty($theme->settings->showprofileinstitution)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(8),'; // Institution.
     }
-    if(empty($theme->settings->showprofiledepartment)) {
+    if (empty($theme->settings->showprofiledepartment)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(9),'; // Department.
     }
-    if(empty($theme->settings->showprofilephone1)) {
+    if (empty($theme->settings->showprofilephone1)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(10),'; // Phone.
     }
-    if(empty($theme->settings->showprofilephone2)) {
+    if (empty($theme->settings->showprofilephone2)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(11),'; // Mobile phone.
     }
-    if(empty($theme->settings->showprofileaddress)) {
+    if (empty($theme->settings->showprofileaddress)) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(12),'; // Address.
     }
 
     // Hide links to Moodle page activities on the front page.
-    if(!empty($theme->settings->hidefrontpagelinkstopages)) {
+    if (!empty($theme->settings->hidefrontpagelinkstopages)) {
         $customcss .= '#page-site-index:not(.editing) #page-content .modtype_page,';
     }
 
@@ -112,8 +135,9 @@ function theme_gcweb_get_extra_scss($theme) {
     }
 
     // Hide local login form on login page.
-    if(!empty($theme->settings->hidelocallogin)) {
-        $customcss .= '#page-login-index .card-body div.col-md-5:first-child {display:none;}#page-login-index .card-body div.col-md-5 {flex: auto;max-width: 100%;}';
+    if (!empty($theme->settings->hidelocallogin)) {
+        $customcss .= '#page-login-index .card-body div.col-md-5:first-child {display:none;}';
+        $customcss .= '#page-login-index .card-body div.col-md-5 {flex: auto;max-width: 100%;}';
     }
 
     // Always return the scss when we have it.

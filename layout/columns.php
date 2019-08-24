@@ -1,12 +1,12 @@
 <?php
-// This file is part of the classic theme for Moodle
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
 //
-// Moodle is free software: you can redistribute it and/or modify
+// WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Moodle is distributed in the hope that it will be useful,
+// WET-BOEW-Moodle (GCWeb) is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The columns layout for the classic theme.
+ * The columns layout for the gcweb theme.
  *
  * @package   theme_gcweb
- * @copyright 2019 TNG Consulting Inc.
+ * @copyright 2016-2019 TNG Consulting Inc.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
 
-include __DIR__ . '/../framework/settings.php';
+require(__DIR__ . '/../framework/settings.php');
 
 $templatecontext = [
     'output' => $OUTPUT,
@@ -47,7 +47,7 @@ $templatecontext = [
     'langmenu' => $_PAGE['langmenu'],
     'lang' => $_PAGE['lang'],
     'lastmodified' => $_PAGE['lastmodified'],
-    'pagebutton' =>  $_PAGE['pagebutton'],
+    'pagebutton' => $_PAGE['pagebutton'],
     'showproblembutton' => $_PAGE['showproblembutton'],
     'problembuttonurl' => format_string($theme->problembuttonurl),
     'showsharebutton' => $_PAGE['showsharebutton'],

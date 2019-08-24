@@ -1,12 +1,12 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
 //
-// Moodle is free software: you can redistribute it and/or modify
+// WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Moodle is distributed in the hope that it will be useful,
+// WET-BOEW-Moodle (GCWeb) is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
@@ -18,14 +18,14 @@
  * WET-BOEW GCWeb theme config.
  *
  * @package   theme_gcweb
- * @copyright 2019 TNG Consulting Inc.
+ * @copyright 2016-2019 TNG Consulting Inc.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
-// $THEME is defined before this page is included and we can define settings by adding properties to this global object.
+// Variable $THEME is defined before this page is included and we can define settings by adding properties to this global object.
 
 // The first setting we need is the name of the theme. This should be the last part of the component name, and the same
 // as the directory name for our theme.
@@ -59,7 +59,7 @@ $THEME->yuicssmodules = [];
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 // Call css/scss processing functions and renderers.
-//$THEME->prescsscallback = 'theme_gcweb_get_pre_scss';
+// TODO: $THEME->prescsscallback = 'theme_gcweb_get_pre_scss'; //.
 
 // This is a list of blocks that are required to exist on all pages for this theme to function correctly. For example
 // bootstrap base requires the settings and navigation blocks because otherwise there would be no way to navigate to all the
@@ -76,11 +76,12 @@ $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
 $THEME->scssx = function($theme) {
     return theme_gcweb_get_main_scss_content($theme);
 };
-//$THEME->csstreepostprocessor = 'theme_gcweb_css_tree_post_processor'; // Causes issues. Requires Clear Cache to take effect.
+// TODO: $THEME->csstreepostprocessor = 'theme_gcweb_css_tree_post_processor';
+// Causes issues. Requires Clear Cache to take effect.
 $THEME->extrascsscallback = 'theme_gcweb_get_extra_scss';
 
-// Since we are using 2 parent themes the correct location of the layout files needs to be defined. For this theme we need the multiple
-// column layouts.
+// Since we are using 2 parent themes the correct location of the layout files needs to be defined.
+// For this theme we need the multiple column layouts.
 $THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(

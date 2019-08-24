@@ -1,12 +1,12 @@
 <?php
-// This file is part of the classic theme for Moodle
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
 //
-// Moodle is free software: you can redistribute it and/or modify
+// WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Moodle is distributed in the hope that it will be useful,
+// WET-BOEW-Moodle (GCWeb) is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
@@ -45,7 +45,7 @@ defined('MOODLE_INTERNAL') || die;
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
  * @package    theme_gcweb
- * @copyright  2019 TNG Consulting Inc. <www.tngconsulting.ca>
+ * @copyright  2016-2019 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -72,7 +72,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
         if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
-            // do not show lang menu if language forced
+            // Do not show lang menu if language forced.
             return '';
         }
 
@@ -84,12 +84,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
         $s = '';
-        foreach($langs as $lang => $language) {
-            if($lang != $currlang) {
-                if(strpos($language, '(')) {
-                    $language = trim(substr($language, 0, strpos($language, '(')-4));
+        foreach ($langs as $lang => $language) {
+            if ($lang != $currlang) {
+                if (strpos($language, '(')) {
+                    $language = trim(substr($language, 0, strpos($language, '(') - 4));
                 }
-                if(strpos($language, ' - ')) {
+                if (strpos($language, ' - ')) {
                     $language = trim(substr($language, 0, strpos($language, ' - ')));
                 }
                 $url = new moodle_url($this->page->url, ['lang' => $lang ]);
@@ -134,7 +134,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     public function full_header() {
         global $CFG, $PAGE, $_PAGE, $OUTPUT, $USER;
 
-        // $theme = theme_config::load('gcweb');
         $header = new stdClass();
         $header->output = $OUTPUT;
         $header->langmenu = $_PAGE['langmenu'];
@@ -156,11 +155,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->breadcrumbs = $_PAGE['breadcrumbs'];
         $header->userid = $USER->id;
 
-        //$header->contextheader = $this->context_header();
-        //$header->contextheader = html_writer::link(new moodle_url('/course/view.php', array(
-        //    'id' => $PAGE->course->id
-        //)) , $this->context_header());
-        //$header->headerimage = $this->headerimage();
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
@@ -173,14 +167,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     *  @brief Better page titles.
+     * @brief Better page titles.
      *
-     *  @return Returns an alternate page title depending on the page.
+     * @return Returns an alternate page title depending on the page.
      */
     public function pagetitle() {
         global $PAGE, $SITE;
         $title = '';
-        if ($PAGE->pagetype == 'site-index') { // frontpage
+        if ($PAGE->pagetype == 'site-index') { // Front page.
             if (empty($hometitle = get_config('theme_gcweb', 'hometitle'))) {
                 $title = get_string('home');
             } else {
@@ -198,10 +192,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     *  @brief Better page headings.
+     * @brief Better page headings.
      *
-     *  @param [string] $title Default title if not found in list of links.
-     *  @return Returns an alternate page heading (h1) depending on the page layout and type.
+     * @param [string] $title Default title if not found in list of links.
+     * @return Returns an alternate page heading (h1) depending on the page layout and type.
      */
     public function pageheading($title) {
         global $SITE, $DB, $COURSE;
@@ -212,7 +206,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 if ($COURSE->format == 'singleactivity') {
                     // Single activity course.
                     $title = format_string($COURSE->fullname, false);
-                } elseif (isset($this->page->cm->sectionnum)) {
+                } else if (isset($this->page->cm->sectionnum)) {
                     // Viewing the page, not editing the page.
                     $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
                 }
@@ -231,7 +225,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 break;
             case 'coursecategory':
                 $id = optional_param('categoryid', 0, PARAM_INT);;
-                if($id) { // Category specific.
+                if ($id) { // Category specific.
                     $title = $DB->get_field('course_categories', 'name', array('id' => $id), MUST_EXIST);
                     $title = format_string($title, false);
                 } else { // All courses.
@@ -246,7 +240,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 }
                 break;
             case 'login':
-               switch ($this->page->pagetype) {
+                switch ($this->page->pagetype) {
                     case 'login-index': // Sign-in / Login.
                         $title = get_string('signon', 'theme_gcweb');
                         break;
@@ -258,23 +252,23 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         break;
                 }
                 break;
-             case 'base':
+            case 'base':
                 switch ($this->page->pagetype) {
                     case 'login-logout': // Signout confirmation.
                         $title = get_string('signout', 'theme_gcweb');
                         break;
                 }
-             case 'admin':
-               switch ($this->page->pagetype) {
-                   case 'backup-backup': // Course backup.
+            case 'admin':
+                switch ($this->page->pagetype) {
+                    case 'backup-backup': // Course backup.
                         break;
-                   case 'admin-setting-themesettinggcweb': // This Theme's settings.
+                    case 'admin-setting-themesettinggcweb': // This Theme's settings.
                         $title = get_string('themesettings', 'admin');
                         break;
-                   case 'admin-user': // Browser list of users.
+                    case 'admin-user': // Browser list of users.
                         $title = get_string('userlist', 'admin');
                         break;
-                   case 'admin-user-editadvanced': // Add a new user.
+                    case 'admin-user-editadvanced': // Add a new user.
                         $title = get_string('addnewuser');
                         break;
                     case 'backup-restorefile': // Restore a course.
@@ -350,7 +344,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     public function standard_top_of_body_html() {
         global $CFG, $PAGE;
         $additionalhtmltopofbody = $CFG->additionalhtmltopofbody;
-        $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody, FORMAT_HTML, ['noclean' => true, $PAGE->context]);
+        $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody,
+                FORMAT_HTML, ['noclean' => true, $PAGE->context]);
         $output = parent::standard_top_of_body_html();
         $CFG->additionalhtmltopofbody = $additionalhtmltopofbody;
         return $output;
@@ -359,7 +354,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     public function standard_end_of_body_html() {
         global $CFG, $PAGE;
         $additionalhtmlfooter = $CFG->additionalhtmlfooter;
-        $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter, FORMAT_HTML, ['noclean' => true, 'context' => $PAGE->context]);
+        $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter,
+                FORMAT_HTML, ['noclean' => true, 'context' => $PAGE->context]);
         $output = parent::standard_end_of_body_html();
         $CFG->additionalhtmlfooter = $additionalhtmlfooter;
         return $output;
