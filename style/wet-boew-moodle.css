@@ -742,3 +742,9 @@ a[rel~="external"]:after {
     overflow-y: hidden;
 }
 */
+
+/* Fix for tables padding=5 in Database activity pages. */
+.path-mod-data th,
+.path-mod-data td {
+    padding: 5px;
+}
