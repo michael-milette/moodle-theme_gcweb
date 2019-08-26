@@ -782,3 +782,8 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 		width: 33%;
 	}
 }
+
+/* Fix font size in h3 admin settings. */
+#adminsettings h3 {
+    font-size: inherit;
+}
