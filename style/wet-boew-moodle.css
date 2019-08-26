@@ -414,8 +414,10 @@ ul {
 .media-body {
     width: 100%;
 }
-/* Fix for forum search form. */
+
+/* Fix display of forum search form and block. */
 @media (min-width: 768px) {
+    .form-inline .input-group>.form-control,
     .forumsearch .form-inline .input-group>.form-control {
         width: auto;
     }
@@ -430,6 +432,9 @@ ul {
     justify-content: flex-end;
     max-width: none;
     height: auto;
+}
+.form-inline .input-group {
+    display: flex;
 }
 
 /* Remove duplicate background for buttons in navbar */
