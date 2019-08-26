@@ -292,12 +292,17 @@ a {
     background: inherit;
 }
 
-/* Search form */
+/* WET Search form */
 .form-control {
     font-size:inherit;
 }
 #wb-srch form {
     float:right;
+}
+
+/* Fix field width for custom forms in the content area. */
+main .form-control {
+  width: auto;
 }
 
 /* Headers */
