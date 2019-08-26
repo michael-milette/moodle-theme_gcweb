@@ -764,3 +764,21 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 .well {
     background-color: #f5f5f5;
 }
+
+/* Add support for Equalized/Equal Height sections */
+.wb-eqht section {
+	display: inline-block;
+	margin-bottom: 15px;
+	padding: 15px;
+	width: 100%;
+}
+@media (min-width: 768px) {
+	.wb-eqht section {
+		width: 49%;
+	}
+}
+@media (min-width: 1200px) {
+	.wb-eqht section {
+		width: 33%;
+	}
+}
