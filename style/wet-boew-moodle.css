@@ -748,3 +748,9 @@ a[rel~="external"]:after {
 .path-mod-data td {
     padding: 5px;
 }
+
+/* Remove indentation from WET list group and nav-pills. */
+ul.list-group,
+ul.nav-pills {
+    margin-left:0;
+}
