@@ -584,6 +584,8 @@ a#next-activity-link:hover {
     position: relative;
     text-align: left;
     font-size: inherit;
+    height: auto;
+    line-height: inherit;
 }
 
 /* Logged-in as role label. */
