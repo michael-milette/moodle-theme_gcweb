@@ -754,3 +754,13 @@ ul.list-group,
 ul.nav-pills {
     margin-left:0;
 }
+
+/* Fix display when table column heading widths are specified. */
+th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, th.col-xs-4, th.col-5, th.col-xs-5, th.col-6, th.col-xs-6, th.col-7, th.col-xs-7, th.col-8, th.col-xs-8, th.col-9, th.col-xs-9, th.col-10, th.col-xs-10, th.col-11, th.col-xs-11, th.col-12, th.col-xs-12, th.col, th.col-auto, th.col-sm-1, th.col-sm-2, th.col-sm-3, th.col-sm-4, th.col-sm-5, th.col-sm-6, th.col-sm-7, th.col-sm-8, th.col-sm-9, th.col-sm-10, th.col-sm-11, th.col-sm-12, th.col-sm, th.col-sm-auto, th.col-md-1, th.col-md-2, th.col-md-3, th.col-md-4, th.col-md-5, th.col-md-6, th.col-md-7, th.col-md-8, th.col-md-9, th.col-md-10, th.col-md-11, th.col-md-12, th.col-md, th.col-md-auto, th.col-lg-1, th.col-lg-2, th.col-lg-3, th.col-lg-4, th.col-lg-5, th.col-lg-6, th.col-lg-7, th.col-lg-8, th.col-lg-9, th.col-lg-10, th.col-lg-11, th.col-lg-12, th.col-lg, th.col-lg-auto, th.col-xl-1, th.col-xl-2, th.col-xl-3, th.col-xl-4, th.col-xl-5, th.col-xl-6, th.col-xl-7, th.col-xl-8, th.col-xl-9, th.col-xl-10, th.col-xl-11, th.col-xl-12, th.col-xl, th.col-xl-auto {
+    width: inherit!important;
+}
+
+/* Fix background colour of Wells. */
+.well {
+    background-color: #f5f5f5;
+}
