@@ -797,3 +797,16 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 .course-content .section-summary .section-summary-activities .activity-count {
     font-size: 1.3rem
 }
+
+/* Fix display for quiz "Review options". */
+#page-mod-quiz-mod #id_reviewoptionshdr .form-group {
+    width: 20%;
+    min-width:285px;
+}
+#id_reviewoptionshdr label.fitem {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+#id_reviewoptionshdr i {
+    padding-top: 10px!important;
+}
