@@ -45,6 +45,8 @@ function theme_gcweb_css_tree_post_processor($tree, $theme) {
  * @return string
  */
 function theme_gcweb_get_extra_scss($theme) {
+    global $CFG;
+    
     $customcss = '';
 
     //
@@ -127,6 +129,11 @@ function theme_gcweb_get_extra_scss($theme) {
     // Hide links to Moodle page activities on the front page.
     if (!empty($theme->settings->hidefrontpagelinkstopages)) {
         $customcss .= '#page-site-index:not(.editing) #page-content .modtype_page,';
+    }
+
+    // Automatically hide guest login button if Auto-login Guests is enabled and Guest Login button is visible.
+    if (!empty($CFG->autologinguests) && !empty($CFG->guestloginbutton)) {
+        $customcss .= '#guestlogin,';
     }
 
     // If there is something to hide, hide it.
