@@ -147,7 +147,8 @@ $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
 
 $_PAGE['skiptosectnav'] = '';
 if(!empty($_PAGE['showsectmenu'])) {
-    $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">' . $_STRINGS['skiptosectnav'] . '</a></li>';
+    $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">' 
+            . $_STRINGS['skiptosectnav'] . '</a></li>';
 }
 
 $_PAGE['regionmainsettingsmenu'] = $OUTPUT->region_main_settings_menu();
@@ -199,7 +200,8 @@ $_PAGE['accountsettingsurl'] = '';
 $_PAGE['showregister'] = false;
 $_PAGE['registerurl'] = '';
 
-$signouturl = $theme->alternatelogouturl;
+$signouturl = format_string($theme->alternatelogouturl, true,
+        ['context' => context_course::instance(SITEID), "escape" => false]);
 
 if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($PAGE->pagetype != 'login-logout') {
@@ -216,9 +218,11 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     }
 } else { // Logged-out.
     require_once $CFG->libdir . '/authlib.php';
-    $_PAGE['showregister'] = (!empty($theme->showregister) && (empty($CFG->authpreventaccountcreation) || signup_is_enabled()) && $PAGE->pagetype != 'login-signup');
+    $_PAGE['showregister'] = (!empty($theme->showregister) && (empty($CFG->authpreventaccountcreation) || signup_is_enabled()) 
+            && $PAGE->pagetype != 'login-signup');
     if ($_PAGE['showregister']) {
-        $_PAGE['registerurl'] = empty($theme->alternateregisterurl) ? $CFG->wwwroot . '/login/signup.php' : $theme->alternateregisterurl;
+        $_PAGE['registerurl'] = empty($theme->alternateregisterurl) ? $CFG->wwwroot . '/login/signup.php' 
+                : $theme->alternateregisterurl;
     }
 
     if($_PAGE['showsignon']) {
@@ -226,7 +230,8 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
             if (empty($CFG->alternateloginurl)) {
                 $_PAGE['signonurl'] = $CFG->wwwroot . '/login/';
             } else {
-                $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+                $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true, 
+                        ['context' => context_course::instance(SITEID), "escape" => false]);
             }
         }
     }
