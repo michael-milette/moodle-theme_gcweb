@@ -143,8 +143,13 @@ function theme_gcweb_get_extra_scss($theme) {
 
     // Hide local login form on login page.
     if (!empty($theme->settings->hidelocallogin)) {
-        $customcss .= '#page-login-index .card-body div.col-md-5:first-child {display:none;}';
+        $customcss .= '#page-login-index .card-body div.col-md-5:first-child, .forgetpass {display:none;}';
         $customcss .= '#page-login-index .card-body div.col-md-5 {flex: auto;max-width: 100%;}';
+    }
+    
+    // Dashboard - Wrap Recently accessed courses list.
+    if (!empty($theme->settings->wraprecentlyaccessedcourses)) {
+        $customcss .= '.dashboard-card-deck.one-row {flex-flow: wrap;overflow-x: unset;}';
     }
 
     // Always return the scss when we have it.

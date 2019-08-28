@@ -38,6 +38,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('navdraweropen', 'true', $themename); // Open.
     set_config('hidefrontpagelinkstopages', 0, $themename); // No.
     set_config('courselistlayout', 'list', $themename); // List.
+    set_config('wraprecentlyaccessedcourses', 0, $themename); // Don't wrap the Dashboard's Recently Accessed Courses list.
 }
 
 // Hide local login form on login page.
@@ -120,6 +121,15 @@ $description = get_string('courselistlayout_desc', $themename);
 $default = 'list';
 $choices = array('list' => get_string('list', 'block_myoverview'), 'card' => get_string('card', 'block_myoverview'));
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Wrap the Dashboard's Recently Accessed Courses list.
+$name = $themename . '/wraprecentlyaccessedcourses';
+$title = get_string('wraprecentlyaccessedcourses', $themename);
+$description = get_string('wraprecentlyaccessedcourses_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

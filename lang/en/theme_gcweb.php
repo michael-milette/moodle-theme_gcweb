@@ -163,6 +163,9 @@ $string['hidefrontpagelinkstopages_desc'] = 'If enabled, links to pages on the F
 $string['courselistlayout'] = 'Course list layout';
 $string['courselistlayout_desc'] = 'Affects lists of all courses on Front Page and All Courses page.';
 
+$string['wraprecentlyaccessedcourses'] = 'Wrap Recently Accessed Courses list';
+$string['wraprecentlyaccessedcourses_desc'] = 'On the Dashboard.';
+
 $string['showproblem'] = 'Show Report a problem on this page button';
 $string['showproblem_desc'] = 'Show or hide the Report a problem on this page button.';
 
