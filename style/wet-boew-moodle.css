@@ -816,3 +816,23 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 #page-enrol-index .coursebox {
     max-width: 620px;
 }
+
+/* Configure secondary buttons. Example: Exit Activity (embedded SCORM) */
+a.btn-secondary {
+  color: white;
+  background-color: #2572B4;
+  border: 1px outset #335075;
+  
+}
+a.btn-secondary:hover,
+a.btn-secondary:not(:disabled):active,
+a.btn-secondary:not(:disabled):not(.disabled):active,
+a.btn-secondary:focus {
+    color: white;
+    background-color: #0d5ca2;
+    border-color: #0c5596;
+}
+a.btn-secondary:focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(17,119,209,.5);
+    box-shadow: 0 0 0 0.2rem rgba(17,119,209,.5);
+}
