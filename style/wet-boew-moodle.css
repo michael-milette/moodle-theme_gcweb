@@ -527,7 +527,8 @@ li.section.hidden, .block.hidden, .block.invisible {
   margin-top: 7px;
 }
 .pagelayout-frontpage #navbar .d-inline-block.mr-3,
-.pagelayout-course #navbar .d-inline-block.mr-3 {
+.pagelayout-course #navbar .d-inline-block.mr-3,
+.pagelayout-incourse #navbar .d-inline-block.mr-3 {
   margin-top: 0px;
 }
 
