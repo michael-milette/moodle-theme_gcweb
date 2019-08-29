@@ -836,3 +836,8 @@ a.btn-secondary:focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(17,119,209,.5);
     box-shadow: 0 0 0 0.2rem rgba(17,119,209,.5);
 }
+
+/* Fix line height on Quiz Edit screen. */
+#page-mod-quiz-edit ul.slots .activityinstance span.instancename {
+    height: auto;
+}
