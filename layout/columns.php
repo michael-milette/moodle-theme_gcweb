@@ -45,6 +45,7 @@ $templatecontext = [
     'bodyattributes' => $_PAGE['bodyattributes'],
     'wetboew' => $_PAGE['themewww'] . '/framework',
     'langmenu' => $_PAGE['langmenu'],
+    'jquery' => $_PAGE['jquerypath'],
     'lang' => $_PAGE['lang'],
     'lastmodified' => $_PAGE['lastmodified'],
     'pagebutton' => $_PAGE['pagebutton'],

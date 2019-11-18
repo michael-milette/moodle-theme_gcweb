@@ -44,6 +44,9 @@ $_PAGE['description'] = '';
 $_PAGE['breadcrumbs'] = $theme->prebreadcrumbs;
 $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());// date("Y-m-d", filemtime(__FILE__));
 
+// Path to jQuery;
+$_PAGE['jquerypath']  = $CFG->wwwroot . '/lib/jquery/' . basename(glob($CFG->libdir . '/jquery/jquery-*.min.js')[0]);
+
 // Insert extra head content just before </HEAD>.
 
 $additionalhtmlhead = $CFG->additionalhtmlhead ;
@@ -147,7 +150,7 @@ $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
 
 $_PAGE['skiptosectnav'] = '';
 if(!empty($_PAGE['showsectmenu'])) {
-    $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">' 
+    $_PAGE['skiptosectnav'] = '<li class="wb-slc visible-sm visible-md visible-lg><a class="wb-sl" href="#wb-info">'
             . $_STRINGS['skiptosectnav'] . '</a></li>';
 }
 
@@ -218,10 +221,10 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     }
 } else { // Logged-out.
     require_once $CFG->libdir . '/authlib.php';
-    $_PAGE['showregister'] = (!empty($theme->showregister) && (empty($CFG->authpreventaccountcreation) || signup_is_enabled()) 
+    $_PAGE['showregister'] = (!empty($theme->showregister) && (empty($CFG->authpreventaccountcreation) || signup_is_enabled())
             && $PAGE->pagetype != 'login-signup');
     if ($_PAGE['showregister']) {
-        $_PAGE['registerurl'] = empty($theme->alternateregisterurl) ? $CFG->wwwroot . '/login/signup.php' 
+        $_PAGE['registerurl'] = empty($theme->alternateregisterurl) ? $CFG->wwwroot . '/login/signup.php'
                 : $theme->alternateregisterurl;
     }
 
@@ -230,7 +233,7 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
             if (empty($CFG->alternateloginurl)) {
                 $_PAGE['signonurl'] = $CFG->wwwroot . '/login/';
             } else {
-                $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true, 
+                $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true,
                         ['context' => context_course::instance(SITEID), "escape" => false]);
             }
         }
