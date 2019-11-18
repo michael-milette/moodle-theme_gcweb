@@ -37,6 +37,11 @@
                 {{/settingsmenu}}
                 <h1{{{ pageheadinghidden }}}>{{{ pageheading }}}</h1>
                 <div id="page-content" class="row">
+                    {{#contentpreblocks}}
+                    <div id="region-content-pre" class="block-content-pre row">
+                        {{{ contentpreblocks }}}
+                    </div>
+                    {{/contentpreblocks}}
                     <div id="region-main-box" class="col{{#hasblocks}} col-xl-9 col-lg-8 col-md-7{{/hasblocks}}">
                         {{#hasregionmainsettingsmenu}}
                         <div id="region-main-settings-menu" class="d-print-none">
@@ -65,6 +70,11 @@
                         </section>
                     </div>
                     {{/hasblocks}}
+                    {{#contentpostblocks}}
+                    <div id="region-content-post" class="block-content-post row">
+                        {{{ contentpostblocks }}}
+                    </div>
+                    {{/contentpostblocks}}
                 </div>
             </div>
             {{{ output.standard_after_main_region_html }}}

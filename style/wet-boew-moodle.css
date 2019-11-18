@@ -841,3 +841,15 @@ a.btn-secondary:focus {
 #page-mod-quiz-edit ul.slots .activityinstance span.instancename {
     height: auto;
 }
+
+/* Format new pre and post content region blocks. */
+#region-content-pre,
+#region-content-post {
+  display: block;
+  width: 100%;
+  margin-left:15px;
+}
+#region-content-pre .block,
+#region-content-post .block {
+  border: none;
+}
