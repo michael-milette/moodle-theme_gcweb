@@ -822,7 +822,7 @@ a.btn-secondary {
   color: white;
   background-color: #2572B4;
   border: 1px outset #335075;
-  
+
 }
 a.btn-secondary:hover,
 a.btn-secondary:not(:disabled):active,
@@ -852,4 +852,32 @@ a.btn-secondary:focus {
 #region-content-pre .block,
 #region-content-post .block {
   border: none;
+}
+
+/* Side Navigation Drawer. */
+
+#nav-drawer, #nav-drawer .list-group-item {
+    background-color:#26374A;
+    color: #aaa;
+}
+#nav-drawer .list-group {
+    padding: 15px 0;
+}
+#nav-drawer .list-group-item.active {
+    border:none;
+    color: #fff;
+}
+#nav-drawer .list-group:not(:last-child) {
+    border-bottom: white 1px solid;
+}
+
+#wb-info .landscape a:focus,
+#sm-pnl a:focus,
+#nav-drawer a:focus {
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-color: #89B4F4;
+}
+#nav-drawer a {
+  border:none;
+  margin:1px
 }
