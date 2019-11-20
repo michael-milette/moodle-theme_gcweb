@@ -881,3 +881,8 @@ a.btn-secondary:focus {
   border:none;
   margin:1px
 }
+
+/* Fix font size for custom select dropdown lists */
+.custom-select {
+  font-size:inherit;
+}

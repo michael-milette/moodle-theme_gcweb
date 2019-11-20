@@ -27,3 +27,6 @@
   border:none;
   margin:1px
 }
+.custom-select {
+  font-size:inherit;
+}
