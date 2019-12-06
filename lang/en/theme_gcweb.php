@@ -161,7 +161,20 @@ $string['hidefrontpagelinkstopages'] = 'Hide links to pages on Front Page';
 $string['hidefrontpagelinkstopages_desc'] = 'If enabled, links to pages on the Front Page will be hidden.';
 
 $string['courselistlayout'] = 'Course list layout';
-$string['courselistlayout_desc'] = 'Affects lists of all courses on Front Page and All Courses page.';
+$string['courselistlayout_desc'] = 'When viewing course on the Front Page, All Courses and in Categories, you can choose from the following <a href="https://goo.gl/fMXzSo" target="_new">styles to display courses</a>.';
+$string['courselistlayout0'] = 'Default Moodle course list';
+$string['courselistlayout1'] = 'Card layout One';
+$string['courselistlayout2'] = 'Card layout Two';
+$string['courselistlayout3'] = 'Card layout Three';
+$string['courselistlayout4'] = 'Card layout Four w/course summary';
+$string['courselistlayout5'] = 'Horizontal Layout One';
+$string['courselistlayout6'] = 'Horizontal Image Background Full Details';
+$string['courselistlayout7'] = 'Horizontal Image Background Title & Teacher Only';
+$string['courselistlayout8'] = 'Horizontal Two Column';
+$string['courselistlayout9'] = 'Corporate Training - minimal with completion progressbar';
+$string['courselistlayout10'] = 'Card layout Alt Card 1';
+$string['courselistlayout11'] = 'Card layout Alt Card 2';
+$string['courselistlayout12'] = 'Card layout Alt Card 3';
 
 $string['wraprecentlyaccessedcourses'] = 'Wrap Recently Accessed Courses list';
 $string['wraprecentlyaccessedcourses_desc'] = 'On the Dashboard.';

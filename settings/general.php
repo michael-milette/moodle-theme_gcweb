@@ -114,12 +114,15 @@ $setting = new admin_setting_configselect($name, $title, $description, $default,
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Course list layout.
+// Course List/Card Display Styles
 $name = $themename . '/courselistlayout';
-$title = get_string('courselistlayout', $themename);
+$title = get_string('courselistlayout' , $themename);
 $description = get_string('courselistlayout_desc', $themename);
-$default = 'list';
-$choices = array('list' => get_string('list', 'block_myoverview'), 'card' => get_string('card', 'block_myoverview'));
+$choices = [];
+for ($cnt = 0; $cnt <= 12; $cnt++) {
+    $choices[$cnt] = get_string('courselistlayout' . $cnt, $themename);
+}
+$default = get_string('courselistlayout0', $themename);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
