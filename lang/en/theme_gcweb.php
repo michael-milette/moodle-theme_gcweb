@@ -162,19 +162,22 @@ $string['hidefrontpagelinkstopages_desc'] = 'If enabled, links to pages on the F
 
 $string['courselistlayout'] = 'Course list layout';
 $string['courselistlayout_desc'] = 'When viewing course on the Front Page, All Courses and in Categories, you can choose from the following <a href="https://goo.gl/fMXzSo" target="_new">styles to display courses</a>.';
-$string['courselistlayout0'] = 'Default Moodle course list';
-$string['courselistlayout1'] = 'Card layout One';
-$string['courselistlayout2'] = 'Card layout Two';
-$string['courselistlayout3'] = 'Card layout Three';
-$string['courselistlayout4'] = 'Card layout Four w/course summary';
-$string['courselistlayout5'] = 'Horizontal Layout One';
-$string['courselistlayout6'] = 'Horizontal Image Background Full Details';
-$string['courselistlayout7'] = 'Horizontal Image Background Title & Teacher Only';
-$string['courselistlayout8'] = 'Horizontal Two Column';
-$string['courselistlayout9'] = 'Corporate Training - minimal with completion progressbar';
-$string['courselistlayout10'] = 'Card layout Alt Card 1';
-$string['courselistlayout11'] = 'Card layout Alt Card 2';
-$string['courselistlayout12'] = 'Card layout Alt Card 3';
+$string['courselistlayout0'] = '1-column, Default Moodle course list';
+$string['courselistlayout1'] = '2-column, Horizontal Card: vertical image|title/summary';
+$string['courselistlayout2'] = '2-column, Horizontal Card: image/title|summary';
+$string['courselistlayout3'] = '2-column, Horizontal Card: title overlay image';
+$string['courselistlayout4'] = '3-column, Horizontal Card: title overlay image w/buttons';
+$string['courselistlayout5'] = '3-column, Vertical Card: image/title/summary';
+$string['courselistlayout6'] = '3-column, Horizontal Card: top title overlay image';
+$string['courselistlayout7'] = '3-column, Horizontal, Small image, icon with Title';
+$string['courselistlayout8'] = '1-column, Enhanced Moodle course list';
+$string['courselistlayout9'] = '3-column, Masonry';
+$string['courselistlayout10'] = '1-column, Columns Moodle course list';
+$string['courselistlayout11'] = 'Corporate Training - minimal with completion progressbar';
+$string['courselistlayout12'] = 'Table list';
+$string['courselistlayout13'] = 'Alt Card 1 (unfinished)';
+$string['courselistlayout14'] = 'Alt Card 2 (unfinished)';
+$string['courselistlayout15'] = 'Alt Card 3 (unfinished)';
 
 $string['wraprecentlyaccessedcourses'] = 'Wrap Recently Accessed Courses list';
 $string['wraprecentlyaccessedcourses_desc'] = 'On the Dashboard.';
@@ -190,7 +193,6 @@ $string['showshare_desc'] = 'Show share button on pages when you users are not l
 
 $string['confirmlogout'] = 'Confirm logout';
 $string['confirmlogout_desc'] = 'Enable if you want users to be prompted when they attempt to logout.';
-
 $string['alternatelogouturl'] = 'Alternate Logout URL';
 $string['alternatelogouturl_desc'] = 'Alternate Logout URL will only be used for users logged-in using non-Manual or email-based self-registration accounts.<br>Example: https://www.example.com/logout';
 
