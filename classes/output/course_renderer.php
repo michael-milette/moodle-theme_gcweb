@@ -109,10 +109,9 @@ class course_renderer extends \core_course_renderer  {
                         $content .= '<div class="table-responsive">';
                         $content .= '<table class="table table-sm table-hover">';
                         $content .= '<thead><tr>';
-                        $content .= '<th scope="col" class="col-sm-3">Course</th>';
-                        $content .= '<th scope="col" class="col-sm-2">Category</th>';
-                        $content .= '<th scope="col" class="col-sm-5">Summary</th>';
-                        $content .= '<th scope="col" class="col-sm-2">Notes</th>';
+                        $content .= '<th scope="col" style="width:30%">Course</th>';
+                        $content .= '<th scope="col" style="width:15%">Category</th>';
+                        $content .= '<th scope="col" style="width:55%">Summary</th>';
                         $content .= '</tr></thead><tbody>';
                         break;
                     default:
@@ -479,13 +478,27 @@ class course_renderer extends \core_course_renderer  {
                             $rowcontent .= '</div>';
                             break;
 
-                        case 12:
+                        case 12: // Table
                             $rowcontent .= html_writer::start_tag('tr', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
                             $rowcontent .= '<td><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></td>';
                             $rowcontent .= '<td>' . $catcontent . '</small></td>';
-                            $rowcontent .= '<td>' . $summary . '</td>';
-                            $rowcontent .= '<td>' . $customfieldcontent . '</td>';
+                            $rowcontent .= '<td>' . $summary . $customfieldcontent . '</td>';
                             $rowcontent .= html_writer::end_tag('tr');
+                            break;
+
+                        case 13:
+                            $rowcontent .= '<div class="card col-md-4 mb-4">';
+                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
+                            $rowcontent .= '<div class="row">';
+                            $rowcontent .= '      <img src="' . $imgurl . '" class="card-img p-4" style="height:140px;width:100%;object-fit:cover;object-position: 100% 0%;" alt="">';
+                            $rowcontent .= '      <div class="card-body">';
+                            $rowcontent .= '        <h4 class="card-title"><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></h4>';
+                            $rowcontent .= '        <p class="card-text"><small>' . $catcontent . '</small></p>';
+                            $rowcontent .= '        <p class="card-text">' . $customfieldcontent . '</p>';
+                            $rowcontent .= '      </div>';
+                            $rowcontent .= '</div>';
+                            $rowcontent .= html_writer::end_tag('div');
+                            $rowcontent .= '</div>';
                             break;
 
                         case 13: // display course contacts. See core_course_list_element::get_course_contacts().
