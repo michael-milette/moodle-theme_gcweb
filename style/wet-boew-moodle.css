@@ -793,6 +793,37 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 .text-muted, a.dimmed, a.dimmed:link, a.dimmed:visited, a.dimmed_text, a.dimmed_text:link, a.dimmed_text:visited, .dimmed_text, .dimmed_text a, .dimmed_text a:link, .dimmed_text a:visited, .usersuspended, .usersuspended a, .usersuspended a:link, .usersuspended a:visited, .dimmed_category, .dimmed_category a, .tag_feed .media .muted a, #page-admin-qtypes .disabled, #page-admin-qbehaviours .disabled, #page-admin-plugins #plugins-control-panel .pluginname .componentname, #page-admin-plugins #plugins-control-panel .version .versionnumber, #page-admin-plugins #plugins-control-panel .notes .requiredby, #plugins-check-page .page-description, #plugins-check-page #plugins-check .requires-ok, #plugins-check-page #plugins-check .displayname .plugindir, #plugins-check-page #plugins-check-available-dependencies .displayname .component, #page-admin-search .adminpagepath li, .block .minicalendar td.weekend, .section .activity .stealth, .course-content .section-summary .section-summary-activities .activity-count, .course-content ul li.section.hidden .sectionname>span, .course-content ul li.section.hidden .content>div.summary, .course-content ul li.section.hidden .activity .activityinstance, #course-category-listings .listitem[data-visible="0"], #course-category-listings .listitem[data-visible="0"]>div>a, #course-category-listings .listing-pagination-totals.dimmed, .fitem.disabled .fp-btn-choose, .form-defaultinfo, .form-label .form-shortname, .formsettingheading .form-horizontal, .no-felement.fstatic, .path-backup .backup_progress .backup_stage {
     color: #707070!important;
 }
+.text-primary {
+    color: #2572b4!important;
+}
+.bg-primary {
+    color: #fff!important;
+    background-color: #2572b4!important;
+}
+.text-success {
+    color: #3c763d!important;
+}
+.bg-success {
+    background-color: #dff0d8!important;
+}
+.text-info {
+    color: #31708f!important;
+}
+.bg-info {
+    background-color: #d9edf7!important;
+}
+.text-warning {
+    color: #8a6d3b!important;
+}
+.bg-warning {
+    background-color: #fcf8e3!important;
+}
+.text-danger {
+    color: #a94442!important;
+}
+.bg-danger {
+    background-color: #f2dede!important;
+}
 
 /* Font size fix for activity types list displayed in course outline. */
 .course-content .section-summary .section-summary-activities .activity-count {
@@ -904,4 +935,72 @@ a.btn-secondary:focus {
   .card-columns {
     column-count: 3; 
   }
+}
+
+/* Fix for alert boxes. */
+.alert-success,
+.alert-warning,
+.alert-info,
+.alert-danger {
+    color: #000;
+}
+.alert-success {
+      border-left: 4px solid #278400
+}
+.alert-warning {
+      border-left: 4px solid #f90
+}
+.alert-info {
+      border-left: 4px solid #269abc
+}
+.alert-danger {
+      border-left: 4px solid #d3080c
+}
+
+
+/* Fix for absolute positioning. */
+.pstn-lft-xs, .pstn-lft-sm, .pstn-lft-md, .pstn-lft-lg,
+.pstn-bttm-xs, .pstn-bttm-sm, .pstn-bttm-md, .pstn-bttm-lg,
+.pstn-rght-xs, .pstn-rght-sm, .pstn-rght-md, .pstn-rght-lg,
+.pstn-tp-xs, .pstn-tp-sm, .pstn-tp-md, .pstn-tp-lg {
+    position: absolute;
+}
+/* Fixes for tables. */
+caption {
+    color: #333;
+}
+.table-striped tbody tr:nth-of-type(odd), table.collection tbody tr:nth-of-type(odd), table#explaincaps tbody tr:nth-of-type(odd), table#defineroletable tbody tr:nth-of-type(odd), table.grading-report tbody tr:nth-of-type(odd), table#listdirectories tbody tr:nth-of-type(odd), table.rolecaps tbody tr:nth-of-type(odd), table.userenrolment tbody tr:nth-of-type(odd), form#movecourses table tbody tr:nth-of-type(odd), #page-admin-course-index .editcourse tbody tr:nth-of-type(odd), .forumheaderlist tbody tr:nth-of-type(odd), table.flexible tbody tr:nth-of-type(odd), .generaltable tbody tr:nth-of-type(odd) {
+    background-color:#f5f5f5;
+}
+.table-hover tbody tr:hover, table.grading-report tbody tr:hover, .forumheaderlist tbody tr:hover, .generaltable tbody tr:hover, table.flexible tbody tr:hover, .category_subcategories tbody tr:hover, table#modules tbody tr:hover, table#permissions tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Fix for forms. */
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    padding-top: 5px;
+  }
+}
+.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn, .input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.input-group-sm>.form-control, .input-group-sm>.input-group-addon, .input-group-sm>.input-group-btn>.btn, .input-sm {
+    height: 33px;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+legend {
+    padding-bottom: 6px;
+    font-size: 24px;
+}
+/* This makes form-control fields 100% wide (WET behaviour). */
+form.formcontrol .form-control {
+    width: 100%;
 }
