@@ -38,6 +38,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('navdraweropen', 'true', $themename); // Open.
     set_config('hidefrontpagelinkstopages', 0, $themename); // No.
     set_config('courselistlayout', 'list', $themename); // List.
+    set_config('filtercoursesbylang', '0', $themename); // No.
     set_config('wraprecentlyaccessedcourses', 0, $themename); // Don't wrap the Dashboard's Recently Accessed Courses list.
 }
 
@@ -124,6 +125,15 @@ for ($cnt = 0; $cnt <= 12; $cnt++) {
 }
 $default = get_string('courselistlayout0', $themename);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Filter out courses in course lists and search results whose forced language, if set, does not match the current language.
+$name = $themename . '/filtercoursesbylang';
+$title = get_string('filtercoursesbylang', $themename);
+$description = get_string('filtercoursesbylang_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

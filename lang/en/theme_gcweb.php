@@ -179,6 +179,9 @@ $string['courselistlayout13'] = 'Alt Card 1 (unfinished)';
 $string['courselistlayout14'] = 'Alt Card 2 (unfinished)';
 $string['courselistlayout15'] = 'Alt Card 3 (unfinished)';
 
+$string['filtercoursesbylang'] = 'Filter courses by language';
+$string['filtercoursesbylang_desc'] = 'Courses whose forced language, if set, does not match the current language will be removed from course listings and search results.';
+
 $string['wraprecentlyaccessedcourses'] = 'Wrap Recently Accessed Courses list';
 $string['wraprecentlyaccessedcourses_desc'] = 'On the Dashboard.';
 
@@ -195,6 +198,8 @@ $string['confirmlogout'] = 'Confirm logout';
 $string['confirmlogout_desc'] = 'Enable if you want users to be prompted when they attempt to logout.';
 $string['alternatelogouturl'] = 'Alternate Logout URL';
 $string['alternatelogouturl_desc'] = 'Alternate Logout URL will only be used for users logged-in using non-Manual or email-based self-registration accounts.<br>Example: https://www.example.com/logout';
+
+$string['getstarted'] = 'Get started!';
 
 $string['showprofile_heading'] = 'Select the sections and fields to be displayed when user\'s edit their profile.';
 $string['showprofilesection_desc'] = 'Show the whole section.';

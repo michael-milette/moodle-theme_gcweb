@@ -58,12 +58,12 @@ class course_renderer extends \core_course_renderer  {
     /*
      * Available courses
      */
-    public function view_available_courses($id = 0, $courses = null, $totalcount = null) {
+    public function view_available_courses($categoryid = 0, $courses = null, $totalcount = null) {
         global $CFG, $OUTPUT, $PAGE;
         $PAGE->theme->settings->courselistlayout = optional_param('layout', $PAGE->theme->settings->courselistlayout, PARAM_INT);
-        $rcourseids = array_keys($courses);
         $PAGE->theme->settings->titletooltip = false;
 
+        $rcourseids = array_keys($courses);
         // Number of courses per row.
         if (in_array($PAGE->theme->settings->courselistlayout,[8,10,11])) {
             // Layouts with 1 courses per row.
@@ -79,7 +79,7 @@ class course_renderer extends \core_course_renderer  {
             $acourseids = array_chunk($rcourseids, 3);
         }
 
-        if ($id != 0) {
+        if ($categoryid != 0) {
             $newcourse = get_string('availablecourses');
         } else {
             $newcourse = null;
@@ -97,15 +97,15 @@ class course_renderer extends \core_course_renderer  {
             $noimgurl = $OUTPUT->image_url('noimg', 'theme');
             $systemcontext = $PAGE->bodyid;
             foreach ($acourseids as $courseids) {
+                $content .= '<div class="container-fluid">';
                 switch ($PAGE->theme->settings->courselistlayout) {
                     case 2:
-                        $content .= '<div class="container-fluid"><div class="row card-deck">';
+                        $content .= '<div class="row card-deck">';
                         break;
                     case 9:
-                        $content .= '<div class="container-fluid"><div class="card-columns">';
+                        $content .= '<div class="card-columns">';
                         break;
                     case 12:
-                        $content .= '<div class="container-fluid">';
                         $content .= '<div class="table-responsive">';
                         $content .= '<table class="table table-sm table-hover">';
                         $content .= '<thead><tr>';
@@ -115,7 +115,7 @@ class course_renderer extends \core_course_renderer  {
                         $content .= '</tr></thead><tbody>';
                         break;
                     default:
-                        $content .= '<div class="container-fluid"><div class="row">';
+                        $content .= '<div class="row">';
                 }
                 $rowcontent = '';
                 foreach ($courseids as $courseid) {
@@ -502,7 +502,7 @@ class course_renderer extends \core_course_renderer  {
                             break;
 
                         case 13: // display course contacts. See core_course_list_element::get_course_contacts().
-                            $enrollbutton = 'Get stated!';//get_string('enrollcoursecard', 'theme_fordson');
+                            $enrollbutton = get_string('getstarted', 'theme_gcweb');
                             $rowcontent .= '<div class="col-md-4">';
                             $rowcontent .= '
                                 <div class="tilecontainer">
@@ -618,19 +618,37 @@ class course_renderer extends \core_course_renderer  {
                     }
                 }
                 $content .= $rowcontent;
-                $content .= '</div>';
                 if($PAGE->theme->settings->courselistlayout == 12) {
                     $content .= '</tbody></table>';
                 }
-                $content .= '</div>';
+                $content .= '</div>'; // Custom div.
+                $content .= '</div>'; // Class container-fluid.
             }
         }
         $coursehtml = $header . $content . $footer;
         return $coursehtml;
     }
 
+    // This makes it possible to pass parameters by reference instead of by value
+    // so that search_courses() can access the filtered list of courses and totalcount.
     protected function coursecat_courses(coursecat_helper $chelper, $courses, $totalcount = null) {
+        return $this->coursecat_courses_ml($chelper, $courses, $totalcount);
+    }
+    protected function coursecat_courses_ml(coursecat_helper $chelper, $courses, &$totalcount = null) {
         global $PAGE;
+        
+        if (!empty($PAGE->theme->settings->filtercoursesbylang)) {
+            // Filter out courses if forced-language doesn't match the current language.
+            $lang = current_language();
+            foreach($courses as $key => $course) {
+                @$clang = $course->lang; // TODO: Fix ugly hack.
+                if ($course->id != SITEID and !empty($clang) and $clang != $lang) {
+                    unset($courses[$key]);
+                }
+            }
+            // Update the total count.
+            $totalcount = count($courses);
+        }
 
         // Default Moodle course display.
         if (empty($PAGE->theme->settings->courselistlayout)) {
@@ -646,54 +664,58 @@ class course_renderer extends \core_course_renderer  {
             // Courses count is cached during courses retrieval.
             return '';
         }
+
         if ($chelper->get_show_courses() == self::COURSECAT_SHOW_COURSES_AUTO) {
+            // In 'auto' course display mode we analyse if number of courses is more or less than $CFG->courseswithsummarieslimit.
             if ($totalcount <= $CFG->courseswithsummarieslimit) {
                 $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED);
             } else {
                 $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_COLLAPSED);
             }
         }
+
+        // Prepare content of paging bar if it is needed.
         $paginationurl = $chelper->get_courses_display_option('paginationurl');
         $paginationallowall = $chelper->get_courses_display_option('paginationallowall');
         if ($totalcount > count($courses)) {
+            // There are more results that can fit on one page.
             if ($paginationurl) {
+                // The option paginationurl was specified, display pagingbar.
                 $perpage = $chelper->get_courses_display_option('limit', $CFG->coursesperpage);
                 $page = $chelper->get_courses_display_option('offset') / $perpage;
-                $pagingbar = $this->paging_bar($totalcount, $page, $perpage, $paginationurl->out(false, array(
-                    'perpage' => $perpage
-                )));
+                $pagingbar = $this->paging_bar($totalcount, $page, $perpage,
+                        $paginationurl->out(false, array('perpage' => $perpage)));
                 if ($paginationallowall) {
-                    $pagingbar .= html_writer::tag('div', html_writer::link($paginationurl->out(false, array(
-                        'perpage' => 'all'
-                    )) , get_string('showall', '', $totalcount)) , array(
-                        'class' => 'paging paging-showall'
-                    ));
+                    $pagingbar .= html_writer::tag('div', html_writer::link($paginationurl->out(false, array('perpage' => 'all')),
+                            get_string('showall', '', $totalcount)), array('class' => 'paging paging-showall'));
                 }
             } else if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
+                // The option for 'View more' link was specified, display more link.
                 $viewmoretext = $chelper->get_courses_display_option('viewmoretext', new lang_string('viewmore'));
-                $morelink = html_writer::tag('div', html_writer::tag('a', html_writer::start_tag('i', array(
-                    'class' => 'fa-graduation-cap' . ' fa fa-fw'
-                )) . html_writer::end_tag('i') . $viewmoretext, array(
-                    'href' => $viewmoreurl,
-                    'class' => 'btn btn-primary coursesmorelink'
-                )) , array(
-                    'class' => 'paging paging-morelink'
-                ));
+                $morelink = html_writer::tag('div', html_writer::link($viewmoreurl, $viewmoretext),
+                        array('class' => 'paging paging-morelink'));
+//                $morelink = html_writer::tag('div', html_writer::tag('a', html_writer::start_tag('i', array(
+//                    'class' => 'fa-graduation-cap' . ' fa fa-fw'
+//                )) . html_writer::end_tag('i') . $viewmoretext, array(
+//                    'href' => $viewmoreurl,
+//                    'class' => 'btn btn-primary coursesmorelink'
+//                )) , array('class' => 'paging paging-morelink'));
             }
         } else if (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
-            $pagingbar = html_writer::tag('div', html_writer::link($paginationurl->out(false, array(
-                'perpage' => $CFG->coursesperpage
-            )) , get_string('showperpage', '', $CFG->coursesperpage)) , array(
-                'class' => 'paging paging-showperpage'
-            ));
+            // There are more than one page of results and we are in 'view all' mode, suggest to go back to paginated view mode.
+            $pagingbar = html_writer::tag('div', html_writer::link($paginationurl->out(false, array('perpage' => $CFG->coursesperpage)),
+                get_string('showperpage', '', $CFG->coursesperpage)), array('class' => 'paging paging-showperpage'));
         }
+
+        // Display list of courses.
         $attributes = $chelper->get_and_erase_attributes('courses');
         $content = html_writer::start_tag('div', $attributes);
+
         if (!empty($pagingbar)) {
             $content .= $pagingbar;
         }
         $categoryid = optional_param('categoryid', 0, PARAM_INT);
-        $coursecount = 0;
+
         $content .= $this->view_available_courses($categoryid, $courses, $totalcount);
         if (!empty($pagingbar)) {
             $content .= $pagingbar;
@@ -701,8 +723,74 @@ class course_renderer extends \core_course_renderer  {
         if (!empty($morelink)) {
             $content .= $morelink;
         }
-        $content .= html_writer::end_tag('div');
+
+        $content .= html_writer::end_tag('div'); // .courses
         $content .= '<div class="clearfix"></div>';
+        return $content;
+    }
+   /**
+     * Renders html to display search result page
+     *
+     * @param array $searchcriteria may contain elements: search, blocklist, modulelist, tagid
+     * @return string
+     */
+    public function search_courses($searchcriteria) {
+        global $CFG;
+        $content = '';
+        if (!empty($searchcriteria)) {
+            // print search results
+
+            $displayoptions = array('sort' => array('displayname' => 1));
+            // take the current page and number of results per page from query
+            $perpage = optional_param('perpage', 0, PARAM_RAW);
+            if ($perpage !== 'all') {
+                $displayoptions['limit'] = ((int)$perpage <= 0) ? $CFG->coursesperpage : (int)$perpage;
+                $page = optional_param('page', 0, PARAM_INT);
+                $displayoptions['offset'] = $displayoptions['limit'] * $page;
+            }
+            // options 'paginationurl' and 'paginationallowall' are only used in method coursecat_courses()
+            $displayoptions['paginationurl'] = new moodle_url('/course/search.php', $searchcriteria);
+            $displayoptions['paginationallowall'] = true; // allow adding link 'View all'
+
+            $class = 'course-search-result';
+            foreach ($searchcriteria as $key => $value) {
+                if (!empty($value)) {
+                    $class .= ' course-search-result-'. $key;
+                }
+            }
+            $chelper = new coursecat_helper();
+            $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED_WITH_CAT)->
+                    set_courses_display_options($displayoptions)->
+                    set_search_criteria($searchcriteria)->
+                    set_attributes(array('class' => $class));
+
+            $courses = core_course_category::search_courses($searchcriteria, $chelper->get_courses_display_options());
+            $totalcount = core_course_category::search_courses_count($searchcriteria);
+            $courseslist = $this->coursecat_courses_ml($chelper, $courses, $totalcount);
+
+            if (!$totalcount) {
+                if (!empty($searchcriteria['search'])) {
+                    $content .= $this->heading(get_string('nocoursesfound', '', $searchcriteria['search']));
+                } else {
+                    $content .= $this->heading(get_string('novalidcourses'));
+                }
+            } else {
+                $content .= $this->heading(get_string('searchresults'). ": $totalcount");
+                $content .= $courseslist;
+            }
+
+            if (!empty($searchcriteria['search'])) {
+                // print search form only if there was a search by search string, otherwise it is confusing
+                $content .= $this->box_start('generalbox mdl-align');
+                $content .= $this->course_search_form($searchcriteria['search']);
+                $content .= $this->box_end();
+            }
+        } else {
+            // just print search form
+            $content .= $this->box_start('generalbox mdl-align');
+            $content .= $this->course_search_form();
+            $content .= $this->box_end();
+        }
         return $content;
     }
 }
