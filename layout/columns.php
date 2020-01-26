@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
 
+$PAGE->requires->jquery();
+
 require(__DIR__ . '/../framework/settings.php');
 
 $templatecontext = [
@@ -46,9 +48,7 @@ $templatecontext = [
     'htmlattributes' => $_PAGE['htmlattributes'],
     'bodyattributes' => $_PAGE['bodyattributes'],
     'wetboew' => $_PAGE['themewww'] . '/framework',
-    'jquery' => $_PAGE['jquerypath'],
     'langmenu' => $_PAGE['langmenu'],
-    'jquery' => $_PAGE['jquerypath'],
     'lang' => $_PAGE['lang'],
     'lastmodified' => $_PAGE['lastmodified'],
     'pagebutton' => $_PAGE['pagebutton'],

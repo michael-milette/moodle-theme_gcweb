@@ -44,9 +44,6 @@ $_PAGE['description'] = '';
 $_PAGE['breadcrumbs'] = $theme->prebreadcrumbs;
 $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());// date("Y-m-d", filemtime(__FILE__));
 
-// Path to jQuery;
-$_PAGE['jquerypath']  = $CFG->wwwroot . '/lib/jquery/' . basename(glob($CFG->libdir . '/jquery/jquery-*.min.js')[0]);
-
 // Insert extra head content just before </HEAD>.
 
 $additionalhtmlhead = $CFG->additionalhtmlhead ;
