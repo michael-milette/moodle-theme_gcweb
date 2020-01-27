@@ -176,7 +176,8 @@ class course_renderer extends \core_course_renderer  {
                                         $cat->get_formatted_name(), array('class' => $cat->visible ? '' : 'dimmed'));
                         $catcontent .= $pixcontent;
                         $catcontent .= html_writer::end_tag('div');
-
+                    } else {
+                        $catcontent = '';
                     }
 
                     // Load from config if usea a img from course summary file if not exist a img then a default one ore use a fa-icon.
