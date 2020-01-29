@@ -194,3 +194,10 @@ img.activityicon {
     height: 32px;
     width: 32px;
 }
+
+/* Nav Drawer - remove navigation in course */
+.pagelayout-course #nav-drawer .list-group:nth-child(2),
+.pagelayout-incourse #nav-drawer .list-group:nth-child(2) {
+    display: none;
+}
+
