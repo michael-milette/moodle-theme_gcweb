@@ -201,3 +201,7 @@ img.activityicon {
     display: none;
 }
 
+/* Course enrolment page. */
+#page-enrol-index .coursebox {
+    max-width: 960px;
+}
