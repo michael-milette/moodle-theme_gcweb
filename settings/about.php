@@ -30,9 +30,12 @@ $page = new admin_settingpage($themename . '_about', get_string('abouttheme', 't
 // Define settings: About (Readme).
 $name = $themename . '/aboutreadme';
 $title = '';
+$version = get_config('theme_gcweb', 'version');
+$release = get_config('theme_gcweb', 'release');
 $description = get_string('choosereadme', 'theme_gcweb');
 $description = str_replace('<img class="img-polaroid" src="', '<img class="img-polaroid" src="' .
         $CFG->wwwroot .  '/theme/', $description);
+$description = str_replace('[version]', $release . ' (' . $version . ')', $description);
 $setting = new admin_setting_description($name, $title, $description);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);

@@ -35,21 +35,23 @@ $string['choosereadme'] = '
 <div class="well">
  <h2>Credits</h2>
  <h3>About</h3>
- <p>WET-BOEW-MOODLE GCWeb is a responsive Moodle theme based on the latest GCWeb <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
- <p>This theme is licensed under the GPL (GNU General Public License). You can find a complete licence copy in: <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a></p>
- <p>Authors: Michael Milette<br>
- Contact: <a href="mailto:info@tngconsulting.ca">info@tngconsulting.ca</a><br>
- Website: <a href="http://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
+ <p>WET-BOEW-MOODLE GCWeb, version [version], is a responsive Moodle theme based on the GCWeb <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
+ <p>Authors: Michael Milette, <a href="https://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
  <h3>Bugs Report</h3>
  <p>You can report bugs using the GitHub Issue Tracker at <a href="https://github.com/wet-boew/wet-boew-moodle/issues">https://github.com/wet-boew/wet-boew-moodle/issues</a>.</p>
  <h3>Documentation</h3>
  <p>Documentation is available in <a href="https://github.com/wet-boew/wet-boew-moodle/">the project README file</a> and in <a href="https://github.com/wet-boew/wet-boew-moodle/wiki">the project Wiki</a></p>
  <h3>Demo</h3>
- <p>A demo instance is planned in the future.</p>
+ <p>A working example of this theme can be found at <a href="https://wet-boew-moodle.tngconsulting.ca">wet-boew-moodle.tngconsulting.ca</a>.</p>
  <h3>Terms and conditions of use</h3>
- <p>Unless otherwise noted, the overall WET-BOEW-MOODLE project, wiki content, documentation and source code is Copyright © 2016 onwards by TNG Consulting Inc. Inc. with parts which may be contributed/copyrighted by others. WET-BOEW-MOODLE is provided freely as open source software, can be redistributed and/or modified it under the terms of the GNU General Public License version 3.0 or later.</p>
- <p>It is distributed in the hope that it will be useful. However, there is no warranty, implied or otherwise, of merchantability or fitness for any purpose. See the GNU General Public License for details.</p>
- <p>If for any reason a copy of the GNU General Public License was not included with this project, you can view it online by going to: https://www.gnu.org/licenses/gpl-3.0.en.html</p>
+ <p>Unless otherwise noted, the overall WET-BOEW-MOODLE project, wiki content, documentation and source code is Copyright © 2016 onwards by TNG Consulting Inc. Inc.</p> 
+ <p>WET-BOEW-MOODLE is provided freely as open source software, can be redistributed and/or modified it under the terms of the GNU General Public License (GPL) version 3.0. It is distributed in the hope that it will be useful. However, there is no warranty, implied or otherwise, of merchantability or fitness for any purpose. See the GNU General Public License for details.</p>
+ <p>Moodle is Copyright © 1999 onwards, Martin Dougiamas with portions contributed/copyrighted by many others and all of it is provided under the terms of the GNU GPL 3.0</p>
+ <p>If for any reason a copy of the GNU General Public License was not included with this project, you can view it online by going to: <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">www.gnu.org/licenses/gpl-3.0.en.html</a></p>
+ <p>The Web Experience Toolkit (WET) is covered under Crown Copyright, Government of Canada, and is distributed under the MIT License: <a href="https://wet-boew.github.io/v4.0-ci/License-en.html">wet-boew.github.io/v4.0-ci/License-en.html</a></p>
+ <p>The Canada wordmark and related graphics associated with this distribution are protected under trademark law and copyright law. No permission is granted to use them outside the parameters of the Government of Canada\'s corporate identity program. For more information, see <a href="https://www.tbs-sct.gc.ca/fip-pcim/index-eng.asp">www.tbs-sct.gc.ca/fip-pcim/index-eng.asp</a>.</p>
+ <p>Copyright title to all 3rd party software distributed with this theme is held by the respective copyright holders as noted in those files. You are asked to read the 3rd Party Licenses referenced with those assets.</p>
+ <p>The above copyright notices and attributions shall be included in all copies or portions of the software.</p>
 </div>
 </div>';
 

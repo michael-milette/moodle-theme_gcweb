@@ -35,11 +35,9 @@ $string['choosereadme'] = '
 <div class="well">
  <h2>Credits</h2>
  <h3>À propos</h3>
- <p>WET-BOEW-MOODLE est un th&egrave;me réactif de Moodle basé sur les derni&egrave;res normes Web pour le gouvernement du Canada et le th&egrave;me Boost de Moodle.</p>
+ <p>WET-BOEW-MOODLE GCWeb, version [version], est un th&egrave;me réactif de Moodle basé sur les derni&egrave;res normes Web pour le gouvernement du Canada et le th&egrave;me Boost de Moodle.</p>
  <p>Ce th&egrave;me est distribué sous licence GPL (GNU General Public License). Vous pouvez trouver une copie compl&egrave;te de la licence sur: http://www.gnu.org/licenses/</p>
- <p>Auteurs&nbsp;: Michael Milette<br />
- Contact&nbsp;: info@tngconsulting.ca<br>
- Site Web&nbsp;: www.tngconsulting.ca</p>
+ <p>Auteurs&nbsp;: Michael Milette, <a href="https://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
  <h3>Rapport de bugs</h3>
  <p>Vous pouvez signaler des bogues &agrave; l\'aide de GitHub Gestionnaire d\'incident &agrave; l\'adresse https://github.com/wet-boew/wet-boew-moodle/issues.</p>
  <h3>Documentation</h3>
