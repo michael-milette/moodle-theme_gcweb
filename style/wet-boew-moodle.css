@@ -976,7 +976,8 @@ caption {
     background-color: #f0f0f0;
 }
 
-/* Fix for forms. */
+/* Fixes for forms. */
+
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     padding-top: 5px;
@@ -1001,8 +1002,18 @@ legend {
     font-size: 24px;
 }
 /* This makes form-control fields 100% wide (WET behaviour). */
-form.formcontrol .form-control {
+form.wetboew .form-control {
     width: 100%;
+}
+/* Fix for input group (example: field followed by search button). */
+.wetboew .input-group {
+  display: table;
+}
+.wetboew .input-group>.form-control, .wetboew .input-group>.form-control-plaintext, .wetboew .input-group>.custom-select, .wetboew .input-group>.custom-file {
+  width: 100%;
+} 
+.wetboew .form-control {
+    min-height: 37px;
 }
 
 /* Modernize course sections. */
