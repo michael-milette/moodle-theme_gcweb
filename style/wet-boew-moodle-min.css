@@ -473,6 +473,9 @@ a.eupopup-closebutton {
 .popover {
     font-size: 1.5rem;
 }
+.fade {
+  opacity:1;
+}
 
 /* Show sections hidden from students. */
 li.section.hidden, .block.hidden, .block.invisible {
@@ -921,19 +924,19 @@ a.btn-secondary:focus {
 /* Masonry course listing. */
 @media (min-width: 576px) {
   .card-columns {
-    column-count: 1; 
+    column-count: 1;
   }
 }
 
 @media (min-width: 1200px) {
   .card-columns {
-    column-count: 2; 
+    column-count: 2;
   }
 }
 
 @media (min-width: 1500px) {
   .card-columns {
-    column-count: 3; 
+    column-count: 3;
   }
 }
 
@@ -1011,7 +1014,7 @@ form.wetboew .form-control {
 }
 .wetboew .input-group>.form-control, .wetboew .input-group>.form-control-plaintext, .wetboew .input-group>.custom-select, .wetboew .input-group>.custom-file {
   width: 100%;
-} 
+}
 .wetboew .form-control {
     min-height: 37px;
 }
