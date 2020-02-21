@@ -95,6 +95,11 @@ $string['accountsettings'] = 'Account settings';
 $string['signon'] = 'Sign in';
 $string['signout'] = 'Sign out';
 
+$string['showumprofilelink'] = 'Show Profile link';
+$string['showumprofilelink_desc'] = 'Show or hide the Profile link in the User Menu';
+$string['showumlogoutlink'] = 'Show Log Out link';
+$string['showumlogoutlink_desc'] = 'Show or hide the Log Out link in the User Menu';
+
 $string['topofpage'] = 'Top of Page';
 $string['datemodified'] = 'Date modified:';
 

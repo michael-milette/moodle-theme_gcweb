@@ -18,7 +18,7 @@
  * WET-BOEW GCWeb theme version.
  *
  * @package   theme_gcweb
- * @copyright 2016-2019 TNG Consulting Inc.
+ * @copyright 2016-2020 TNG Consulting Inc.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2019030407;
+$plugin->version = 2020022008;
 
 // This is the version of Moodle this plugin requires.
 $plugin->requires = 2018051700;

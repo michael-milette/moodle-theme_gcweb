@@ -42,12 +42,27 @@ $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
 $_PAGE['description'] = '';
 $_PAGE['breadcrumbs'] = $theme->prebreadcrumbs;
-$_PAGE['lastmodified'] = date('Y-m-d', getlastmod());// date("Y-m-d", filemtime(__FILE__));
+$_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
+if (empty($_PAGE['lastmodified'])) {
+    $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());
+}
+
+// User menu - hack needs to be done here due to a bug in the Moodle minifier which inserts an unwanted space after the commas.
+$extracss = '';
+if (empty($theme->settings->showumprofilelink)) { // Hide the Profile link.
+    $extracss .= '#action-menu-1-menubar a[data-title="profile,moodle"] {display:none!important;}';
+}
+if (empty($theme->settings->showumlogoutlink)) {  // Hide the Log Out link.
+    $extracss .= '#action-menu-1-menubar a[data-title="logout,moodle"] {display:none!important;}';
+}
+if (!empty($extracss)) {
+    $extracss = '<style>' . $extracss . '</style>';
+}
 
 // Insert extra head content just before </HEAD>.
 
 $additionalhtmlhead = $CFG->additionalhtmlhead ;
-$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead . $extracss, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
 $_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
 $CFG->additionalhtmlhead = $additionalhtmlhead;
 // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -179,7 +194,6 @@ $_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => tr
 //
 
 $_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-$_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
 $_PAGE['pageheading'] = $OUTPUT->pageheading($PAGE->title);
 $_PAGE['pageheadinghidden'] = '';

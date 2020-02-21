@@ -18,7 +18,7 @@
  * Settings for header.
  *
  * @package    theme_gcweb
- * @copyright  2016-2019 TNG Consulting Inc. <http://www.tngconsulting.ca>
+ * @copyright  2016-2020 TNG Consulting Inc. <http://www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,6 +30,8 @@ $page = new admin_settingpage($themename . '_header', get_string('header', $them
 
 // If first time, initialize this tab's settings with defaults.
 if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
+    set_config('showprofilelink', 0, $themename); // No.
+    set_config('showlogoutlink', 0, $themename); // No.
     set_config('showsignon', 1, $themename); // Yes.
     set_config('showregister', 1, $themename); // Yes.
     set_config('showaccountsettings', 1, $themename); // Yes.
@@ -38,6 +40,24 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('showhomebreadcrumbs', 1, $themename); // Yes.
     set_config('prebreadcrumbs', '', $themename); // None.
 }
+
+// User menu: Show Profile link.
+$name = $themename . '/showumprofilelink';
+$title = get_string('showumprofilelink', $themename);
+$description = get_string('showumprofilelink_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// User menu: Show Log out link.
+$name = $themename . '/showumlogoutlink';
+$title = get_string('showumlogoutlink', $themename);
+$description = get_string('showumlogoutlink_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
 
 // Show Sign-on button.
 $name = $themename . '/showsignon';
