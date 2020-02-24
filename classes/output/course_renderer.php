@@ -17,9 +17,10 @@
 /**
  * Course renderer.
  *
- * @package    theme_noanme
- * @copyright  2016 Frédéric Massart - FMCorz.net
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   theme_gcweb
+ * @copyright 2016-2020 TNG Consulting Inc. - www.tngconsulting.ca
+ * @copyright 2016 Frédéric Massart - FMCorz.net
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace theme_gcweb\output\core;
@@ -40,18 +41,18 @@ use heading;
 use pix_icon;
 use image_url;
 use single_select;
-require_once ($CFG->dirroot . '/course/renderer.php');
+require_once $CFG->dirroot . '/course/renderer.php';
 global $PAGE;
 
 /**
  * Course renderer class.
  *
- * @package    theme_gcweb
- * @copyright  2019 TNG Consulting Inc. - www.tngconsulting.ca
- * @copyright  2016 Frédéric Massart - FMCorz.net
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package theme_gcweb
+ * @author  Michael Milette - TNG Consulting Inc. <www.tngconsulting.ca>
+ * @author  Frédéric Massart - <FMCorz.net>
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class course_renderer extends \core_course_renderer  {
+class course_renderer extends \core_course_renderer {
     protected $countcategories = 0;
 
 
@@ -120,14 +121,11 @@ class course_renderer extends \core_course_renderer  {
                 $rowcontent = '';
                 foreach ($courseids as $courseid) {
                     $course = get_course($courseid);
-//                    $trimtitlevalue = $PAGE->theme->settings->trimtitle;
-//                    $trimsummaryvalue = $PAGE->theme->settings->trimsummary;
-                    $summary = $course->summary;
-//                    $summary = format_text($course->summary, FORMAT_HTML, ['noclean'=>true, 'context' => context_system:instance()]);
-//                    $summary = file_rewrite_pluginfile_urls($course->summary, 'pluginfile.php', $context->id, 'course','section', $section->id);
-//                    $summary = format_text($summary, $course->summaryformat, array('para' => false, 'context' => $context));
+                    $context = context_system::instance();
+                    $summary = file_rewrite_pluginfile_urls($course->summary, 'pluginfile.php', $context->id, 'course', 'summary', null);
+                    $summary = format_text($summary, $course->summaryformat, ['noclean' => true, 'context' => $context], $course->id);
 
-                    $trimtitle = format_string($course->fullname);
+                    $trimtitle = format_string($course->fullname, false, ['context' => $context]);
                     $courseurl = new moodle_url('/course/view.php', array(
                         'id' => $courseid
                     ));
