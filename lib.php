@@ -28,6 +28,19 @@ defined('MOODLE_INTERNAL') || die();
 // We will add callbacks here as we add features to our theme.
 
 /**
+ * Add support for the moodle-local_accessibilitytool plugin, if availble.
+ *
+ * @param page Moodle page object
+ */
+function theme_gcweb_page_init(moodle_page $page) {
+    global $CFG;
+    if (file_exists($CFG->dirroot . "/local/accessibilitytool/lib.php")) {
+        require_once($CFG->dirroot . "/local/accessibilitytool/lib.php");
+        local_accessibilitytool_page_init($page);
+    }
+}
+
+/**
  * Post process the CSS tree.
  *
  * @param string $tree The CSS tree.
