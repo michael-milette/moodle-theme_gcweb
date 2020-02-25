@@ -42,12 +42,48 @@ $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
 $_PAGE['description'] = '';
 $_PAGE['breadcrumbs'] = $theme->prebreadcrumbs;
-$_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
-if (empty($_PAGE['lastmodified'])) {
-    $_PAGE['lastmodified'] = date('Y-m-d', getlastmod());
+
+// Get Last Modified date.
+
+$_PAGE['lastmodified'] = '';
+// If in a course, use the course start date.
+// Reminder: The front page does not have a start date even though it is a course.
+if (!empty($PAGE->course->startdate)) {
+    // Most of Moodle's activity and resource modules don't store the last modified date.
+    // So our hack is to use the course start date instead. This also allows for minor edits
+    // without causing a course's Last Modified date to change.
+    $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->startdate);
+}
+if (empty( $_PAGE['lastmodified'])) {
+    // So, it wasn't a course. Could be the front page... or other Moodle page.
+    if ($PAGE->cm) {
+        // If in a course module, can only be in one of the Site Pages under front page.
+        if ($PAGE->cm->modname == 'page') {
+            // If in a Site Page, use its last modified date.
+            // Get the Course Module ID from URL.
+            $id = optional_param('id', 0, PARAM_INT);
+            if (!empty($id) && $cm = get_coursemodule_from_id('page', $id)) {
+                global $DB;
+                $page = $DB->get_record('page', array('id'=>$cm->instance), '*', MUST_EXIST);
+                // You got it! the page's last modified date.
+                $_PAGE['lastmodified'] = date('Y-m-d', $page->timemodified);
+            }
+        } else {
+            // Other type of course module: use the course's last modified date.
+            $_PAGE['lastmodified'] = date('Y-m-d', $PAGE->course->timemodified);
+        }
+    }
+}
+if (empty( $_PAGE['lastmodified'])) {
+    // Hmmm... not in a course module, not even Front page.
+    // Guess we will use Moodle's major release date since Moodle is generating the page.
+    // But we don't want to give away exactly which release of Moodle we are using.
+    $verdate = (string) intval($CFG->version);
+    $_PAGE['lastmodified'] = substr($verdate, 0,4) . '-' . substr($verdate, 4,2) . '-' . substr($verdate, 6,2);
 }
 
-// User menu - hack needs to be done here due to a bug in the Moodle minifier which inserts an unwanted space after the commas.
+// User menu - hack here due to a bug in the Moodle minifier which inserts an unwanted space after the commas.
+
 $extracss = '';
 if (empty($theme->settings->showumprofilelink)) { // Hide the Profile link.
     $extracss .= '#action-menu-1-menubar a[data-title="profile,moodle"] {display:none!important;}';
