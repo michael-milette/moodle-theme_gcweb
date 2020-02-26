@@ -1070,3 +1070,8 @@ img.activityicon {
 #page-enrol-index .coursebox {
     max-width: 960px;
 }
+
+/* Fix line height. */
+.line-height-3 {
+	line-height: 1.8rem!important; 
+} 
