@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version = 2020022008;
 
 // This is the version of Moodle this plugin requires.
-$plugin->requires = 2018051700;
+$plugin->requires = 2019111800; // Moodle 3.8.
 
 // This is the component name of the plugin - it always starts with 'theme_'
 // for themes and should be the same as the name of the folder.
@@ -44,4 +44,4 @@ $plugin->dependencies = [
 $plugin->maturity = MATURITY_STABLE;
 
 // This is the named version.
-$plugin->release = '0.2';
+$plugin->release = '4.0.30'; // Based on WET-BOEW GCWeb v4.0.30.
