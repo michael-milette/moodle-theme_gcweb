@@ -370,3 +370,36 @@ $string['styleguidehtml'] = '
     </div>
 </div>
 ';
+
+$string['err404title'] = 'We couldn&#x27;t find that Web page (Error 404) / Nous ne pouvons trouver cette page Web (Erreur 404)';
+$string['err404body'] = '
+<header role="banner" id="wb-bnr" class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <img id="gcwu-sig" src="{$a}/theme/gcweb/framework/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada / Gouvernement du Canada">
+        </div>
+        <div class="col-sm-6">
+            <img id="wmms" src="{$a}/theme/gcweb/framework/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+        </div>
+    </div>
+</header>
+<main role="main" property="mainContentOfPage" typeof="WebPageElement" class="container">
+    <div class="row mrgn-tp-lg">
+        <h1 class="wb-inv">We couldn\'t find that Web page (Error 404) / <span lang="fr">Nous ne pouvons trouver cette page Web (Erreur 404)</span></h1>
+        <section class="col-md-6">
+            <h2><span class="glyphicon glyphicon-warning-sign mrgn-rght-md"></span> We couldn\'t find that Web page (Error 404)</h2>
+            <p>We\'re sorry you ended up here. Sometimes a page gets moved or deleted, but hopefully we can help you find what you\'re looking for.</p>
+            <ul>
+                <li>Return to the <a href="{$a}/?redirect=0&lang=en">home page</a></li>
+            </ul>
+        </section>
+        <section class="col-md-6" lang="fr">
+            <h2><span class="glyphicon glyphicon-warning-sign mrgn-rght-md"></span> Nous ne pouvons trouver cette page Web (Erreur 404)</h2>
+            <p>Nous sommes désolés que vous ayez abouti ici. Il arrive parfois qu\'une page ait été déplacée ou supprimée. Heureusement, nous pouvons vous aider à trouver ce que vous cherchez.</p>
+            <ul>
+                <li>Retournez à la <a href="{$a}/?redirect=0&lang=fr">page d\'accueil</a></li>
+            </ul>
+        </section>
+    </div>
+</main>
+';
