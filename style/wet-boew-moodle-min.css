@@ -1073,5 +1073,11 @@ img.activityicon {
 
 /* Fix line height. */
 .line-height-3 {
-	line-height: 1.8rem!important; 
-} 
+	line-height: 1.8rem!important;
+}
+
+/* Make Configurable Reports header sticky when scrolling. */
+#page-blocks-configurable_reports-viewreport th {
+  position: sticky;
+  top: 0;
+}
