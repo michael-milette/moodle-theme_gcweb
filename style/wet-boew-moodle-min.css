@@ -1081,3 +1081,10 @@ img.activityicon {
   position: sticky;
   top: 0;
 }
+
+/* Force white text on dark background. */
+.bg-dark.text-white a,
+.bg-dark.text-white a:visited,
+.bg-dark.text-white a:hover {
+    color: #fff!important;
+}
