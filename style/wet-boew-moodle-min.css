@@ -1087,6 +1087,12 @@ img.activityicon {
     max-width: 48rem;
 }
 
+/* Fix width of right sidebar for blocks so it doesn't overlap. */
+[data-region="blocks-column"] {
+    width: auto;
+    float: none;
+}
+
 /* Force white text on dark background. */
 .bg-dark.text-white a,
 .bg-dark.text-white a:visited,

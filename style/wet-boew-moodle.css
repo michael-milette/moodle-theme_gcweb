@@ -1082,6 +1082,12 @@ img.activityicon {
   top: 0;
 }
 
+/* Fix width of right sidebar for blocks so it doesn't overlap. */
+[data-region="blocks-column"] {
+    width: auto;
+    float: none;
+}
+
 /* Fix display of Forums Ratings in course settings. */
 [data-fieldtype="modgrade"] {
     max-width: 48rem;
