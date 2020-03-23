@@ -1082,6 +1082,11 @@ img.activityicon {
   top: 0;
 }
 
+/* Fix display of Forums Ratings in course settings. */
+[data-fieldtype="modgrade"] {
+    max-width: 48rem;
+}
+
 /* Force white text on dark background. */
 .bg-dark.text-white a,
 .bg-dark.text-white a:visited,
