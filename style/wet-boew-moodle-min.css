@@ -1082,15 +1082,20 @@ img.activityicon {
   top: 0;
 }
 
-/* Fix display of Forums Ratings in course settings. */
-[data-fieldtype="modgrade"] {
-    max-width: 48rem;
-}
-
 /* Fix width of right sidebar for blocks so it doesn't overlap. */
 [data-region="blocks-column"] {
     width: auto;
     float: none;
+}
+
+/* Fix for Enrolled Users field. */
+.userselector select {
+    width: 100%;
+}
+
+/* Fix display of Forums Ratings in course settings. */
+[data-fieldtype="modgrade"] {
+    max-width: 48rem;
 }
 
 /* Force white text on dark background. */
