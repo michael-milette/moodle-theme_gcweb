@@ -18,7 +18,7 @@
  * Main settings file.
  *
  * @package    theme_gcweb
- * @copyright  2016-2019 TNG Consulting Inc. unless otherwise noted.
+ * @copyright  2016-2020 TNG Consulting Inc. unless otherwise noted.
  * @author     Michael Milette <www.tngconsulting.ca>
  * @license    WET-BOEW-MOODLE: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  * @license    Moodle: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -50,6 +50,7 @@ if ($ADMIN->fulltree) {
 
     require('settings/general.php');
     require('settings/css.php'); // TODO: Settings page is done however the theme does not include in the SCSS information.
+    require('settings/courselist.php');
     require('settings/profilefields.php');
     require('settings/header.php');
     require('settings/footer.php');

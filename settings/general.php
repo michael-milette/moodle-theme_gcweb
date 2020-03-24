@@ -18,7 +18,7 @@
  * General Settings.
  *
  * @package    theme_gcweb
- * @copyright  2016-2019 TNG Consulting Inc. <http://www.tngconsulting.ca>
+ * @copyright  2016-2020 TNG Consulting Inc. <http://www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -37,9 +37,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('shownavdrawer', 1, $themename); // Yes.
     set_config('navdraweropen', 'true', $themename); // Open.
     set_config('hidefrontpagelinkstopages', 0, $themename); // No.
-    set_config('courselistlayout', 'list', $themename); // List.
-    set_config('filtercoursesbylang', '0', $themename); // No.
-    set_config('wraprecentlyaccessedcourses', 0, $themename); // Don't wrap the Dashboard's Recently Accessed Courses list.
+    set_config('wraprecentlyaccessedcourses', 0, $themename); // No.
 }
 
 // Hide local login form on login page.
@@ -74,7 +72,7 @@ $name = $themename . '/hometitle';
 $title = get_string('hometitle', $themename);
 $description = get_string('hometitle_desc', $themename);
 $default = get_string('home');
-$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW);
+$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_TEXT);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
@@ -112,28 +110,6 @@ $description = get_string('navdraweropen_desc', $themename);
 $default = 'true';
 $choices = array('true' => get_string('resourcedisplayopen'), '' => get_string('closebuttontitle'));
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Course List/Card Display Styles
-$name = $themename . '/courselistlayout';
-$title = get_string('courselistlayout' , $themename);
-$description = get_string('courselistlayout_desc', $themename);
-$choices = [];
-for ($cnt = 0; $cnt <= 12; $cnt++) {
-    $choices[$cnt] = get_string('courselistlayout' . $cnt, $themename);
-}
-$default = get_string('courselistlayout0', $themename);
-$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Filter out courses in course lists and search results whose forced language, if set, does not match the current language.
-$name = $themename . '/filtercoursesbylang';
-$title = get_string('filtercoursesbylang', $themename);
-$description = get_string('filtercoursesbylang_desc', $themename);
-$default = 0;
-$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

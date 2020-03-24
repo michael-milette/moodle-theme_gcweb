@@ -41,8 +41,9 @@ use heading;
 use pix_icon;
 use image_url;
 use single_select;
+
+// Load libraries.
 require_once $CFG->dirroot . '/course/renderer.php';
-global $PAGE;
 
 /**
  * Course renderer class.
@@ -55,577 +56,458 @@ global $PAGE;
 class course_renderer extends \core_course_renderer {
     protected $countcategories = 0;
 
+    /* Course contacts. */
+    private function getcontacts($course) {
+        $content = '';
+        if ($course->has_course_contacts()) {
+            $content .= html_writer::start_tag('ul', array('class' => 'teacherscourseview list-unstyled m-0 p-0'));
+            foreach ($course->get_course_contacts() as $userid => $coursecontact) {
+                $name = $coursecontact['rolename'] . ': ' . $coursecontact['username'];
+                $content .= html_writer::tag('li', $name);
+            }
+            $content .= html_writer::end_tag('ul');
+        }
+        return $content;
+    }
+
+    private function getcatcontent($course) {
+        // Display course category.
+        if ($cat = core_course_category::get($course->category, IGNORE_MISSING)) {
+            $catcontent = html_writer::link(new moodle_url('/course/index.php', array('categoryid' => $cat->id)),
+                    $cat->get_formatted_name(), array('class' => $cat->visible ? '' : 'dimmed'));
+        } else {
+            $catcontent = '';
+        }
+        return $catcontent;
+    }
+
+    private function getpixicons($course) {
+        $pixicons = '';
+        //if ($cat = core_course_category::get($course->category, IGNORE_MISSING)) {
+            if ($icons = enrol_get_course_info_icons($course)) {
+                // Print enrolment icons.
+                foreach ($icons as $pix_icon) {
+                    $pixicons .= $this->render($pix_icon);
+                }
+                if (!empty($pixicons)) {
+                    $pixicons = html_writer::start_tag('span', array('class' => 'enrolmenticons')) . $pixicons;
+                    $pixicons .= html_writer::end_tag('span');
+                }
+            }
+        //}
+        return $pixicons;
+    }
+
+    private function getcustomfieldcontent($course) {
+        // Display custom fields.
+        $customfieldcontent = '';
+        if ($course->has_custom_fields()) {
+            $handler = \core_course\customfield\course_handler::create();
+            if (!empty($customfields = $handler->display_custom_fields_data($course->get_custom_fields()))) {
+                $customfieldcontent = \html_writer::tag('div', $customfields, ['class' => 'customfields-container']);
+            }
+        }
+        return $customfieldcontent;
+    }
+
+    private function getprogressbar($course, $systemcontext) {
+        // Course completion Progress bar
+        $progressbar = '';
+        $comppercent = 0;
+        if ($course->enablecompletion == 1 && isloggedin() && $systemcontext == 'page-site-index') {
+            if (\core_completion\progress::get_course_progress_percentage($course)) {
+                $comppc = \core_completion\progress::get_course_progress_percentage($course);
+                $comppercent = number_format($comppc, 0);
+                $progressbar = '<meter value="' . $comppercent . '" min="0" max="100">' . $comppercent . '%</meter> <span class="small">' . $comppercent . '% ' . get_string('completed', 'completion') . '</span> ';
+            }
+        }
+        return $progressbar;
+    }
+
+    private function getimgurl($course) {
+        // Load image from course image. If none, generate a course image based on the course ID.
+        $imgurl = '';
+        $context = context_course::instance($course->id);
+        if ($course instanceof stdClass) {
+            $course = new \core_course_list_element($course);
+        }
+        $coursefiles = $course->get_course_overviewfiles();
+        foreach ($coursefiles as $file) {
+            if ($isimage = $file->is_valid_image()) {
+                $imgurl = file_encode_url("/pluginfile.php", '/' . $file->get_contextid() . '/' . $file->get_component() . '/' . $file->get_filearea() . $file->get_filepath() . $file->get_filename() , !$isimage);
+                $imgurl = new moodle_url($imgurl);
+            }
+        }
+        if (empty($imgurl)) {
+            global $OUTPUT;
+            $imgurl = $OUTPUT->get_generated_image_for_id($course->id);
+        }
+        return $imgurl;
+    }
+
+    private function hastag($courseid, $tag) {
+        if (empty($tag)) {
+            return true;
+        }
+        $tags = \core_tag_tag::get_item_tags_array('core', 'course', $courseid);
+        $tags = ($tags) ? array_values($tags) : [];
+        $found = in_array(strtolower($tag), array_map('strtolower', $tags));
+        return $found;
+    }
 
     /*
      * Available courses
      */
     public function view_available_courses($categoryid = 0, $courses = null, $totalcount = null) {
-        global $CFG, $OUTPUT, $PAGE;
-        $PAGE->theme->settings->courselistlayout = optional_param('layout', $PAGE->theme->settings->courselistlayout, PARAM_INT);
-        $PAGE->theme->settings->titletooltip = false;
-
-        $rcourseids = array_keys($courses);
-        // Number of courses per row.
-        if (in_array($PAGE->theme->settings->courselistlayout,[8,10,11])) {
-            // Layouts with 1 courses per row.
-            $acourseids = array_chunk($rcourseids, 1);
-        } else if (in_array($PAGE->theme->settings->courselistlayout,[1, 2, 3])) {
-            // Layouts with 2 courses per row.
-            $acourseids = array_chunk($rcourseids, 2);
-        } else if (in_array($PAGE->theme->settings->courselistlayout,[9,12])) {
-            // Masonry.
-            $acourseids = array_chunk($rcourseids, count($rcourseids));
-        } else {
-            // Layouts with 3 courses per row.
-            $acourseids = array_chunk($rcourseids, 3);
+        if (count($courses) == 0) {
+            return '';
         }
 
-        if ($categoryid != 0) {
-            $newcourse = get_string('availablecourses');
-        } else {
-            $newcourse = null;
-        }
-        $header = '
-            <div id="category-course-list">
-                <div class="courses category-course-list-all">
-                    <div class="class-list"><h4>' . $newcourse . '</h4></div>';
+        global $CFG, $OUTPUT, $USER, $_PAGE;
+
+        // Note: If you modify the list of layouts, you must change the language file, settings/general.php,
+        // wet-boew-moodle.css, wet-boew-moodle-min.css and classes/output/course_renderer.php.
+        $courselistlayout = optional_param('layout', $this->page->theme->settings->courselistlayout, PARAM_INT);
+        $columns = optional_param('cols', $this->page->theme->settings->courselistcolumns + 1, PARAM_INT);
+
+        $context = context_system::instance();
+        $systemcontext = $this->page->bodyid;
+
         $content = '';
-        $footer = '
-                    <hr>
-                </div>
-            </div>';
-        if (count($rcourseids) > 0) {
-            $noimgurl = $OUTPUT->image_url('noimg', 'theme');
-            $systemcontext = $PAGE->bodyid;
-            foreach ($acourseids as $courseids) {
-                $content .= '<div class="container-fluid">';
-                switch ($PAGE->theme->settings->courselistlayout) {
-                    case 2:
-                        $content .= '<div class="row card-deck">';
-                        break;
-                    case 9:
-                        $content .= '<div class="card-columns">';
-                        break;
-                    case 12:
-                        $content .= '<div class="table-responsive">';
-                        $content .= '<table class="table table-sm table-hover">';
-                        $content .= '<thead><tr>';
-                        $content .= '<th scope="col" style="width:30%">Course</th>';
-                        $content .= '<th scope="col" style="width:15%">Category</th>';
-                        $content .= '<th scope="col" style="width:55%">Summary</th>';
-                        $content .= '</tr></thead><tbody>';
-                        break;
-                    default:
-                        $content .= '<div class="row">';
+        $hasside = $_PAGE['hasblocks'] ? ' hasside' : ' noside';
+        $grid = 'cols-' . $columns . $hasside . ' clayout' . $courselistlayout;
+
+        switch($courselistlayout) {
+            case -3: // Expandable list (name/details).
+                $header = '<div class="container-fluid"><ul class="list-unstyled">';
+                $footer = '</ul></div>';
+                break;
+            case -2: // Table list.
+                $header = '<div class="container-fluid">';
+                $header .= '<div class="table-responsive">';
+                $header .= '<table class="table table-sm table-hover">';
+                $header .= '<thead><tr>';
+                $header .= '<th scope="col" style="width:30%">' . get_string('course') . '</th>';
+                if (!empty($this->page->theme->settings->cardcategory)) {
+                    $header .= '<th scope="col" style="width:15%">' . get_string('category') . '</th>';
                 }
-                $rowcontent = '';
-                foreach ($courseids as $courseid) {
-                    $course = get_course($courseid);
-                    $context = context_system::instance();
-                    $summary = file_rewrite_pluginfile_urls($course->summary, 'pluginfile.php', $context->id, 'course', 'summary', null);
-                    $summary = format_text($summary, $course->summaryformat, ['noclean' => true, 'context' => $context], $course->id);
-
-                    $trimtitle = format_string($course->fullname, false, ['context' => $context]);
-                    $courseurl = new moodle_url('/course/view.php', array(
-                        'id' => $courseid
-                    ));
-
-                    // Course completion Progress bar
-                    if (\core_completion\progress::get_course_progress_percentage($course) && isloggedin() && $systemcontext == 'page-site-index') {
-                        $comppc = \core_completion\progress::get_course_progress_percentage($course);
-                        $comppercent = number_format($comppc, 0);
-                        $hasprogress = true;
-                    }else {
-                        $comppercent = 0;
-                        $hasprogress = false;
-                    }
-
-                    // Course completion Progress bar
-                    if ($course->enablecompletion == 1 && isloggedin() && $systemcontext == 'page-site-index') {
-                        $completiontext = get_string('coursecompletion', 'completion');
-                        $compbar = "<div class='progress'>";
-                        $compbar .= "<div class='progress-bar progress-bar-info barfill' role='progressbar' aria-valuenow='{$comppercent}' ";
-                        $compbar .= " aria-valuemin='0' aria-valuemax='100' style='width: {$comppercent}%;'>";
-                        $compbar .= "{$comppercent}%";
-                        $compbar .= "</div>";
-                        $compbar .= "</div>";
-                        $progressbar = $compbar;
-                    } else {
-                        $progressbar = '';
-                        $completiontext = '';
-                    }
-                    if ($course instanceof stdClass) {
-                        $course = new core_course_list_element($course);
-                    }
-                    // print enrolmenticons
-                    $pixcontent = '';
-                    if ($icons = enrol_get_course_info_icons($course)) {
-                        $pixcontent .= html_writer::start_tag('div', array('class' => 'enrolmenticons'));
-                        foreach ($icons as $pix_icon) {
-                            $pixcontent .= $this->render($pix_icon);
-                        }
-                        $pixcontent .= html_writer::end_tag('div');
-                    }
-                    // display course category if necessary (for example in search results)
-                    if ($cat = core_course_category::get($course->category, IGNORE_MISSING)) {
-                        $catcontent = html_writer::start_tag('div', array('class' => 'coursecat'));
-                        $catcontent .= get_string('category').': '.
-                                html_writer::link(new moodle_url('/course/index.php', array('categoryid' => $cat->id)),
-                                        $cat->get_formatted_name(), array('class' => $cat->visible ? '' : 'dimmed'));
-                        $catcontent .= $pixcontent;
-                        $catcontent .= html_writer::end_tag('div');
-                    } else {
-                        $catcontent = '';
-                    }
-
-                    // Load from config if usea a img from course summary file if not exist a img then a default one ore use a fa-icon.
-                    $imgurl = '';
-                    $context = context_course::instance($course->id);
-                    foreach ($course->get_course_overviewfiles() as $file) {
-                        $isimage = $file->is_valid_image();
-                        $imgurl = file_encode_url("$CFG->wwwroot/pluginfile.php", '/' . $file->get_contextid() . '/' . $file->get_component() . '/' . $file->get_filearea() . $file->get_filepath() . $file->get_filename() , !$isimage);
-                        if (!$isimage) {
-                            $imgurl = $noimgurl;
-                        }
-                    }
-                    if (empty($imgurl)) {
-                        $imgurl = $PAGE->theme->setting_file_url('headerdefaultimage', 'headerdefaultimage', true);
-                        if (!$imgurl) {
-                            $imgurl = $noimgurl;
-                        }
-                    }
-
-                    $customfieldcontent = '';
-
-                    // Display custom fields.
-                    if ($course->has_custom_fields()) {
-                        $handler = \core_course\customfield\course_handler::create();
-                        $customfields = $handler->display_custom_fields_data($course->get_custom_fields());
-                        $customfieldcontent = \html_writer::tag('div', $customfields, ['class' => 'customfields-container']);
-                    }
-
-                    if ($PAGE->theme->settings->titletooltip) {
-                        $tooltiptext = 'data-toggle="tooltip" data-placement= "top" title="' . format_string($course->fullname) . '"';
-                    } else {
-                        $tooltiptext = '';
-                    }
-
-                    switch ($PAGE->theme->settings->courselistlayout) {
-
-                        case 1:
-                            $rowcontent .= '<div class="card mb-3" style="width: 50%;">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '  <div class="row no-gutters">';
-                            $rowcontent .= '    <div class="col-md-4">';
-                            $rowcontent .= '      <img src="' . $imgurl . '" class="card-img" alt="">';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '    <div class="col-md-8">';
-                            $rowcontent .= '      <div class="card-body">';
-                            $rowcontent .= '        <h4 class="card-title"><a ' . $tooltiptext . ' href="' . $courseurl . '">' . $trimtitle . '</a></h4>';
-                            $rowcontent .= '        <p class="card-text">' . $summary . '</p>';
-                            $rowcontent .= '        <p class="card-text">' . $catcontent . ' ' . $customfieldcontent . '</p>';
-                            $rowcontent .= '      </div>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '  </div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 2:
-                            $rowcontent .= '<div class="card mb-3" style="width: 50%;">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '  <div class="row p-3">';
-                            $rowcontent .= '    <div class="col-md-5">';
-                            $rowcontent .= '      <img src="' . $imgurl . '" class="card-img" alt="">';
-                            $rowcontent .= '        <h4 class="card-title"><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></h4>';
-                            $rowcontent .= '        <p class="card-text"><small>' . $catcontent . '</small></p>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '    <div class="col-md-6">';
-                            $rowcontent .= '      <div class="card-body">';
-                            $rowcontent .= '        <p class="card-text">' . $summary . '</p>';
-                            $rowcontent .= '        <p class="card-text">' . $customfieldcontent . '</p>';
-                            $rowcontent .= '      </div>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '  </div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 3:
-                            $rowcontent .= '<div class="col-lg-6 mb-4">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="card">';
-                            $rowcontent .= '    <img class="card-img" style="height: 280px;width:auto;" src="' . $imgurl . '" alt="">';
-                            $rowcontent .= '    <div class="card-img-overlay bottom bg-dark text-white">';
-                            $rowcontent .= '        <h3 class="card-title"><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></h3>';
-                            $rowcontent .= '        <p class="card-text">' . $catcontent . ' ' . $customfieldcontent . '</p>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 4:
-                            $rowcontent .= '<div class="col-lg-4 mb-5">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="card">';
-                            $rowcontent .= '    <img class="card-img" style="height: 250px;width:auto;" src="' . $imgurl . '" alt="">';
-                            $rowcontent .= '    <div class="card-img-overlay bottom bg-dark text-white">';
-                            $rowcontent .= '        <h3 class="card-title"' . $tooltiptext . '>' . $trimtitle . '</h3>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= '    <div class="btn-group btn-group-justified btn-hgroup-sm mrgn-bttm-md">';
-                            $rowcontent .= '        <a href="' . $courseurl . '" role="button" class="btn btn-default"><span class="fa fa-info-circle"></span> More information</a>';
-                            $rowcontent .= '        <a href="' . $courseurl . '" role="button" class="btn btn-default"><span class="fa fa-play-circle"></span> Get started</a>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 5:
-                            $rowcontent .= '<div class="col-lg-4 mb-5">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="card"><a ' . $tooltiptext . ' href="' . $courseurl . '">';
-                            $rowcontent .= '    <div class="card-body">';
-                            $rowcontent .= '        <a ' . $tooltiptext . ' href="' . $courseurl . '">';
-                            $rowcontent .= '            <img src="' . $imgurl . '" class="card-img-top" style="height:auto;">';
-                            $rowcontent .= '            <h4 class="card-title"><h4>' . $trimtitle . '</h4>';
-                            $rowcontent .= '        </a>';
-                            $rowcontent .= '        <p class="card-text">' . $summary . '</p>';
-                            $rowcontent .= '        <p class="card-text">' . $catcontent . ' ' . $customfieldcontent . '</p>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 6:
-                            $rowcontent .= '<div class="col-lg-4 mb-5">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="card" style="height:200px;overflow-y:hidden;"><a href="' . $courseurl . '"' . $tooltiptext . '>';
-                            $rowcontent .= '    <img class="card-img" style="width:100%;overflow-y:hidden" src="' . $imgurl . '" alt="">';
-                            $rowcontent .= '    <div class="card-img-overlay" >';
-                            $rowcontent .= '        <h3 class="card-title"><span class="text-white" style="background-color:rgba(0,0,0,0.5);">' . $trimtitle . '</span></h3>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</a></div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 7:
-                            $rowcontent .= '<div class="col-md-4 mb-4">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed4'));
-                            $rowcontent .='<div class="card text-center">';
-                            $rowcontent .='    <a ' . $tooltiptext . ' href="' . $courseurl . '" class="card-action">';
-                            $rowcontent .='    <div class="card-body">';
-                            $rowcontent .='        <div class="card-icon-wrap" style="height:50px;background-image: url(' . $imgurl . ');background-repeat: no-repeat;background-size:cover; background-position:center;">';
-                            $rowcontent .='            <div class="card-icon">';
-                            $rowcontent .='                <span class="fa-stack fa-1x">';
-                            $rowcontent .='                    <i class="fa fa-circle-thin fa-stack-2x bg-primary" style="border-radius: 50%;"></i>';
-                            $rowcontent .='                    <i class="fa fa-arrow-circle-right fa-stack-2x fa-inverse"></i>';
-                            $rowcontent .='                </span>';
-                            $rowcontent .='             </div>';
-                            $rowcontent .='         </div>';
-                            $rowcontent .='         <div class="mt-4"><h4 style="text-shadow:  -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white">' . $trimtitle . '</h4></div>';
-                            $rowcontent .='     </div>';
-                            $rowcontent .='     <div class="card-footer">';
-                            $rowcontent .='         <p>' . $customfieldcontent . '</p>';
-                            $rowcontent .='     </div>';
-                            $rowcontent .='     </a>';
-                            $rowcontent .='</div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 8:
-                            $rowcontent .= '<div class="card col-md-12 mb-4">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="row">';
-                            $rowcontent .= '    <div class="col-md-3">';
-                            $rowcontent .= '      <img src="' . $imgurl . '" class="card-img p-4" alt="">';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '    <div class="col-md-9">';
-                            $rowcontent .= '      <div class="card-body">';
-                            $rowcontent .= '        <h4 class="card-title"><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></h4>';
-                            $rowcontent .= '        <p class="card-text"><small>' . $catcontent . '</small></p>';
-                            $rowcontent .= '        <p class="card-text">' . $summary . '</p>';
-                            $rowcontent .= '        <p class="card-text">' . $customfieldcontent . '</p>';
-                            $rowcontent .= '      </div>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 8:
-                            $rowcontent .= '<div class="card col-md-12 mb-4">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="row">';
-                            $rowcontent .= '    <div class="col-md-3">';
-                            $rowcontent .= '      <img src="' . $imgurl . '" class="card-img p-4" alt="">';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '    <div class="col-md-9">';
-                            $rowcontent .= '      <div class="card-body">';
-                            $rowcontent .= '        <h4 class="card-title"><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></h4>';
-                            $rowcontent .= '        <p class="card-text"><small>' . $catcontent . '</small></p>';
-                            $rowcontent .= '        <p class="card-text">' . $summary . '</p>';
-                            $rowcontent .= '        <p class="card-text">' . $customfieldcontent . '</p>';
-                            $rowcontent .= '      </div>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 9: // Masonry.
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="card">';
-                            $rowcontent .= '    <div class="card-body">';
-                            $rowcontent .= '        <a ' . $tooltiptext . ' href="' . $courseurl . '">';
-                            $rowcontent .= '        <img src="' . $imgurl . '" class="card-img" alt="">';
-                            $rowcontent .= '        <h4 class="card-title">' . $trimtitle . '</h4>';
-                            $rowcontent .= '        </a>';
-                            $rowcontent .= '        <p class="card-text"><small>' . $catcontent . '</small></p>';
-                            $rowcontent .= '        <p class="card-text">' . $summary . '</p>';
-                            $rowcontent .= '        <p class="card-text">' . $customfieldcontent . '</p>';
-                            $rowcontent .= '    </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= '</a>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            break;
-
-                        case 10:
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'col-12 d-flex flex-sm-row flex-column class-fullbox hoverhighlight coursevisible' : 'col-12 d-flex flex-sm-row flex-column class-fullbox hoverhighlight coursedimmed1'));
-                            $rowcontent .= '
-                                    <div class="col-md-2">
-                                        <a ' . $tooltiptext . ' href="' . $courseurl . '">
-                                           <img src="' . $imgurl . '" class="img-fluid" alt="Responsive image" style="width:180px">
-                                        </a>
-                                    </div>';
-                            $rowcontent .= '<div class="col-md-4">';
-                            $rowcontent .= '
-                                            <a ' . $tooltiptext . ' href="' . $courseurl . '">
-                                                <div class="course-title-fullbox">
-                                                    <h4>' . $trimtitle . '</h4>
-                                            </a>
-                                        </div>';
-                            if ($course->has_course_contacts()) {
-                                $rowcontent .= html_writer::start_tag('ul', array('class' => 'teacherscourseview'));
-                                foreach ($course->get_course_contacts() as $userid => $coursecontact) {
-                                    $name = $coursecontact['rolename'] . ': ' . $coursecontact['username'];
-                                    $rowcontent .= html_writer::tag('li', $name);
-                                }
-                                $rowcontent .= html_writer::end_tag('ul');
-                            }
-                            $rowcontent .= '</div>';
-                            $rowcontent .= '<div class="col-md-6">
-                                    <div class="course-summary">
-                                    ' . $catcontent . '
-                                    ' . $customfieldcontent . '
-                                    ' . $summary . '
-                                    </div>
-                                    </div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            break;
-
-                        case 11:
-                            $rowcontent .= html_writer::start_tag('div', array(
-                                'class' => $course->visible ? 'coursevisible col-md-12 d-flex flex-sm-row flex-column coursestyle9row' : 'coursedimmed9 col-md-12 d-flex flex-sm-row flex-column coursestyle9row'
-                            ));
-                            $rowcontent .= '
-                                <div class="col-md-6">
-                                    <h4><a href="' . $courseurl . '">' . $trimtitle . '</a></h4>';
-                            if ($systemcontext !== 'page-site-index') {
-                                $rowcontent .= '<div class="course-summary">' . $summary . '</div>';
-                            }
-                            $rowcontent .= '</div>';
-                                if ($systemcontext !== 'page-site-index') {
-                                    $rowcontent .= '
-                                        <div class="col-md-6 row">
-                                            <div class="col-md-6">
-                                              ' . $catcontent . '
-                                              ' . $customfieldcontent . '
-                                            </div>
-                                            <div class="col-md-6">';
-                                    if ($course->has_course_contacts()) {
-                                        $rowcontent .= html_writer::start_tag('ul', array(
-                                            'class' => 'teacherscourseview'
-                                        ));
-                                        foreach ($course->get_course_contacts() as $userid => $coursecontact) {
-                                            $name = $coursecontact['rolename'] . ': ' . $coursecontact['username'];
-                                            $rowcontent .= html_writer::tag('li', $name);
-                                        }
-                                        $rowcontent .= html_writer::end_tag('ul');
-                                    }
-
-                                    $rowcontent .= '
-                                            </div>
-                                        </div>';
-                                }
-                            if ($systemcontext == 'page-site-index' && $course->enablecompletion == 1) {
-
-                                $rowcontent .= '
-                                    <div class="col-md-6 row">
-                                        <div class="col-md-4 text-right">
-                                          ' . $completiontext  . '
-                                        </div>
-                                        <div class="col-md-8">
-                                          '. $progressbar . '
-                                        </div>
-                                    </div>';
-                            }
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 12: // Table
-                            $rowcontent .= html_writer::start_tag('tr', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<td><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></td>';
-                            $rowcontent .= '<td>' . $catcontent . '</small></td>';
-                            $rowcontent .= '<td>' . $summary . $customfieldcontent . '</td>';
-                            $rowcontent .= html_writer::end_tag('tr');
-                            break;
-
-                        case 13:
-                            $rowcontent .= '<div class="card col-md-4 mb-4">';
-                            $rowcontent .= html_writer::start_tag('div', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed3'));
-                            $rowcontent .= '<div class="row">';
-                            $rowcontent .= '      <img src="' . $imgurl . '" class="card-img p-4" style="height:140px;width:100%;object-fit:cover;object-position: 100% 0%;" alt="">';
-                            $rowcontent .= '      <div class="card-body">';
-                            $rowcontent .= '        <h4 class="card-title"><a href="' . $courseurl . '"' . $tooltiptext . '>' . $trimtitle . '</a></h4>';
-                            $rowcontent .= '        <p class="card-text"><small>' . $catcontent . '</small></p>';
-                            $rowcontent .= '        <p class="card-text">' . $customfieldcontent . '</p>';
-                            $rowcontent .= '      </div>';
-                            $rowcontent .= '</div>';
-                            $rowcontent .= html_writer::end_tag('div');
-                            $rowcontent .= '</div>';
-                            break;
-
-                        case 13: // display course contacts. See core_course_list_element::get_course_contacts().
-                            $enrollbutton = get_string('getstarted', 'theme_gcweb');
-                            $rowcontent .= '<div class="col-md-4">';
-                            $rowcontent .= '
-                                <div class="tilecontainer">
-                                    <figure class="coursestyle2">
-                                    <div class="class-box-courseview" style="height:230px;background-image: url(' . $imgurl . ');background-repeat: no-repeat;background-size:cover; background-position:center;">
-                                ';
-                            $rowcontent .= html_writer::start_tag('div', array(
-                                'class' => $course->visible ? 'coursevisible' : 'coursedimmed2'
-                            ));
-                            $rowcontent .= '
-                                <figcaption>
-                                    <h3>' . $trimtitle . '</h3>
-                                    <div class="course-card">
-                                    ' . $catcontent . '
-                                    ' . $customfieldcontent . '
-                                    <button type="button" class="btn btn-primary btn-sm coursestyle2btn">' . $enrollbutton . '   <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                                    ';
-                            if ($course->has_course_contacts()) {
-                                $rowcontent .= html_writer::start_tag('ul', array(
-                                    'class' => 'teacherscourseview'
-                                ));
-                                foreach ($course->get_course_contacts() as $userid => $coursecontact) {
-                                    $name = $coursecontact['rolename'] . ': ' . $coursecontact['username'];
-                                    $rowcontent .= html_writer::tag('li', $name);
-                                }
-                                $rowcontent .= html_writer::end_tag('ul');
-                            }
-                            $rowcontent .= '
-                                </div>
-
-                                </figcaption>
-                                    <a ' . $tooltiptext . ' href="' . $courseurl . '" class="coursestyle2url"></a>
-                                </div>
-                            </figure>
-                            </div>
-                            </div>
-                            ';
-                            break;
-
-                        case 14:
-                            $rowcontent .= '<div class="col-md-4">';
-                            $rowcontent .= html_writer::start_tag('div', array(
-                                'class' => $course->visible ? 'coursevisible' : 'coursedimmed1'
-                            ));
-                            $rowcontent .= '<div class="class-box">';
-                            $rowcontent .= '
-                                    <a ' . $tooltiptext . ' href="' . $courseurl . '">
-                                        <div class="courseimagecontainer">
-                                            <div class="course-image-view" style="background-image: url(' . $imgurl . ');background-repeat: no-repeat;background-size:cover; background-position:center;"></div>
-                                            <div class="course-overlay">
-                                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="course-title">
-                                            <h4>' . $trimtitle . '</h4>
-                                        </div>
-                                    </a>
-                                    <div class="course-summary">' . $catcontent . ' ' . $customfieldcontent;
-                            if ($course->has_course_contacts()) {
-                                $rowcontent .= html_writer::start_tag('ul', array('class' => 'teacherscourseview'));
-                                foreach ($course->get_course_contacts() as $userid => $coursecontact) {
-                                    $name = $coursecontact['rolename'] . ': ' . $coursecontact['username'];
-                                    $rowcontent .= html_writer::tag('li', $name);
-                                }
-                                $rowcontent .= html_writer::end_tag('ul');
-                            }
-                            $rowcontent .= '
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>';
-                            break;
-
-                        case 15:
-                            $rowcontent .= '<div class="col-md-4">';
-                            $rowcontent .= html_writer::start_tag('div', array(
-                                'class' => $course->visible ? 'coursevisible' : 'coursedimmed4'
-                            ));
-                            $rowcontent .= '<div class="class-box4">';
-                            $rowcontent .= '
-                                    <a ' . $tooltiptext . ' href="' . $courseurl . '">
-                                        <div class="courseimagecontainer">
-                                            <div class="course-image-view" style="background-image: url(' . $imgurl . ');background-repeat: no-repeat;background-size:cover; background-position:center;">
-                                            </div>
-                                            <div class="course-overlay">
-                                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="course-title4"><h4>' . $trimtitle . '</h4></div>
-                                    </a>
-                                    <div class="course-summary4">
-                                    ' . $catcontent . '
-                                    ' . $customfieldcontent . '
-                                    ' . $summary . '
-                                    ';
-                            if ($course->has_course_contacts()) {
-                                $rowcontent .= html_writer::start_tag('ul', array(
-                                    'class' => 'teacherscourseview'
-                                ));
-                                foreach ($course->get_course_contacts() as $userid => $coursecontact) {
-                                    $name = $coursecontact['rolename'] . ': ' . $coursecontact['username'];
-                                    $rowcontent .= html_writer::tag('li', $name);
-                                }
-                                $rowcontent .= html_writer::end_tag('ul');
-                            }
-                            $rowcontent .= '
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>';
-                            break;
-
-                    }
+                if (!empty($this->page->theme->settings->cardcustomfields)) {
+                    $header .= '<th scope="col" style="width:20%">' . get_string('moreinfo') . '</th>';
                 }
-                $content .= $rowcontent;
-                if($PAGE->theme->settings->courselistlayout == 12) {
-                    $content .= '</tbody></table>';
+                if (!empty($this->page->theme->settings->coursesummary)) {
+                    $header .= '<th scope="col" style="width:35%">' . get_string('summary') . '</th>';
                 }
-                $content .= '</div>'; // Custom div.
-                $content .= '</div>'; // Class container-fluid.
+                if (!empty($this->page->theme->settings->cardcontacts)) {
+                    $header .= '<th scope="col" style="width:25%">' . get_string('contacts', 'message') . '</th>';
+                }
+                $header .= '</tr></thead><tbody>';
+                $footer = '</tbody></table>';
+                break;
+            case -1: // Masonry.
+                $header = '<div id="category-course-list">';
+                $header .= '<div class="container-fluid mt-2">';
+                $header .= '<div class="row">';
+                $header .= '<div class="card-columns ' . $hasside . '">';
+                $footer = '</div>';
+                $footer .= '</div>';
+                $footer .= '</div>';
+                $footer .= '</div>';
+                break;
+            default: // All others.
+                $header = '<div class="container-fluid mt-2">';
+                $header .= '<div class="card-deck">';
+                $footer = '</div>';
+                $footer .= '</div>';
+                break;
+        }
+
+        $acourseids = array_keys($courses);
+        foreach ($acourseids as $courseids) {
+            $course = get_course($courseids);
+
+            $context = context_course::instance($course->id);
+
+            // Learner's progress bar.
+            $courseinfo['progressbar'] = $this->getprogressbar($course, $systemcontext);
+
+            if ($course instanceof stdClass) {
+                $course = new core_course_list_element($course);
+            }
+
+            // Course summary.
+            if (!empty($this->page->theme->settings->cardsummary)) {
+                if ($systemcontext == 'page-site-index') {
+                    $coursesummary = file_rewrite_pluginfile_urls($course->summary, 'pluginfile.php', $context->id, 'course', 'summary', null);
+                } else {
+                    $coursesummary = $course->summary;
+                }
+                $courseinfo['coursesummary'] = format_text($coursesummary, $course->summaryformat, ['noclean' => true, 'context' => $context], $course->id);
+            } else {
+                $courseinfo['coursesummary'] = '';
+            }
+
+            // Course custom fields.
+            if (!empty($this->page->theme->settings->cardcustomfields)) {
+                $courseinfo['cardcustomfields'] = $this->getcustomfieldcontent($course);
+            } else {
+                $courseinfo['cardcustomfields'] = '';
+            }
+
+            // Course contacts (e.g. list of teachers).
+            if (!empty($this->page->theme->settings->cardcontacts)) {
+                $courseinfo['cardcontacts'] = $this->getcontacts($course);
+            } else {
+                $courseinfo['cardcontacts'] = '';
+            }
+
+            // Course category.
+            if (!empty($this->page->theme->settings->cardcategory)) {
+                $courseinfo['cardcat'] = $this->getcatcontent($course);
+                $courseinfo['cardcategory'] = get_string('category') . ' : ' . $courseinfo['cardcat'];
+            } else {
+                $courseinfo['cardcategory'] = '';
+            }
+
+            // Button icons and text for screen readers.
+            if (is_enrolled(context_course::instance($course->id), $USER->id, '', true)) {
+                $courseinfo['caption'] = get_string('courseenter', 'theme_gcweb');
+                $courseinfo['playicon'] = 'fa-play-circle';
+            } else {
+                $courseinfo['caption'] = get_string('courseinfo', 'theme_gcweb');
+                $courseinfo['playicon'] = 'fa-info-circle';
+            }
+
+            // Course button (e.g. Enrol, More info).
+            $courseinfo['coursetitle'] = format_string($course->fullname, false, ['context' => $context]);
+            if (empty($this->page->theme->settings->cardbutton)) {
+                $courseinfo['coursetitle'] = '<span class="sr-only">' . $caption . '</span>' . $courseinfo['coursetitle'];
+            }
+
+            // URL of the course or course info if not enrolled.
+            $courseinfo['courseurl'] = new moodle_url('/course/view.php', array('id' => $course->id));
+
+            // Course image.
+            $courseinfo['courseimage'] = $this->getimgurl($course);
+
+            if ($courselistlayout > 0) {
+                $content .= '<div class="col-auto mb-5 ' . $grid . '">';
+                if ($columns == 1) {
+                    $content .= '<div class="row border ' . ($course->visible ? 'coursevisible' : 'coursedimmed') . '">';
+                } else {
+                    $content .= '<div class="card h-100 ' . ($course->visible ? 'coursevisible' : 'coursedimmed') . '">';
+                }
+            }
+
+            $courseinfo['cardheader'] = (empty($this->page->theme->settings->cardheader) ? 0 : $this->page->theme->settings->cardheader);
+            $courseinfo['cardfooter'] = (empty($this->page->theme->settings->cardfooter) ? 0 : $this->page->theme->settings->cardfooter);
+            
+            $courseinfo['course'] = $course;
+
+            $extras = '';
+            switch($courselistlayout) {
+                case -3: // Expandable list (name/details).
+                    if (!empty($this->page->theme->settings->cardcategory)) {
+                        $extras .= '<p>' . $cardcategory . '</p>';
+                    }
+                    if (!empty($this->page->theme->settings->cardsummary)) {
+                        $extras .= $coursesummary;
+                    }
+                    if (!empty($this->page->theme->settings->cardcustomfields)) {
+                        $extras .= $cardcustomfields;
+                    }
+                    if (!empty($this->page->theme->settings->cardcontacts)) {
+                        $extras .= $cardcontacts;
+                    }
+
+                    $content .= html_writer::start_tag('li', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed'));
+                    if (!empty($extras)) {
+                        $content .= '<details>';
+                        $content .= '<summary>';
+                        $content .= '<div>' . $this->getpixicons($course) . '</div>';
+                        $content .= $coursetitle;
+                        $content .= '<a href="' . $courseurl . '" class="btn btn-sm pull-right"><span class="fa ' . $playicon . '" aria-hidden="true"></span> ' . $caption . '</a>';
+                        $content .= '</summary>';
+                        $content .= $extras;
+                        $content .= '</details>';
+                    } else {
+                        $content .= '<div>' . $this->getpixicons($course) . '</div>';
+                        $content .= '<a href="' . $courseurl . '"><span  aria-hidden="true" class="fa ' . $playicon . '" aria-hidden="true"></span> ' . $caption . ': ' . $coursetitle . '</a>';
+                    }
+                    $content .= html_writer::end_tag('li');
+                    break;
+
+                case -2: // Table list.
+                    if (!empty($this->page->theme->settings->cardcategory)) {
+                        $extras .= '<td>' . $cardcat . '</td>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcustomfields)) {
+                        $extras .= '<td>'. $cardcustomfields . '</td>';
+                    }
+                    if (!empty($this->page->theme->settings->cardsummary)) {
+                        $extras .= '<td>' . $coursesummary . '</td>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcontacts)) {
+                        $extras .= '<td>' . $cardcontacts . '</td>';
+                    }
+                    $content .= html_writer::start_tag('tr', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed'));
+                    $content .= '<td><a href="' . $courseurl . '>' . $coursetitle . $this->getpixicons($course) . '</a></td>';
+                    $content .= $extras;
+                    $content .= html_writer::end_tag('tr');
+                    break;
+
+                case -1: // Masonry.
+                    $content .= '<div class="card ' . $grid . '">';
+                    $content .= $this->coursecard($courseinfo, $courselistlayout, $columns);
+                    $content .= '</div>';
+                    break;
+
+                case 1: // Card.
+                    $content .= $this->coursecard($courseinfo, $courselistlayout, $columns);
+                    break;
+
+                case 2: // Overlay (bottom).
+                    if (!empty($this->page->theme->settings->cardcategory)) {
+                        $extras .= '<div class="card-text small">' . $cardcategory . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcustomfields)) {
+                        $extras .= empty($extras) ? '' : ' ';
+                        $extras .= '<div class="card-text small">' . $cardcustomfields . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcontacts)) {
+                        $extras .= '<div class="card-text small">'. $cardcontacts . '</div>';
+                    }
+
+                    if (!empty($this->page->theme->settings->cardimage)) {
+                        $content .= '<div class="card-img" style="background-image: url(' . $courseimage . ');"></div>';
+                        //$content .= '<img class="card-img" src="' . $courseimage . '" alt="">';
+                        $content .= '<div class="card-img-overlay bottom card-bg text-white">';
+                    } else {
+                        $content .= '<div class="p-3 bg-dark text-white h-100">';
+                    }
+                    $content .= '<div>' . $this->getpixicons($course) . '</div>';
+                    if (empty($this->page->theme->settings->cardbutton)) {
+                        $content .= '<h3 class="card-title h4"><a href="' . $courseurl . '">' . $coursetitle . '</a></h3>';
+                    } else {
+                        $content .= '<h3 class="card-title h4">' . $coursetitle . '</h3>';
+                        $content .= '<a href="' . $courseurl . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $playicon . ' pr-2" aria-hidden="true"></span> ' . $caption . ' <span class="sr-only">: ' . $coursetitle . '</span></a>';
+                    }
+                    $content .= $extras;
+                    $content .= '</div>';
+                    break;
+
+                case 3: // Overlay (top).
+                    if (!empty($this->page->theme->settings->cardcategory)) {
+                        $extras .= '<div class="card-text small text-white">' . $cardcategory . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcontacts)) {
+                        $extras .= '<div class="card-text small text-white">'. $cardcontacts . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcustomfields) && !empty($cardcustomfields)) {
+                        $extras .= '<div class="card-text small text-white">' . $cardcustomfields . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardimage)) {
+                        $content .= '<div class="card-img" style="background-image: url(' . $courseimage . ');"></div>';
+                        //$content .= '<img class="card-img" src="' . $courseimage . '" alt="">';
+                        $content .= '<div class="card-img-overlay">';
+                        $content .= '<div class="card-bg">';
+                    } else {
+                        $content .= '<div>';
+                        $content .= '<div class="card-bg">';
+                    }
+                    $content .= '<div class="text-white">' . $this->getpixicons($course) . '</div>';
+                    if (empty($this->page->theme->settings->cardbutton)) {
+                        $content .= '<h3 class="card-title h4 text-white"><a href="' . $courseurl . '">' . $coursetitle . '</a></h3>';
+                    } else {
+                        $content .= '<h3 class="card-title h4 text-white">' . $coursetitle . '</h3>';
+                        $content .= '<a href="' . $courseurl . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $playicon . ' pr-2" aria-hidden="true"></span> ' . $caption . ' <span class="sr-only">: ' . $coursetitle . '</span></a>';
+                    }
+                    $content .= $extras;
+                    $content .= '<div class="clearfix"></div>';
+                    $content .= '</div>';
+                    $content .= '</div>';
+                    break;
+
+                case 4: // Minimal with arrow over image.
+                    if (!empty($this->page->theme->settings->cardsummary)) {
+                        $extras .= '<div class="card-text">'. $coursesummary . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcategory)) {
+                        $extras .= '<div class="card-text small">' . $cardcategory . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcontacts)) {
+                        $extras .= '<div class="card-text small">'. $cardcontacts . '</div>';
+                    }
+
+                    $content .= '<div class="text-center">';
+                    $content .= '<div class="card-body">';
+                    if (empty($this->page->theme->settings->cardbutton)) {
+                        $content .= '<a href="' . $courseurl . '" class="card-action d-block">';
+                    }
+                    if (!empty($this->page->theme->settings->cardimage)) {
+                        $content .= '<div class="card-icon-wrap" style="background-image: url(' . $courseimage . ');">';
+                    } else {
+                        $content .= '<div class="card-icon-wrap">';
+                    }
+                    $content .= '<div class="card-icon">';
+                    $content .= '<span class="fa-stack fa-1x">';
+                    $content .= '<span class="fa fa-circle-thin fa-stack-2x bg-primary" aria-hidden="true"></span>';
+                    $content .= '<span class="fa ' . $playicon . ' fa-stack-2x fa-inverse" aria-hidden="true"></span>';
+                    $content .= '</span>';
+                    $content .= '</div>';
+                    $content .= '</div>';
+                    $content .= '<div>' . $this->getpixicons($course) . '</div>';
+                    $content .= '<h3 class="mt-4 h4">' . $coursetitle . '</h3>';
+                    if (empty($this->page->theme->settings->cardbutton)) {
+                        $content .= '</a>';
+                    }
+                    $content .= $extras;
+                    if (!empty($this->page->theme->settings->cardbutton)) {
+                        $content .= '<a href="' . $courseurl . '" class="btn btn-primary btn-sm mt-4"><span class="fa ' . $playicon . ' pr-2" aria-hidden="true"></span> ' . $caption . ' <span class="sr-only">: ' . $coursetitle . '</span></a>';
+                    }
+                    $content .= '</div>';
+                    if (!empty($this->page->theme->settings->cardcustomfields)) {
+                        $content .= '<div class="card-footer">';
+                        $content .= '<p>' . $this->getcustomfieldcontent($course) . '</p>';
+                        $content .= '</div>';
+                    }
+                    $content .= '</div>';
+                    break;
+
+                case 5: // Minimal with arrow to the left of course name.
+                    if (!empty($this->page->theme->settings->cardcategory)) {
+                        $extras .= '<div class="card-text small">' . $cardcategory . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcustomfields)) {
+                        $extras .= '<div class="card-text small">'. $cardcustomfields . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcontacts)) {
+                        $extras .= '<div class="card-text small">'. $cardcontacts . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardsummary)) {
+                        $extras .= '<div class="card-text">'. $coursesummary . '</div>';
+                    }
+                    $content .= '<div class="card-body">';
+                    $content .= '<div>' . $this->getpixicons($course) . '</div>';
+                    if (!empty($this->page->theme->settings->cardbutton)) {
+                        $content .= '<h3 class="card-title h4"><span class="fa fa-arrow-circle-right pull-left" aria-hidden="true"></span>' . $coursetitle . '</h3>';
+                        $content .= '<a href="' . $courseurl . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $playicon . ' pr-2" aria-hidden="true"></span> ' . $caption . ' <span class="sr-only">: ' . $coursetitle . '</span></a>';
+                    } else {
+                        $content .= '<h3 class="card-title h4"><span class="fa fa-arrow-circle-right pull-left" aria-hidden="true"></span><a href="' . $courseurl . '">' . $coursetitle . '</a></h3>';
+                    }
+                    $content .= $extras;
+                    $content .= '</div>';
+                    break;
+
+                default:
+                    return "Invalid layout ($courselistlayout)";
+                    break;
+            }
+            if ($courselistlayout > 0) {
+                $content .= '</div>';
+                $content .= '</div>';
             }
         }
-        $coursehtml = $header . $content . $footer;
-        return $coursehtml;
+        return $header . $content . $footer;
     }
 
     // This makes it possible to pass parameters by reference instead of by value
@@ -634,9 +516,22 @@ class course_renderer extends \core_course_renderer {
         return $this->coursecat_courses_ml($chelper, $courses, $totalcount);
     }
     protected function coursecat_courses_ml(coursecat_helper $chelper, $courses, &$totalcount = null) {
-        global $PAGE;
-        
-        if (!empty($PAGE->theme->settings->filtercoursesbylang)) {
+
+        // Only applicable to Front page.
+        $filtertag = $this->page->theme->settings->filtercoursesbytag;
+        if ($this->page->bodyid == 'page-site-index' && !empty($filtertag)) {
+            // Filter out courses if it doesn't contain the tag we are looking for.
+            foreach($courses as $key => $course) {
+                if (!$this->hastag($course->id, $filtertag)) {
+                    unset($courses[$key]);
+                }
+            }
+            // Update the total count.
+            $totalcount = count($courses);
+        }
+
+        // Applicable to all course listings.
+        if (!empty($this->page->theme->settings->filtercoursesbylang)) {
             // Filter out courses if forced-language doesn't match the current language.
             $lang = current_language();
             foreach($courses as $key => $course) {
@@ -650,7 +545,8 @@ class course_renderer extends \core_course_renderer {
         }
 
         // Default Moodle course display.
-        if (empty($PAGE->theme->settings->courselistlayout)) {
+        $courselistlayout = optional_param('layout', $this->page->theme->settings->courselistlayout, PARAM_INT);
+        if (empty($courselistlayout)) { // The courselistlayout = 0.
             $content = parent::coursecat_courses($chelper, $courses, $totalcount);
             return $content;
         }
@@ -754,7 +650,7 @@ class course_renderer extends \core_course_renderer {
             $class = 'course-search-result';
             foreach ($searchcriteria as $key => $value) {
                 if (!empty($value)) {
-                    $class .= ' course-search-result-'. $key;
+                    $class .= 'course-search-result-'. $key;
                 }
             }
             $chelper = new coursecat_helper();
@@ -790,6 +686,150 @@ class course_renderer extends \core_course_renderer {
             $content .= $this->course_search_form();
             $content .= $this->box_end();
         }
+        return $content;
+    }
+    
+    private function coursecard($courseinfo, $layout, $columns) {
+        $content = '';
+        
+        $cheader = '';
+        if ($courseinfo['cardheader']) {
+            // If one column, put header to the left instead of above.
+            // If Category or course name is desired, put it in the header. Otherwise put them in the card content.
+            switch ($courseinfo['cardheader']) {
+                case 1: // Category.
+                        if (!empty($this->page->theme->settings->cardcategory)) {
+                            $cheader = $courseinfo['cardcat'];
+                        }
+                        $courseinfo['cardcategory'] = '';
+                        break;
+                case 2: // Course name.
+                        $cheader = '<h3 class="d-inline h4">';
+                        if (empty($this->page->theme->settings->cardbutton)) {
+                            $cheader .= '<a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a>';
+                            $content .= '<span class="pull-right">' . $this->getpixicons($course) . '</span>';
+                        } else {
+                            $cheader .= $courseinfo['coursetitle'];
+                        }
+                        $cheader .= '</h3>';
+                        $courseinfo['coursetitle'] = '';
+                        break;
+                default: // Don't do anything.
+            }
+
+        }
+
+        // Card footer.
+        // We do this before the body so that we can know what is left for the body.
+        $cfooter = '';
+        if ($courseinfo['cardfooter']) {
+            // If Category or course name is desired, put it in the footer. Otherwise put them in the card content.
+            switch ($courseinfo['cardfooter']) {
+                case 1: // Enrolment button.
+                        if (!empty($this->page->theme->settings->cardbutton)) {
+                            $cfooter = '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm ' . ($columns != 1 ? 'btn-block m-0' : ' mt-3') . '"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+                        }
+                        $courseinfo['courseurl'] = '';
+                        break;
+                case 2: // Custom course fields.
+                        if (!empty($this->page->theme->settings->cardcustomfields)) {
+                            $cfooter = $cardcustomfields;
+                        }
+                        $courseinfo['cardcustomfields'] = '';
+                        break;
+                case 3: // Contacts.
+                        if (!empty($this->page->theme->settings->cardcontacts) && !empty($courseinfo['cardcontacts'])) {
+                            $cfooter = '<span class="small">' . $courseinfo['cardcontacts'] . '</span>';
+                        }
+                        $courseinfo['cardcontacts'] = '';
+                        break;
+                case 4: // Progress bar.
+                        $cfooter = $courseinfo['progressbar'];
+                        $courseinfo['progressbar'] = '';
+                        break;
+                default: // Don't do anything.
+            }
+            if (!empty($cfooter)) {
+                // If one column, put footer to the left instead of above.
+                $cfooter = '<div class="' . ($columns != 1 ? 'card-footer text-center' : '') . '">' . $cfooter . '</div>'; // Card-Footer.
+            }
+        }
+
+        // Card header.
+        // If one column, put header to the left instead of above.
+        if ($columns == 1) { // Start of left column.
+            $content .= '<div class="col-lg-12 col-xl-4">';
+        }
+        if (!empty($cheader)) { // Header.
+            $content .= '<div class="card-header ' . ($columns != 1 ? 'text-center' : '') . '">' . $cheader . '</div>';
+        }
+
+        // Course image.
+        if (!empty($this->page->theme->settings->cardimage)) {
+            $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . ');"></div>';
+        }
+
+        // End of left column and start of right column - if in single column.
+        if ($columns == 1) {
+            $content .= '</div>';
+            $content .= '<div class="col-lg-12 col-xl-8">';
+        }
+
+        // Card body.
+        $content .= '<div class="card-body">';
+        // If we did not used the course name in the header, add it to the card body.
+        // Also, if we will be displaying a button, don't make the heading a link.
+        if (!empty($courseinfo['coursetitle'])) {
+            if (!empty($this->page->theme->settings->cardbutton)) {
+                $content .= '<h3 class="d-inline h4">' . $courseinfo['coursetitle'] . '</h3>';
+            } else {
+                $content .= '<h3 class="d-inline h4"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a></h3>';
+            }
+        }
+        $content .= $this->getpixicons($courseinfo['course']);
+
+        if (!empty($courseinfo['progressbar'])) {
+            $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
+        }
+
+        if (!empty($courseinfo['courseurl'])) {
+            $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+        }
+        $content .= '<div class="clearfix"></div>';
+        
+        if (!empty($this->page->theme->settings->cardscroll)) {
+            $content .= '<div class="card-content scroll">';
+        } else {
+            $content .= '<div class="card-content">';
+        }
+
+        if (!empty($courseinfo['cardcategory'])) {
+            $content .= '<div class="card-text small cardcategory">'. $courseinfo['cardcategory'] . '</div>';
+        }
+
+        if (!empty($courseinfo['cardcustomfields'])) {
+            $content .= '<div class="card-text small cardcustomfields">'. $courseinfo['cardcustomfields'] . '</div>';
+        }
+
+        if (!empty($this->page->theme->settings->cardsummary)) {
+            $content .= '<div class="card-text cardsummary">'. $courseinfo['coursesummary'] . '</div>';
+        }
+
+        if (!empty($courseinfo['cardcontacts'])) {
+            $content .= '<div class="small small cardcontacts">'. $courseinfo['cardcontacts'] . '</div>';
+        }
+
+        if ($columns == 1) {
+            $content .= $cfooter;
+            $content .= '</div>';
+            $content .= '</div>';
+            $content .= '</div>';
+        } else {
+            $content .= '</div>';
+            $content .= '</div>';
+            $content .= $cfooter;
+        }
+        
         return $content;
     }
 }

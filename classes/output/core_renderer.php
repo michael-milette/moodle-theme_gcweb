@@ -132,7 +132,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function full_header() {
-        global $CFG, $PAGE, $_PAGE, $OUTPUT, $USER;
+        global $CFG, $_PAGE, $OUTPUT, $USER;
 
         $header = new stdClass();
         $header->output = $OUTPUT;
@@ -155,7 +155,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->breadcrumbs = $_PAGE['breadcrumbs'];
         $header->userid = $USER->id;
 
-        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
+        $header->hasnavbar = empty($this->page->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
@@ -172,16 +172,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return Returns an alternate page title depending on the page.
      */
     public function pagetitle() {
-        global $PAGE, $SITE;
+        global $SITE;
         $title = '';
-        if ($PAGE->pagetype == 'site-index') { // Front page.
+        if ($this->page->pagetype == 'site-index') { // Front page.
             if (empty($hometitle = get_config('theme_gcweb', 'hometitle'))) {
                 $title = get_string('home');
             } else {
                 $title = $hometitle;
             }
         } else { // All other pages.
-            $title = $PAGE->title;
+            $title = $this->page->title;
         }
         if (!empty(get_config('theme_gcweb', 'titlesitename'))) {
             $title .= ' - ' . $SITE->fullname;
@@ -314,8 +314,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return string The favicon URL
      */
     public function favicon() {
-        global $CFG, $PAGE;
-        return $CFG->wwwroot . '/theme/' . $PAGE->theme->name . '/framework/assets/favicon.ico';
+        global $CFG;
+        return $CFG->wwwroot . '/theme/' . $this->page->theme->name . '/framework/assets/favicon.ico';
     }
     /*
      * Overriding the custom_menu function ensures the custom menu is
@@ -323,7 +323,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * theme settings page.
      */
     public function custom_menu($custommenuitems = '') {
-        global $CFG, $PAGE;
+        global $CFG;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
             $custommenuitems = $CFG->custommenuitems;
@@ -336,26 +336,26 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         // Filter Custom Menu.
         $custommenuitems = $filtermanager->filter_text($custommenuitems,
-                $PAGE->context, $filteroptions, $skipfilters);
+                $this->page->context, $filteroptions, $skipfilters);
         $custommenu = new custom_menu($custommenuitems, current_language());
         return $this->render_custom_menu($custommenu);
     }
 
     public function standard_top_of_body_html() {
-        global $CFG, $PAGE;
+        global $CFG;
         $additionalhtmltopofbody = $CFG->additionalhtmltopofbody;
         $CFG->additionalhtmltopofbody = format_text($CFG->additionalhtmltopofbody,
-                FORMAT_HTML, ['noclean' => true, $PAGE->context]);
+                FORMAT_HTML, ['noclean' => true, $this->page->context]);
         $output = parent::standard_top_of_body_html();
         $CFG->additionalhtmltopofbody = $additionalhtmltopofbody;
         return $output;
     }
 
     public function standard_end_of_body_html() {
-        global $CFG, $PAGE;
+        global $CFG;
         $additionalhtmlfooter = $CFG->additionalhtmlfooter;
         $CFG->additionalhtmlfooter = format_text($CFG->additionalhtmlfooter,
-                FORMAT_HTML, ['noclean' => true, 'context' => $PAGE->context]);
+                FORMAT_HTML, ['noclean' => true, 'context' => $this->page->context]);
         $output = parent::standard_end_of_body_html();
         $CFG->additionalhtmlfooter = $additionalhtmlfooter;
         return $output;
