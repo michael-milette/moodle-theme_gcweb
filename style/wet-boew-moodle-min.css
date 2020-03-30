@@ -904,6 +904,10 @@ a.btn-secondary:focus {
 #nav-drawer .list-group:not(:last-child) {
     border-bottom: white 1px solid;
 }
+/* Remove nav drawer from flow for screenreaders. */
+#nav-drawer.closed {
+    display: none;
+}
 
 #wb-info .landscape a:focus,
 #sm-pnl a:focus,
