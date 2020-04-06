@@ -1218,6 +1218,7 @@ img.activityicon {
 .cols-4.noside {width: 412px;}
 .cols-6.noside {width: 275px;}
 
+.clayout-3 .card-img,
 .clayout1 .card-img,
 .clayout2 .card-img,
 .clayout3 .card-img {
@@ -1227,6 +1228,7 @@ img.activityicon {
   background-position: center;
 }
 
+.clayout-3 .card-img {height: 175px;}
 .cols-1.clayout1 .card-img {height: 175px;}
 .cols-1.clayout2  {height: 235px;}
 .cols-1.clayout2 .card-img {height: 235px;}
@@ -1259,6 +1261,7 @@ x.cols-2.clayout1  {height: 235px;}
 .cols-6.clayout3  {height: 145px;}
 .cols-6.clayout3 .card-img {height: 145px;}
 
+.clayout1 .btn,
 .clayout2 .btn,
 .clayout3 .btn,
 .clayout4 .btn,
