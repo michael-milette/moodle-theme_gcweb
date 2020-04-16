@@ -76,6 +76,9 @@ $string['region-content-post'] = 'Bas';
 $string['filtercoursesbylang'] = 'Filtrer les cours par langue imposée';
 $string['filtercoursesbylang_desc'] = 'Les cours dont la langue est imposée, si définie, ne correspondent pas à la langue actuelle seront supprimés des listes de cours et des résultats de recherche.';
 
+$string['hideconditionallyhidden'] = 'Masquer les activités cachées sur la page d\'accueil';
+$string['hideconditionallyhidden_desc'] = 'Les activités sur la page d\'accueil masquées de manière conditionnelle ne seront pas visibles sauf si la mode de modification et cette option sont activée.';
+
 //
 // Advanced Settings tab (none yet. Uses strings from Boost theme).
 //

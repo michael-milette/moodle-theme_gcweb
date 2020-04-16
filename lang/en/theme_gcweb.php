@@ -93,7 +93,10 @@ $string['hometitle'] = 'Custom heading on Front Page';
 $string['hometitle_desc'] = 'Specify a custom heading for the Front Page. Does not affect the page title tag.';
 
 $string['hidefrontpagelinkstopages'] = 'Hide links to pages on Front Page';
-$string['hidefrontpagelinkstopages_desc'] = 'If enabled, links to pages on the Front Page will be hidden.';
+$string['hidefrontpagelinkstopages_desc'] = 'If enabled, links to pages on the Front Page will be hidden unless editing is on.';
+
+$string['hideconditionallyhidden'] = 'Hide hidden activities on Front Page';
+$string['hideconditionallyhidden_desc'] = 'Conditionally hidden Front Page activities will be completely hidden unless editing and this option are turned on.   ';
 
 $string['titlesitename'] = 'Add site name to title';
 $string['titlesitename_desc'] = 'Add site name to title tag on each page.';

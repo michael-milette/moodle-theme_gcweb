@@ -139,9 +139,15 @@ function theme_gcweb_get_extra_scss($theme) {
         $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(12),'; // Address.
     }
 
-    // Hide links to Moodle page activities on the front page.
+    // Hide links to Moodle page activities unless in edit mode on the front page.
     if (!empty($theme->settings->hidefrontpagelinkstopages)) {
         $customcss .= '#page-site-index:not(.editing) #page-content .modtype_page,';
+    }
+
+    // Completely hide conditionally hidden activities unless in edit mode on the front page.
+    if (!empty($theme->settings->hideconditionallyhidden)) {
+        $customcss .= '#page-site-index:not(.editing) .section .conditionalhidden,';
+        $customcss .= '#page-site-index:not(.editing) .section .isrestricted,';
     }
 
     // Automatically hide guest login button if Auto-login Guests is enabled and Guest Login button is visible.

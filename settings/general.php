@@ -37,6 +37,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('shownavdrawer', 1, $themename); // Yes.
     set_config('navdraweropen', 'true', $themename); // Open.
     set_config('hidefrontpagelinkstopages', 0, $themename); // No.
+    set_config('hideconditionallyhidden', 0, $themename); // No.
     set_config('wraprecentlyaccessedcourses', 0, $themename); // No.
 }
 
@@ -80,6 +81,15 @@ $page->add($setting);
 $name = $themename . '/hidefrontpagelinkstopages';
 $title = get_string('hidefrontpagelinkstopages', $themename);
 $description = get_string('hidefrontpagelinkstopages_desc', $themename);
+$default = 0;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Hide Front Page/Home Page conditionally hidden activities.
+$name = $themename . '/hideconditionallyhidden';
+$title = get_string('hideconditionallyhidden', $themename);
+$description = get_string('hideconditionallyhidden_desc', $themename);
 $default = 0;
 $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');
