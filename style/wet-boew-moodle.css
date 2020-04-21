@@ -1302,3 +1302,24 @@ x.cols-2.clayout1  {height: 235px;}
 .clayout4 h4 {text-shadow:  -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;}
 .clayout4 .course-image-view {background-repeat: no-repeat;background-size:cover; background-position:center;}
 .coursedimmed {opacity:0.5;}
+
+/* Show focus outline when tabbing onto a completion checkbox. */
+.path-course-view li.activity form.togglecompletion .btn {
+  border:2px solid transparent; }
+.path-course-view li.activity form.togglecompletion .btn:focus {
+  border-color: #6eb5f3; }
+.path-course-view li.activity form.togglecompletion img.icon {
+  min-width: 0;
+  height: 1.6rem;
+}
+.path-course-view li.activity form.togglecompletion .btn {
+  min-height: 0;
+  min-width: 0;
+  padding: 0 0 4px 4px;
+  margin-top:5px;
+}
+/* Align autocompletion checkboxes with togglecompletion ones. */
+.path-course-view li.activity span.autocompletion img.icon {
+  min-width: 0px;
+  margin-right:8px;
+}

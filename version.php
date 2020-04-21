@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
 //
 // WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
