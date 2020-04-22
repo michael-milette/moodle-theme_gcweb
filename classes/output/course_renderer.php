@@ -792,9 +792,11 @@ class course_renderer extends \core_course_renderer {
             } else {
                 $content .= '<h3 class="d-inline h4"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a></h3>';
             }
+            $content .= $courseinfo['pixicons'];
+            $content .= '<hr>';
+        } else {
+            $content .= $courseinfo['pixicons'];
         }
-
-        $content .= $courseinfo['pixicons'];
 
         if (!empty($courseinfo['progressbar'])) {
             $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
@@ -802,10 +804,10 @@ class course_renderer extends \core_course_renderer {
 
         if (!empty($courseinfo['courseurl']) && !empty($courseinfo['coursetitle'])) {
             $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
-            $content .= '<div class="clearfix"></div>';
         }
         
         if (!empty($this->page->theme->settings->cardscroll)) {
+            $content .= '<div class="clearfix"></div>';
             $content .= '<div class="card-content scroll">';
         } else {
             $content .= '<div class="card-content">';
