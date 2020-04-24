@@ -1323,3 +1323,8 @@ x.cols-2.clayout1  {height: 235px;}
   min-width: 0px;
   margin-right:8px;
 }
+
+/* Fix for heading of site pages. */
+#page-mod-page-view.course-1 #region-main h2:first-of-type {
+    display:none;
+}

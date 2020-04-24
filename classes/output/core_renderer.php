@@ -202,6 +202,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         $_PAGE['hometitle'] = $title;
         switch ($this->page->pagelayout) {
+            case $this->page->pagetype == 'mod-page-view':
+                $course = $this->page->course;
+                $coursecontext = context_course::instance($course->id);
+                $title = format_string($this->page->cm->name, false, ['context' => $coursecontext]);
+                break;
             case substr($this->page->pagetype, 0, 4) == 'mod-': // If a module.
                 if ($COURSE->format == 'singleactivity') {
                     // Single activity course.
@@ -213,7 +218,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 // Otherwise just keep page title as is.
                 break;
             case 'course':    // Any type of courses page.
-            case 'incourse':
             case $this->page->pagetype == 'filter-manage':
             case $this->page->pagetype == 'course-edit':
             case $this->page->pagetype == 'course-completion':
