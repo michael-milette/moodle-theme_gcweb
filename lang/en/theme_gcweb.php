@@ -114,15 +114,15 @@ $string['courselistsettings_desc'] = 'When viewing course listings on the Front 
 // wet-boew-moodle.css, wet-boew-moodle-min.css and classes/output/course_renderer.php.
 $string['courselistlayout'] = 'Layout';
 $string['courselistlayout_desc'] = 'Choose a styles to display courses</a>.';
-$string['courselistlayout-3'] = 'Expandable list (name/details)';
+$string['courselistlayout-3'] = 'Twister Expandable list (name/details)';
 $string['courselistlayout-2'] = 'Table list';
 $string['courselistlayout-1'] = 'Cards - Masonry';
 $string['courselistlayout0'] = 'Default Moodle course list (enhanced)';
 $string['courselistlayout1'] = 'Cards';
 $string['courselistlayout2'] = 'Cards - Overlay (bottom)';
 $string['courselistlayout3'] = 'Cards - Overlay (top)';
-$string['courselistlayout4'] = 'Cards - Minimal with arrow over image';
-$string['courselistlayout5'] = 'Cards - Minimal with arrow to the left of course name';
+$string['courselistlayout4'] = 'Cards - Skinny Image';
+$string['courselistlayout5'] = 'Cards - Arrow to the left of course name';
 
 $string['courselistcolumns'] = 'Columns';
 $string['courselistcolumns_desc'] = 'Number of columns used to display course listings. Not applicable to Expandable list, Table list and Default Moodle course list layouts';
@@ -140,6 +140,9 @@ $string['cardfooteropt1'] = 'Enrolment button';
 $string['cardfooteropt2'] = 'Custom course fields';
 $string['cardfooteropt3'] = 'Contacts';
 $string['cardfooteropt4'] = 'Progress bar';
+
+$string['cardaspect'] = 'Course image aspect ratio';
+$string['cardaspect_desc'] = 'The aspect ratio of the image\'s width to its height. Choosing the right ratio will make your course images fit better in the course list cards. Not applicable to all layout formats.';
 
 $string['cardimage'] = 'Course image';
 $string['cardimage_desc'] = 'Show course\'s image when displaying course listings. Not applicable to all layout formats.';
@@ -309,6 +312,7 @@ $string['footnoteheading'] = 'About this Web application';
 // Buttons for course listings.
 $string['courseinfo'] = 'Learn more <span class="sr-only">about course:</span>';
 $string['courseenter'] = 'Enter<span class="sr-only"> the course:</span>';
+$string['coursereview'] = 'Review<span class="sr-only"> the completed course:</span>';
 
 // 404 Error: Page not found.
 $string['err404title'] = 'We couldn&#x27;t find that Web page (Error 404) / Nous ne pouvons trouver cette page Web (Erreur 404)';

@@ -110,18 +110,16 @@ class course_renderer extends \core_course_renderer {
         return $customfieldcontent;
     }
 
-    private function getprogressbar($course, $systemcontext) {
+    private function getprogress($course, $systemcontext) {
         // Course completion Progress bar
-        $progressbar = '';
-        $comppercent = 0;
+        $comppercent = -1; // -1 means disabled.
         if ($course->enablecompletion == 1 && isloggedin() && $systemcontext == 'page-site-index') {
             if (\core_completion\progress::get_course_progress_percentage($course)) {
                 $comppc = \core_completion\progress::get_course_progress_percentage($course);
                 $comppercent = number_format($comppc, 0);
-                $progressbar = '<meter value="' . $comppercent . '" min="0" max="100">' . $comppercent . '%</meter> <span class="small">' . $comppercent . '% ' . get_string('completed', 'completion') . '</span> ';
             }
         }
-        return $progressbar;
+        return $comppercent;
     }
 
     private function getimgurl($course) {
@@ -194,7 +192,7 @@ class course_renderer extends \core_course_renderer {
                 if (!empty($this->page->theme->settings->cardcustomfields)) {
                     $header .= '<th scope="col" style="width:20%">' . get_string('moreinfo') . '</th>';
                 }
-                if (!empty($this->page->theme->settings->coursesummary)) {
+                if (!empty($this->page->theme->settings->cardsummary)) {
                     $header .= '<th scope="col" style="width:35%">' . get_string('summary') . '</th>';
                 }
                 if (!empty($this->page->theme->settings->cardcontacts)) {
@@ -207,7 +205,7 @@ class course_renderer extends \core_course_renderer {
                 $header = '<div id="category-course-list">';
                 $header .= '<div class="container-fluid mt-2">';
                 $header .= '<div class="row">';
-                $header .= '<div class="card-columns ' . $hasside . '">';
+                $header .= '<div class="card-columns cols-' . $columns . $hasside . '">';
                 $footer = '</div>';
                 $footer .= '</div>';
                 $footer .= '</div>';
@@ -228,7 +226,11 @@ class course_renderer extends \core_course_renderer {
             $context = context_course::instance($course->id);
 
             // Learner's progress bar.
-            $courseinfo['progressbar'] = $this->getprogressbar($course, $systemcontext);
+            if (($progress = $this->getprogress($course, $systemcontext)) > -1) {
+                $courseinfo['progressbar'] = '<meter value="' . $progress . '" min="0" max="100">' . $progress . '%</meter> <span class="small">' . $progress . '% ' . get_string('completed', 'completion') . '</span> ';
+            } else {
+                $courseinfo['progressbar'] = '';
+            }
 
             if ($course instanceof stdClass) {
                 $course = new core_course_list_element($course);
@@ -270,8 +272,13 @@ class course_renderer extends \core_course_renderer {
 
             // Button icons and text for screen readers.
             if (is_enrolled(context_course::instance($course->id), $USER->id, '', true)) {
-                $courseinfo['caption'] = get_string('courseenter', 'theme_gcweb');
-                $courseinfo['playicon'] = 'fa-play-circle';
+                if ($progress == 100) {
+                    $courseinfo['caption'] = get_string('coursereview', 'theme_gcweb');
+                    $courseinfo['playicon'] = 'fa-book';
+                } else {
+                    $courseinfo['caption'] = get_string('courseenter', 'theme_gcweb');
+                    $courseinfo['playicon'] = 'fa-play-circle';
+                }
             } else {
                 $courseinfo['caption'] = get_string('courseinfo', 'theme_gcweb');
                 $courseinfo['playicon'] = 'fa-info-circle';
@@ -292,43 +299,42 @@ class course_renderer extends \core_course_renderer {
             if ($courselistlayout > 0) {
                 $content .= '<div class="col-auto mb-5 ' . $grid . '">';
                 if ($columns == 1) {
-                    $content .= '<div class="row border ' . ($course->visible ? 'coursevisible' : 'coursedimmed') . '">';
+                    $extraclasses = 'row border';
                 } else {
-                    $content .= '<div class="card h-100 ' . ($course->visible ? 'coursevisible' : 'coursedimmed') . '">';
+                    $extraclasses = 'card h-100' . ($courselistlayout == 4 ? ' text-center' : '');
                 }
+                $content .= '<div class="' . $extraclasses . ' ' . ($course->visible ? 'coursevisible' : 'coursedimmed') . '">';
             }
-            
+
             $courseinfo['pixicons'] = $this->getpixicons($course);
 
             $courseinfo['cardheader'] = (empty($this->page->theme->settings->cardheader) ? 0 : $this->page->theme->settings->cardheader);
             $courseinfo['cardfooter'] = (empty($this->page->theme->settings->cardfooter) ? 0 : $this->page->theme->settings->cardfooter);
-            
+
             $courseinfo['course'] = $course;
 
             $extras = '';
             switch($courselistlayout) {
-                case -3: // Expandable list (name/details).
+                case -3: // Twister Expandable list (name/details).
                     $content .= html_writer::start_tag('li', array('class' => $course->visible ? 'coursevisible' : 'coursedimmed'));
-                    $tmp = $courseinfo['coursetitle'];
+                    $tmp['title'] = $courseinfo['coursetitle'];
                     $courseinfo['coursetitle'] = '';
+                    $tmp['icon'] = $courseinfo['pixicons'];
+                    $courseinfo['pixicons'] = '';
+                    $courseinfo['cardheader'] = 0;
                     $extras = $this->coursecard($courseinfo, 1, 1); // $courselistlayout = 1, $columns = 1.
-                    $courseinfo['coursetitle'] = $tmp;
+                    $courseinfo['pixicons'] = $tmp['icon'];
+                    $courseinfo['coursetitle'] = $tmp['title'];
                     if (!empty($extras)) {
                         $content .= '<details>';
                         $content .= '<summary>';
-                        if (!empty($courseinfo['pixicons'])) {
-                            $content .= '<div>' . $courseinfo['pixicons'] . '</div>';
-                        }
-                        $content .= $courseinfo['coursetitle'];
+                        $content .= '<h3 class="h4">' . $courseinfo['coursetitle'] . $courseinfo['pixicons'] . '</h3>';
                         $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-sm pull-right"><span class="fa ' . $courseinfo['playicon'] . '" aria-hidden="true"></span> ' . $courseinfo['caption'] . '</a>';
                         $content .= '</summary>';
                         $content .= $extras;
                         $content .= '</details>';
                     } else {
-                        if (!empty($courseinfo['pixicons'])) {
-                            $content .= '<div>' . $courseinfo['pixicons'] . '</div>';
-                        }
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '"><span  aria-hidden="true" class="fa ' . $courseinfo['playicon'] . '" aria-hidden="true"></span> ' . $courseinfo['caption'] . ': ' . $courseinfo['coursetitle'] . '</a>';
+                        $content .= '<a href="' . $courseinfo['courseurl'] . '"><span class="fa ' . $courseinfo['playicon'] . '" aria-hidden="true"></span> ' . $courseinfo['caption'] . ': ' . $courseinfo['coursetitle'] . '</a>' . $courseinfo['pixicons'];
                     }
                     $content .= html_writer::end_tag('li');
                     break;
@@ -352,152 +358,45 @@ class course_renderer extends \core_course_renderer {
                     $content .= html_writer::end_tag('tr');
                     break;
 
-                case -1: // Masonry.
+                case -1: // Masonry Cards.
                     $content .= '<div class="card ' . $grid . '">';
                     $content .= $this->coursecard($courseinfo, $courselistlayout, $columns);
                     $content .= '</div>';
                     break;
 
                 case 1: // Card.
+                case 4: // Skinny Banner.
+                case 5: // Arrow to the left of course name.
+                    // Differences will be handled in coursecard() function.
                     $content .= $this->coursecard($courseinfo, $courselistlayout, $columns);
                     break;
 
                 case 2: // Overlay (bottom).
-                    if (!empty($this->page->theme->settings->cardcategory)) {
-                        $extras .= '<div class="card-text small">' . $courseinfo['cardcategory'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardcustomfields)) {
-                        $extras .= empty($extras) ? '' : ' ';
-                        $extras .= '<div class="card-text small">' . $courseinfo['cardcustomfields'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardcontacts)) {
-                        $extras .= '<div class="card-text small">'. $courseinfo['cardcontacts'] . '</div>';
-                    }
-
-                    if (!empty($this->page->theme->settings->cardimage)) {
-                        $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . ');"></div>';
-                        //$content .= '<img class="card-img" src="' . $courseinfo['courseimage'] . '" alt="">';
-                        $content .= '<div class="card-img-overlay bottom card-bg text-white">';
-                    } else {
-                        $content .= '<div class="p-3 bg-dark text-white h-100">';
-                    }
-                    if (!empty($courseinfo['pixicons'])) {
-                        $content .= '<div>' . $courseinfo['pixicons'] . '</div>';
-                    }
-                    if (empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '<h3 class="card-title h4"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a></h3>';
-                    } else {
-                        $content .= '<h3 class="card-title h4">' . $courseinfo['coursetitle'] . '</h3>';
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
-                    }
-                    $content .= $extras;
-                    $content .= '</div>';
-                    break;
-
                 case 3: // Overlay (top).
+                    // The only difference is some CSS.
                     if (!empty($this->page->theme->settings->cardcategory)) {
                         $extras .= '<div class="card-text small text-white">' . $courseinfo['cardcategory'] . '</div>';
+                    }
+                    if (!empty($this->page->theme->settings->cardcustomfields) && !empty($courseinfo['cardcustomfields'])) {
+                        $extras .= empty($extras) ? '' : ' ';
+                        $extras .= '<div class="card-text small text-white">' . $courseinfo['cardcustomfields'] . '</div>';
                     }
                     if (!empty($this->page->theme->settings->cardcontacts)) {
                         $extras .= '<div class="card-text small text-white">'. $courseinfo['cardcontacts'] . '</div>';
                     }
-                    if (!empty($this->page->theme->settings->cardcustomfields) && !empty($courseinfo['cardcustomfields'])) {
-                        $extras .= '<div class="card-text small text-white">' . $courseinfo['cardcustomfields'] . '</div>';
-                    }
+
                     if (!empty($this->page->theme->settings->cardimage)) {
                         $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . ');"></div>';
-                        //$content .= '<img class="card-img" src="' . $courseinfo['courseimage'] . '" alt="">';
-                        $content .= '<div class="card-img-overlay">';
-                        $content .= '<div class="card-bg">';
+                        $content .= '<div class="card-img-overlay card-bg text-white">';
                     } else {
-                        $content .= '<div>';
-                        $content .= '<div class="card-bg">';
+                        $content .= '<div class="p-3 bg-dark text-white h-100">';
                     }
-                    if (!empty($courseinfo['pixicons'])) {
-                        $content .= '<divclass="text-white">' . $courseinfo['pixicons'] . '</div>';
-                    }
+
                     if (empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '<h3 class="card-title h4 text-white"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a></h3>';
+                        $content .= '<h3 class="card-title h4 text-white"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a>' . $courseinfo['pixicons'] . '</h3>';
                     } else {
-                        $content .= '<h3 class="card-title h4 text-white">' . $courseinfo['coursetitle'] . '</h3>';
+                        $content .= '<h3 class="card-title h4 text-white">' . $courseinfo['coursetitle'] . $courseinfo['pixicons'] . '</h3>';
                         $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
-                    }
-                    $content .= $extras;
-                    $content .= '<div class="clearfix"></div>';
-                    $content .= '</div>';
-                    $content .= '</div>';
-                    break;
-
-                case 4: // Minimal with arrow over image.
-                    if (!empty($this->page->theme->settings->cardsummary)) {
-                        $extras .= '<div class="card-text">'. $courseinfo['coursesummary'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardcategory)) {
-                        $extras .= '<div class="card-text small">' . $courseinfo['cardcategory'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardcontacts)) {
-                        $extras .= '<div class="card-text small">'. $courseinfo['cardcontacts'] . '</div>';
-                    }
-
-                    $content .= '<div class="text-center">';
-                    $content .= '<div class="card-body">';
-                    if (empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="card-action d-block">';
-                    }
-                    if (!empty($this->page->theme->settings->cardimage)) {
-                        $content .= '<div class="card-icon-wrap" style="background-image: url(' . $courseinfo['courseimage'] . ');">';
-                    } else {
-                        $content .= '<div class="card-icon-wrap">';
-                    }
-                    $content .= '<div class="card-icon">';
-                    $content .= '<span class="fa-stack fa-1x">';
-                    $content .= '<span class="fa fa-circle-thin fa-stack-2x bg-primary" aria-hidden="true"></span>';
-                    $content .= '<span class="fa ' . $courseinfo['playicon'] . ' fa-stack-2x fa-inverse" aria-hidden="true"></span>';
-                    $content .= '</span>';
-                    $content .= '</div>';
-                    $content .= '</div>';
-                    if (!empty($courseinfo['pixicons'])) {
-                        $content .= '<div>' . $courseinfo['pixicons'] . '</div>';
-                    }
-                    $content .= '<h3 class="mt-4 h4">' . $courseinfo['coursetitle'] . '</h3>';
-                    if (empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '</a>';
-                    }
-                    $content .= $extras;
-                    if (!empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
-                    }
-                    $content .= '</div>';
-                    if (!empty($this->page->theme->settings->cardcustomfields)) {
-                        $content .= '<div class="card-footer">';
-                        $content .= '<p>' . $this->getcustomfieldcontent($course) . '</p>';
-                        $content .= '</div>';
-                    }
-                    $content .= '</div>';
-                    break;
-
-                case 5: // Minimal with arrow to the left of course name.
-                    if (!empty($this->page->theme->settings->cardcategory)) {
-                        $extras .= '<div class="card-text small">' . $courseinfo['cardcategory'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardcustomfields)) {
-                        $extras .= '<div class="card-text small">'. $courseinfo['cardcustomfields'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardcontacts)) {
-                        $extras .= '<div class="card-text small">'. $courseinfo['cardcontacts'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardsummary)) {
-                        $extras .= '<div class="card-text">'. $courseinfo['coursesummary'] . '</div>';
-                    }
-                    $content .= '<div class="card-body">';
-                    if (!empty($courseinfo['pixicons'])) {
-                        $content .= '<div>' . $courseinfo['pixicons'] . '</div>';
-                    }
-                    if (!empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '<h3 class="card-title h4"><span class="fa fa-arrow-circle-right pull-left" aria-hidden="true"></span>' . $courseinfo['coursetitle'] . '</h3>';
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
-                    } else {
-                        $content .= '<h3 class="card-title h4"><span class="fa fa-arrow-circle-right pull-left" aria-hidden="true"></span><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a></h3>';
                     }
                     $content .= $extras;
                     $content .= '</div>';
@@ -693,10 +592,10 @@ class course_renderer extends \core_course_renderer {
         }
         return $content;
     }
-    
+
     private function coursecard($courseinfo, $layout, $columns) {
         $content = '';
-        
+
         $cheader = '';
         if ($courseinfo['cardheader']) {
             // If one column, put header to the left instead of above.
@@ -710,16 +609,15 @@ class course_renderer extends \core_course_renderer {
                         break;
                 case 2: // Course name.
                         $cheader = '<h3 class="d-inline h4">';
+                        if ($layout == 5) {
+                            $content .= '<span class="fa fa-arrow-circle-right pull-left" aria-hidden="true"></span>';
+                        }
                         if (empty($this->page->theme->settings->cardbutton)) {
                             $cheader .= '<a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a>';
-                            if (!empty($courseinfo['pixicons'])) {
-                                $content .= '<span class="pull-right">' . $courseinfo['pixicons'] . '</span>';
-                            }
                         } else {
                             $cheader .= $courseinfo['coursetitle'];
                         }
                         $cheader .= '</h3>';
-                        $courseinfo['coursetitle'] = '';
                         break;
                 default: // Don't do anything.
             }
@@ -736,11 +634,10 @@ class course_renderer extends \core_course_renderer {
                         if (!empty($this->page->theme->settings->cardbutton)) {
                             $cfooter = '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm ' . ($columns != 1 ? 'btn-block m-0' : ' mt-3') . '"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
                         }
-                        $courseinfo['courseurl'] = '';
                         break;
                 case 2: // Custom course fields.
                         if (!empty($this->page->theme->settings->cardcustomfields)) {
-                            $cfooter = $cardcustomfields;
+                            $cfooter = $courseinfo['cardcustomfields'];
                         }
                         $courseinfo['cardcustomfields'] = '';
                         break;
@@ -773,7 +670,23 @@ class course_renderer extends \core_course_renderer {
 
         // Course image.
         if (!empty($this->page->theme->settings->cardimage)) {
-            $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . ');"></div>';
+            if ($layout == 4) {
+                if (!empty($this->page->theme->settings->cardimage)) {
+                    $content .= '<div class="card-icon-wrap" style="background-image: url(' . $courseinfo['courseimage'] . ');">';
+                } else {
+                    $content .= '<a href="' . $courseinfo['courseurl'] . '" class="card-action d-block">';
+                    $content .= '<div class="card-icon-wrap">';
+                }
+                $content .= '<div class="card-icon">';
+                $content .= '<span class="fa-stack fa-1x">';
+                $content .= '<span class="fa fa-circle-thin fa-stack-2x bg-primary" aria-hidden="true"></span>';
+                $content .= '<span class="fa ' . $courseinfo['playicon'] . ' fa-stack-2x fa-inverse" aria-hidden="true"></span>';
+                $content .= '</span>';
+                $content .= '</div>';
+                $content .= '</div>';
+            } else {
+                $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . '); padding-top:' . $this->page->theme->settings->cardaspect . ';"></div>';
+            }
         }
 
         // End of left column and start of right column - if in single column.
@@ -786,12 +699,17 @@ class course_renderer extends \core_course_renderer {
         $content .= '<div class="card-body">';
         // If we did not used the course name in the header, add it to the card body.
         // Also, if we will be displaying a button, don't make the heading a link.
-        if (!empty($courseinfo['coursetitle'])) {
-            if (!empty($this->page->theme->settings->cardbutton)) {
-                $content .= '<h3 class="d-inline h4">' . $courseinfo['coursetitle'] . '</h3>';
-            } else {
-                $content .= '<h3 class="d-inline h4"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a></h3>';
+        if ($courseinfo['cardheader'] != 2 && !empty($courseinfo['coursetitle'])) {
+            $content .= '<h3 class="d-inline h4">';
+            if ($layout == 5) {
+                $content .= '<span class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></span> ';
             }
+            if (!empty($this->page->theme->settings->cardbutton)) {
+                $content .= $courseinfo['coursetitle'];
+            } else {
+                $content .= '<a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a>';
+            }
+            $content .= '</h3>';
             $content .= $courseinfo['pixicons'];
             $content .= '<hr>';
         } else {
@@ -802,10 +720,10 @@ class course_renderer extends \core_course_renderer {
             $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
         }
 
-        if (!empty($courseinfo['courseurl']) && !empty($courseinfo['coursetitle'])) {
+        if (!empty($this->page->theme->settings->cardbutton)) {
             $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
         }
-        
+
         if (!empty($this->page->theme->settings->cardscroll)) {
             $content .= '<div class="clearfix"></div>';
             $content .= '<div class="card-content scroll">';
@@ -840,7 +758,7 @@ class course_renderer extends \core_course_renderer {
             $content .= $cfooter;
         }
         $content .= '<div class="clearfix"></div>';
-        
+
         return $content;
     }
 }

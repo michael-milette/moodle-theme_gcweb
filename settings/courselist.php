@@ -36,6 +36,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('cardsummary', 1, $themename); // Show card summary.
     set_config('cardcustomfields', 1, $themename); // Show card custom fields.
     set_config('cardcontacts', 1, $themename); // Show card contacts (e.g. teachers).
+    set_config('cardaspect', '66.6%', $themename); // Card course 3:2 image aspect ratio.
     set_config('cardimage', 1, $themename); // Show card course image.
     set_config('cardbutton', 1, $themename); // Show card enrolment/get started button.
     set_config('filtertag', '', $themename); // No filtering of course list.
@@ -85,6 +86,26 @@ for ($cnt = 0; $cnt <= 2; $cnt++) {
     $choices[$cnt] = get_string('cardheaderopt' . $cnt, $themename);
 }
 $default = 0; // None.
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Card image aspect ratio.
+$name = $themename . '/cardaspect';
+$title = get_string('cardaspect', $themename);
+$description = get_string('cardaspect_desc', $themename);
+$choices = [];
+$choices['200%']= '1:2';
+$choices['178%']= '9:16';
+$choices['160%'] = '5:8';
+$choices['150%'] = '2:3';
+$choices['133%'] = '3:4';
+$choices['100%'] = '1:1';
+$choices['75%'] = '4:3';
+$choices['66.6%'] = '3:2';
+$choices['62.5%'] = '8:5';
+$choices['50%']= '2:1';
+$default = '66.6%';
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);

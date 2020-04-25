@@ -165,6 +165,7 @@ $string['footnoteheading'] = 'À propos de cette application Web';
 // Buttons for course listings.
 $string['courseinfo'] = 'En savoir plus<span class="sr-only"> sur le cours&nbsp;:</span>';
 $string['courseenter'] = 'Entrez<span class="sr-only"> dans le cours&nbsp;:</span>';
+$string['coursereview'] = 'Reviser<span class="sr-only"> le cours complété&nbsp;:</span>';
 
 // 404 Error: Page not found.
 $string['err404title'] = 'Nous ne pouvons trouver cette page Web (Erreur 404) / We couldn&#x27;t find that Web page (Error 404)';
