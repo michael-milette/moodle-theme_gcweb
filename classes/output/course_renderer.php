@@ -275,6 +275,9 @@ class course_renderer extends \core_course_renderer {
                 if ($progress == 100) {
                     $courseinfo['caption'] = get_string('coursereview', 'theme_gcweb');
                     $courseinfo['playicon'] = 'fa-book';
+                } else if ($progress > 0) {
+                    $courseinfo['caption'] = get_string('coursecontinue', 'theme_gcweb');
+                    $courseinfo['playicon'] = 'fa-play-circle';
                 } else {
                     $courseinfo['caption'] = get_string('courseenter', 'theme_gcweb');
                     $courseinfo['playicon'] = 'fa-play-circle';
@@ -287,7 +290,7 @@ class course_renderer extends \core_course_renderer {
             // Course button (e.g. Enrol, More info).
             $courseinfo['coursetitle'] = format_string($course->fullname, false, ['context' => $context]);
             if (empty($this->page->theme->settings->cardbutton)) {
-                $courseinfo['coursetitle'] = '<span class="sr-only">' . $caption . '</span>' . $courseinfo['coursetitle'];
+                $courseinfo['coursetitle'] = '<span class="sr-only">' . $courseinfo['caption'] . '</span>' . $courseinfo['coursetitle'];
             }
 
             // URL of the course or course info if not enrolled.
@@ -716,12 +719,12 @@ class course_renderer extends \core_course_renderer {
             $content .= $courseinfo['pixicons'];
         }
 
-        if (!empty($courseinfo['progressbar'])) {
-            $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
-        }
-
         if (!empty($this->page->theme->settings->cardbutton)) {
             $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+        }
+
+        if (!empty($courseinfo['progressbar'])) {
+            $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
         }
 
         if (!empty($this->page->theme->settings->cardscroll)) {

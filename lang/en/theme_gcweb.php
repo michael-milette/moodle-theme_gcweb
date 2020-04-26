@@ -312,6 +312,7 @@ $string['footnoteheading'] = 'About this Web application';
 // Buttons for course listings.
 $string['courseinfo'] = 'Learn more <span class="sr-only">about course:</span>';
 $string['courseenter'] = 'Enter<span class="sr-only"> the course:</span>';
+$string['coursecontinue'] = 'Resume<span class="sr-only"> the course:</span>';
 $string['coursereview'] = 'Review<span class="sr-only"> the completed course:</span>';
 
 // 404 Error: Page not found.
