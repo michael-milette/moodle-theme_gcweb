@@ -1062,6 +1062,13 @@ img.activityicon {
     height: 32px;
     width: 32px;
 }
+/* Remove Front Page background hover. */
+#page-site-index ul.section li.activity:hover {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+    background-color: transparent;
+}
 
 /* Nav Drawer - remove navigation in course */
 .pagelayout-course #nav-drawer .list-group:nth-child(2),
