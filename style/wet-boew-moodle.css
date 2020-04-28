@@ -1137,127 +1137,127 @@ img.activityicon {
 }
 
 /* Course cards */
-.card-deck .card {
+.courses .card-deck .card {
   box-shadow: 0 1px 2px rgba(0,0,0,0.15);
   transition: all 0.3s ease-in-out;
 }
 /* Scale up the box on hover and add shadow. */
-.card-deck .card:hover {
+.courses .card-deck .card:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   opacity: 1;
 }
 @media screen and (prefers-reduced-motion: no-preference){
-    .card-deck .card:hover {
+    .courses .card-deck .card:hover {
       transform: scale(1.02, 1.02);
     }
 }
-.card-img {
+.courses .card-img {
   flex: none;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.clayout2 .card-bg, .clayout3 .card-bg {background-color:rgba(0,0,0,0.5);padding:10px;}
-.clayout2 h3, .clayout3 h3 {line-height: 1.5em;margin:0;}
-.clayout2 .card-img, .clayout3 .card-img {padding-top: 45%;}
-.clayout2 .card-img-overlay {bottom: auto;}
-.clayout3 .card-img-overlay {top: auto;}
+.courses .clayout2 .card-bg, .courses .clayout3 .card-bg {background-color:rgba(0,0,0,0.5);padding:10px;}
+.courses .clayout2 h3, .courses .clayout3 h3 {line-height: 1.5em;margin:0;}
+.courses .clayout2 .card-img, .courses .clayout3 .card-img {padding-top: 45%;}
+.courses .clayout2 .card-img-overlay {bottom: auto;}
+.courses .clayout3 .card-img-overlay {top: auto;}
 
 /* Layout: Masonry */
-.card-columns.cols-1         {column-count: 1;}
-.card-columns.cols-2.hasside {column-count: 1;}
-.card-columns.cols-2.noside  {column-count: 2;}
+.courses .card-columns.cols-1         {column-count: 1;}
+.courses .card-columns.cols-2.hasside {column-count: 1;}
+.courses .card-columns.cols-2.noside  {column-count: 2;}
 @media(min-width: 576px) {
-    .card-columns.cols-3.hasside {column-count: 2;}
-    .card-columns.cols-3.noside  {column-count: 3;}
-    .card-columns.cols-4.hasside {column-count: 3;}
-    .card-columns.cols-4.noside  {column-count: 4;}
-    .card-columns.cols-6.hasside {column-count: 1;}
-    .card-columns.cols-6.noside  {column-count: 1;}
-    .card-deck .cols-2.hasside {width: 100%;}
-    .card-deck .cols-2.noside {width: 100%;}
-    .card-deck .cols-3.hasside {width: 100%;}
-    .card-deck .cols-3.noside {width: 100%;}
-    .card-deck .cols-4.hasside {width: 100%;}
-    .card-deck .cols-4.noside {width: 100%;}
-    .card-deck .cols-6.hasside {width: 100%;}
-    .card-deck .cols-6.noside {width: 100%;}
+  .courses .card-columns.cols-3.hasside {column-count: 2;}
+  .courses .card-columns.cols-3.noside  {column-count: 3;}
+  .courses .card-columns.cols-4.hasside {column-count: 3;}
+  .courses .card-columns.cols-4.noside  {column-count: 4;}
+  .courses .card-columns.cols-6.hasside {column-count: 1;}
+  .courses .card-columns.cols-6.noside  {column-count: 1;}
+  .courses .card-deck .cols-2.hasside {width: 100%;}
+  .courses .card-deck .cols-2.noside {width: 100%;}
+  .courses .card-deck .cols-3.hasside {width: 100%;}
+  .courses .card-deck .cols-3.noside {width: 100%;}
+  .courses .card-deck .cols-4.hasside {width: 100%;}
+  .courses .card-deck .cols-4.noside {width: 100%;}
+  .courses .card-deck .cols-6.hasside {width: 100%;}
+  .courses .card-deck .cols-6.noside {width: 100%;}
 }
 @media (min-width: 768px) {
-    .card-columns.cols-3.hasside {column-count: 2;}
-    .card-columns.cols-3.noside  {column-count: 3;}
-    .card-columns.cols-4.hasside {column-count: 3;}
-    .card-columns.cols-4.noside  {column-count: 4;}
-    .card-columns.cols-6.hasside {column-count: 1;}
-    .card-columns.cols-6.noside  {column-count: 2;}
-    .card-deck .cols-2.hasside {width: 100%;}
-    .card-deck .cols-2.noside {width: 50%;}
-    .card-deck .cols-3.hasside {width: 100%;}
-    .card-deck .cols-3.noside {width: 50%;}
-    .card-deck .cols-4.hasside {width: 100%;}
-    .card-deck .cols-4.noside {width: 50%;}
-    .card-deck .cols-6.hasside {width: 100%;}
-    .card-deck .cols-6.noside {width: 50%;}
+  .courses .card-columns.cols-3.hasside {column-count: 2;}
+  .courses .card-columns.cols-3.noside  {column-count: 3;}
+  .courses .card-columns.cols-4.hasside {column-count: 3;}
+  .courses .card-columns.cols-4.noside  {column-count: 4;}
+  .courses .card-columns.cols-6.hasside {column-count: 1;}
+  .courses .card-columns.cols-6.noside  {column-count: 2;}
+  .courses .card-deck .cols-2.hasside {width: 100%;}
+  .courses .card-deck .cols-2.noside {width: 50%;}
+  .courses .card-deck .cols-3.hasside {width: 100%;}
+  .courses .card-deck .cols-3.noside {width: 50%;}
+  .courses .card-deck .cols-4.hasside {width: 100%;}
+  .courses .card-deck .cols-4.noside {width: 50%;}
+  .courses .card-deck .cols-6.hasside {width: 100%;}
+  .courses .card-deck .cols-6.noside {width: 50%;}
 }
 @media (min-width: 992px) {
-    .card-columns.cols-3.hasside {column-count: 2;}
-    .card-columns.cols-3.noside  {column-count: 3;}
-    .card-columns.cols-4.hasside {column-count: 3;}
-    .card-columns.cols-4.noside  {column-count: 4;}
-    .card-columns.cols-6.hasside {column-count: 2;}
-    .card-columns.cols-6.noside  {column-count: 3;}
-    .card-deck .cols-2.hasside {width: 100%;}
-    .card-deck .cols-2.noside {width: 50%;}
-    .card-deck .cols-3.hasside {width: 100%;}
-    .card-deck .cols-3.noside {width: 33%;}
-    .card-deck .cols-4.hasside {width: 100%;}
-    .card-deck .cols-4.noside {width: 50%;}
-    .card-deck .cols-6.hasside {width: 50%;}
-    .card-deck .cols-6.noside {width: 33%;}
+  .courses .card-columns.cols-3.hasside {column-count: 2;}
+  .courses .card-columns.cols-3.noside  {column-count: 3;}
+  .courses .card-columns.cols-4.hasside {column-count: 3;}
+  .courses .card-columns.cols-4.noside  {column-count: 4;}
+  .courses .card-columns.cols-6.hasside {column-count: 2;}
+  .courses .card-columns.cols-6.noside  {column-count: 3;}
+  .courses .card-deck .cols-2.hasside {width: 100%;}
+  .courses .card-deck .cols-2.noside {width: 50%;}
+  .courses .card-deck .cols-3.hasside {width: 100%;}
+  .courses .card-deck .cols-3.noside {width: 33%;}
+  .courses .card-deck .cols-4.hasside {width: 100%;}
+  .courses .card-deck .cols-4.noside {width: 50%;}
+  .courses .card-deck .cols-6.hasside {width: 50%;}
+  .courses .card-deck .cols-6.noside {width: 33%;}
 }
 @media (min-width: 1200px) {
-    .card-columns.cols-3.hasside {column-count: 2;}
-    .card-columns.cols-3.noside  {column-count: 3;}
-    .card-columns.cols-4.hasside {column-count: 3;}
-    .card-columns.cols-4.noside  {column-count: 4;}
-    .card-columns.cols-6.hasside {column-count: 3;}
-    .card-columns.cols-6.noside  {column-count: 4;}
-    .card-deck .cols-2.hasside {width: 50%;}
-    .card-deck .cols-2.noside {width: 50%;}
-    .card-deck .cols-3.hasside {width: 50%;}
-    .card-deck .cols-3.noside {width: 33%;}
-    .card-deck .cols-4.hasside {width: 50%;}
-    .card-deck .cols-4.noside {width: 33%;}
-    .card-deck .cols-6.hasside {width: 33%;}
-    .card-deck .cols-6.noside {width: 25%;}
+  .courses .card-columns.cols-3.hasside {column-count: 2;}
+  .courses .card-columns.cols-3.noside  {column-count: 3;}
+  .courses .card-columns.cols-4.hasside {column-count: 3;}
+  .courses .card-columns.cols-4.noside  {column-count: 4;}
+  .courses .card-columns.cols-6.hasside {column-count: 3;}
+  .courses .card-columns.cols-6.noside  {column-count: 4;}
+  .courses .card-deck .cols-2.hasside {width: 50%;}
+  .courses .card-deck .cols-2.noside {width: 50%;}
+  .courses .card-deck .cols-3.hasside {width: 50%;}
+  .courses .card-deck .cols-3.noside {width: 33%;}
+  .courses .card-deck .cols-4.hasside {width: 50%;}
+  .courses .card-deck .cols-4.noside {width: 33%;}
+  .courses .card-deck .cols-6.hasside {width: 33%;}
+  .courses .card-deck .cols-6.noside {width: 25%;}
 }
 @media (min-width: 1600px) {
-    .card-columns.cols-3.hasside {column-count: 2;}
-    .card-columns.cols-3.noside  {column-count: 3;}
-    .card-columns.cols-4.hasside {column-count: 3;}
-    .card-columns.cols-4.noside  {column-count: 4;}
-    .card-columns.cols-6.hasside {column-count: 4;}
-    .card-columns.cols-6.noside  {column-count: 6;}
-    .card-deck .cols-2.hasside {width: 50%;}
-    .card-deck .cols-2.noside {width: 50%;}
-    .card-deck .cols-3.hasside {width: 50%;}
-    .card-deck .cols-3.noside {width: 33%;}
-    .card-deck .cols-4.hasside {width: 33%;}
-    .card-deck .cols-4.noside {width: 25%;}
-    .card-deck .cols-6.hasside {width: 25%;}
-    .card-deck .cols-6.noside {width: 16.6%;}
+  .courses .card-columns.cols-3.hasside {column-count: 2;}
+  .courses .card-columns.cols-3.noside  {column-count: 3;}
+  .courses .card-columns.cols-4.hasside {column-count: 3;}
+  .courses .card-columns.cols-4.noside  {column-count: 4;}
+  .courses .card-columns.cols-6.hasside {column-count: 4;}
+  .courses .card-columns.cols-6.noside  {column-count: 6;}
+  .courses .card-deck .cols-2.hasside {width: 50%;}
+  .courses .card-deck .cols-2.noside {width: 50%;}
+  .courses .card-deck .cols-3.hasside {width: 50%;}
+  .courses .card-deck .cols-3.noside {width: 33%;}
+  .courses .card-deck .cols-4.hasside {width: 33%;}
+  .courses .card-deck .cols-4.noside {width: 25%;}
+  .courses .card-deck .cols-6.hasside {width: 25%;}
+  .courses .card-deck .cols-6.noside {width: 16.6%;}
 }
 
-.card-subtitle {font-size: smaller;}
-.card-content.scroll {
-    height: 20rem;
-    overflow: auto;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+.courses .card-subtitle {font-size: smaller;}
+.courses .card-content.scroll {
+  height: 20rem;
+  overflow: auto;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
-.card-footer {padding: 0 1.25rem;}
-.card-deck .card.coursedimmed {opacity:0.7;}
+.courses .card-footer {padding: 0 1.25rem;}
+.courses .card-deck .card.coursedimmed {opacity:0.7;}
 
 .enrolmenticons {float: right;}
 .myprogressbar {margin:0;}
