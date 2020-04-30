@@ -205,7 +205,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
             case $this->page->pagetype == 'mod-page-view':
                 $course = $this->page->course;
                 $coursecontext = context_course::instance($course->id);
-                $title = format_string($this->page->cm->name, false, ['context' => $coursecontext]);
+                if (!empty($this->page->cm->name)) {
+                    $title = format_string($this->page->cm->name, false, ['context' => $coursecontext]);
+                }
                 break;
             case substr($this->page->pagetype, 0, 4) == 'mod-': // If a module.
                 if ($COURSE->format == 'singleactivity') {
