@@ -1,11 +1,11 @@
 @charset "utf-8";
 
 body {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 16px;
-  line-height: 1.4375;
-  color: #333333;
-  background-color: #fff;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.4375;
+    color: #333333;
+    background-color: #fff;
 }
 
 /* Fix height of page for IE. */
@@ -163,9 +163,9 @@ small, .small {
     border: 1px outset #ccc;
     font-size: 16px;
     border-radius: 4px;
-    margin-left:5px;
+    margin-left: 5px;
     padding-top: 6px;
-    white-space:normal;
+    white-space: normal;
     padding: 6px 12px;
     line-height: 1.4375;
     border-radius: 4px;
@@ -211,6 +211,19 @@ main .btn-primary:hover, .btn-primary:hover {
 .btn-danger:hover, .btn-danger:not(:disabled):not(.disabled):hover, .btn-danger:not(:disabled):not(.disabled):hover, .show>.btn-danger.dropdown-toggle:hover {
     background-color: #942826;
 }
+.btn.btn-dark {
+    color:white;
+}
+.btn-outline-success,
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-warning,
+.btn-outline-dark,
+.btn-outline-light,
+.btn-outline-info,
+.btn-outline-default {
+    background-color:rgba(255,255,255,0.9)
+}
 .btn-lg {
     font-size: 18px;
 }
@@ -242,19 +255,19 @@ a.disabled:hover, a.disabled {
 
 /* Icons */
 .icon {
-  min-height:0;
+    min-height:0;
 }
 
 /* Notification and Message icons */
 .navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
-    color:lightgray;
+    color: lightgray;
 }
 .navbar-nav {
-    margin-top:15px;
-    color:lightgray;
+    margin-top: 15px;
+    color: lightgray;
 }
 .nav-item i:hover {
-    color:white;
+    color: white;
 }
 
 /* Default for all links */
@@ -265,8 +278,8 @@ a {
 /* Usermenu */
 .usermenu .icon {
     margin-right: 0;
-    min-height:0;
-    min-width:0;
+    min-height: 0;
+    min-width: 0;
 }
 .usermenu .dropdown .caret {
     display: inline;
@@ -294,20 +307,20 @@ a {
 
 /* WET Search form */
 .form-control {
-    font-size:inherit;
+    font-size: inherit;
 }
 #wb-srch form {
-    float:right;
+    float: right;
 }
 
 /* Fix field width for custom forms in the content area. */
 main .form-control {
-  width: auto;
+    width: auto;
 }
 
 /* Headers */
 .page-context-header .page-header-image, .page-context-header .page-header-headings {
-    float:none;
+    float: none;
 }
 
 /* Footer box links */
@@ -327,35 +340,30 @@ main .form-control {
 .logininfo:after,
 .tool_usertours-resettourcontainer:after,
 .homelink:after {
-  content: " &nbsp; ";
+    content: " &nbsp; ";
 }
 
 .validators ul li {
-  display : inline-block;
-  padding: 20px 20px 0 20px;
-  margin-bottom:0;
+    display: inline-block;
+    padding: 20px 20px 0 20px;
+    margin-bottom:0;
 }
 
 /* Dropdown usermenu */
 div.dropdown a#dropdown-1 {
-    color:white;
+    color: white;
 }
 div.dropdown a {
-    font-size:16px;
+    font-size: 16px;
 }
 #side-blocks div.dropdown a {
     color: #000;
 }
 
 .dropdown-menu {
-    min-width:max-content;
-    right:auto;
+    min-width: max-content;
+    right: auto;
     font-size: 1.5rem
-}
-
-/* Card titles */
-.card-body h5, .card-body .h5 {
-    font-size: 3rem;
 }
 
 #page {
@@ -482,7 +490,7 @@ li.section.hidden, .block.hidden, .block.invisible {
     display: block!important;
 }
 .dropdown a.dropdown-toggle>b.caret {
-      display:none;
+    display: none;
 }
 
 /* Dashboard: Recently accessed courses - wrap instead of scroll. */
@@ -492,7 +500,7 @@ li.section.hidden, .block.hidden, .block.invisible {
 }
 /* Dashboard: More space, better looking cards. */
 .dashboard-card {
-  width:360px !important;
+  width: 360px !important;
   background-color: #f9f9f9 !important;
   margin: 25px !important;
   /* padding: 10px; */
@@ -523,7 +531,7 @@ li.section.hidden, .block.hidden, .block.invisible {
 #page-admin-plugins #plugins-control-panel .pluginname .componentname,
 #page-admin-plugins #plugins-control-panel .version .versionnumber {
     font-size: 1.2rem;
-    color:#666666!important;
+    color: #666666!important;
 }
 
 /* Fix overflow in main content region. */
@@ -545,17 +553,17 @@ li.section.hidden, .block.hidden, .block.invisible {
 
 /* Fix alignment of drawer toggle button. */
 #navbar .d-inline-block.mr-3 {
-  margin-top: 7px;
+    margin-top: 7px;
 }
 .pagelayout-frontpage #navbar .d-inline-block.mr-3,
 .pagelayout-course #navbar .d-inline-block.mr-3,
 .pagelayout-incourse #navbar .d-inline-block.mr-3 {
-  margin-top: 0px;
+    margin-top: 0px;
 }
 
 /* Remove course search from navbar (when searching courses andlogged out). */
 #coursesearchnavbar {
-    display:none;
+    display: none;
 }
 
 /* Activity Navigation buttons. (bottom of activities) */
@@ -598,7 +606,7 @@ a#next-activity-link:hover {
 
 /* Hide login box heading. */
 .pagelayout-login h2.card-header {
-    display:none;
+    display: none;
 }
 
 /* Fix position and size of error messages on form submissions. */
@@ -626,7 +634,7 @@ table caption {
 
 /* Footer: Performance information (if enabled) */
 .performanceinfo {
-  color:white;
+    color: white;
 }
 
 /* Make Switch_Role_to horizontal instead of vertical. */
@@ -649,7 +657,7 @@ table caption {
 a[rel~="external"]:after {
     font-family: FontAwesome;
     content: "\f08e";
-    text-decoration:none;
+    text-decoration: none;
     padding-left: 7px;
     display: inline-block;
     font-size: 1.6rem
@@ -737,7 +745,7 @@ a[rel~="external"]:after {
 .coursecardview .coursebox .content .coursecat,
 .coursecardview .coursebox .content .courseimage,
 .coursecardview .coursebox .content .courseimage img {
-    width:100%;
+    width: 100%;
     max-width: 100%;
     margin: 0;
     padding: 5px 10px;
@@ -774,7 +782,7 @@ a[rel~="external"]:after {
 /* Remove indentation from WET list group and nav-pills. */
 ul.list-group,
 ul.nav-pills {
-    margin-left:0;
+    margin-left: 0;
 }
 
 /* Fix display when table column heading widths are specified. */
@@ -871,9 +879,9 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 
 /* Configure secondary buttons. Example: Exit Activity (embedded SCORM) */
 a.btn-secondary {
-  color: white;
-  background-color: #2572B4;
-  border: 1px outset #335075;
+    color: white;
+    background-color: #2572B4;
+    border: 1px outset #335075;
 
 }
 a.btn-secondary:hover,
@@ -897,26 +905,26 @@ a.btn-secondary:focus {
 /* Format new pre and post content region blocks. */
 #region-content-pre,
 #region-content-post {
-  display: block;
-  width: 100%;
-  margin-left:15px;
+    display: block;
+    width: 100%;
+    margin-left: 15px;
 }
 #region-content-pre .block,
 #region-content-post .block {
-  border: none;
+    border: none;
 }
 
 /* Side Navigation Drawer. */
 
 #nav-drawer, #nav-drawer .list-group-item {
-    background-color:#26374A;
+    background-color: #26374A;
     color: #aaa;
 }
 #nav-drawer .list-group {
     padding: 15px 0;
 }
 #nav-drawer .list-group-item.active {
-    border:none;
+    border: none;
     color: #fff;
 }
 #nav-drawer .list-group:not(:last-child) {
@@ -934,13 +942,13 @@ a.btn-secondary:focus {
     outline-color: #89B4F4;
 }
 #nav-drawer a {
-  border:none;
-  margin:1px
+    border: none;
+    margin: 1px
 }
 
 /* Fix font size for custom select dropdown lists */
 .custom-select {
-  font-size:inherit;
+  font-size: inherit;
 }
 
 /* Fix for alert boxes. */
@@ -951,16 +959,16 @@ a.btn-secondary:focus {
     color: #000;
 }
 .alert-success {
-      border-left: 4px solid #278400
+    border-left: 4px solid #278400
 }
 .alert-warning {
-      border-left: 4px solid #f90
+    border-left: 4px solid #f90
 }
 .alert-info {
-      border-left: 4px solid #269abc
+    border-left: 4px solid #269abc
 }
 .alert-danger {
-      border-left: 4px solid #d3080c
+    border-left: 4px solid #d3080c
 }
 
 
@@ -976,7 +984,7 @@ caption {
     color: #333;
 }
 .table-striped tbody tr:nth-of-type(odd), table.collection tbody tr:nth-of-type(odd), table#explaincaps tbody tr:nth-of-type(odd), table#defineroletable tbody tr:nth-of-type(odd), table.grading-report tbody tr:nth-of-type(odd), table#listdirectories tbody tr:nth-of-type(odd), table.rolecaps tbody tr:nth-of-type(odd), table.userenrolment tbody tr:nth-of-type(odd), form#movecourses table tbody tr:nth-of-type(odd), #page-admin-course-index .editcourse tbody tr:nth-of-type(odd), .forumheaderlist tbody tr:nth-of-type(odd), table.flexible tbody tr:nth-of-type(odd), .generaltable tbody tr:nth-of-type(odd) {
-    background-color:#f5f5f5;
+    background-color: #f5f5f5;
 }
 .table-hover tbody tr:hover, table.grading-report tbody tr:hover, .forumheaderlist tbody tr:hover, .generaltable tbody tr:hover, table.flexible tbody tr:hover, .category_subcategories tbody tr:hover, table#modules tbody tr:hover, table#permissions tbody tr:hover {
     background-color: #f0f0f0;
@@ -1013,10 +1021,10 @@ form.wetboew .form-control {
 }
 /* Fix for input group (example: field followed by search button). */
 .wetboew .input-group {
-  display: table;
+    display: table;
 }
 .wetboew .input-group>.form-control, .wetboew .input-group>.form-control-plaintext, .wetboew .input-group>.custom-select, .wetboew .input-group>.custom-file {
-  width: 100%;
+    width: 100%;
 }
 .wetboew .form-control {
     min-height: 37px;
@@ -1054,8 +1062,8 @@ li.activity.label {
 }
 /* Completion icons. */
 .icon.iconsmall {
-  height:24px;
-  width:24px
+    height: 24px;
+    width: 24px
 }
 /* Activity icons. */
 img.activityicon {
@@ -1088,8 +1096,8 @@ img.activityicon {
 
 /* Make Configurable Reports header sticky when scrolling. */
 #page-blocks-configurable_reports-viewreport th {
-  position: sticky;
-  top: 0;
+    position: sticky;
+    top: 0;
 }
 
 /* Fix width of right sidebar for blocks so it doesn't overlap. */
@@ -1116,56 +1124,66 @@ img.activityicon {
     color: #fff!important;
 }
 
-/* Show focus outline when tabbing onto a completion checkbox. */
+/* Show focus outline when tabbing onto a completion checkbox. See MDL-68337. */
 .path-course-view li.activity form.togglecompletion .btn {
-  border:2px solid transparent; }
-.path-course-view li.activity form.togglecompletion .btn:focus {
-  border-color: #6eb5f3; }
-.path-course-view li.activity form.togglecompletion img.icon {
-  min-width: 0;
-  height: 1.6rem;
+    min-height: 0;
+    min-width: 0;
+    padding: 0 0 4px 4px;
+    margin-top: 5px;
+    border: 2px solid transparent;
 }
-.path-course-view li.activity form.togglecompletion .btn {
-  min-height: 0;
-  min-width: 0;
-  padding: 0 0 4px 4px;
-  margin-top:5px;
+.path-course-view li.activity form.togglecompletion .btn:focus {
+    border-color: #6eb5f3;
+}
+.path-course-view li.activity form.togglecompletion img.icon {
+    min-width: 0;
+    height: 1.6rem;
+    margin-right: 8px;
 }
 
 /* Align autocompletion checkboxes with togglecompletion ones. */
 .path-course-view li.activity span.autocompletion img.icon {
-  min-width: 0px;
-  margin-right:8px;
+    min-width: 0;
+    margin-right: 8px;
 }
 
 /* Fix for heading of site pages. */
 #page-mod-page-view.course-1 #region-main h2:first-of-type {
-    display:none;
+    display: none;
+}
+
+/* Card titles */
+.card-body h5, .card-body .h5 {
+    font-size: 3rem;
+}
+/* Card Text small line-heigth. */
+.card-text.small {
+    line-height: 1.5em;
 }
 
 /* Course cards */
 .courses .card-deck .card {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-  transition: all 0.3s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in-out;
 }
 /* Scale up the box on hover and add shadow. */
 .courses .card-deck .card:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  opacity: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 1;
 }
 @media screen and (prefers-reduced-motion: no-preference){
     .courses .card-deck .card:hover {
-      transform: scale(1.02, 1.02);
+        transform: scale(1.02, 1.02);
     }
 }
 .courses .card-img {
-  flex: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    flex: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.courses .clayout2 .card-bg, .courses .clayout3 .card-bg {background-color:rgba(0,0,0,0.5);padding:10px;}
+.courses .clayout2 .card-bg, .courses .clayout3 .card-bg {background-color: rgba(0,0,0,0.5);padding: 10px;}
 .courses .clayout2 h3, .courses .clayout3 h3 {line-height: 1.5em;margin:0;}
 .courses .clayout2 .card-img, .courses .clayout3 .card-img {padding-top: 45%;}
 .courses .clayout2 .card-img-overlay {bottom: auto;}
@@ -1258,13 +1276,13 @@ img.activityicon {
 
 .courses .card-subtitle {font-size: smaller;}
 .courses .card-content.scroll {
-  height: 20rem;
-  overflow: auto;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+    height: 20rem;
+    overflow: auto;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 .courses .card-footer {padding: 0 1.25rem;}
-.courses .card-deck .card.coursedimmed {opacity:0.7;}
+.courses .card-deck .card.coursedimmed {opacity: 0.7;}
 
 .enrolmenticons {float: right;}
-.myprogressbar {margin:0;}
+.myprogressbar {margin: 0;}

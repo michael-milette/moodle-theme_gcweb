@@ -227,7 +227,7 @@ class course_renderer extends \core_course_renderer {
 
             // Learner's progress bar.
             if (($progress = $this->getprogress($course, $systemcontext)) > -1) {
-                $courseinfo['progressbar'] = '<meter value="' . $progress . '" min="0" max="100">' . $progress . '%</meter> <span class="small">' . $progress . '% ' . get_string('completed', 'completion') . '</span> ';
+                $courseinfo['progressbar'] = '<meter value="' . $progress . '" min="0" max="100">' . $progress . '%</meter> <span class="small">' . $progress . '%&nbsp;' . get_string('completed', 'completion') . '</span> ';
             } else {
                 $courseinfo['progressbar'] = '';
             }
@@ -274,10 +274,10 @@ class course_renderer extends \core_course_renderer {
             if (is_enrolled(context_course::instance($course->id), $USER->id, '', true)) {
                 if ($progress == 100) {
                     $courseinfo['caption'] = get_string('coursereview', 'theme_gcweb');
-                    $courseinfo['playicon'] = 'fa-book';
+                    $courseinfo['playicon'] = 'fa-graduation-cap';
                 } else if ($progress > 0) {
                     $courseinfo['caption'] = get_string('coursecontinue', 'theme_gcweb');
-                    $courseinfo['playicon'] = 'fa-play-circle';
+                    $courseinfo['playicon'] = 'fa-book';
                 } else {
                     $courseinfo['caption'] = get_string('courseenter', 'theme_gcweb');
                     $courseinfo['playicon'] = 'fa-play-circle';
@@ -332,7 +332,7 @@ class course_renderer extends \core_course_renderer {
                         $content .= '<details>';
                         $content .= '<summary>';
                         $content .= '<h3 class="h4">' . $courseinfo['coursetitle'] . $courseinfo['pixicons'] . '</h3>';
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-sm pull-right"><span class="fa ' . $courseinfo['playicon'] . '" aria-hidden="true"></span> ' . $courseinfo['caption'] . '</a>';
+                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn ' . $this->page->theme->settings->cardbutton . ' pull-right"><span class="fa ' . $courseinfo['playicon'] . '" aria-hidden="true"></span> ' . $courseinfo['caption'] . '</a>';
                         $content .= '</summary>';
                         $content .= $extras;
                         $content .= '</details>';
@@ -389,17 +389,17 @@ class course_renderer extends \core_course_renderer {
                     }
 
                     if (!empty($this->page->theme->settings->cardimage)) {
-                        $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . ');"></div>';
-                        $content .= '<div class="card-img-overlay card-bg text-white">';
+                        $content .= '<a href="' . $courseinfo['courseurl'] . '"  aria-hidden="true" tabindex="-1"><div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . ');"></div></a>';
+                        $content .= '<div class="card-img-overlay card-bg">';
                     } else {
                         $content .= '<div class="p-3 bg-dark text-white h-100">';
                     }
 
                     if (empty($this->page->theme->settings->cardbutton)) {
-                        $content .= '<h3 class="card-title h4 text-white"><a href="' . $courseinfo['courseurl'] . '">' . $courseinfo['coursetitle'] . '</a>' . $courseinfo['pixicons'] . '</h3>';
+                        $content .= '<h3 class="card-title h4 text-white"><a href="' . $courseinfo['courseurl'] . '" class="text-white">' . $courseinfo['coursetitle'] . '</a>' . $courseinfo['pixicons'] . '</h3>';
                     } else {
                         $content .= '<h3 class="card-title h4 text-white">' . $courseinfo['coursetitle'] . $courseinfo['pixicons'] . '</h3>';
-                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+                        $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn ' . $this->page->theme->settings->cardbutton . ' pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
                     }
                     $content .= $extras;
                     $content .= '</div>';
@@ -530,6 +530,58 @@ class course_renderer extends \core_course_renderer {
         $content .= '<div class="clearfix"></div>';
         return $content;
     }
+
+    /**
+     * Returns HTML to display a tree of subcategories and courses in the given category
+     *
+     * @param coursecat_helper $chelper various display options
+     * @param core_course_category $coursecat top category (this category's name and description will NOT be added to the tree)
+     * @return string
+     */
+    protected function xcoursecat_tree(coursecat_helper $chelper, $coursecat) {
+        // Reset the category expanded flag for this course category tree first.
+        $this->categoryexpandedonload = false;
+        $categorycontent = $this->coursecat_category_content($chelper, $coursecat, 0);
+        if (empty($categorycontent)) {
+            return '';
+        }
+// echo '<pre>';
+// $options = \core_course_category::make_categories_list(1);
+// echo var_dump($options, ENT_QUOTES); die;
+
+        // Start content generation
+        $content = '';
+        $attributes = $chelper->get_and_erase_attributes('course_category_tree clearfix');
+
+        $content .= html_writer::start_tag('div', $attributes);
+
+        if ($coursecat->get_children_count()) {
+            $classes = array(
+                'collapseexpand',
+            );
+
+            // Check if the category content contains subcategories with children's content loaded.
+            if ($this->categoryexpandedonload) {
+                $classes[] = 'collapse-all';
+                $linkname = get_string('collapseall');
+            } else {
+                $linkname = get_string('expandall');
+            }
+
+            // Only show the collapse/expand if there are children to expand.
+            $content .= html_writer::start_tag('div', array('class' => 'collapsible-actions'));
+            $content .= html_writer::link('#', $linkname, array('class' => implode(' ', $classes)));
+            $content .= html_writer::end_tag('div');
+            $this->page->requires->strings_for_js(array('collapseall', 'expandall'), 'moodle');
+        }
+
+        $content .= html_writer::tag('div', $categorycontent, array('class' => 'content'));
+
+        $content .= html_writer::end_tag('div'); // .course_category_tree
+
+        return $content;
+    }
+
    /**
      * Renders html to display search result page
      *
@@ -604,11 +656,10 @@ class course_renderer extends \core_course_renderer {
             // If one column, put header to the left instead of above.
             // If Category or course name is desired, put it in the header. Otherwise put them in the card content.
             switch ($courseinfo['cardheader']) {
-                case 1: // Category.
-                        if (!empty($this->page->theme->settings->cardcategory)) {
+                case 1: // Category - but not on Category list.
+                        if (!empty($this->page->theme->settings->cardcategory) && $this->page->bodyid != 'page-course-index-category') {
                             $cheader = $courseinfo['cardcat'];
                         }
-                        $courseinfo['cardcategory'] = '';
                         break;
                 case 2: // Course name.
                         $cheader = '<h3 class="d-inline h4">';
@@ -633,32 +684,35 @@ class course_renderer extends \core_course_renderer {
         if ($courseinfo['cardfooter']) {
             // If Category or course name is desired, put it in the footer. Otherwise put them in the card content.
             switch ($courseinfo['cardfooter']) {
-                case 1: // Enrolment button.
+                case 1: // Button.
                         if (!empty($this->page->theme->settings->cardbutton)) {
-                            $cfooter = '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm ' . ($columns != 1 ? 'btn-block m-0' : ' mt-3') . '"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+                            $cfooter = '<a href="' . $courseinfo['courseurl'] . '" class="btn ' . $this->page->theme->settings->cardbutton . ($columns != 1 ? ' btn-block m-0' : ' mt-3') . '"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
                         }
                         break;
                 case 2: // Custom course fields.
-                        if (!empty($this->page->theme->settings->cardcustomfields)) {
+                        if (!empty($this->page->theme->settings->cardcustomfields) && !empty($courseinfo['cardcustomfields'])) {
                             $cfooter = $courseinfo['cardcustomfields'];
                         }
-                        $courseinfo['cardcustomfields'] = '';
                         break;
                 case 3: // Contacts.
                         if (!empty($this->page->theme->settings->cardcontacts) && !empty($courseinfo['cardcontacts'])) {
                             $cfooter = '<span class="small">' . $courseinfo['cardcontacts'] . '</span>';
                         }
-                        $courseinfo['cardcontacts'] = '';
                         break;
                 case 4: // Progress bar.
                         $cfooter = $courseinfo['progressbar'];
-                        $courseinfo['progressbar'] = '';
+                        break;
+                case 5: // Progress bar/Button combo.
+                        if (!empty($this->page->theme->settings->cardbutton)) {
+                            $cfooter = '<a href="' . $courseinfo['courseurl'] . '" class="btn ' . $this->page->theme->settings->cardbutton . ' pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+                        }
+                        $cfooter .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
                         break;
                 default: // Don't do anything.
             }
             if (!empty($cfooter)) {
                 // If one column, put footer to the left instead of above.
-                $cfooter = '<div class="' . ($columns != 1 ? 'card-footer text-center' : '') . '">' . $cfooter . '</div>'; // Card-Footer.
+                $cfooter = '<div class="card-footer ' . ($columns != 1 && $courseinfo['cardfooter'] != 5 ? 'text-center' : '') . '">' . $cfooter . '</div>'; // Card-Footer.
             }
         }
 
@@ -675,7 +729,7 @@ class course_renderer extends \core_course_renderer {
         if (!empty($this->page->theme->settings->cardimage)) {
             if ($layout == 4) {
                 if (!empty($this->page->theme->settings->cardimage)) {
-                    $content .= '<div class="card-icon-wrap" style="background-image: url(' . $courseinfo['courseimage'] . ');">';
+                    $content .= '<a href="' . $courseinfo['courseurl'] . '"  aria-hidden="true" tabindex="-1"><div class="card-icon-wrap" style="background-image: url(' . $courseinfo['courseimage'] . ');"></a>';
                 } else {
                     $content .= '<a href="' . $courseinfo['courseurl'] . '" class="card-action d-block">';
                     $content .= '<div class="card-icon-wrap">';
@@ -688,7 +742,7 @@ class course_renderer extends \core_course_renderer {
                 $content .= '</div>';
                 $content .= '</div>';
             } else {
-                $content .= '<div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . '); padding-top:' . $this->page->theme->settings->cardaspect . ';"></div>';
+                $content .= '<a href="' . $courseinfo['courseurl'] . '"  aria-hidden="true" tabindex="-1"><div class="card-img" style="background-image: url(' . $courseinfo['courseimage'] . '); padding-top:' . $this->page->theme->settings->cardaspect . ';"></div></a>';
             }
         }
 
@@ -719,14 +773,6 @@ class course_renderer extends \core_course_renderer {
             $content .= $courseinfo['pixicons'];
         }
 
-        if (!empty($this->page->theme->settings->cardbutton)) {
-            $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn btn-primary btn-sm mt-4 pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
-        }
-
-        if (!empty($courseinfo['progressbar'])) {
-            $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
-        }
-
         if (!empty($this->page->theme->settings->cardscroll)) {
             $content .= '<div class="clearfix"></div>';
             $content .= '<div class="card-content scroll">';
@@ -734,12 +780,8 @@ class course_renderer extends \core_course_renderer {
             $content .= '<div class="card-content">';
         }
 
-        if (!empty($courseinfo['cardcategory'])) {
+        if (!empty($courseinfo['cardcategory'] && $this->page->bodyid != 'page-course-index-category')) {
             $content .= '<div class="card-text small cardcategory">'. $courseinfo['cardcategory'] . '</div>';
-        }
-
-        if (!empty($courseinfo['cardcustomfields'])) {
-            $content .= '<div class="card-text small cardcustomfields">'. $courseinfo['cardcustomfields'] . '</div>';
         }
 
         if (!empty($this->page->theme->settings->cardsummary)) {
@@ -747,7 +789,19 @@ class course_renderer extends \core_course_renderer {
         }
 
         if (!empty($courseinfo['cardcontacts'])) {
-            $content .= '<div class="small small cardcontacts">'. $courseinfo['cardcontacts'] . '</div>';
+            $content .= '<div class="card-text small cardcontacts">'. $courseinfo['cardcontacts'] . '</div>';
+        }
+
+        if (!empty($courseinfo['cardcustomfields'])) {
+            $content .= '<div class="card-text small cardcustomfields">'. $courseinfo['cardcustomfields'] . '</div>';
+        }
+
+        if (!empty($this->page->theme->settings->cardbutton)) {
+            $content .= '<a href="' . $courseinfo['courseurl'] . '" class="btn ' . $this->page->theme->settings->cardbutton . ' pull-right"><span class="fa ' . $courseinfo['playicon'] . ' pr-2" aria-hidden="true"></span> ' . $courseinfo['caption'] . ' <span class="sr-only">: ' . $courseinfo['coursetitle'] . '</span></a>';
+        }
+
+        if (!empty($courseinfo['progressbar'])) {
+            $content .= '<p class="cardprogressbar">' . $courseinfo['progressbar'] . '</p>';
         }
 
         if ($columns == 1) {

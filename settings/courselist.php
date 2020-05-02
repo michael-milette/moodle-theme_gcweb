@@ -38,7 +38,7 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('cardcontacts', 1, $themename); // Show card contacts (e.g. teachers).
     set_config('cardaspect', '66.6%', $themename); // Card course 3:2 image aspect ratio.
     set_config('cardimage', 1, $themename); // Show card course image.
-    set_config('cardbutton', 1, $themename); // Show card enrolment/get started button.
+    set_config('cardbutton', '0', $themename); // No course button.
     set_config('filtertag', '', $themename); // No filtering of course list.
 }
 
@@ -95,8 +95,8 @@ $name = $themename . '/cardaspect';
 $title = get_string('cardaspect', $themename);
 $description = get_string('cardaspect_desc', $themename);
 $choices = [];
-$choices['200%']= '1:2';
-$choices['178%']= '9:16';
+$choices['200%'] = '1:2';
+$choices['178%'] = '9:16';
 $choices['161.8%'] = '1:1.618';
 $choices['150%'] = '2:3';
 $choices['133%'] = '3:4';
@@ -104,8 +104,8 @@ $choices['100%'] = '1:1';
 $choices['75%'] = '4:3';
 $choices['66.6%'] = '3:2';
 $choices['61.8%'] = '1.618:1';
-$choices['56.2%']= '16:9';
-$choices['50%']= '2:1';
+$choices['56.2%'] = '16:9';
+$choices['50%'] = '2:1';
 $default = '66.6%';
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
@@ -160,8 +160,29 @@ $page->add($setting);
 $name = $themename . '/cardbutton';
 $title = get_string('cardbutton', $themename);
 $description = get_string('cardbutton_desc', $themename);
-$default = 1;
-$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$choices = [];
+$choices['0'] = get_string('cardbuttonnone', $themename);
+$choices['btn-link'] = get_string('cardbuttonlink', $themename);
+$choices['btn-primary btn-sm'] = get_string('cardbuttonprimary', $themename);
+$choices['btn-outline-primary btn-sm'] = get_string('cardbuttonprimaryoutline', $themename);
+$choices['btn-default btn-sm'] = get_string('cardbuttondefault', $themename);
+$choices['btn-outline-default btn-sm'] = get_string('cardbuttondefaultoutline', $themename);
+$choices['btn-secondary btn-sm'] = get_string('cardbuttonsecondary', $themename);
+$choices['btn-outline-secondary btn-sm'] = get_string('cardbuttonsecondaryoutline', $themename);
+$choices['btn-outline-light btn-sm'] = get_string('cardbuttonlight', $themename);
+$choices['btn-outline-light btn-sm'] = get_string('cardbuttonlightoutline', $themename);
+$choices['btn-info btn-sm'] = get_string('cardbuttoninfo', $themename);
+$choices['btn-outline-info btn-sm'] = get_string('cardbuttoninfooutline', $themename);
+$choices['btn-success btn-sm'] = get_string('cardbuttonsuccess', $themename);
+$choices['btn-outline-success btn-sm'] = get_string('cardbuttonsuccessoutline', $themename);
+$choices['btn-warning btn-sm'] = get_string('cardbuttonwarning', $themename);
+$choices['btn-outline-warning btn-sm'] = get_string('cardbuttonwarningoutline', $themename);
+$choices['btn-danger btn-sm'] = get_string('cardbuttondanger', $themename);
+$choices['btn-outline-danger btn-sm'] = get_string('cardbuttondangeroutline', $themename);
+$choices['btn-dark'] = get_string('cardbuttondark', $themename);
+$choices['btn-dark outline'] = get_string('cardbuttondarkoutline', $themename);
+$default = '0'; // None.
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
@@ -179,7 +200,7 @@ $name = $themename . '/cardfooter';
 $title = get_string('cardfooter', $themename);
 $description = get_string('cardfooter_desc', $themename);
 $choices = [];
-for ($cnt = 0; $cnt <= 4; $cnt++) {
+for ($cnt = 0; $cnt <= 5; $cnt++) {
     $choices[$cnt] = get_string('cardfooteropt' . $cnt, $themename);
 }
 $default = 0; // None.
