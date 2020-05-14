@@ -1,0 +1,47 @@
+
+/* EQUIPE DE DEVELOPPEMENT */
+    Développeur principal.
+    Michael Milette, TNG Consulting Inc.
+    De: Ottawa, Ontario, Canada
+
+    Testeuse de qualité d'assurance
+    Natalie Collins, Gouvernement  du Canada
+    De: Ottawa, Ontario, Canada
+
+    Designer UI/UX et Testeuse de qualité d'assurance
+    Colleen Hickey, Gouvernement du Canada
+    De: Ottawa, Ontario, Canada
+
+    Designer UI/UX et Testeur de qualité d'assurance
+    Peter Crane, Gouvernement du Canada
+    De: Ottawa, Ontario, Canada
+
+    Testeur de qualité d'assurance
+    Yatendra Singh
+    De: Ottawa, Ontario, Canada    
+
+/* REMERCIMENTS */
+    TNG Consulting Inc.
+    https://www.tngconsulting.ca
+    De: Ottawa, Ontario, Canada
+
+    Innovation, Sciences et Développement économique Canada
+    De: Ottawa, Ontario, Canada
+
+    Projet WET-BOEW-Moodle
+    https://github.com/wet-boew/wet-boew-moodle/
+
+    Projet WET-BOEW : Gouvernement du Canada
+    https://github.com/wet-boew/
+
+    Projet Gabarits pour les applications GCWeb SGDC
+    https://github.com/wet-boew/cdts-sgdc
+    https://ssl-templates.services.gc.ca/app/cls/WET/gcweb/v4_0_30/cdts/appTop/apptop_all-en.shtml
+
+    Project Moodle et les innombrables développeurs et contributeurs au SGA Moodle et les plugiciels / thèmes tiers qui nous ont permis de rendre ce thème possible.
+    https://moodle.org/
+
+/* INFO DE DEV */
+    Langue : français / anglais
+    Technologie : Moodle, PHP, MySQL, HTML5, CSS3, jQuery, Bootstrap, Mustache
+    Outils: phpStorm IDE, VSCode, Brackets, Notepad++, Git, Github, Dreamweaver, Photoshop, Colour Contrast Analyser, W3C Validators, WAVE, NVDA, Chromebox, UserWay

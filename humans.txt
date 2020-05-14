@@ -1,0 +1,46 @@
+/* DEVELOPMENT TEAM */
+    Senior Developer
+    Michael Milette, TNG Consulting Inc.
+    From: Ottawa, Ontario, Canada
+
+    QA Tester
+    Natalie Collins, Government of Canada
+    From: Ottawa, Ontario, Canada
+
+    UI/UX Designer and Quality Assurance Tester
+    Colleen Hickey, Government of Canada
+    From: Ottawa, Ontario, Canada
+
+    UI/UX Designer and Quality Assurance Tester
+    Peter Crane, Government of Canada
+    From: Ottawa, Ontario, Canada
+
+    Quality Assurance Tester
+    Yatendra Singh
+    From: Ottawa, Ontario, Canada    
+
+/* THANKS */
+    TNG Consulting Inc.
+    https://www.tngconsulting.ca
+    From: Ottawa, Ontario, Canada
+
+    Innovation, Science and Economic Development Canada
+    From: Ottawa, Ontario, Canada
+
+    WET-BOEW-Moodle Project
+    https://github.com/wet-boew/wet-boew-moodle/
+
+    WET-BOEW Project: Government of Canada
+    https://github.com/wet-boew/
+
+    CDTS Application Template for GCWeb Project
+    https://github.com/wet-boew/cdts-sgdc
+    https://ssl-templates.services.gc.ca/app/cls/WET/gcweb/v4_0_30/cdts/appTop/apptop_all-en.shtml
+
+    Moodle HQ and the countless developers and contributors to Moodle LMS and 3rd party plugins/themes that help us make this theme possible.
+    https://moodle.org/
+
+/* DEV INFO */
+    Language: French / English
+    Technology: Moodle, PHP, MySQL, HTML5, CSS3, jQuery, Bootstrap, Mustache
+    Tools: phpStorm IDE, VSCode, Brackets, Notepad++, Git, Github, Dreamweaver, Photoshop, Colour Contrast Analyser, W3C Validators, WAVE, NVDA, Chromebox, UserWay
