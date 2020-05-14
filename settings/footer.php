@@ -66,6 +66,15 @@ $page->add($setting);
 // $setting->set_updatedcallback('theme_reset_all_caches');
 // $page->add($setting);
 
+// Show Moodle Logo.
+$name = $themename . '/footershowmoodlelogo';
+$title = get_string('footershowmoodlelogo', $themename);
+$description = get_string('footershowmoodlelogo_desc', $themename);
+$default = 1;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
 // Show Moodle Docs link.
 $name = $themename . '/footershowmoodledocs';
 $title = get_string('footershowmoodledocs', $themename);
@@ -75,7 +84,7 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Show Home Link.
+// Show Home link.
 $name = $themename . '/footershowhomelink';
 $title = get_string('footershowhomelink', $themename);
 $description = get_string('footershowhomelink_desc', $themename);
@@ -84,7 +93,7 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Show Problem button.
+// Show login info link.
 $name = $themename . '/footershowlogininfo';
 $title = get_string('footershowlogininfo', $themename);
 $description = get_string('footershowlogininfo_desc', $themename);
@@ -93,7 +102,7 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Show Problem button.
+// Show Reset User Tours link.
 $name = $themename . '/footershowresetusertours';
 $title = get_string('footershowresetusertours', $themename);
 $description = get_string('footershowresetusertours_desc', $themename);

@@ -155,6 +155,11 @@ function theme_gcweb_get_extra_scss($theme) {
         $customcss .= '#guestlogin,';
     }
 
+    // Show or hide the Moodle logo on the Font Page.
+    if (empty($theme->settings->footershowmoodlelogo)) {
+        $customcss .= '.sitelink,';
+    }
+
     // If there is something to hide, hide it.
     if (!empty($customcss)) {
         $customcss .= ' displaynone {display: none;}';
@@ -209,15 +214,11 @@ function theme_gcweb_pluginfile($course, $cm, $context, $filearea, $args, $force
 function theme_gcweb_get_main_scss_content($theme) {
     global $CFG;
 
-    // Pre CSS - this is loaded AFTER any prescss from the setting but before the main scss.
-    $pre = file_get_contents($CFG->dirroot . '/theme/gcweb/scss/pre.scss');
-     // Main CSS - Get the CSS from theme Classic.
+     // Main CSS - Get the main SCSS from out theme.
     $scss = file_get_contents($CFG->dirroot . '/theme/gcweb/scss/default.scss');
-    // Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
-    $post = file_get_contents($CFG->dirroot . '/theme/gcweb/scss/post.scss');
 
     // Combine them together.
-    return $pre . "\n" . $scss . "\n" . $post;
+    return $scss;
 }
 
 // /**
