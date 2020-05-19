@@ -313,6 +313,11 @@ a {
     float: right;
 }
 
+/* Fix for username and password fields on login form */
+#directlogin .form-control {
+  width: 100%;
+}
+
 /* Fix field width for custom forms in the content area. */
 main .form-control {
     width: auto;
