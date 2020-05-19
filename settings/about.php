@@ -36,7 +36,7 @@ $description = get_string('choosereadme', 'theme_gcweb');
 $description = str_replace('<img class="img-polaroid" src="', '<img class="img-polaroid" src="' .
         $CFG->wwwroot .  '/theme/', $description);
 $description = str_replace('[version]', $release . ' (' . $version . ')', $description);
-$setting = new admin_setting_description($name, $title, $description);
+$setting = new admin_setting_heading($name, $title, $description);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

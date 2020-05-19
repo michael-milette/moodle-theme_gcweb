@@ -31,32 +31,32 @@ $string['privacy:metadata'] = 'Le thème WET-BOEW-Moodle&nbsp;: GCWeb ne sauvega
 $string['configtitle'] = 'WET-BOEW-GCWeb';
 // Description shown in the Theme Selector.
 $string['choosereadme'] = '
-<div class="clearfix"> 
-  <div class="well"> 
-    <h2>Thème GCWeb <abbr title="boîte à outils de l’expérience Web pour Moodle">WET-BOEW-MOODLE</abbr></h2> 
-    <p><img class="img-polaroid" src="gcweb/pix/screenshot.png"></p> 
-  </div> 
-  <div class="well"> 
-    <h2>Credits</h2> 
-    <h3>À propos</h3> 
-    <p>WET-BOEW-MOODLE&nbsp;: GCWeb, version [version], est un thème réactif de Moodle basé sur les  normes <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web pour le gouvernement du Canada</a> GCWeb et le thème de base Moodle Boost.</p> 
-    <p>Auteurs&nbsp;: Michael Milette, <a href="https://www.tngconsulting.ca">www.tngconsulting.ca</a></p> 
-    <h3>Rapport de bugs</h3> 
-    <p>Vous pouvez signaler des bogues à l\'aide de GitHub Gestionnaire d\'incident à <a href="https://github.com/wet-boew/wet-boew-moodle/issues">github.com/wet-boew/wet-boew-moodle/issues</a>.</p> 
-    <h3>Documentation</h3> 
-    <p>La documentation est disponible dans <a href="https://github.com/wet-boew/wet-boew-moodle/">le fichier README du projet</a> et dans le in <a href="https://github.com/wet-boew/wet-boew-moodle/wiki">Wiki du projet</a>.</p> 
-    <h3>Démonstration</h3> 
-    <p>Un site Web de démonstration est disponible au <a href="https://wet-boew-moodle.tngconsulting.ca">wet-boew-moodle.tngconsulting.ca</a>. </p> 
-    <h3>Termes et conditions d\'utilisation</h3> 
-    <p>Sauf indication contraire, le projet WET-BOEW-MOODLE dans son ensemble, le contenu du wiki, la documentation, le site de démonstration, le cours <span lang="en">WET-BOEW-Moodle Widgets : Working Examples</span> et le code source sont protégés par Copyright © 2016 par TNG Consulting Inc.</p> 
-    <p>WET-BOEW-MOODLE est fourni gratuitement en tant que logiciel <span lang="en">open-source</span> et peut être redistribué et / ou modifié selon les termes de la licence publique générale (LPG) GNU version 3.0 ou ultérieure. Il est distribué dans l\'espoir qu\'il vous sera utile. Cependant, il n\'y a aucune garantie, implicite ou autre, de qualité marchande ou d\'adéquation à un usage quelconque. Voir la licence publique générale GNU pour plus de détails.</p>  
-    <p>Moodle est copyright © à partir de 1999, Martin Dougiamas avec des parties pouvant faire l\'objet d\'une contribution / protégées par le droit d\'auteur selon les termes de la GNU GPL 3.0</p> 
-    <p>Si, pour une raison quelconque, une copie de la licence publique générale GNU n\'était pas incluse dans ce projet, vous pouvez la visualiser en ligne à l\'adresse suivante: <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html">www.gnu.org/licenses/gpl-3.0.fr.html</a></p> 
-    <p>La boîte à outils de l\'expérience Web (BOEW) est protégé par le droit d\'auteur de la Couronne du gouvernement du Canada et distribué sous la licence MIT : <a href="https://wet-boew.github.io/v4.0-ci/Licence-fr.html">wet-boew.github.io/v4.0-ci/Licence-fr.html</a></p> 
-    <p>Le mot-symbole « Canada » et les éléments graphiques connexes liés à cette distribution sont protégés en vertu des lois portant sur les marques de commerce et le droit d\'auteur. Aucune autorisation n\'est accordée pour leur utilisation à l\'extérieur des paramètres du programme de coordination de l\'image de marque du gouvernement du Canada. Pour obtenir davantage de renseignements à ce sujet, veuillez consulter <a href="https://www.tbs-sct.gc.ca/fip-pcim/index-fra.asp">www.tbs-sct.gc.ca/fip-pcim/index-fra.asp</a></p>  
-    <p>La propriété du droit d\'auteur de tout logiciel tiers distribué avec ce thème est conservée par les détenteurs du droit d\'auteur mentionnés dans ces fichiers. Nous demandons aux utilisateurs de lire les licences des tiers indiqués à titre de référence dans ces logiciels.</p> 
-    <p>Les avis et attributions ci-dessus doivent être inclus dans toutes les copies ou parties du logiciel.</p> 
-  </div> 
+<div class="clearfix">
+  <div class="well">
+    <h2>Thème GCWeb <abbr title="boîte à outils de l’expérience Web pour Moodle">WET-BOEW-MOODLE</abbr></h2>
+    <p><img class="img-polaroid" src="gcweb/pix/screenshot.png"></p>
+  </div>
+  <div class="well">
+    <h2>Credits</h2>
+    <h3>À propos</h3>
+    <p>WET-BOEW-MOODLE&nbsp;: GCWeb, version [version], est un thème réactif de Moodle basé sur les  normes <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web pour le gouvernement du Canada</a> GCWeb et le thème de base Moodle Boost.</p>
+    <p>Auteurs&nbsp;: Michael Milette, <a href="https://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
+    <h3>Rapport de bugs</h3>
+    <p>Vous pouvez signaler des bogues à l\'aide de GitHub Gestionnaire d\'incident à <a href="https://github.com/wet-boew/wet-boew-moodle/issues">github.com/wet-boew/wet-boew-moodle/issues</a>.</p>
+    <h3>Documentation</h3>
+    <p>La documentation est disponible dans <a href="https://github.com/wet-boew/wet-boew-moodle/">le fichier README du projet</a> et dans le in <a href="https://github.com/wet-boew/wet-boew-moodle/wiki">Wiki du projet</a>.</p>
+    <h3>Démonstration</h3>
+    <p>Un site Web de démonstration est disponible au <a href="https://wet-boew-moodle.tngconsulting.ca">wet-boew-moodle.tngconsulting.ca</a>. </p>
+    <h3>Termes et conditions d\'utilisation</h3>
+    <p>Sauf indication contraire, le projet WET-BOEW-MOODLE dans son ensemble, le contenu du wiki, la documentation, le site de démonstration, le cours <span lang="en">WET-BOEW-Moodle Widgets : Working Examples</span> et le code source sont protégés par Copyright © 2016 par TNG Consulting Inc.</p>
+    <p>WET-BOEW-MOODLE est fourni gratuitement en tant que logiciel <span lang="en">open-source</span> et peut être redistribué et / ou modifié selon les termes de la licence publique générale (LPG) GNU version 3.0 ou ultérieure. Il est distribué dans l\'espoir qu\'il vous sera utile. Cependant, il n\'y a aucune garantie, implicite ou autre, de qualité marchande ou d\'adéquation à un usage quelconque. Voir la licence publique générale GNU pour plus de détails.</p>
+    <p>Moodle est copyright © à partir de 1999, Martin Dougiamas avec des parties pouvant faire l\'objet d\'une contribution / protégées par le droit d\'auteur selon les termes de la GNU GPL 3.0</p>
+    <p>Si, pour une raison quelconque, une copie de la licence publique générale GNU n\'était pas incluse dans ce projet, vous pouvez la visualiser en ligne à l\'adresse suivante: <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html">www.gnu.org/licenses/gpl-3.0.fr.html</a></p>
+    <p>La boîte à outils de l\'expérience Web (BOEW) est protégé par le droit d\'auteur de la Couronne du gouvernement du Canada et distribué sous la licence MIT : <a href="https://wet-boew.github.io/v4.0-ci/Licence-fr.html">wet-boew.github.io/v4.0-ci/Licence-fr.html</a></p>
+    <p>Le mot-symbole « Canada » et les éléments graphiques connexes liés à cette distribution sont protégés en vertu des lois portant sur les marques de commerce et le droit d\'auteur. Aucune autorisation n\'est accordée pour leur utilisation à l\'extérieur des paramètres du programme de coordination de l\'image de marque du gouvernement du Canada. Pour obtenir davantage de renseignements à ce sujet, veuillez consulter <a href="https://www.tbs-sct.gc.ca/fip-pcim/index-fra.asp">www.tbs-sct.gc.ca/fip-pcim/index-fra.asp</a></p>
+    <p>La propriété du droit d\'auteur de tout logiciel tiers distribué avec ce thème est conservée par les détenteurs du droit d\'auteur mentionnés dans ces fichiers. Nous demandons aux utilisateurs de lire les licences des tiers indiqués à titre de référence dans ces logiciels.</p>
+    <p>Les avis et attributions ci-dessus doivent être inclus dans toutes les copies ou parties du logiciel.</p>
+  </div>
 </div>';
 // Block regions available in this theme.
 $string['region-side-pre'] = 'Gauche'; // Actually top right.
@@ -283,4 +283,143 @@ $string['err404body'] = '
 		</section>
 	</div>
 </main>
+';
+
+$string['styleguide'] = 'Style guide';
+
+$string['styleguidehtml'] = '
+<div class="alert alert-warning">
+   <p>This page is still in development. Content is not rendered accurately.</p>
+</div>
+<section>
+    <h2>Heading 2 (<code>h2</code>)</h2>
+    <section>
+        <h3>Heading 3 (<code>h3</code>)</h3>
+        <section>
+            <h4>Heading 4 (<code>h4</code>)</h4>
+            <section>
+                <h5>Heading 5 (<code>h5</code>)</h5>
+                <section>
+                    <h6>Heading 6 (<code>h6</code>)</h6>
+                    <p>Paragraph - default appearance</p>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+<p><a href="#">Link</a></p>
+<ul>
+    <li>
+        unordered list (<code>ul</code>) - level 1
+        <ul>
+            <li>
+                unordered list (<code>ul</code>) - level 2
+                <ul>
+                    <li>unordered list (<code>ul</code>) - level 3</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ol>
+    <li>ordered list (<code>ol</code>) - level 1</li>
+    <li>
+        ordered list (<code>ol</code>) - level 1
+        <ol>
+            <li>ordered list (<code>ol</code>) - level 2</li>
+            <li>
+                ordered list (<code>ol</code>) - level 2
+                <ol>
+                    <li>ordered list (<code>ol</code>) - level 3</li>
+                    <li>ordered list (<code>ol</code>) - level 3</li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+</ol>
+<table class="table table-striped">
+    <caption>Table caption</caption>
+    <thead>
+        <tr>
+            <th scope="col">Table header (<code>th</code>)</th>
+            <th scope="col">Table header (<code>th</code>)</th>
+            <th scope="col">Table header (<code>th</code>)</th>
+            <th scope="col">Table header (<code>th</code>)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+        </tr>
+        <tr>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+        </tr>
+        <tr>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+            <td>Table data (<code>td</code>)</td>
+        </tr>
+    </tbody>
+</table>
+<form method="post" action="#" class="form-horizontal">
+    <div class="form-group">
+        <label for="data1" class="col-sm-3 control-label">Form <code>input</code></label>
+        <div class="col-sm-9">
+            <input type="text" id="data1" name="data1" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="data2" class="col-sm-3 control-label">Form <code>textarea</code></label>
+        <div class="col-sm-9">
+            <textarea id="data2" rows="3" cols="15" name="data2" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="data4" class="col-sm-3 control-label">Form <code>select</code></label>
+        <div class="col-sm-9">
+            <select name="data4" id="data4" class="form-control">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<blockquote>
+    <p>"<code>blockquote</code>"</p>
+    <footer><code>footer</code> <cite><code>cite</code></cite></footer>
+</blockquote>
+<h2 id="cnt-wdth-lmtd">Section with limited width content</h2>
+<p>Add the CSS class name <code>.cnt-wdth-lmtd</code> to a sectioning element <code>&lt;section class="cnt-wdth-lmtd"&gt;...&lt;section&gt;</code> inside the main content of your page. More guidance are provided in the Content and IA specification.</p>
+<section class="cnt-wdth-lmtd">
+    <h3>Section example with limited width content</h3>
+    <p>Different example text. Different example text. Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.</p>
+</section>
+<h2 id="call-to-action">Call to action button</h2>
+<p>Add the CSS class name <code>.btn-call-to-action</code> to a your button or link that define the main call for action for a page. For example the initiation button/link in a service initiation pages. More guidance are provided in the Content and IA specification.</p>
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Link</h3>
+        <p class="mrgn-bttm-0"><a class="btn btn-call-to-action" href="#">[Call to action]</a></p>
+        <pre><code>&lt;p&gt;&lt;a class="btn <strong>btn-call-to-action</strong>" href="#"&gt;[Call to action]&lt;/a&gt;&lt;/p&gt;</code></pre>
+    </div>
+    <div class="col-sm-6">
+        <h3>Button</h3>
+        <button class="btn btn-call-to-action" type="button">[Call to action]</button>
+        <pre><code>&lt;button class="btn <strong>btn-call-to-action</strong>" type="button"&gt;[Call to action]&lt;/button&gt;</code></pre>
+    </div>
+</div>
 ';

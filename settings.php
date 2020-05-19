@@ -54,7 +54,7 @@ if ($ADMIN->fulltree) {
     require('settings/profilefields.php');
     require('settings/header.php');
     require('settings/footer.php');
-    //require('settings/styleguide.php');
+    require('settings/styleguide.php');
     require('settings/about.php');
 
     // First time or reset, set init flag.
