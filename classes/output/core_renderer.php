@@ -195,18 +195,39 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @brief Better page headings.
      *
      * @param [string] $title Default title if not found in list of links.
-     * @return Returns an alternate page heading (h1) depending on the page layout and type.
+     * @return Returns an alternate page heading (h1) depending on the page layout,type and mode.
      */
     public function pageheading($title) {
-        global $SITE, $DB, $COURSE;
+        global $SITE, $DB, $COURSE, $USER;
 
         $_PAGE['hometitle'] = $title;
+        $mode = optional_param('mode', '', PARAM_ALPHA);
+        if (!isguestuser() && isloggedin()) {
+            $profilefullname = ' (' . $USER->firstname . ' ' . $USER->lastname . ')';
+            $userid = optional_param('userid', optional_param('user', optional_param('id', $USER->id, PARAM_INT), PARAM_INT), PARAM_INT);
+        } else {
+            $profilefullname = '';
+            $userid = 0;
+        }
         switch ($this->page->pagelayout) {
             case $this->page->pagetype == 'mod-page-view':
                 $course = $this->page->course;
                 $coursecontext = context_course::instance($course->id);
                 if (!empty($this->page->cm->name)) {
                     $title = format_string($this->page->cm->name, false, ['context' => $coursecontext]);
+                }
+                break;
+            case $this->page->pagetype == 'mod-forum-user': // Forum posts.
+                if ($user = $DB->get_record('user', array('id' => $userid, 'deleted' => 0))) {
+                    $profilefullname = ' (' . $user->firstname . ' ' . $user->lastname . ')';
+                }
+                switch ($mode) {
+                    case 'discussions':
+                        $title = get_string('myprofileotherdis', 'mod_forum') . $profilefullname;
+                        break;
+                    default:
+                        $title = get_string('forumposts', 'forum') . $profilefullname;
+                        break;
                 }
                 break;
             case substr($this->page->pagetype, 0, 4) == 'mod-': // If a module.
@@ -218,6 +239,50 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     $title  = get_section_name($COURSE, $this->page->cm->sectionnum);
                 }
                 // Otherwise just keep page title as is.
+                break;
+            case 'incourse':
+                switch ($this->page->pagetype) {
+                    case 'notes-index': // Notes.
+                        if ($user = $DB->get_record('user', array('id' => $userid, 'deleted' => 0))) {
+                            $profilefullname = ' (' . $user->firstname . ' ' . $user->lastname . ')';
+                        }
+                        $title = get_string('notes', 'notes') . $profilefullname;
+                        break;
+                }
+                break;
+            case 'standard':
+                if ($user = $DB->get_record('user', array('id' => $userid, 'deleted' => 0))) {
+                    $profilefullname = ' (' . $user->firstname . ' ' . $user->lastname . ')';
+                }
+                switch ($this->page->pagetype) {
+                    case 'grade-report-overview-index': // Grades overview.
+                        $title = get_string('gradesoverview', 'gradereport_overview') . $profilefullname;
+                        break;
+                    case 'badges-mybadges': // Badges.
+                        $title .= $profilefullname;
+                        break;
+                    case 'badges-preferences': // Badges Preference.
+                        $title .= $profilefullname;
+                        break;
+                    case 'badges-mybackpack': // My backpack Preference.
+                        $title .= $profilefullname;
+                        break;
+                    case 'blog-external_blogs': // External blogs.
+                        $title = get_string('externalblogs', 'blog') . $profilefullname;
+                        break;
+                    case 'blog-index': // Blogs Entries.
+                        $title = get_string('myprofileuserblogs', 'blog') . $profilefullname;
+                        break;
+                    case 'admin-tool-lp-plans': // Learning plans.
+                        $title = get_string('learningplans', 'tool_lp') . $profilefullname;
+                        break;
+                    case 'admin-tool-lp-user_evidence_list': // Evidence of prior learning.
+                        $title = get_string('userevidence', 'tool_lp') . $profilefullname;
+                        break;
+                    case 'admin-tool-lp-user_evidence_edit': // Evidence of prior learning.
+                        $title = get_string('addnewuserevidence', 'tool_lp') . $profilefullname;
+                        break;
+                }
                 break;
             case 'course':    // Any type of courses page.
             case $this->page->pagetype == 'filter-manage':
@@ -264,9 +329,96 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         $title = get_string('signout', 'theme_gcweb');
                         break;
                 }
-            case 'admin':
+                break;
+            case 'mypublic':
                 switch ($this->page->pagetype) {
-                    case 'backup-backup': // Course backup.
+                    case 'user-profile': // Account settings (Profile).
+                        if ($user = $DB->get_record('user', array('id' => $userid, 'deleted' => 0))) {
+                            $profilefullname = ' (' . $user->firstname . ' ' . $user->lastname . ')';
+                        }
+                        $title = get_string('publicprofile') . $profilefullname;
+                        break;
+
+                }
+                break;
+            case 'report':
+                if ($user = $DB->get_record('user', array('id' => $userid, 'deleted' => 0))) {
+                    $profilefullname = ' (' . $user->firstname . ' ' . $user->lastname . ')';
+                }
+                switch ($this->page->pagetype) {
+                    case 'report-log-user': // Log Report.
+                        switch ($mode) {
+                            case 'today':
+                                $title = get_string('todaylogs') . $profilefullname;
+                                break;
+                            default:
+                                $title = get_string('alllogs') . $profilefullname;
+                        }
+                        break;
+                    case 'report-outline-user':
+                        switch ($mode) {
+                            case 'outline':
+                                $title = get_string('outlinereport') . $profilefullname;
+                                break;
+                            case 'complete':
+                                $title = get_string('completereport') . $profilefullname;
+                                break;
+                        }
+                        break;
+                    case 'course-user': // Activity Report (grade).
+                        if ($mode == 'grade') {
+                            $title = get_string('pluginname' , 'gradereport_user') . ' - ' . get_string('grade') . $profilefullname;
+                        }
+                        break;
+                }
+                break;
+            case 'admin':
+                if ($this->page->pagetype == 'login-change_password') {
+                    $userid = $USER->id;
+                } else if ($user = $DB->get_record('user', array('id' => $userid, 'deleted' => 0))) {
+                    $profilefullname = ' (' . $user->firstname . ' ' . $user->lastname . ')';
+                }
+
+                switch ($this->page->pagetype) {
+                    case 'user-preferences': // Preferences
+                        $title = get_string('accountsettings', 'theme_gcweb') . $profilefullname;
+                        break;
+                    case 'user-editadvanced': // Edit Profile.
+                    case 'user-edit': // Edit Profile.
+                        $title = get_string('editmyprofile') . $profilefullname;
+                        break;
+                    case 'login-change_password': // Change password.
+                        $title .=  $profilefullname;
+                        break;
+                    case 'user-language': // Preferred language.
+                        $title = get_string('preferredlanguage') . $profilefullname;
+                        break;
+                    case 'user-forum': // Forum Preferences.
+                        $title = get_string('forumpreferences') . $profilefullname;
+                        break;
+                    case 'user-editor': // Editor Preferences.
+                        $title = get_string('editorpreferences') . $profilefullname;
+                        break;
+                    case 'user-course': // Course Preferences.
+                        $title = get_string('coursepreferences') . $profilefullname;
+                        break;
+                    case 'user-calendar': // Calendar Preferences.
+                        $title = get_string('calendarpreferences', 'calendar') . $profilefullname;
+                        break;
+                    case 'message-edit': // Message Preferences.
+                        $title .= $profilefullname;
+                        break;
+                    case 'message-notificationpreferences': // Notification Preferences.
+                        $title .= $profilefullname;
+                        break;
+                    case 'blog-preferences': // Blog Preferences.
+                        $title = get_string('preferences', 'blog') . $profilefullname;
+                        break;
+                    case 'blog-external_blog_edit': // Register an external blog.
+                        $title = get_string('addnewexternalblog', 'blog') . $profilefullname;
+                        break;
+                    case 'report-usersessions-user': // Browser sessions.
+                        $title .= $profilefullname;
                         break;
                     case 'admin-setting-themesettinggcweb': // This Theme's settings.
                         $title = get_string('themesettings', 'admin');
@@ -280,7 +432,23 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     case 'backup-restorefile': // Restore a course.
                         $title = get_string('restorecourse', 'backup');
                         break;
-                    default: // All others.
+                    case 'course-bulkcompletion': // Course completion.
+                        $title = get_string('coursecompletion', 'completion') . " ($title)";
+                        break;
+                    case 'admin-roles-usersroles': // Role Assignments.
+                    case 'admin-roles-permissions': // Permissions.
+                    case 'admin-roles-check': // Role Check.
+                    case 'backup-backup': // Course backup.
+                    case 'admin-tool-lp-editplan': // Add/Edit Learning plan.
+                    case 'report-participation-index': // Course Participation report.
+                    case 'question-edit': // Edit Questions.
+                    case 'question-category': // Edit categories.
+                    case 'question-import': // Import questions from file.
+                    case 'question-export': // Export questions to file.
+                    case 'course-reset': // Reset course.
+                        // These are fine as they are.
+                        break;
+                    default: // All others are site admin pages and will have the name of the site for now.
                         $title = format_string($SITE->fullname, false);
                 }
                 break;
