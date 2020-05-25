@@ -520,7 +520,7 @@ li.section.hidden, .block.hidden, .block.invisible {
   -webkit-box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
   -moz-box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
   box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
- 
+
 }
 .dashboard-card .card-footer {
  background-color: #f9f9f9 !important;
@@ -1298,3 +1298,68 @@ img.activityicon {
 
 .enrolmenticons {float: right;}
 .myprogressbar {margin: 0;}
+
+/* Book style of navigation buttons. */
+
+.navtext .bookexit {
+    border: 1px outset #ccc;
+    font-size: 16px;
+    margin-left: 5px;
+    white-space: normal;
+    padding: 6px 12px;
+    line-height: 1.4375;
+    border-radius: 4px;
+    text-decoration:none;
+}
+.bookexit i.fa,
+.bookprev .arrow,
+.bookprev i.fa,
+.booknext .arrow,
+.booknext i.icon.fa {
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 2px #666;
+    padding: 0.2em 0.4em;
+}
+.bookprev .arrow {
+    margin-right: 10px;
+}
+.bookexit i.fa,
+.bookprev i.fa,
+.booknext i.icon.fa {
+    font-size: 2.9rem;
+    padding: .5em .5em 1em .5em;
+}
+.booknext .arrow,
+.booknext i.icon.fa {
+    margin-left: 10px;
+    background-color:#2572b4;
+    color:#FFFFFF;
+}
+.navtext .bookexit,
+.bookexit .arrow,
+.bookexit i.icon.fa {
+    margin-left: 10px;
+    color: #FFFFFF;
+    background-color: #1B6C1C;
+}
+.navtop.navtext a.bookprev,
+.navbottom.navtext a.bookprev {
+    margin-right: 20px; /* Space between the two. */
+    float: none;
+}
+.navtop.navtext,
+.navbottom.navtext {
+    text-align: center;
+}
+.navtop.navimages,
+.navbottom.navimages {
+    text-align: left;
+}
+
+/* Separator between content and actiivty navigation. */
+
+.activity-navigation {
+    border-top: 1px solid #777;
+    padding-top: 15px;
+}
