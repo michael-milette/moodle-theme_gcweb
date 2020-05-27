@@ -71,7 +71,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             return '';
         }
 
-        if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
+        if ($this->page->course->id != SITEID and !empty($this->page->course->lang)) {
             // Do not show lang menu if language forced.
             return '';
         }
@@ -172,7 +172,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return Returns an alternate page title depending on the page.
      */
     public function pagetitle() {
-        global $SITE;
         $title = '';
         if ($this->page->pagetype == 'site-index') { // Front page.
             if (empty($hometitle = get_config('theme_gcweb', 'hometitle'))) {
@@ -184,6 +183,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $title = $this->page->title;
         }
         if (!empty(get_config('theme_gcweb', 'titlesitename'))) {
+            global $SITE;
             $title .= ' - ' . $SITE->fullname;
         }
         $title = format_string($title, false, ['context' => context_course::instance(SITEID), "escape" => false]);
@@ -198,7 +198,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return Returns an alternate page heading (h1) depending on the page layout,type and mode.
      */
     public function pageheading($title) {
-        global $SITE, $DB, $COURSE, $USER;
+        global $DB, $COURSE, $USER;
 
         $_PAGE['hometitle'] = $title;
         $mode = optional_param('mode', '', PARAM_ALPHA);
@@ -210,7 +210,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $userid = 0;
         }
         switch ($this->page->pagelayout) {
-            case $this->page->pagetype == 'mod-page-view':
+            case $this->page->pagetype == 'mod-page-view' && $this->page->course->id == SITEID:
                 $course = $this->page->course;
                 $coursecontext = context_course::instance($course->id);
                 if (!empty($this->page->cm->name)) {
@@ -449,6 +449,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         // These are fine as they are.
                         break;
                     default: // All others are site admin pages and will have the name of the site for now.
+                        global $SITE;
                         $title = format_string($SITE->fullname, false);
                 }
                 break;
