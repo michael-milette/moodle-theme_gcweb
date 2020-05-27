@@ -98,15 +98,18 @@ if (!empty($extracss)) {
 // Insert extra head content just before </HEAD>.
 
 $additionalhtmlhead = $CFG->additionalhtmlhead ;
-$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead . $extracss, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead . $extracss, FORMAT_HTML, 
+        ['noclean' => true, 'context' => context_system::instance()]);
 $_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
 $CFG->additionalhtmlhead = $additionalhtmlhead;
 // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-$_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', $_PAGE['standard_head_html']);
+$_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', 
+        $_PAGE['standard_head_html']);
 
 // Search engine
 
-$_PAGE['showsearch'] = $theme->showsearch && empty($PAGE->layout_options['nosearch']) && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
+$_PAGE['showsearch'] = $theme->showsearch && empty($PAGE->layout_options['nosearch'])
+        && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
 $_PAGE['searchurl'] = $CFG->wwwroot . '/course/search.php';
 
 // Show language menu
@@ -124,7 +127,8 @@ if (!empty($CFG->langmenu)
 // Breadcrumbs
 if ($PAGE->pagetype != 'site-index' || $theme->showhomebreadcrumbs) {
     // If this is not home page OR showhomebreadcrumbs is enabled.
-    $_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+    $_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, 
+            ['noclean' => true, 'context' => context_system::instance()]);
     $_PAGE['breadcrumbs'] = $OUTPUT->navbar($_PAGE['breadcrumbs']);
 } else {
     $_PAGE['breadcrumbs'] = '';
@@ -280,8 +284,7 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
             if (empty($CFG->alternateloginurl)) {
                 $_PAGE['signonurl'] = $CFG->wwwroot . '/login/';
             } else {
-                $_PAGE['signonurl'] = format_string($CFG->alternateloginurl, true,
-                        ['context' => context_course::instance(SITEID), "escape" => false]);
+                $_PAGE['signonurl'] = new moodle_url($CFG->alternateloginurl);
             }
         }
     }
