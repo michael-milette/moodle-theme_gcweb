@@ -50,7 +50,7 @@ body {
 }
 @media (min-width: 768px) {
     .container {
-        max-width: 90%;
+        max-width: 95%;
     }
 }
 
@@ -1166,7 +1166,7 @@ img.activityicon {
 
 /* Card titles */
 .card-body h5, .card-body .h5 {
-    font-size: 3rem;
+    font-size: 2.8rem;
 }
 /* Card Text small line-heigth. */
 .card-text.small {
