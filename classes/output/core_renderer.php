@@ -101,32 +101,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $s;
     }
 
-
-    /**
-     * Return the navbar content so that it can be echoed out by the layout
-     *
-     * @return string XHTML navbar
-     */
-    public function xnavbar() {
-        return $this->render_from_template('core/navbar', $this->page->navbar);
-    }
-
-    /*
-     * Render the breadcrumb
-     * @param array $items
-     * @param string $breadcrumbs
-     *
-     * return string
-     */
-    public function navbar($breadcrumbs = '') {
-        $items = $this->page->navbar->get_items();
-        foreach ($items as $item) {
-            $item->hideicon = true;
-            $breadcrumbs .= html_writer::tag('li', $this->render($item));
-        }
-        return html_writer::tag('ol', $breadcrumbs, ['class' => 'breadcrumb']);
-    }
-
     public function settings_menu() {
         return $this->context_header_settings_menu();
     }
