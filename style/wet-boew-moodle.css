@@ -66,6 +66,15 @@ a:focus, a:hover {
     color: #0535d2;
 }
 
+#wb-info .landscape a:focus,
+#sm-pnl a:focus,
+#nav-drawer a:focus,
+.form-control:focus,
+.dropdown-toggle:focus {
+    outline: 1px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
 /* Headings. */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     -webkit-font-variant-ligatures: no-common-ligatures;
@@ -942,20 +951,38 @@ a.btn-secondary:focus {
 #nav-drawer .list-group:not(:last-child) {
     border-bottom: white 1px solid;
 }
-/* Remove nav drawer from flow for screenreaders. */
-#nav-drawer.closed {
-    display: none;
+[data-region="drawer"] {
+    padding: 20px 10px;
 }
 
 #wb-info .landscape a:focus,
 #sm-pnl a:focus,
 #nav-drawer a:focus {
-    outline: 1px solid -webkit-focus-ring-color;
     outline-color: #89B4F4;
 }
 #nav-drawer a {
     border: none;
     margin: 1px
+}
+
+/* Courses home link. */
+[data-key="coursehome"].list-group-item {
+    background-color:white!important;
+    margin-bottom: 20px!important;
+    color:black!important;
+    padding-left:0px!important;
+}
+/* My Courses link. */
+[data-parent-key="mycourses"].list-group-item {
+    padding-left: 3.5rem!important;
+}
+/* Space between icon and link. */
+.media-left, .media>.pull-left {
+    padding-right: 0;
+}
+/* Icon size. */
+#nav-drawer nav.list-group .list-group-item .icon {
+    font-size: 20px;
 }
 
 /* Fix font size for custom select dropdown lists */
