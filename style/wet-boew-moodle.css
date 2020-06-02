@@ -268,15 +268,91 @@ a.disabled:hover, a.disabled {
 }
 
 /* Notification and Message icons */
-.navbar-nav .nav-item a:visited, .navbar-nav .nav-item a {
-    color: lightgray;
+.YAK {
+    margin-top: 12px;
 }
-.navbar-nav {
-    margin-top: 15px;
-    color: lightgray;
+.YAK .popover-region-container {
+    top: 33px;
 }
-.nav-item i:hover {
+.YAK .popover-region-header-actions .nav-item i,
+.YAK .popover-region-toggle.nav-link i {
+    color: #D3D3D3;
+}
+.YAK .popover-region-header-actions i,
+.YAK .nav-item a.view-more {
+    color: #284142;
+}
+.YAK .nav-item a.view-more:visited {
+    text-decoration: underline;
+    color: #0535D2;
+}
+.YAK .popover-region-header-actions .nav-item i:hover,
+.YAK .popover-region-toggle.nav-link i:hover {
     color: white;
+}
+.YAK .popover-region-header-actions i:hover,
+.YAK .nav-item a.view-more:hover {
+    color: #284142;
+}
+.YAK .content-item-container:hover,
+.YAK .popover-region-container,
+.YAK .nav-item a:visited {
+    color: black;
+}
+.YAK .nav-item a.view-more {
+    text-decoration: underline;
+    font-weight: 600;
+}
+.YAK .nav-item a.view-more:visited {
+    font-weight: 300;
+}
+.YAK .popover-region {
+    display: inline-block;
+}
+.YAK .content-item-container:hover {
+    background-color: #86C2F3;
+}
+.content-item-container.selected,
+.content-item-container,
+.content-item-container:hover {
+    color: #000;
+    background-color: #81C6FF;
+    border-color: #4f94cd;
+    line-height: 2rem;
+}
+.notification-area .content-area .header,
+.notification-area .content-area .header .subject-container {
+    height: auto;
+}
+
+.YAK .content-item-container.selected,
+.YAK .content-item-container:hover,
+.notification-area .content-item-container.selected,
+.notification-area .content-item-container:hover {
+    color: #000;
+    background-color: #81C6FF;
+    border-color: #4f94cd;
+}
+.YAK .content-item-container.notification .content-item-body .notification-message,
+.notification-area .content-item-container.notification .content-item-body .notification-message {
+    line-height: 2rem;
+    font-size: 1.6rem;
+}
+.notification-area .content-area .header .timestamp,
+.content-item-container .content-item-footer .timestamp {
+    color: #000!important;
+    padding-top:5px;
+    font-size: 1.3rem;
+}
+.content-item-container > div {
+  padding:5px;
+}
+.popover-region-header-text {
+    font-size: 1.6rem;
+    line-height: 27px;
+}
+.popover-region-header-container {
+    margin-top:2px;
 }
 
 /* Default for all links */
@@ -328,7 +404,7 @@ a {
 
 /* Fix for username and password fields on login form */
 #directlogin .form-control {
-  width: 100%;
+    width: 100%;
 }
 
 /* Fix field width for custom forms in the content area. */
@@ -395,7 +471,7 @@ div.dropdown a {
     margin-top: 0;
 }
 .mform .row {
-  display: block;
+    display: block;
 }
 
 /* Adjust position of move activity icon when editing a course. */
@@ -507,7 +583,7 @@ a.eupopup-closebutton {
     font-size: 1.5rem;
 }
 .fade {
-  opacity:1;
+    opacity:1;
 }
 
 /* Show sections hidden from students. */
@@ -525,26 +601,26 @@ li.section.hidden, .block.hidden, .block.invisible {
 }
 /* Dashboard: More space, better looking cards. */
 .dashboard-card {
-  width: 360px !important;
-  background-color: #f9f9f9 !important;
-  margin: 25px !important;
-  /* padding: 10px; */
-  border: none;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
-  box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
+    width: 360px !important;
+    background-color: #f9f9f9 !important;
+    margin: 25px !important;
+    /* padding: 10px; */
+    border: none;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
+    box-shadow: 3px 3px 5px 0px rgba(159,159,159,1);
 
 }
 .dashboard-card .card-footer {
- background-color: #f9f9f9 !important;
+    background-color: #f9f9f9 !important;
 }
 .dashboard-card .card-footer .progress {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* Adjust size of close button. */
 .close, .moodle-dialogue-base .closebutton {
-   font-size: 3rem;
+    font-size: 3rem;
 }
 
 /* Fix font size for capabilities */
@@ -719,7 +795,7 @@ a[rel~="external"]:after {
 
 /* For for WET media objects that should be pulled to the right. */
 .media {
-  display: list-item;
+    display: list-item;
 }
 
 /* Fix for WET labels. */
@@ -838,20 +914,20 @@ th.col-1, th.col-xs-1, th.col-2, th.col-xs-2, th.col-3, th.col-xs-3, th.col-4, t
 
 /* Add support for Equalized/Equal Height sections */
 .wb-eqht section {
-	display: inline-block;
-	margin-bottom: 15px;
-	padding: 15px;
-	width: 100%;
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 100%;
 }
 @media (min-width: 768px) {
-	.wb-eqht section {
-		width: 49%;
-	}
+    .wb-eqht section {
+        width: 49%;
+    }
 }
 @media (min-width: 1200px) {
-	.wb-eqht section {
-		width: 33%;
-	}
+    .wb-eqht section {
+        width: 33%;
+    }
 }
 
 /* Fix font size in h3 admin settings. */
@@ -1007,7 +1083,7 @@ a.btn-secondary:focus {
 
 /* Fix font size for custom select dropdown lists */
 .custom-select {
-  font-size: inherit;
+    font-size: inherit;
 }
 
 /* Fix for alert boxes. */
@@ -1114,7 +1190,7 @@ ul.section li.activity {
     border-right: 1px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
     padding: 1rem;
-  	margin: 0 1.7rem;
+    margin: 0 1.7rem;
 }
 li.activity.label {
     border: initial;
@@ -1150,7 +1226,7 @@ img.activityicon {
 
 /* Fix line height. */
 .line-height-3 {
-	line-height: 1.8rem!important;
+    line-height: 1.8rem!important;
 }
 
 /* Make Configurable Reports header sticky when scrolling. */
