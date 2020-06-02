@@ -66,12 +66,14 @@ a:focus, a:hover {
     color: #0535d2;
 }
 
+/* Focus outlines. */
+a.btn-secondary:focus,
 #wb-info .landscape a:focus,
 #sm-pnl a:focus,
 #nav-drawer a:focus,
 .form-control:focus,
 .dropdown-toggle:focus {
-    outline: 1px auto -webkit-focus-ring-color;
+    outline: -webkit-focus-ring-color auto 1px;
     outline-offset: -2px;
 }
 
@@ -383,10 +385,6 @@ a {
 }
 .dropdown-menu a.dropdown-item:first-child:visited {
     color: #7834bc;
-}
-.dropdown-toggle:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
 }
 
 /* Menu */
@@ -784,7 +782,14 @@ a[rel~="external"]:after {
 .breadcrumb>li+li:last-child:before {
     padding-right: 1.2rem!important;
 }
- 
+/* Fix focus outline. */
+.breadcrumb-item a {
+    margin: 0 2px;
+}
+.breadcrumb-item  {
+    line-height:2.6rem;
+}
+
 /* Fix subtitles and captions section of Insert Media dialogue. */
 .nav {
     display: block;
@@ -1051,11 +1056,6 @@ a.btn-secondary:focus {
     padding: 20px 10px;
 }
 
-#wb-info .landscape a:focus,
-#sm-pnl a:focus,
-#nav-drawer a:focus {
-    outline-color: #89B4F4;
-}
 #nav-drawer a {
     border: none;
     margin: 1px
