@@ -216,6 +216,11 @@ $_PAGE['hasregionmainsettingsmenu'] = !empty($_PAGE['regionmainsettingsmenu']);
 $_PAGE['hasfooter'] = (empty($PAGE->layout_options['nofooter']));
 // Show Problem button.
 $_PAGE['showproblembutton'] = $theme->showproblem;
+// Problem button URL.
+$_PAGE['problembuttonurl'] = format_string($theme->problembuttonurl);
+if (!empty($_PAGE['problembuttonurl'])) {
+    $_PAGE['problembuttonurl'] = new moodle_url($_PAGE['problembuttonurl']);
+}
 // WET "Share" button is not compatible with fr-ca language.
 $_PAGE['showsharebutton'] = $theme->showshare;
 // Moodle docs link.
@@ -260,7 +265,7 @@ $signouturl = format_string($theme->alternatelogouturl, true,
 if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($PAGE->pagetype != 'login-logout') {
         if ($USER->auth == 'oauth2' && !empty($signouturl)) {
-            $_PAGE['signouturl'] = $signouturl;
+            $_PAGE['signouturl'] = new moodle_url($signouturl);
         } else {
             $_PAGE['signouturl'] = $CFG->wwwroot . '/login/logout.php' . ($theme->confirmlogout ? '' : '?sesskey=' . sesskey());
         }
@@ -276,7 +281,7 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
             && $PAGE->pagetype != 'login-signup');
     if ($_PAGE['showregister']) {
         $_PAGE['registerurl'] = empty($theme->alternateregisterurl) ? $CFG->wwwroot . '/login/signup.php'
-                : $theme->alternateregisterurl;
+                : new moodle_url($theme->alternateregisterurl);
     }
 
     if($_PAGE['showsignon']) {
