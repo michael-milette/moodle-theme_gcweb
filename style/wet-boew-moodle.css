@@ -1224,6 +1224,11 @@ img.activityicon {
     max-width: 960px;
 }
 
+/* Choice: Add space between radio button options. */
+.path-mod-choice .horizontal .choices .option {
+    margin-right: 15px;
+}
+
 /* Fix line height. */
 .line-height-3 {
     line-height: 1.8rem!important;
