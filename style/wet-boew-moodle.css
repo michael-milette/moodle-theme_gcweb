@@ -357,6 +357,14 @@ a.disabled:hover, a.disabled {
     margin-top:2px;
 }
 
+/* Fix for Notification Preferences page. */
+.preferences-container .preference-table .preference-row .preference-state .preference-state-status-container {
+    background-color: #CC4444;
+}
+.preferences-container .preference-table .preference-row .preference-state input[type="checkbox"]:checked+.preference-state-status-container {
+    background-color: #298529;
+}
+
 /* Default for all links */
 a {
     text-decoration: underline;
