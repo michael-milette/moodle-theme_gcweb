@@ -304,7 +304,7 @@ class course_renderer extends \core_course_renderer {
                 if ($columns == 1) {
                     $extraclasses = 'row border';
                 } else {
-                    $extraclasses = 'card h-100' . ($courselistlayout == 4 ? ' text-center' : '');
+                    $extraclasses = 'card zshadow h-100' . ($courselistlayout == 4 ? ' text-center' : '');
                 }
                 $content .= '<div class="' . $extraclasses . ' ' . ($course->visible ? 'coursevisible' : 'coursedimmed') . '">';
             }
@@ -362,7 +362,7 @@ class course_renderer extends \core_course_renderer {
                     break;
 
                 case -1: // Masonry Cards.
-                    $content .= '<div class="card ' . $grid . '">';
+                    $content .= '<div class="card zshadow ' . $grid . '">';
                     $content .= $this->coursecard($courseinfo, $courselistlayout, $columns);
                     $content .= '</div>';
                     break;

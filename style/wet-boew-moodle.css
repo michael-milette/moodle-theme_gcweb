@@ -1310,20 +1310,18 @@ img.activityicon {
 }
 
 /* Course and category card shadows. */
-.categories .card-deck .card,
-.courses .card-deck .card {
+.zshadow {
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     transition: all 0.3s ease-in-out;
 }
 /* Scale up the box on hover and add shadow. */
-.categories .card-deck .card:hover,
-.card-deck .card:hover {
+.zshadow:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     opacity: 1;
 }
 @media screen and (prefers-reduced-motion: no-preference){
-    .categories .card-deck .card:hover,
-    .courses .card-deck .card:hover {
+    .zshadow:hover,
+    .zshadow:hover {
         transform: scale(1.02, 1.02);
     }
 }
