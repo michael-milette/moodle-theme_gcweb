@@ -394,6 +394,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     case 'report-usersessions-user': // Browser sessions.
                         $title .= $profilefullname;
                         break;
+                    case 'auth-oauth2-linkedlogins': // Linked Logins.
+                        $title = get_string('linkedlogins', 'auth_oauth2') . $profilefullname;
+                        break;
                     case 'admin-setting-themesettinggcweb': // This Theme's settings.
                         $title = get_string('themesettings', 'admin');
                         break;
