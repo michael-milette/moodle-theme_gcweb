@@ -29,7 +29,7 @@ $page = new admin_settingpage($themename . '_courselists', get_string('courselis
 
 // If first time, initialize this tab's settings with defaults.
 if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
-    set_config('courselistlayout', 'list', $themename); // List.
+    set_config('courselistlayout', 1, $themename); // Cards.
     set_config('filtercoursesbylang', '0', $themename); // No.
     set_config('wraprecentlyaccessedcourses', 0, $themename); // Don't wrap the Dashboard's Recently Accessed Courses list.
     set_config('courselistcolumns', 2, $themename); // 3 columns (0 based array).
