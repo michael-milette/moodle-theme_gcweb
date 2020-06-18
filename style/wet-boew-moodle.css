@@ -1237,6 +1237,19 @@ img.activityicon {
     margin-right: 15px;
 }
 
+/* Allow feedback questions to go almost full width. */
+.feedback_itemlist .col-md-3 {
+    max-width: 95%;
+}
+/* Remove blank line between vertical answers. */
+.feedback_itemlist br {
+    display:none;
+}
+/* Add spacing between radio buttons. */
+.feedback_itemlist .form-check-input {
+  margin-left:15px; 
+}
+
 /* Fix line height. */
 .line-height-3 {
     line-height: 1.8rem!important;
