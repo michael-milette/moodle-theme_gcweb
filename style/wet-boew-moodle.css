@@ -301,6 +301,20 @@ a.disabled:hover, a.disabled {
 .YAK .nav-item a:visited {
     color: black;
 }
+/* Notification icon (bell). */
+.YAK .popover-region-toggle::before {
+    bottom: -10px;
+    right: 11px;
+}
+.YAK .popover-region-toggle::after {
+    bottom: -10px;
+    right: 12px;
+}
+/* Messaging drawer icon (speech bubble). */
+[data-region=right-hand-drawer].drawer {
+    top: 115px;
+} 
+
 .YAK .nav-item a.view-more {
     text-decoration: underline;
     font-weight: 600;
@@ -325,6 +339,9 @@ a.disabled:hover, a.disabled {
 .notification-area .content-area .header,
 .notification-area .content-area .header .subject-container {
     height: auto;
+}
+.YAK .nav-link {
+    padding:0;
 }
 
 .YAK .content-item-container.selected,
@@ -1247,7 +1264,7 @@ img.activityicon {
 }
 /* Add spacing between radio buttons. */
 .feedback_itemlist .form-check-input {
-  margin-left:15px; 
+    margin-left: 15px;
 }
 
 /* Fix line height. */
