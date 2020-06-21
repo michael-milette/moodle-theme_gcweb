@@ -296,11 +296,13 @@ a.disabled:hover, a.disabled {
 .YAK .nav-item a.view-more:hover {
     color: #284142;
 }
+/*
 .YAK .content-item-container:hover,
 .YAK .popover-region-container,
 .YAK .nav-item a:visited {
     color: black;
 }
+*/
 /* Notification icon (bell). */
 .YAK .popover-region-toggle::before {
     bottom: -10px;
@@ -1030,6 +1032,10 @@ a.btn-secondary {
     background-color: #2572B4;
     border: 1px outset #335075;
 
+}
+/* Update DOWNLOAD button on Notification page. */
+#page-admin-index .adminwarning a.btn-secondary {
+    color: white;
 }
 a.btn-secondary:hover,
 a.btn-secondary:not(:disabled):active,
