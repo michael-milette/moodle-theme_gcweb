@@ -47,6 +47,7 @@ $templatecontext = [
     'hasblocks' => $_PAGE['hasblocks'],
     'htmlattributes' => $_PAGE['htmlattributes'],
     'bodyattributes' => $_PAGE['bodyattributes'],
+    'alerts' => $_PAGE['alerts'],
     'wetboew' => $_PAGE['themewww'] . '/framework',
     'langmenu' => $_PAGE['langmenu'],
     'lang' => $_PAGE['lang'],

@@ -193,6 +193,24 @@ $string['showhomebreadcrumbs_desc'] = 'Enable breadcrumbs on the Front Page.';
 $string['prebreadcrumbs'] = 'Pre-breadcrumbs';
 $string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. Useful if this is a sub-section of a website.<br>Example: &lt;li&gt;&lt;a href="https://example.com/"&gt;Example&lt;/a&gt;&lt;/li&gt;';
 //
+// Alerts tab.
+//
+$string['alertsettings'] = 'Alerts';
+$string['alertsheadingsub'] = 'User alerts';
+$string['alertsdesc'] = 'Display one or more alerts in three different styles. Remember to disable when no longer needed.';
+$string['alertenable'] = 'Enable alert';
+$string['alertenabledesc'] = 'Show or hide alert';
+$string['alerttype'] = 'Type';
+$string['alerttypedesc'] = 'Set the type of alert to best inform your users.';
+$string['alertsuccess'] = 'Announcement (green)';
+$string['alertinfo'] = 'Information (blue)';
+$string['alertwarning'] = 'Warning (yellow)';
+$string['alertdanger'] = 'Danger (red)';
+$string['alerttitle'] = 'Title';
+$string['alerttitledesc'] = 'Title for the alert.';
+$string['alerttext'] = 'Text';
+$string['alerttextdesc'] = 'Text to be displayed in your alert.';
+//
 // Footer tab.
 //
 $string['footer'] = 'Footer';

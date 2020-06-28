@@ -53,6 +53,7 @@ if ($ADMIN->fulltree) {
     require('settings/courselist.php');
     require('settings/profilefields.php');
     require('settings/header.php');
+    require('settings/alerts.php');
     require('settings/footer.php');
     require('settings/styleguide.php');
     require('settings/about.php');

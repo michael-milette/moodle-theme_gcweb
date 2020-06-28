@@ -27,6 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 global $_PAGE;
 
 $theme = get_config('theme_gcweb');
+$context = context_system::instance();
 
 // Cause the userdate() function not to fix %d in date strings. Just let them show with a zero prefix.
 
@@ -98,18 +99,18 @@ if (!empty($extracss)) {
 // Insert extra head content just before </HEAD>.
 
 $additionalhtmlhead = $CFG->additionalhtmlhead ;
-$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead . $extracss, FORMAT_HTML, 
-        ['noclean' => true, 'context' => context_system::instance()]);
+$CFG->additionalhtmlhead = format_text($CFG->additionalhtmlhead . $extracss, FORMAT_HTML,
+        ['noclean' => true, 'context' => $context]);
 $_PAGE['standard_head_html'] = $OUTPUT->standard_head_html();
 $CFG->additionalhtmlhead = $additionalhtmlhead;
 // Remove <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-$_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '', 
+$_PAGE['standard_head_html'] = str_replace('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />', '',
         $_PAGE['standard_head_html']);
 
 // Search engine
 
 $_PAGE['showsearch'] = $theme->showsearch && empty($PAGE->layout_options['nosearch'])
-        && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', context_system::instance()));
+        && (!empty($CFG->enableglobalsearch) || has_capability('moodle/search:query', $context));
 $_PAGE['searchurl'] = $CFG->wwwroot . '/course/search.php';
 
 // Show language menu
@@ -127,8 +128,8 @@ if (!empty($CFG->langmenu)
 // Breadcrumbs
 if ($PAGE->pagetype != 'site-index' || $theme->showhomebreadcrumbs) {
     // If this is not home page OR showhomebreadcrumbs is enabled.
-    $_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML, 
-            ['noclean' => true, 'context' => context_system::instance()]);
+    $_PAGE['breadcrumbs'] = format_text($_PAGE['breadcrumbs'], FORMAT_HTML,
+            ['noclean' => true, 'context' => $context]);
     $_PAGE['breadcrumbs'] = $OUTPUT->navbar($_PAGE['breadcrumbs']);
 } else {
     $_PAGE['breadcrumbs'] = '';
@@ -160,8 +161,8 @@ $_PAGE['shownavdrawer'] = isloggedin() && !isguestuser();
 if(empty($theme->shownavdrawer) && $_PAGE['shownavdrawer']) {
     // If switched roles, figure out archetype.
     if (is_role_switched($PAGE->course->id)) {
-        $context = context_course::instance($PAGE->course->id);
-        $archetype = $USER->access['rsw'][$context->path];
+        $ccontext = context_course::instance($PAGE->course->id);
+        $archetype = $USER->access['rsw'][$ccontext->path];
         // Override - Enable nav drawer if archetype is higher than student.
         $theme->shownavdrawer = ($archetype < 5); // 1 to 4.
         $_PAGE['shownavdrawer'] = $theme->shownavdrawer;
@@ -198,6 +199,32 @@ if($theme->courselistlayout == 'card') {
 }
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
 
+//
+// Alerts.
+//
+$_PAGE['alerts']  = '';
+
+for ($cnt = 1; $cnt <= 4; $cnt++) {
+    // Note: Dismissable alerts not yet supported.
+    // Fetch alerts -- but only if they are not suppressed by user cookie.
+    if (isset($_COOKIE['gcwebalert-' . $cnt]) && $_COOKIE['gcwebalert-' . $cnt] === "closed") {
+        continue;
+    } else if (empty($theme->{"alert{$cnt}enable"})) {
+        continue;
+    }
+
+    $_PAGE['alerts'] .= '<section class="alert alert-' . $theme->{"alert{$cnt}type"} . '">';
+    if (!empty($theme->{"alert{$cnt}title"})) {
+        $_PAGE['alerts'] .= '<h2>' . $theme->{"alert{$cnt}title"} . '</h2>';
+    }
+    $_PAGE['alerts'] .= '<p>' . $theme->{"alert{$cnt}text"} . '</p>';
+    $_PAGE['alerts'] .= '</section>';
+}
+if (!empty($_PAGE['alerts'])) {
+    $_PAGE['alerts'] = format_text($_PAGE['alerts'], FORMAT_HTML, ['noclean' => true, 'context' => $context]);
+    $_PAGE['alerts'] = '<div class="gcwebalerts">' . $_PAGE['alerts'] . '</div>';
+}
+
 // If secondary nav.
 
 $_PAGE['skiptosectnav'] = '';
@@ -232,17 +259,17 @@ $_PAGE['showlogininfo'] = $theme->footershowlogininfo;
 // Reset user tours.
 $_PAGE['showresetusertours'] = $theme->footershowresetusertours;
 // Footnote.
-$_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => true, 'context' => context_system::instance()]);
+$_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => true, 'context' => $context]);
 
 //
 // Site name and page title.
 //
 
-$_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+$_PAGE['sitename'] = format_string($SITE->fullname, true, ['context' => $context, "escape" => false]);
 $_PAGE['pagebutton'] = str_replace('singlebutton', 'btn btn-default', $this->page_heading_button());
 $_PAGE['pageheading'] = $OUTPUT->pageheading($PAGE->title);
 $_PAGE['pageheadinghidden'] = '';
-if ($PAGE->pagetype == 'site-index') { // frontpage
+if ($PAGE->pagetype == 'site-index') { // Frontpage.
     if (empty($theme->showhometitle)) {
         // Hide title on Home page.
         $_PAGE['pageheadinghidden'] = ' property="name" class="wb-inv"';
@@ -259,8 +286,7 @@ $_PAGE['accountsettingsurl'] = '';
 $_PAGE['showregister'] = false;
 $_PAGE['registerurl'] = '';
 
-$signouturl = format_string($theme->alternatelogouturl, true,
-        ['context' => context_course::instance(SITEID), "escape" => false]);
+$signouturl = format_string($theme->alternatelogouturl, true, ['context' => $context, "escape" => false]);
 
 if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     if ($PAGE->pagetype != 'login-logout') {
@@ -272,7 +298,7 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     }
     $_PAGE['showaccountsettings'] = $theme->showaccountsettings;
     // URL of Profile settings button.
-    if (has_capability('moodle/user:editownprofile', context_system::instance())) {
+    if (has_capability('moodle/user:editownprofile', $context)) {
         $_PAGE['accountsettingsurl'] = $CFG->wwwroot . '/user/profile.php';
     }
 } else { // Logged-out.
@@ -295,11 +321,11 @@ if ($_PAGE['loggedin'] = (!isguestuser() && isloggedin())) {
     }
 }
 
-// Life tip: die('happy');
+// Life tip: die('happy');.
 
 $_PAGE['flatnavigation'] = $PAGE->flatnav;
 
-// Blocks
+// Blocks.
 
 if ($_PAGE['hascontentpre']  = $PAGE->blocks->region_has_content('content-pre', $OUTPUT)) {
     $_PAGE['contentpre'] = $OUTPUT->blocks('content-pre');
