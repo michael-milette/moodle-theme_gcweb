@@ -222,6 +222,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         }
                         $title = get_string('notes', 'notes') . $profilefullname;
                         break;
+                    case 'backup-import': // Course > Import.
+                        $title = $COURSE->shortname . ' : ' . get_string('importdata');
+                        break;
                 }
                 break;
             case 'standard':
