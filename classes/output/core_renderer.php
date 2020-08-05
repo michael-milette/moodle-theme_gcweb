@@ -256,6 +256,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     case 'admin-tool-lp-user_evidence_edit': // Evidence of prior learning.
                         $title = get_string('addnewuserevidence', 'tool_lp') . $profilefullname;
                         break;
+                    case 'calendar-view': // Calendar.
+                        $title = get_string('calendar', 'calendar');
                 }
                 break;
             case 'course':    // Any type of courses page.
