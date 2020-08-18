@@ -315,7 +315,7 @@ a.disabled:hover, a.disabled {
 /* Messaging drawer icon (speech bubble). */
 [data-region=right-hand-drawer].drawer {
     top: 115px;
-} 
+}
 
 .YAK .nav-item a.view-more {
     text-decoration: underline;
@@ -1549,4 +1549,28 @@ img.activityicon {
 .activity-navigation {
     border-top: 1px solid #777;
     padding-top: 15px;
+}
+
+/* ******************** */
+/* Kludge/Hack section. */
+/* ******************** */
+/* Kludge fix for question in lesson on:
+https://intranet.ised-isde.canada.ca/campus/mod/lesson/view.php?id=112
+*/
+#page-mod-lesson-view .mform .contents .no-overflow {
+    width:100%
+}
+
+/* Fix role assignment table. */
+.path-admin #assignrole {
+    width: 100%;
+}
+.path-admin #assignrole .c1,
+.path-admin #assignrole .c3 {
+   padding-top:0.75rem;
+}
+.path-admin #assignrole .c0,
+.path-admin #assignrole .c2,
+.path-admin #assignrole .c3 {
+   white-space: nowrap;
 }
