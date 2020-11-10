@@ -437,6 +437,11 @@ main .form-control {
     width: auto;
 }
 
+/* Fix for Group edit form. */
+#groupeditform .form-control {
+    width: 100%;
+}
+
 /* Headers */
 .page-context-header .page-header-image, .page-context-header .page-header-headings {
     float: none;
