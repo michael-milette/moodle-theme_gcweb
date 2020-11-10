@@ -172,7 +172,7 @@ class course_renderer extends \core_course_renderer {
         $systemcontext = $this->page->bodyid;
 
         $content = '';
-        $hasside = $_PAGE['hasblocks'] ? ' hasside' : ' noside';
+        $hasside = !empty($_PAGE['hasblocks']) ? ' hasside' : ' noside';
         $grid = 'cols-' . $columns . $hasside . ' clayout' . $courselistlayout;
 
         switch($courselistlayout) {
