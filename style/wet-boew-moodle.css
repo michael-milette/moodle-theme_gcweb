@@ -1549,6 +1549,10 @@ img.activityicon {
     text-align: left;
 }
 
+.path-mod-book .book_toc li {
+    flex-basis:auto
+}
+
 /* Separator between content and actiivty navigation. */
 
 .activity-navigation {
