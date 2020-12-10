@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Course renderer.
@@ -20,7 +20,7 @@
  * @package   theme_gcweb
  * @copyright 2016-2020 TNG Consulting Inc. - www.tngconsulting.ca
  * @copyright 2016 Frédéric Massart - FMCorz.net
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace theme_gcweb\output\core;
@@ -51,7 +51,7 @@ require_once $CFG->dirroot . '/course/renderer.php';
  * @package theme_gcweb
  * @author  Michael Milette - TNG Consulting Inc. <www.tngconsulting.ca>
  * @author  Frédéric Massart - <FMCorz.net>
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_renderer extends \core_course_renderer {
     protected $countcategories = 0;

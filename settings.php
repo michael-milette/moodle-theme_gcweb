@@ -1,5 +1,5 @@
 <?php
-// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - https://moodle.org/
 //
 // WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Main settings file.
@@ -20,13 +20,13 @@
  * @package    theme_gcweb
  * @copyright  2016-2020 TNG Consulting Inc. unless otherwise noted.
  * @author     Michael Milette <www.tngconsulting.ca>
- * @license    WET-BOEW-MOODLE: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
- * @license    Moodle: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @license    WET-BOEW-MOODLE: https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @license    Moodle: https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  * @license    WET-BOEW: https://github.com/wet-boew/wet-boew/blob/master/License-eng.txt MIT License.
- * @license    Government of Canada graphics: Government of Canada http://www.tbs-sct.gc.ca/fip-pcim/index-eng.asp .
+ * @license    Government of Canada graphics: Government of Canada https://www.tbs-sct.gc.ca/fip-pcim/index-eng.asp .
  * @license    3rd party software included with WET-BOEW: Held by the respective copyright holders as noted in those files.
  * @credits    theme_boost - MoodleHQ
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // Settings have been split into separate files, one for each tab. These are called from this main settings.php file.

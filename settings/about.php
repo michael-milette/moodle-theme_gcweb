@@ -1,5 +1,5 @@
 <?php
-// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - https://moodle.org/
 //
 // WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,14 +12,14 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * About this theme.
  *
  * @package    gcweb
- * @copyright  2016-2019 TNG Consulting Inc. <http://www.tngconsulting.ca>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2016-2020 TNG Consulting Inc. <https://www.tngconsulting.ca>
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;

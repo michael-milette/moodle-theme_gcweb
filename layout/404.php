@@ -1,5 +1,5 @@
 <?php
-// This file is part of the WET-BOEW-Moodle theme for Moodle - http://moodle.org/
+// This file is part of the WET-BOEW-Moodle theme for Moodle - https://moodle.org/
 //
 // WET-BOEW-Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Contact Form.  If not, see <http://www.gnu.org/licenses/>.
+// along with Contact Form.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * This the "404 Page Not Found" page.
@@ -20,7 +20,7 @@
  * @package    theme_gcweb
  * @copyright  2016-2020 TNG Consulting Inc. - www.tngconsulting.ca
  * @author     Michael Milette
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 require_once('../../../config.php');
@@ -43,7 +43,7 @@ $extraheader = '
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 <style>
 #page {margin-top: 0px;}
-#gcwu-sig, #wmms {height: 2em;} 
+#gcwu-sig, #wmms {height: 2em;}
 .wb-inv {display:none;}
 #wmms {float:right;}
 body {font-family: "Noto Sans",sans-serif;font-size: 16px;}

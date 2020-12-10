@@ -1,5 +1,5 @@
 <?php
-// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - https://moodle.org/
 //
 // WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,13 +12,13 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 /**
  * WET-BOEW GCWeb French language.
  *
  * @package   theme_gcweb
  * @copyright 2016-2020 TNG Consulting Inc.
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
@@ -39,7 +39,7 @@ $string['choosereadme'] = '
   <div class="well">
     <h2>Credits</h2>
     <h3>À propos</h3>
-    <p>WET-BOEW-MOODLE&nbsp;: GCWeb, version [version], est un thème réactif de Moodle basé sur les  normes <a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web pour le gouvernement du Canada</a> GCWeb et le thème de base Moodle Boost.</p>
+    <p>WET-BOEW-MOODLE&nbsp;: GCWeb, version [version], est un thème réactif de Moodle basé sur les  normes <a href="https://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web pour le gouvernement du Canada</a> GCWeb et le thème de base Moodle Boost.</p>
     <p>Auteurs&nbsp;: Michael Milette, <a href="https://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
     <h3>Rapport de bugs</h3>
     <p>Vous pouvez signaler des bogues à l\'aide de GitHub Gestionnaire d\'incident à <a href="https://github.com/wet-boew/wet-boew-moodle/issues">github.com/wet-boew/wet-boew-moodle/issues</a>.</p>

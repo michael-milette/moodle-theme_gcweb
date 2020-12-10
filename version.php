@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - http://moodle.org/
+// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - https://moodle.org/
 //
 // WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,21 +13,21 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * WET-BOEW GCWeb theme version.
  *
  * @package   theme_gcweb
  * @copyright 2016-2020 TNG Consulting Inc.
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2020091100;
+$plugin->version = 2020121000;
 
 // This is the version of Moodle this plugin requires.
 $plugin->requires = 2019111800; // Moodle 3.8.

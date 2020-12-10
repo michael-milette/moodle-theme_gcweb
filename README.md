@@ -8,7 +8,7 @@ Web Experience Toolkit (WET), Moodle variant, GCWeb theme.
 
 See [github.com/wet-boew/wet-boew](https://github.com/wet-boew/wet-boew)
 
-## What is Moodle LMS? 
+## What is Moodle LMS?
 
 If you are familiar with Content Management Systems (CMS) like WordPress™, Drupal™ or Joomla™, Moodle™ is similar except that it is specifically designed to support education through online and in-class e-learning activities.
 
@@ -33,7 +33,7 @@ TODO list:
 * Resolve some conflicts with Boost base theme.
 * Quality Assurance and WCAG 2.0 level AA testing (and fixing).
 * Code cleanup.
-* Update Working Examples demo site: [wet-boew-moodle.tngconsulting.ca](http://wet-boew-moodle.tngconsulting.ca/)
+* Update Working Examples demo site: [wet-boew-moodle.tngconsulting.ca](https://wet-boew-moodle.tngconsulting.ca/)
 * Update screenshot
 * Update documentation.
 * Add new UI/UX features.
@@ -52,7 +52,7 @@ If you have any ideas, suggestions or code to share, please [create a new separa
 
 ## Why should I contribute?
 
-There is a wasteful situation going on in this world, the duplication of time, money and effort. This is severely limiting creativity, innovation and evolution each time someone has to re-create the wheel. 
+There is a wasteful situation going on in this world, the duplication of time, money and effort. This is severely limiting creativity, innovation and evolution each time someone has to re-create the wheel.
 
 By contributing your ideas, you may see them get implemented and supported in future releases. Contributed code has a chance of being integrated into future releases of WET-BOEW-Moodle as well. Together with the modular nature of Moodle, this makes it a lot easier to upgrade when new releases of WET-BOEW-Moodle and Moodle become available.
 
@@ -82,7 +82,7 @@ To propose ideas, report a bug or request support, please [create individual](ht
 ## Acknowledgements
 
 This project is made possible through the combined efforts of many people including:
-* Project Lead/Developer, @michaelmilette with support of [TNG Consulting Inc.](http://www.tngconsulting.ca/)
+* Project Lead/Developer, @michaelmilette with support of [TNG Consulting Inc.](https://www.tngconsulting.ca/)
 * Government of Canada - the Department of Innovation, Science and Economic Development Canada
 * Other [project contributors](https://github.com/wet-boew/wet-boew-moodle/graphs/contributors)
 
