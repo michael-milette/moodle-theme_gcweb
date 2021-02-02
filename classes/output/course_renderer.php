@@ -34,6 +34,7 @@ use core_course_category;
 use stdClass;
 use core_course_list_element;
 use context_course;
+use context_coursecat;
 use context_system;
 use pix_url;
 use html_writer;
@@ -417,6 +418,36 @@ class course_renderer extends \core_course_renderer {
         return $header . $content . $footer;
     }
 
+    function isvisiblecat($course) {
+        global $DB;
+        static $coursecategories;
+        // Admin can always see all categories.
+        if (is_siteadmin()) {
+            return true;
+        }
+
+        // Cache complete list of categories, their ID, path and visibility.
+        if (!isset($coursecategories)) {
+            $coursecategories = $DB->get_records('course_categories', array(), '', 'id, path, visible');
+        }
+
+        // Check if any of the parent coursecategories are not visible.
+        $categories = array_reverse(explode('/', $coursecategories[$course->category]->path));
+        foreach ($categories as $c) {
+            // Check if the coursecategory is not visible.
+            if (!empty($c) && empty($coursecategories[$c]->visible)) {
+                // Category is not visible. Check if we can see hidden categories.
+                if (!has_capability('moodle/category:viewhiddencategories', context_coursecat::instance($c))
+                        && !has_capability('moodle/category:viewhiddencategories', context_system::instance())) {
+                    // User does not have ability to view hidden categories.
+                    return false;
+                }
+            }
+        }
+        // You passed the tests! Category and all parents are visible to you.
+        return true;
+    }
+
     // This makes it possible to pass parameters by reference instead of by value
     // so that search_courses() can access the filtered list of courses and totalcount.
     protected function coursecat_courses(coursecat_helper $chelper, $courses, $totalcount = null) {
@@ -425,16 +456,24 @@ class course_renderer extends \core_course_renderer {
     protected function coursecat_courses_ml(coursecat_helper $chelper, $courses, &$totalcount = null) {
 
         // Only applicable to Front page.
+        $recount = false;
         $filtertag = $this->page->theme->settings->filtercoursesbytag;
         if ($this->page->bodyid == 'page-site-index' && !empty($filtertag)) {
             // Filter out courses if it doesn't contain the tag we are looking for.
             foreach($courses as $key => $course) {
                 if (!$this->hastag($course->id, $filtertag)) {
                     unset($courses[$key]);
+                    $recount = true;
                 }
             }
-            // Update the total count.
-            $totalcount = count($courses);
+        }
+
+        // Remove courses that are not in a visible category path.
+        foreach($courses as $key => $course) {
+            if (!$this->isvisiblecat($course)) {
+                unset($courses[$key]);
+                $recount = true;
+            }
         }
 
         // Applicable to all course listings.
@@ -445,9 +484,13 @@ class course_renderer extends \core_course_renderer {
                 @$clang = $course->lang; // TODO: Fix ugly hack.
                 if ($course->id != SITEID and !empty($clang) and $clang != $lang) {
                     unset($courses[$key]);
+                    $recount = true;
                 }
             }
-            // Update the total count.
+        }
+
+        // Update the total count if necessary.
+        if ($recount) {
             $totalcount = count($courses);
         }
 
