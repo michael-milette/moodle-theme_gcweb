@@ -18,7 +18,7 @@
  * The columns layout for the gcweb theme.
  *
  * @package   theme_gcweb
- * @copyright 2016-2020 TNG Consulting Inc.
+ * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -63,7 +63,6 @@ $templatecontext = [
     'showmoodledocs' => $_PAGE['showmoodledocs'],
     'showhomelink' => $_PAGE['showhomelink'],
     'showlogininfo' => $_PAGE['showlogininfo'],
-    'showresetusertours' => $_PAGE['showresetusertours'],
     'footnote' => $_PAGE['footnote'],
     'links' => false,
 

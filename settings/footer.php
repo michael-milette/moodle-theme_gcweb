@@ -18,7 +18,7 @@
  * Settings for footer.
  *
  * @package    theme_gcweb
- * @copyright  2016-2020 TNG Consulting Inc. <https://www.tngconsulting.ca>
+ * @copyright  2016-2021 TNG Consulting Inc. <https://www.tngconsulting.ca>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -35,7 +35,6 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('footershowmoodledocs', 1, $themename); // Yes.
     set_config('footershowhomelink', 1, $themename); // Yes.
     set_config('footershowlogininfo', 1, $themename); // Yes.
-    set_config('footershowresetusertours', 1, $themename); // Yes.
     set_config('footnote', '', $themename); // Blank.
 }
 
@@ -97,15 +96,6 @@ $page->add($setting);
 $name = $themename . '/footershowlogininfo';
 $title = get_string('footershowlogininfo', $themename);
 $description = get_string('footershowlogininfo_desc', $themename);
-$default = 1;
-$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Show Reset User Tours link.
-$name = $themename . '/footershowresetusertours';
-$title = get_string('footershowresetusertours', $themename);
-$description = get_string('footershowresetusertours_desc', $themename);
 $default = 1;
 $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
 $setting->set_updatedcallback('theme_reset_all_caches');

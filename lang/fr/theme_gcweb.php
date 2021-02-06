@@ -17,7 +17,7 @@
  * WET-BOEW GCWeb French language.
  *
  * @package   theme_gcweb
- * @copyright 2016-2020 TNG Consulting Inc.
+ * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 // This line protects the file from being accessed by a URL directly.
@@ -186,8 +186,6 @@ $string['footershowhomelink'] = 'Lien d’accueil ';
 // $string['footershowhomelink_desc'] = '';
 // $string['footershowlogininfo'] = '';
 // $string['footershowlogininfo_desc'] = '';
-// $string['footershowresetusertours'] = '';
-// $string['footershowresetusertours_desc'] = '';
 $string['footnote'] = 'Note de bas de page';
 // $string['footnote_desc'] = '';
 //

@@ -17,7 +17,7 @@
  * WET-BOEW GCWeb English language.
  *
  * @package   theme_gcweb
- * @copyright 2016-2020 TNG Consulting Inc.
+ * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 // This line protects the file from being accessed by a URL directly.
@@ -226,8 +226,6 @@ $string['footershowhomelink'] = 'Home link';
 $string['footershowhomelink_desc'] = 'Show the Home link in the footer .';
 $string['footershowlogininfo'] = 'Login info link';
 $string['footershowlogininfo_desc'] = 'Show the Login/Logout link in the footer .';
-$string['footershowresetusertours'] = 'Reset user tours link';
-$string['footershowresetusertours_desc'] = 'Show link to reset the user tours.';
 $string['footnote'] = 'Footnote';
 $string['footnote_desc'] = 'Displayed at the bottom of every page. Example: copyright, privacy policy, terms of use, phone number. Example: &lt;li&gt;&lt;a href="https://example.com/page?id="4"&gt;Terms and Conditions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Copyright 2001.&lt;/li&gt;.';
 //

@@ -18,7 +18,7 @@
  * Initialize setting for the WET-BOEW-Moodle GCWeb theme.
  *
  * @package   theme_gcweb
- * @copyright 2016-2020 TNG Consulting Inc.
+ * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -256,8 +256,6 @@ $_PAGE['showmoodledocs'] = $theme->footershowmoodledocs;
 $_PAGE['showhomelink'] = $theme->footershowhomelink;
 // Login/logout link.
 $_PAGE['showlogininfo'] = $theme->footershowlogininfo;
-// Reset user tours.
-$_PAGE['showresetusertours'] = $theme->footershowresetusertours;
 // Footnote.
 $_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => true, 'context' => $context]);
 

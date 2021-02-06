@@ -451,12 +451,11 @@ main .form-control {
 .helplink,
 .homelink,
 .logininfo,
-.usertour,
 .tool_dataprivacy,
 .purgecaches,
 .tool_usertours-resettourcontainer {
     color: white;
-    font-size: .875em;
+    xfont-size: .875em;
 }
 #wb-info a {
     font-size: 1em;
