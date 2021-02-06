@@ -18,7 +18,7 @@
  * WET-BOEW GCWeb theme config.
  *
  * @package   theme_gcweb
- * @copyright 2016-2020 TNG Consulting Inc.
+ * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -174,13 +174,6 @@ $THEME->layouts = [
         'theme' => 'boost',
         'file' => 'maintenance.php',
         'regions' => []
-    ),
-    // Should display the content and basic headers only.
-    'print' => array(
-        'theme' => 'boost',
-        'file' => 'content.php',
-        'regions' => [],
-        'options' => ['nofooter' => true, 'nonavbar' => false]
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
