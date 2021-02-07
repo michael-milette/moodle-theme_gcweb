@@ -167,11 +167,10 @@ $THEME->layouts = [
         'file' => 'embedded.php',
         'regions' => [],
     ),
-    // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
-    // This must not have any blocks, links, or API calls that would lead to database or cache interaction.
-    // Please be extremely careful if you are modifying this layout.
+    // Used during upgrade, install and for the maintenance mode message.
+    // IMPORTANT: Use the $CFG->dataroot/climaintenance.html method for upgrades and installs which also disables cron.
+    // For more information, see https://docs.moodle.org/en/Maintenance_mode
     'maintenance' => array(
-        'theme' => 'boost',
         'file' => 'maintenance.php',
         'regions' => []
     ),

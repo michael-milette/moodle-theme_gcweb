@@ -283,6 +283,9 @@ $string['err404body'] = '
 </main>
 ';
 
+$string['maintenance_title'] = 'Entretien des systèmes';
+$string['maintenance_message'] = '<p>En raison de l\'entretien du système, ce service n\'est pas disponible pour quelque minutes.</p>';
+
 $string['styleguide'] = 'Style guide';
 
 $string['styleguidehtml'] = '
