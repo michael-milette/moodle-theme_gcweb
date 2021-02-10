@@ -2,7 +2,7 @@
 
 Web Experience Toolkit (WET), Moodle variant, GCWeb theme.
 
-![Screenshot of 5 WET-BOEW-MOODLE 4.0 sub-themes](https://github.com/wet-boew/wet-boew-moodle/blob/master/pix/screenshot.png?raw=true)
+![Screenshot of 5 WET-BOEW-MOODLE 4.0 sub-themes](https://github.com/michael-milette/moodle-theme_gcweb/blob/master/pix/screenshot.png?raw=true)
 
 ## What is the Web Experience Toolkit (WET-BOEW)?
 
@@ -12,11 +12,11 @@ See [github.com/wet-boew/wet-boew](https://github.com/wet-boew/wet-boew)
 
 If you are familiar with Content Management Systems (CMS) like WordPress™, Drupal™ or Joomla™, Moodle™ is similar except that it is specifically designed to support education through online and in-class e-learning activities.
 
-One of the most popular Learning Management Systems (LMS) in the world, Moodle is a Free Open Source Software (FOSS) web-based application designed for those who would rather spend their time, money and efforts on developing effective e-learning courses instead of perpetual expensive yearly software licences costing tens or even hundreds of thousands of dollars. High priorities of the Moodle project team include things like accessibility, support for multiple languages and security.
+One of the most popular Free Open Source Software (FOSS) Learning Management Systems (LMS) in the world, Moodle is a web-based application designed for those who would rather spend their time, money and efforts on developing effective e-learning courses instead of perpetual expensive yearly software licences costing tens or even hundreds of thousands of dollars. High priorities of the Moodle project team include things like accessibility, support for multiple languages and security.
 
 ## What is the WET-BOEW-MOODLE project?
 
-The purpose of WET-BOEW-Moodle project on GitHub is to create an open source Moodle themes based on version 4.0.30 of the award winning WET-BOEW framework. The initial launch will feature the Government of Canada's GCWeb and GCIntranet themes. Other themes may eventually be added depending on interest and financing. Working towards WCAG 2.0 Level AA compliance is a high priority for this project. The theme will also feature configurable settings for Moodle administrators.
+The purpose of WET-BOEW-Moodle project on GitHub is to create an open source Moodle theme based on version 4.0.30 of the award winning WET-BOEW framework. The initial launch will feature the Government of Canada's GCWeb theme on Moodle 3.9+. Other themes, like GCIntranet may eventually be added depending on interest and financing. Working towards WCAG 2.1 Level AA compliance is a high priority for this project. The theme features many configurable settings for Moodle administrators.
 
 By using this theme, organizations to focus their limited educational/training budgets on delivering effective sustainable educational/e-learning content instead of expensive and never ending software licenses.
 
@@ -27,18 +27,19 @@ By using this theme, organizations to focus their limited educational/training b
 * We have made a lot of progress on the GCWeb theme.
 * We are starting development of the GCIntranet theme.
 * We removed the deprecated pre-2019 WET-BOEW themes including Canada.ca, GC Web Usability, GC Intranet, WET-BOEW, OGPL.
+* We have update screenshot
+* We have create a 404 server page.
+* Created a WET-BOEW-Moodle Widgets to demonstrate compatible WET-BOEW widgets.
 
 TODO list:
 
 * Resolve some conflicts with Boost base theme.
-* Quality Assurance and WCAG 2.0 level AA testing (and fixing).
+* Quality Assurance and WCAG 2.1 level AA testing (and fixing).
 * Code cleanup.
 * Update Working Examples demo site: [wet-boew-moodle.tngconsulting.ca](https://wet-boew-moodle.tngconsulting.ca/)
-* Update screenshot
 * Update documentation.
 * Add new UI/UX features.
-* Create splash page and 404 server page.
-* Finish the WET-BOEW-Moodle Style Guide (considering moving this to the WET-BOEW-Moodle Widgets course)
+* Create splash page and site language aware maintenance page.
 
 ## Interested in this project?
 
@@ -60,7 +61,7 @@ If you are part of Government, education or other large corporations, you can sa
 
 ## System Requirements
 
-WET-BOEW-Moodle will initially be released for Moodle 3.7 (or 3.8) in fall of 2019. Details of [Web server, database and web browser requirements](https://docs.moodle.org/dev/Moodle_3.7_release_notes#Server_requirements) can be found on Moodle.org. Support for other versions of Moodle may be added at a later date depending on the level of interest.
+WET-BOEW-Moodle is initially released for Moodle 3.9 for accessibility reasons. Details of [Web server, database and web browser requirements](https://docs.moodle.org/dev/Moodle_3.9_release_notes#Server_requirements) can be found on Moodle.org. Support for other newer versions of Moodle may be added at a later date depending on the level of interest.
 
 Note: The WET-BOEW-Moodle theme will also include web based mobile support on iOS and Android devices.
 
@@ -100,7 +101,7 @@ The working examples demo site for the WET-BOEW-Moodle project is sponsored and 
 
 * The theme has limited support for WET-BOEW widgets. To see the current state of WET-BOEW widget compatibility, download and install the [WET-BOEW-Moodle widgets](https://github.com/michael-milette/wet-boew-moodle-widgets) course in your instance of Moodle configured with a WET-BOEW-Moodle theme.
 * Accessibility is a high priority for the WET-BOEW-Moodle project. However it is not perfect yet.
-* This project does not attempt to correct accessibility issues which may exist in Moodle core code. In order to create a site that is WCAG 2.0 compliant, you will also need to address accessibility issues in Moodle itself.
+* This project does not attempt to correct accessibility issues which may exist in Moodle core code. In order to create a site that is WCAG 2.1 Level AA compliant, you may also need to address accessibility issues in Moodle itself. Please consider reporting Moodle core issues in the [Moodle tracker](https://tracker.moodle.org) - and contribute fixes if you can.
 
 We are looking for volunteers or financial support to do functional testing, language testing, accessibility testing and RTL testing.
 
@@ -115,4 +116,4 @@ https://www.gnu.org/licenses/gpl-3.0.en.html
 
 ## Further information
 
-For further information regarding the WET-BOEW-MOODLE project, please contact @michaelmilette.
+For further information regarding the WET-BOEW-MOODLE project, please contact Michael (dot) Milette (at) tngconsulting.ca.
