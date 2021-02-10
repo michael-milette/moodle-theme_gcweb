@@ -64,6 +64,7 @@ $templatecontext = [
     'showhomelink' => $_PAGE['showhomelink'],
     'showlogininfo' => $_PAGE['showlogininfo'],
     'footnote' => $_PAGE['footnote'],
+    'footertext' => $_PAGE['footertext'],
     'links' => false,
 
     'flatnavigation' => $_PAGE['flatnavigation']

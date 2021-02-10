@@ -188,6 +188,9 @@ $string['footershowhomelink'] = 'Lien d’accueil ';
 // $string['footershowlogininfo_desc'] = '';
 $string['footnote'] = 'Note de bas de page';
 // $string['footnote_desc'] = '';
+$string['footertext'] = 'Pied de page';
+$string['footertextdesc'] = 'Ajoutez du contenu optionnel dans la section pied de page Web.';
+
 //
 // About This Theme tab.
 //

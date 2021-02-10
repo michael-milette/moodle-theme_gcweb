@@ -228,6 +228,9 @@ $string['footershowlogininfo'] = 'Login info link';
 $string['footershowlogininfo_desc'] = 'Show the Login/Logout link in the footer .';
 $string['footnote'] = 'Footnote';
 $string['footnote_desc'] = 'Displayed at the bottom of every page. Example: copyright, privacy policy, terms of use, phone number. Example: &lt;li&gt;&lt;a href="https://example.com/page?id="4"&gt;Terms and Conditions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Copyright 2001.&lt;/li&gt;.';
+$string['footertext'] = 'Page footer';
+$string['footertextdesc'] = 'Add optional content into the footer section of your page.';
+
 //
 // About This Theme tab.
 //

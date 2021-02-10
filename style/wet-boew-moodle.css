@@ -448,6 +448,7 @@ main .form-control {
 }
 
 /* Footer box links */
+.footertext,
 .helplink,
 .homelink,
 .logininfo,
@@ -455,7 +456,9 @@ main .form-control {
 .purgecaches,
 .tool_usertours-resettourcontainer {
     color: white;
-    xfont-size: .875em;
+}
+.footertext {
+    text-align: left;
 }
 #wb-info a {
     font-size: 1em;

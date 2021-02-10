@@ -23,6 +23,12 @@
             <div id="course-footer">{{{ output.course_footer }}}</div>
             <div class="landscape">
                 <nav class="container wb-navcurr">
+                    {{# footertext }}
+                    <div class="footertext">
+                        {{{ footertext }}}
+                        <div style="clear:both"></div>
+                    </div>
+                    {{/ footertext }}
                     {{# showmoodledocs }}
                         {{# output.page_doc_link }}
                             <p class="helplink">{{{ output.page_doc_link }}}</p>

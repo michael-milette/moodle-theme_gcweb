@@ -258,6 +258,8 @@ $_PAGE['showhomelink'] = $theme->footershowhomelink;
 $_PAGE['showlogininfo'] = $theme->footershowlogininfo;
 // Footnote.
 $_PAGE['footnote'] = format_text($theme->footnote, FORMAT_HTML, ['noclean' => true, 'context' => $context]);
+// Footer.
+$_PAGE['footertext'] = format_text($theme->footertext, FORMAT_HTML, ['noclean' => true, 'context' => $context]);
 
 //
 // Site name and page title.
