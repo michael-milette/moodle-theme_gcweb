@@ -101,21 +101,21 @@ $setting = new admin_setting_configcheckbox($name, $title, $description, $defaul
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Footnote (e.g. Privacy, Terms & conditions, phone number, etc).
-$name = $themename . '/footnote';
-$title = get_string('footnote', $themename);
-$description = get_string('footnote_desc', $themename);
-$default = '';
-$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
 // Footer.
 $name = $themename . '/footertext';
 $title = get_string('footertext', $themename);
 $description = get_string('footertextdesc', $themename);
 $default = '';
 $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Footnote (e.g. Privacy, Terms & conditions, phone number, etc).
+$name = $themename . '/footnote';
+$title = get_string('footnote', $themename);
+$description = get_string('footnote_desc', $themename);
+$default = '';
+$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
