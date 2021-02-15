@@ -42,6 +42,14 @@ body {
     background: #243850!important;
 }
 
+/* Makea little more room in the app-bar. */
+ul.app-list-account {
+    margin-left: 0;
+}
+.app-bar-mb a.btn {
+    margin-left:0;
+}
+
 /* Make content wide */
 @media (max-width: 767px) {
     .container {

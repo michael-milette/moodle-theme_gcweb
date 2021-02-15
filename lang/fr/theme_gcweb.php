@@ -225,7 +225,7 @@ $string['accountmenu'] = 'Menu des paramètres du compte';
 $string['register'] = 'Inscription';
 $string['signoninfo'] = 'Information de connexion';
 $string['signedinas'] = 'Connectez en tant que';
-$string['accountsettings'] = 'Menu des paramètres du compte';
+$string['accountsettings'] = 'Paramètres du compte';
 $string['signon'] = 'Ouvrir une session';
 $string['signout'] = 'Fermer la session';
 // Report a problem on the page.
