@@ -49,6 +49,9 @@ ul.app-list-account {
 .app-bar-mb a.btn {
     margin-left:0;
 }
+.app-bar-mb .usermenu .dropdown a:first-child {
+    color: #284142;
+}
 
 /* Make content wide */
 @media (max-width: 767px) {
