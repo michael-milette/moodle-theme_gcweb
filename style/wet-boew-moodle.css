@@ -443,11 +443,6 @@ a {
     width: 100%;
 }
 
-/* Fix field width for custom forms in the content area. */
-main .form-control {
-    width: auto;
-}
-
 /* Fix for Group edit form. */
 #groupeditform .form-control {
     width: 100%;
