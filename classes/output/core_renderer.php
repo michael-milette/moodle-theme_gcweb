@@ -82,17 +82,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         if (count($langs) < 2) {
             return ''; // Do not display language menu if only one language.
         }
-//echo '<pre>';var_dump($langs);die;
         $s = '';
         foreach ($langs as $lang => $language) {
             if ($lang != $currlang) {
-                if (!in_array($lang, ['ab', 'ba', 'hat', 'haw', 'mi', 'ms', 'om', 'tpi'])) {
-                    if ($lang == 'cn_wp') {
-                        $language = substr($language, strpos($language, ' ') + 1);
-                    } else if (strpos($language, ' ')) {
-                        $language = trim(substr($language, 0, strpos($language, ' ')));
-                    }
-                }
                 $url = new moodle_url($this->page->url, ['lang' => $lang ]);
                 $lang = str_replace('_', '-', $lang);
                 $s .= '<li><a lang="' . $lang . '" href="' . $url . '">' . $language . '</a></li>' . PHP_EOL;
