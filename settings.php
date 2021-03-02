@@ -18,7 +18,7 @@
  * Main settings file.
  *
  * @package    theme_gcweb
- * @copyright  2016-2020 TNG Consulting Inc. unless otherwise noted.
+ * @copyright  2016-2021 TNG Consulting Inc. unless otherwise noted.
  * @author     Michael Milette <www.tngconsulting.ca>
  * @license    WET-BOEW-MOODLE: https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  * @license    Moodle: https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.

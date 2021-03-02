@@ -18,7 +18,7 @@
  * Privacy Subsystem implementation for theme_gcweb.
  *
  * @package   theme_gcweb
- * @copyright 2016-2020 TNG Consulting Inc. <www.tngconsulting.ca>
+ * @copyright 2016-2021 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
