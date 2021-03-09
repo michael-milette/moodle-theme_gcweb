@@ -76,18 +76,18 @@
                             {{/showaccountsettings}}
                             {{^loggedin}}
                                 {{#showregister}}
-                                <li class="nav-item"><a class="btn" href="{{{ registerurl }}}">{{# str }} register, theme_gcweb {{/ str }}</a></li>
+                                <li class="nav-item"><a class="btn registrer" href="{{{ registerurl }}}">{{# str }} register, theme_gcweb {{/ str }}</a></li>
                                 {{/showregister}}
                                 {{#signonurl}}
-                                <li class="nav-item"><a class="btn" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_gcweb {{/ str }}</a></li>
+                                <li class="nav-item"><a class="btn signon" href="{{{ signonurl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signon, theme_gcweb {{/ str }}</a></li>
                                 {{/signonurl}}
                             {{/loggedin}}
                             {{#loggedin}}
                                 {{#showaccountsettings}}
-                                <li><a class="btn" href="{{{ accountsettingsurl }}}?id={{userid}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_gcweb {{/ str }}</a></li>
+                                <li><a class="btn account" href="{{{ accountsettingsurl }}}?id={{userid}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{# str }} accountsettings, theme_gcweb {{/ str }}</a></li>
                                 {{/showaccountsettings}}
                                 {{#signouturl}}
-                                <li><a class="btn" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_gcweb {{/ str }}</a></li>
+                                <li><a class="btn signout" href="{{{ signouturl }}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{# str }} signout, theme_gcweb {{/ str }}</a></li>
                                 {{/signouturl}}
                             {{/loggedin}}
                         </ul>
