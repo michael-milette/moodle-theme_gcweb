@@ -467,11 +467,18 @@ a {
 .tool_usertours-resettourcontainer {
     color: white;
 }
-.footertext {
-    text-align: left;
-}
+/* Last modified date */
+/* Moodle footer info */
 #wb-info a {
     font-size: 1em;
+}
+#wb-info {
+    margin-top: 2rem;
+    text-align: center;
+}
+#wb-info .footertext,
+#wb-info .ftr-urlt-lnk {
+    text-align: left;
 }
 .performanceinfo.siteinfo {
     max-width: 1200px;margin-top: 30px;
@@ -490,6 +497,14 @@ a {
 .cache-total-stats {
     display: inline-block;
     margin-bottom: 16px;
+}
+
+/* Adjust footnote font size. */
+#wb-info nav li {
+    font-size: .875em;
+}
+#wb-info nav li a {
+    font-size: inherit;
 }
 
 /* Dropdown usermenu */
@@ -544,21 +559,6 @@ ul {
 
 .pagination-sm .page-link {
     font-size: 1.5rem;
-}
-
-/* Last modified date */
-/* Moodle footer info */
-#wb-info {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-/* Adjust footnote font size. */
-#wb-info nav li {
-    font-size: .875em;
-}
-#wb-info nav li a {
-    font-size: inherit;
 }
 
 /* Fix for forum topics list. */
