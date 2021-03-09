@@ -424,6 +424,10 @@ a {
 .dropdown-menu a.dropdown-item:first-child:visited {
     color: #7834bc;
 }
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #fff!important;
+    background-color: #1177d1;
+}
 
 /* Menu */
 #wb-sm .menu {
