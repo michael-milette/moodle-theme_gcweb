@@ -1582,7 +1582,7 @@ https://intranet.ised-isde.canada.ca/campus/mod/lesson/view.php?id=112
     width:100%
 }
 
-/* Fix role assignment table. */
+/* Fix Users > Permissions > Role assignment table. */
 .path-admin #assignrole {
     width: 100%;
 }
@@ -1594,4 +1594,9 @@ https://intranet.ised-isde.canada.ca/campus/mod/lesson/view.php?id=112
 .path-admin #assignrole .c2,
 .path-admin #assignrole .c3 {
    white-space: nowrap;
+}
+/* Fix Users > Permissions > Manage Roles table. */
+.path-admin .admintable td.c0,
+.path-admin .admintable td.c3 {
+    min-width: 210px;
 }
