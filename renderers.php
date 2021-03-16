@@ -17,10 +17,10 @@
 /**
  * renderers.php
  *
- * @package    theme_gcweb
- * @copyright  2019 onwards TNG Consulting Inc. (https://www.tngconsulting.ca)
- * @author     Michael Milette , tngconsulting.ca
- * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   theme_gcweb
+ * @copyright 2019-2021 TNG Consulting Inc. (https://www.tngconsulting.ca)
+ * @author    Michael Milette , tngconsulting.ca
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
