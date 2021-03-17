@@ -27,10 +27,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2021031600;
+$plugin->version = 2021031700;
 
 // This is the version of Moodle this plugin requires.
-$plugin->requires = 2019111800; // Moodle 3.8.
+$plugin->requires = 2020061500; // Moodle 3.9.
 
 // This is the component name of the plugin - it always starts with 'theme_'
 // for themes and should be the same as the name of the folder.
@@ -38,7 +38,8 @@ $plugin->component = 'theme_gcweb';
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'theme_boost' => 0000000000
+    'theme_boost' => 0000000000,
+    'theme_classic' => 0000000000
 ];
 
 // This is a stable release.
