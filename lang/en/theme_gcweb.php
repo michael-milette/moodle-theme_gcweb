@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+
 /**
  * WET-BOEW GCWeb English language.
  *
@@ -20,8 +21,10 @@
  * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
+
 /*******************************
  * Plugin specific.
  *******************************/
@@ -63,9 +66,11 @@ $string['region-side-pre'] = 'Left';   // Actually top right.
 $string['region-side-post'] = 'Right'; // Actually bottom right.
 $string['region-content-pre'] = 'Top';
 $string['region-content-post'] = 'Bottom';
+
 /********************************************
  * WET-BOEW-Moodle GCWeb Theme Settings.
  ********************************************/
+
 //
 // General Settings tab.
 //
@@ -162,14 +167,17 @@ $string['filtercoursesbytag'] = 'Filter courses by tag';
 $string['filtercoursesbytag_desc'] = 'Filer course listings by this tag. Example, this can be used to only display <em>featured</em> courses. Only applicable to the <strong>front page</strong>';
 $string['filtercoursesbylang'] = 'Filter courses by language';
 $string['filtercoursesbylang_desc'] = 'Courses whose forced language, if set, does not match the current language will be filtered out from course listings and search results.';
+
 //
 // Advanced Settings tab (none yet. Uses strings from Boost theme).
 //
+
 //
 // User Profile Fields tab (the rest are all built into Moodle).
 //
 $string['showprofile_heading'] = 'Select the sections and fields to be displayed when user\'s edit their profile.';
 $string['showprofilesection_desc'] = 'Show the whole section.';
+
 //
 // Header tab.
 //
@@ -192,6 +200,7 @@ $string['showhomebreadcrumbs'] = 'Breadcrumbs on Front Page';
 $string['showhomebreadcrumbs_desc'] = 'Enable breadcrumbs on the Front Page.';
 $string['prebreadcrumbs'] = 'Pre-breadcrumbs';
 $string['prebreadcrumbs_desc'] = 'Add optional breadcrumbs before the site breadcrumbs. Useful if this is a sub-section of a website.<br>Example: &lt;li&gt;&lt;a href="https://example.com/"&gt;Example&lt;/a&gt;&lt;/li&gt;';
+
 //
 // Alerts tab.
 //
@@ -210,6 +219,12 @@ $string['alerttitle'] = 'Title';
 $string['alerttitledesc'] = 'Title for the alert.';
 $string['alerttext'] = 'Text';
 $string['alerttextdesc'] = 'Text to be displayed in your alert.';
+
+$string['alertiedetectenable'] = 'Enable IE detection alert';
+$string['alertiedetectenabledesc'] = 'Enable this alert to warn users to upgrade to a modern web browser.';
+$string['iedetect_heading'] = 'Web browser upgrade recommended';
+$string['iedetect_message'] = 'You are using an outdated web browser. To ensure all features offered by this website are available, we recommend that you use a recent version of <a href="https://www.microsoft.com/en-us/edge">Edge</a>, <a href="https://www.google.com/chrome/">Chrome</a>, <a href="https://www.mozilla.org/en-CA/firefox/new/">Firefox</a> or Safari.';
+
 //
 // Footer tab.
 //
@@ -235,6 +250,7 @@ $string['footertextdesc'] = 'Add optional content into the footer section of you
 // About This Theme tab.
 //
 $string['abouttheme'] = 'About this theme';
+
 /**************************************
  * Visible to everyone.
  **************************************/

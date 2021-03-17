@@ -204,6 +204,30 @@ $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
 //
 $_PAGE['alerts']  = '';
 
+$iedetectsrc = '<div class="unsupported-browser"></div>
+<script type="text/javascript">
+    // <![CDATA[
+    // Detect IE 10 and IE 11
+    function isIE() {
+        return /Trident\/|MSIE/.test(window.navigator.userAgent);
+    }
+    let showBrowserAlert = (function() {
+        if (document.querySelector(\'.unsupported-browser\')) {
+            let d = document.getElementsByClassName(\'unsupported-browser\');
+            is_IE = isIE();
+            if (is_IE) {
+                d[0].innerHTML = \'<section class="alert alert-' . $theme->alertiedetecttype . '">\
+<h2>' . addslashes(get_string('iedetect_heading', 'theme_gcweb')) . '</h2>\
+<p>' . addslashes(get_string('iedetect_message', 'theme_gcweb')) . '</p>\
+</section>\';
+            }
+        }
+    });
+    document.addEventListener(\'DOMContentLoaded\', showBrowserAlert);
+    // ]]>
+</script>
+';
+
 for ($cnt = 1; $cnt <= 4; $cnt++) {
     // Note: Dismissable alerts not yet supported.
     // Fetch alerts -- but only if they are not suppressed by user cookie.
@@ -220,6 +244,11 @@ for ($cnt = 1; $cnt <= 4; $cnt++) {
     $_PAGE['alerts'] .= '<p>' . $theme->{"alert{$cnt}text"} . '</p>';
     $_PAGE['alerts'] .= '</section>';
 }
+// IE Detection alert.
+if (!empty($theme->alertiedetectenable)) {
+    $_PAGE['alerts'] .= $iedetectsrc;
+}
+
 if (!empty($_PAGE['alerts'])) {
     $_PAGE['alerts'] = format_text($_PAGE['alerts'], FORMAT_HTML, ['noclean' => true, 'context' => $context]);
     $_PAGE['alerts'] = '<div class="gcwebalerts">' . $_PAGE['alerts'] . '</div>';

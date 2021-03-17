@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+
 /**
  * WET-BOEW GCWeb French language.
  *
@@ -20,8 +21,10 @@
  * @copyright 2016-2021 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
+
 /*******************************
  * Plugin specific.
  *******************************/
@@ -63,10 +66,12 @@ $string['region-side-pre'] = 'Gauche'; // Actually top right.
 $string['region-side-post'] = 'Droit'; // Actually bottom right.
 $string['region-content-pre'] = 'Haut';
 $string['region-content-post'] = 'Bas';
+
 /********************************************
  * WET-BOEW-Moodle GCWeb Theme Settings.
  ********************************************/
-//
+
+ //
 // General Settings tab.
 //
 $string['hidelocallogin'] = 'Masquer la connexion locale';
@@ -118,6 +123,7 @@ $string['cardfooteropt1'] = 'Bouton d\'inscription';
 $string['cardfooteropt2'] = 'Champs de cours personnalisés';
 $string['cardfooteropt3'] = 'Contacts';
 $string['cardfooteropt4'] = 'Barre de progression';
+$string['cardfooteropt5'] = 'Barre de progression/Bouton';
 $string['cardaspect'] = 'Rapport hauteur/largeur';
 // $string['cardaspect_desc'] = '';
 $string['cardimage'] = 'Image de cours';
@@ -136,18 +142,42 @@ $string['cardprogress'] = 'Barre de progression';
 // $string['cardprogress_desc'] = '';
 $string['cardbutton'] = 'Bouton';
 // $string['cardbutton_desc'] = '';
+// $string['cardbuttonnone'] = '';
+// $string['cardbuttonlink'] = '';
+// $string['cardbuttonprimary'] = '';
+// $string['cardbuttonprimaryoutline'] = '';
+// $string['cardbuttondefault'] = '';
+// $string['cardbuttondefaultoutline'] = '';
+// $string['cardbuttonsecondary'] = '';
+// $string['cardbuttonsecondaryoutline'] = '';
+// $string['cardbuttonlight'] = '';
+// $string['cardbuttonlightoutline'] = '';
+// $string['cardbuttoninfo'] = '';
+// $string['cardbuttoninfooutline'] = '';
+// $string['cardbuttonsuccess'] = '';
+// $string['cardbuttonsuccessoutline'] = '';
+// $string['cardbuttonwarning'] = '';
+// $string['cardbuttonwarningoutline'] = '';
+// $string['cardbuttondanger'] = '';
+// $string['cardbuttondangeroutline'] = '';
+// $string['cardbuttondark'] = '';
+// $string['cardbuttondarkoutline'] = '';
+
 $string['filtercoursesbytag'] = 'Filtrer les cours par étiquette';
 $string['filtercoursesbytag_desc'] = '';
 $string['filtercoursesbylang'] = 'Filtrer les cours par langue imposée';
 $string['filtercoursesbylang_desc'] = 'Les cours dont la langue est imposée, si définie, ne correspondent pas à la langue actuelle seront supprimés des listes de cours et des résultats de recherche.';
+
 //
 // Advanced Settings tab (none yet. Uses strings from Boost theme).
 //
+
 //
 // User Profile Fields tab (the rest are all built into Moodle).
 //
 // $string['showprofile_heading'] = '';
 // $string['showprofilesection_desc'] = '';
+
 //
 // Header tab.
 //
@@ -170,6 +200,31 @@ $string['showhomebreadcrumbs'] = 'Fil d\'ariane sur la page principale';
 // $string['showhomebreadcrumbs_desc'] = '';
 $string['prebreadcrumbs'] = 'Débût du fil d\'ariane';
 // $string['prebreadcrumbs_desc'] = '';
+
+//
+// Alerts tab.
+//
+// $string['alertsettings'] = '';
+// $string['alertsheadingsub'] = '';
+// $string['alertsdesc'] = '';
+// $string['alertenable'] = '';
+// $string['alertenabledesc'] = '';
+// $string['alerttype'] = '';
+// $string['alerttypedesc'] = '';
+// $string['alertsuccess'] = '';
+// $string['alertinfo'] = '';
+// $string['alertwarning'] = '';
+// $string['alertdanger'] = '';
+// $string['alerttitle'] = '';
+// $string['alerttitledesc'] = '';
+// $string['alerttext'] = '';
+// $string['alerttextdesc'] = '';
+
+// $string['alertiedetectenable'] = '';
+// $string['alertiedetectenabledesc'] = '';
+$string['iedetect_heading'] = 'Mise à niveau de navigateur Web recommandée';
+$string['iedetect_message'] = 'Vous utilisez un navigateur Web obsolète. Pour garantir la disponibilité de toutes les fonctionnalités de ce site Web, nous vous recommandons d\'utiliser une version récente d\'<a href="https://www.microsoft.com/fr-fr/edge">Edge</a>, <a href="https://www.google.com/intl/fr_ca/chrome/">Chrome</a>, <a href="https://www.mozilla.org/fr/firefox/new/">Firefox</a> ou Safari.';
+
 //
 // Footer tab.
 //
@@ -195,6 +250,7 @@ $string['footertextdesc'] = 'Ajoutez du contenu optionnel dans la section pied d
 // About This Theme tab.
 //
 $string['abouttheme'] = 'À propos du theme ';
+
 /**************************************
  * Visible to everyone.
  **************************************/

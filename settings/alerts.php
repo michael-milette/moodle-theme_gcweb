@@ -34,11 +34,19 @@ $alerts['success'] = get_string('alertsuccess', $themename);
 $alerts['danger'] = get_string('alertdanger', $themename);
 $alerttypes = array_keys($alerts);
 
+$iedetecttitle = '{mlang en}' . get_string_manager()->get_string('iedetect_heading', 'theme_gcweb', null, 'en') . '{/mlang}'
+        . '{mlang fr}' . get_string_manager()->get_string('iedetect_heading', 'theme_gcweb', null, 'fr') . '{/mlang}';
+$iedetectmessage = '<p>{mlang en}' . get_string_manager()->get_string('iedetect_message', 'theme_gcweb', null, 'en') . '{/mlang}'
+        . '{mlang fr}' . get_string_manager()->get_string('iedetect_message', 'theme_gcweb', null, 'fr') . '{/mlang}</p>';
+
 // If first time, initialize this tab's settings with defaults.
 if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('resettheme', 0, PARAM_INT) == 1)) {
     for ($cnt = 1; $cnt <= 4; $cnt++) {
         set_config('alert' . $cnt . 'type', $alerttypes[$cnt - 1], $themename);
     }
+    // IE Detection Alert.
+    set_config('alertiedetectenable', true, $themename);
+    set_config('alertiedetecttype', $alerttypes[1], $themename);
 }
 
 // User alerts.
@@ -87,5 +95,25 @@ for ($cnt = 1; $cnt <= 4; $cnt++) {
     $page->add($setting);
 }
 
-// Add the page after definiting all the settings!
+// Enable IE detection alert.
+$name = 'theme_gcweb/alertiedetectenable';
+$title = get_string('alertiedetectenable', $themename);
+$description = get_string('alertiedetectenabledesc', $themename);
+$default = true;
+$setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Enable IE detection alert type.
+$name = 'theme_gcweb/alertiedetecttype';
+$title = get_string('alerttype', $themename);
+$description = get_string('alerttypedesc', $themename);
+$default = $alerttypes[1];
+$setting = new admin_setting_configselect($name, $title, $description, $default, $alerts);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// The heading and text for IE detection alert is in the language pack.
+
+// Add the page after defining all the settings!
 $settings->add($page);
