@@ -511,7 +511,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // Don't apply auto-linking filters.
         $filtermanager = filter_manager::instance();
         $filteroptions = array('originalformat' => FORMAT_HTML, 'noclean' => true);
-        $skipfilters = array('activitynames', 'data', 'glossary', 'sectionnames', 'bookchapters');
+        $skipfilters = array('activitynames', 'data', 'glossary', 'sectionnames', 'bookchapters', 'urltolink');
 
         // Filter Custom Menu.
         $custommenuitems = $filtermanager->filter_text($custommenuitems,
