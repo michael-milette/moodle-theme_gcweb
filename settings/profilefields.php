@@ -32,33 +32,36 @@ $page = new admin_settingpage($themename . '_profilefields', get_string('profile
 $profilefieldsections = ['pictureofuser', 'additionalnames', 'interests', 'optional'];
 
 // List of user profile fields that we can show or hide.
-$profilefields = [
-        'emaildisplay',
-        'city',
-        'country',
-        'timezone',
-        'description',
-        // User Picture section.
-        'pictureofuser',
-        // Additional Names section.
-        'additionalnames',
-        // Interests section.
-        'interests',
-        // Optional section.
-        'optional',
-        'webpage',
-        'icqnumber',
-        'skypeid',
-        'aimid',
-        'yahooid',
-        'msnid',
-        'idnumber',
-        'institution',
-        'department',
-        'phone1',
-        'phone2',
-        'address',
-    ];
+$profilefields[] = 'emaildisplay';
+if ($CFG->branch >= 311) {
+    $profilefields[] = 'moodlenetprofile';
+}
+$profilefields[] = 'city';
+$profilefields[] = 'country';
+$profilefields[] = 'timezone';
+$profilefields[] = 'description';
+// User Picture section.
+$profilefields[] = 'pictureofuser';
+// Additional Names section.
+$profilefields[] = 'additionalnames';
+// Interests section.
+$profilefields[] = 'interests';
+// Optional section.
+$profilefields[] = 'optional';
+if ($CFG->branch < 311) {
+    $profilefields[] = 'webpage';
+    $profilefields[] = 'icqnumber';
+    $profilefields[] = 'skypeid';
+    $profilefields[] = 'aimid';
+    $profilefields[] = 'yahooid';
+    $profilefields[] = 'msnid';
+}
+$profilefields[] = 'idnumber';
+$profilefields[] = 'institution';
+$profilefields[] = 'department';
+$profilefields[] = 'phone1';
+$profilefields[] = 'phone2';
+$profilefields[] = 'address';
 
 // If first time, initialize this tab's settings with defaults.
 // Default for all User Profile fields and sections is to show.
@@ -101,7 +104,7 @@ foreach ($profilefields as $field) {
         $description = '';
     }
     $name = $themename . '/showprofile' . $field;
-    $title = get_string($field);
+    $title = get_string($field, ($field != 'moodlenetprofile' ? 'moodle' : 'user'));
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);

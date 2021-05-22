@@ -68,75 +68,83 @@ function theme_gcweb_get_extra_scss($theme) {
 
     // Section: General.
     if (empty($theme->settings->showprofileemaildisplay)) {
-        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(10),'; // Email display.
+        $customcss .= '#fitem_id_maildisplay,'; // Email display.
+    }
+    if ($CFG->branch >= 311 && empty($theme->settings->showmoodlenetprofile)) {
+        $customcss .= '#fitem_id_moodlenetprofile,'; // MoodleNet Profile.
     }
     if (empty($theme->settings->showprofilecity)) {
-        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(11),'; // City.
+        $customcss .= '#fitem_id_city,'; // City.
     }
     if (empty($theme->settings->showprofilecountry)) {
-        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(12),'; // Country.
+        $customcss .= '#fitem_id_country,'; // Country.
     }
     if (empty($theme->settings->showprofiletimezone)) {
-        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(13),'; // Timezone.
+        $customcss .= '#fitem_id_timezone,'; // Timezone.
     }
     if (empty($theme->settings->showprofiledescription)) {
-        $customcss .= 'fieldset#id_moodle .fcontainer .form-group:nth-child(14),'; // Description.
+        $customcss .= '#fitem_id_description_editor,'; // Description.
     }
 
     // Section: User Picture.
     if (empty($theme->settings->showprofilepictureofuser)) {
-        $customcss .= 'fieldset#id_moodle_picture,';
+        $customcss .= 'id_moodle_picture,';
     }
 
     // Section: Additional Names.
     if (empty($theme->settings->showprofileadditionalnames)) {
-        $customcss .= 'fieldset#id_moodle_additional_names,';
+        $customcss .= 'id_moodle_additional_names,';
     }
 
     // Section: Interests.
     if (empty($theme->settings->showprofileinterests)) {
-        $customcss .= 'fieldset#id_moodle_interests,';
+        $customcss .= 'id_moodle_interests,';
     }
 
     // Section: Optional.
     if (empty($theme->settings->showprofileoptional)) {
-        $customcss .= 'fieldset#id_moodle_optional,';
+        $customcss .= 'id_moodle_optional,';
     }
-    if (empty($theme->settings->showprofilewebpage)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(1),'; // Web Page.
-    }
-    if (empty($theme->settings->showprofileicqnumber)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(2),'; // ICQ.
-    }
-    if (empty($theme->settings->showprofileskypeid)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(3),'; // Skype.
-    }
-    if (empty($theme->settings->showprofileaimid)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(4),'; // AIM.
-    }
-    if (empty($theme->settings->showprofileyahooid)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(5),'; // Yahoo.
-    }
-    if (empty($theme->settings->showprofilemsnid)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(6),'; // MSN.
+    if ($CFG->branch < 311) {
+        if (empty($theme->settings->showprofilewebpage)) {
+            $customcss .= '#fitem_id_url,'; // Web Page.
+        }
+        if (empty($theme->settings->showprofileicqnumber)) {
+            $customcss .= '#fitem_id_icq,'; // ICQ.
+        }
+        if (empty($theme->settings->showprofileskypeid)) {
+            $customcss .= '#fitem_id_skype,'; // Skype.
+        }
+        if (empty($theme->settings->showprofileaimid)) {
+            $customcss .= '#fitem_id_aim,'; // AIM.
+        }
+        if (empty($theme->settings->showprofileyahooid)) {
+            $customcss .= '#fitem_id_yahoo,'; // Yahoo.
+        }
+        if (empty($theme->settings->showprofilemsnid)) {
+            $customcss .= '#fitem_id_msn,'; // MSN.
+        }
+        $cnt = 6;
+    } else {
+        $cnt = 1;
     }
     if (empty($theme->settings->showprofileidnumber)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(7),'; // ID number.
+        $customcss .= '#fitem_id_idnumber,'; // ID number.
     }
     if (empty($theme->settings->showprofileinstitution)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(8),'; // Institution.
+        $customcss .= '#fitem_id_institution,'; // Institution.
     }
     if (empty($theme->settings->showprofiledepartment)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(9),'; // Department.
+        $customcss .= '#fitem_id_department,'; // Department.
     }
     if (empty($theme->settings->showprofilephone1)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(10),'; // Phone.
+        $customcss .= '#fitem_id_phone1,'; // Phone.
     }
     if (empty($theme->settings->showprofilephone2)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(11),'; // Mobile phone.
+        $customcss .= '#fitem_id_phone2,'; // Mobile phone.
     }
     if (empty($theme->settings->showprofileaddress)) {
-        $customcss .= 'fieldset#id_moodle_optional .fcontainer .form-group:nth-child(12),'; // Address.
+        $customcss .= '#fitem_id_address,'; // Address.
     }
 
     // Hide links to Moodle page activities unless in edit mode on the front page.
