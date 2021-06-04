@@ -558,6 +558,11 @@ ul {
     font-size: 1.1rem
 }
 
+/* Fix for Moodle using "hidden" to hide fieldset borders instead of whole element. */
+fieldset.hidden {
+    display: inherit!important;
+}
+
 /* User profile heading */
 .lead, .userprofile .profile_tree section h3 {
     font-size: inherit;
