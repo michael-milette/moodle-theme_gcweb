@@ -432,7 +432,7 @@ a {
 .dropdown-menu a.dropdown-item:first-child:visited {
     color: #7834bc;
 }
-.dropdown-item:hover, .dropdown-item:focus {
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
     color: #fff!important;
     background-color: #1177d1;
 }
@@ -506,7 +506,6 @@ a {
     display: inline-block;
     margin-bottom: 16px;
 }
-
 /* Adjust footnote font size. */
 #wb-info nav li {
     font-size: .875em;
