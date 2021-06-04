@@ -1301,6 +1301,11 @@ img.activityicon {
 .feedback_itemlist .form-check-input {
     margin-left: 15px;
 }
+/* Move the Edit link to the right of fields when editing Feedback activity forms. */
+body.path-mod-feedback div.feedback_itemlist .moodle-actionmenu,
+body.path-mod-feedback div.feedback-item-label span.d-inline-block {
+    float: right;
+}
 
 /* Fix line height. */
 .line-height-3 {
