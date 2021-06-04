@@ -466,15 +466,31 @@ a {
 }
 
 /* Footer box links */
-.footertext,
-.helplink,
-.homelink,
-.logininfo,
-.tool_dataprivacy,
-.purgecaches,
-.tool_usertours-resettourcontainer {
+#wb-info .footertext,
+#wb-info .helplink,
+#wb-info .homelink,
+#wb-info .logininfo,
+#wb-info .tool_dataprivacy,
+#wb-info .purgecaches,
+#wb-info .tool_usertours-resettourcontainer {
     color: white;
 }
+
+/* Footer links that have focus. */
+#wb-info .footertext a:focus,
+#wb-info .footertext a:focus,
+#wb-info .helplink a:focus,
+#wb-info .homelink a:focus,
+#wb-info .logininfo a:focus,
+#wb-info .tool_dataprivacy a:focus,
+#wb-info .purgecaches a:focus,
+#wb-info .tool_usertours-resettourcontainer a:focus {
+    background-color: transparent;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgb(15 111 197 / 75%);
+    box-shadow: 0 0 0 0.2rem rgb(15 111 197 / 75%);
+}
+
 /* Last modified date */
 /* Moodle footer info */
 #wb-info a {
@@ -506,6 +522,7 @@ a {
     display: inline-block;
     margin-bottom: 16px;
 }
+
 /* Adjust footnote font size. */
 #wb-info nav li {
     font-size: .875em;
