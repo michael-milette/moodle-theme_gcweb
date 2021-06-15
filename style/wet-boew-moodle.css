@@ -579,6 +579,9 @@ ul {
 fieldset.hidden {
     display: inherit!important;
 }
+fieldset {
+    min-width: min-content;
+}
 
 /* User profile heading */
 .lead, .userprofile .profile_tree section h3 {
@@ -1609,14 +1612,12 @@ body.path-mod-feedback div.feedback-item-label span.d-inline-block {
 /* ******************** */
 /* Kludge/Hack section. */
 /* ******************** */
-/* Kludge fix for question in lesson on:
-https://intranet.ised-isde.canada.ca/campus/mod/lesson/view.php?id=112
-*/
+/* Kludge fix for question in lesson. */
 #page-mod-lesson-view .mform .contents .no-overflow {
     width:100%
 }
 
-/* Fix Users > Permissions > Role assignment table. */
+/* Fix Site Admin > Users > Permissions > Role assignment table. */
 .path-admin #assignrole {
     width: 100%;
 }
@@ -1629,7 +1630,7 @@ https://intranet.ised-isde.canada.ca/campus/mod/lesson/view.php?id=112
 .path-admin #assignrole .c3 {
    white-space: nowrap;
 }
-/* Fix Users > Permissions > Manage Roles table. */
+/* Fix Site Admin > Users > Permissions > Manage Roles table. */
 .path-admin .admintable td.c0,
 .path-admin .admintable td.c3 {
     min-width: 210px;
