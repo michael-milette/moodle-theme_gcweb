@@ -34,8 +34,6 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('showhometitle', 1, $themename); // Yes.
     set_config('hometitle', '', $themename); // Home.
     set_config('titlesitename', 0, $themename); // No.
-    set_config('shownavdrawer', 1, $themename); // Yes.
-    set_config('navdraweropen', 'true', $themename); // Open.
     set_config('hidefrontpagelinkstopages', 0, $themename); // No.
     set_config('hideconditionallyhidden', 0, $themename); // No.
     set_config('wraprecentlyaccessedcourses', 0, $themename); // No.
@@ -101,25 +99,6 @@ $title = get_string('titlesitename', $themename);
 $description = get_string('titlesitename_desc', $themename);
 $default = 0;
 $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Show Nav Drawer to Students.
-$name = $themename . '/shownavdrawer';
-$title = get_string('shownavdrawer', $themename);
-$description = get_string('shownavdrawer_desc', $themename);
-$default = 1;
-$setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Nav Drawer should be open by default?
-$name = $themename . '/navdraweropen';
-$title = get_string('navdraweropen', $themename);
-$description = get_string('navdraweropen_desc', $themename);
-$default = 'true';
-$choices = array('true' => get_string('resourcedisplayopen'), '' => get_string('closebuttontitle'));
-$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

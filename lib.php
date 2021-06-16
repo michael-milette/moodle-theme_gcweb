@@ -168,6 +168,36 @@ function theme_gcweb_get_extra_scss($theme) {
         $customcss .= '.sitelink,';
     }
 
+    // Nav Drawer - remove some navigation in course.
+    // If you need more control, try the Boost Navigation Fumbling plugin:
+    // https://moodle.org/plugins/local_boostnavigation.
+    if (empty($theme->settings->coursenavdrawermyhome)) {
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="myhome"],'; // Dashboard.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="myhome"],'; // Dashboard.
+    }
+    if (empty($theme->settings->coursenavdrawersitehome)) {
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="home"],'; // Home.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="home"],'; // Home.
+    }
+    if (empty($theme->settings->coursenavdrawercalendar)) {
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="calendar"],'; // Calendar.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="calendar"],'; // Calendar.
+    }
+    if (empty($theme->settings->coursenavdrawerprivatefiles)) {
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="privatefiles"],'; // Private files.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="privatefiles"],'; // Private files.
+    }
+    if (empty($theme->settings->coursenavdrawercontentbank)) {
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="contentbank"],'; // Content Bank.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="contentbank"],'; // Content Bank.
+    }
+    if (empty($theme->settings->coursenavdrawermycourses)) {
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="mycourses"],'; // My Courses.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="mycourses"],'; // My Courses.
+        $customcss .= '.pagelayout-course #nav-drawer [data-parent-key="mycourses"],'; // and the courses.
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-parent-key="mycourses"],'; // and the courses.
+    }
+
     // If there is something to hide, hide it.
     if (!empty($customcss)) {
         $customcss .= ' displaynone {display: none;}';

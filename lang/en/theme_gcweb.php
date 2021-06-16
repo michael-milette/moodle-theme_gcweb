@@ -90,10 +90,6 @@ $string['hideconditionallyhidden'] = 'Hide hidden activities on Front Page';
 $string['hideconditionallyhidden_desc'] = 'Conditionally hidden Front Page activities will be completely hidden unless editing and this option are turned on.   ';
 $string['titlesitename'] = 'Add site name to title';
 $string['titlesitename_desc'] = 'Add site name to title tag on each page.';
-$string['shownavdrawer'] = 'Show nav drawer to students';
-$string['shownavdrawer_desc'] = 'Show or hide the Moodle navigation drawer button and drawer to students. Non-editing teacher roles and above will always see it.';
-$string['navdraweropen'] = 'Nav Drawer Default';
-$string['navdraweropen_desc'] = 'Nav Drawer should be open or close by default on each page when logged in. User preference overrides this.';
 $string['courselistsettings'] = 'Course lists';
 $string['courselistsettings_desc'] = 'When viewing course listings on the Front Page, All Courses, Categories and search results, you can choose what information to include, the layout of how it is going to look, and filter courses based on language and tags.';
 // Note: If you modify the list of layouts, you must change the language file, settings/general.php,
@@ -245,6 +241,21 @@ $string['footnote'] = 'Footnote';
 $string['footnote_desc'] = 'Displayed at the bottom of every page. Example: copyright, privacy policy, terms of use, phone number. Example: &lt;li&gt;&lt;a href="https://example.com/page?id="4"&gt;Terms and Conditions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Copyright 2001.&lt;/li&gt;.';
 $string['footertext'] = 'Page footer';
 $string['footertextdesc'] = 'Add optional content into the footer section of your page.';
+
+//
+// Nav Drawer tab.
+//
+$string['navdrawersettings'] = 'Nav Drawer';
+$string['shownavdrawer'] = 'Show nav drawer to students';
+$string['shownavdrawer_desc'] = 'Show or hide the Moodle navigation drawer button and drawer to students. Non-editing teacher roles and above will always see it.';
+$string['navdraweropen'] = 'Nav Drawer Default';
+$string['navdraweropen_desc'] = 'Nav Drawer should be open or close by default on each page when logged in. User preference overrides this.';
+$string['coursenavdrawersitehome_desc'] = 'Show the Home link In the Nav Drawer within a course. Uncheck to hide.';
+$string['coursenavdrawermyhome_desc'] = 'Show the Dashboard link In the Nav Drawer within a course. Uncheck to hide.';
+$string['coursenavdrawercalendar_desc'] = 'Show the Calendar link In the Nav Drawer within a course. Uncheck to hide.';
+$string['coursenavdrawerprivatefiles_desc'] = 'Show the Private Files link In the Nav Drawer within a course. Uncheck to hide.';
+$string['coursenavdrawercontentbank_desc'] = 'Show the Content Bank link In the Nav Drawer within a course. Uncheck to hide.';
+$string['coursenavdrawermycourses_desc'] = 'Show the My Courses link and all courses in which the student is enrolled within a course. Uncheck to hide.';
 
 //
 // About This Theme tab.

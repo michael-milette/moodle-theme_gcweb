@@ -1293,12 +1293,6 @@ img.activityicon {
     background-color: transparent;
 }
 
-/* Nav Drawer - remove navigation in course */
-.pagelayout-course #nav-drawer .list-group:nth-child(2),
-.pagelayout-incourse #nav-drawer .list-group:nth-child(2) {
-    display: none;
-}
-
 /* Course enrolment page. */
 #page-enrol-index .coursebox {
     max-width: 960px;
