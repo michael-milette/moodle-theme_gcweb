@@ -874,6 +874,11 @@ a[rel~="external"]:after {
     position: static;
 }
 
+/* Fix tabs in Activity Chooser tabs. */
+.chooser-container .nav.nav-tabs {
+    display: inherit;
+}
+
 /* For for WET media objects that should be pulled to the right. */
 .media {
     display: list-item;
