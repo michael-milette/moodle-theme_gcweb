@@ -68,8 +68,8 @@
         {{#js}}
         require(['theme_boost/loader']);
         {{#shownavdrawer}}
-        require(['theme_boost/drawer'], function(mod) {
-            mod.init();
+        require(['theme_boost/drawer'], function(drawer) {
+            drawer.init();
         });
         {{/shownavdrawer}}
         {{/js}}

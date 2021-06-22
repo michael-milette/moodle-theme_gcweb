@@ -179,23 +179,23 @@ function theme_gcweb_get_extra_scss($theme) {
         $customcss .= '.pagelayout-course #nav-drawer [data-key="home"],'; // Home.
         $customcss .= '.pagelayout-incourse #nav-drawer [data-key="home"],'; // Home.
     }
-    if (empty($theme->settings->coursenavdrawercalendar)) {
-        $customcss .= '.pagelayout-course #nav-drawer [data-key="calendar"],'; // Calendar.
-        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="calendar"],'; // Calendar.
+    if (empty($theme->settings->coursenavdrawercalendar)) { // Calendar.
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="calendar"],';
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="calendar"],';
     }
-    if (empty($theme->settings->coursenavdrawerprivatefiles)) {
-        $customcss .= '.pagelayout-course #nav-drawer [data-key="privatefiles"],'; // Private files.
-        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="privatefiles"],'; // Private files.
+    if (empty($theme->settings->coursenavdrawerprivatefiles)) { // Private files.
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="privatefiles"],';
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="privatefiles"],';
     }
-    if (empty($theme->settings->coursenavdrawercontentbank)) {
-        $customcss .= '.pagelayout-course #nav-drawer [data-key="contentbank"],'; // Content Bank.
-        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="contentbank"],'; // Content Bank.
+    if (empty($theme->settings->coursenavdrawercontentbank)) { // Content Bank.
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="contentbank"],';
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="contentbank"],';
     }
-    if (empty($theme->settings->coursenavdrawermycourses)) {
-        $customcss .= '.pagelayout-course #nav-drawer [data-key="mycourses"],'; // My Courses.
-        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="mycourses"],'; // My Courses.
-        $customcss .= '.pagelayout-course #nav-drawer [data-parent-key="mycourses"],'; // and the courses.
-        $customcss .= '.pagelayout-incourse #nav-drawer [data-parent-key="mycourses"],'; // and the courses.
+    if (empty($theme->settings->coursenavdrawermycourses)) { // My Courses and the courses.
+        $customcss .= '.pagelayout-course #nav-drawer [data-key="mycourses"],';
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-key="mycourses"],';
+        $customcss .= '.pagelayout-course #nav-drawer [data-parent-key="mycourses"],';
+        $customcss .= '.pagelayout-incourse #nav-drawer [data-parent-key="mycourses"],';
     }
 
     // If there is something to hide, hide it.
