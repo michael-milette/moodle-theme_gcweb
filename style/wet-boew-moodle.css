@@ -1631,3 +1631,9 @@ body.path-mod-feedback div.feedback-item-label span.d-inline-block {
 .path-admin .admintable td.c3 {
     min-width: 210px;
 }
+
+/* Fix for Completion Progress block. */
+.block_completion_progress .progressBarCell {
+    height: 2.7rem;
+    font-size: 1.4rem
+}
