@@ -139,12 +139,21 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return Returns an alternate page title depending on the page.
      */
     public function pagetitle() {
+        global $DB;
         $title = '';
         if ($this->page->pagetype == 'site-index') { // Front page.
             if (empty($hometitle = get_config('theme_gcweb', 'hometitle'))) {
                 $title = get_string('home');
             } else {
                 $title = $hometitle;
+            }
+        } else if ($this->page->pagelayout == 'coursecategory') {
+            $id = optional_param('categoryid', 0, PARAM_INT);
+            if ($id) { // Category specific.
+                $title = $DB->get_field('course_categories', 'name', array('id' => $id), MUST_EXIST);
+                $title = get_string('coursecategory') . ' : ' . format_string($title, false);
+            } else { // All courses / Categories.
+                $title = get_string('fulllistofcourses');
             }
         } else { // All other pages.
             $title = $this->page->title;
@@ -267,7 +276,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $title = format_string($course->fullname, false, ['context' => $coursecontext]);
                 break;
             case 'coursecategory':
-                $id = optional_param('categoryid', 0, PARAM_INT);;
+                $id = optional_param('categoryid', 0, PARAM_INT);
                 if ($id) { // Category specific.
                     $title = $DB->get_field('course_categories', 'name', array('id' => $id), MUST_EXIST);
                     $title = format_string($title, false);
