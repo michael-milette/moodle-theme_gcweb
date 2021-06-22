@@ -422,18 +422,13 @@ a {
     vertical-align: baseline;
     border: none;
 }
-.usermenu .dropdown a:first-child {
+.dropdown-item:hover, .dropdown-item:focus {
+    color:white!important;
+}
+.usermenu .action-menu-trigger .dropdown a.dropdown-toggle {
     color:white;
-    font-size: 16px;
-}
-.dropdown-menu a.dropdown-item:first-child {
-    color: unset;
-}
-.dropdown-menu a.dropdown-item:first-child:visited {
-    color: #7834bc;
 }
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-    color: #fff!important;
     background-color: #1177d1;
 }
 
