@@ -31,6 +31,7 @@ body {
     display: inline-block!important;
 }
 
+
 /* Fix mobile search field */
 #app-srch-mb.modal-content {
     display: none;
@@ -686,6 +687,7 @@ li.section.hidden, .block.hidden, .block.invisible {
 .dashboard-card .card-footer .progress {
     margin-bottom: 0;
 }
+
 
 /* Adjust size of close button. */
 .close, .moodle-dialogue-base .closebutton {
