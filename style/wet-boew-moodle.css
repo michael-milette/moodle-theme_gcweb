@@ -1637,3 +1637,66 @@ body.path-mod-feedback div.feedback-item-label span.d-inline-block {
     height: 2.7rem;
     font-size: 1.4rem
 }
+
+.footer-column {
+    color: #fff;
+}
+
+.footertext ul.list-unstyled {
+    margin-left: 0;
+}
+
+.fp-categorycards li.card {
+    min-width: 322px;
+    max-width: 322px;
+}
+
+.fp-categorycards li .card-img {
+    height: 161px;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.fp-categorycards li .card-img-overlay {
+    height: fit-content;
+    top: auto;
+    background-color: rgba(0,0,0,.4);
+    color: #fff;
+    text-shadow: -1px -1px 0 #767676,1px -1px 0 #767676,-1px 1px 0 #767676,1px 1px 0 #767676;
+}
+
+id_moodle_additional_names, 
+id_moodle_interests, 
+id_moodle_optional, 
+#fitem_id_url, 
+#fitem_id_icq, 
+#fitem_id_skype, 
+#fitem_id_aim, 
+#fitem_id_yahoo, 
+#fitem_id_msn, 
+#fitem_id_idnumber, 
+#fitem_id_institution, 
+#fitem_id_department, 
+#fitem_id_phone1, 
+#fitem_id_phone2, 
+#fitem_id_address, 
+#page-site-index:not(.editing) #page-content .modtype_page, 
+#page-site-index:not(.editing) .section .conditionalhidden, 
+#page-site-index:not(.editing) .section .isrestricted, 
+.sitelink, 
+.pagelayout-course #nav-drawer [data-key="myhome"], 
+.pagelayout-incourse #nav-drawer [data-key="myhome"], 
+.pagelayout-course #nav-drawer [data-key="home"], 
+.pagelayout-incourse #nav-drawer [data-key="home"], 
+.pagelayout-course #nav-drawer [data-key="calendar"], 
+.pagelayout-incourse #nav-drawer [data-key="calendar"], 
+.pagelayout-course #nav-drawer [data-key="privatefiles"], 
+.pagelayout-incourse #nav-drawer [data-key="privatefiles"], 
+.pagelayout-course #nav-drawer [data-key="mycourses"], 
+.pagelayout-incourse #nav-drawer [data-key="mycourses"], 
+.pagelayout-course #nav-drawer [data-parent-key="mycourses"], 
+.pagelayout-incourse #nav-drawer [data-parent-key="mycourses"], 
+displaynone {
+    display: none;
+}
