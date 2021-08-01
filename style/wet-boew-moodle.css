@@ -561,11 +561,6 @@ ul {
     margin-left: 4rem;
 }
 
-/* Turn off the border around the main content section */
-#region-main {
-    border: none;
-}
-
 /* form labels on settings page */
 .form-label .form-shortname {
     font-size: 1.1rem
@@ -706,9 +701,15 @@ li.section.hidden, .block.hidden, .block.invisible {
     color: #666666!important;
 }
 
-/* Fix overflow in main content region. */
-#region-main {
+/* Fix overflow and turn off the border around main content region. */
+ region-main {
     overflow-x: visible;
+    border: none;
+}
+
+/* Position of gear menu when editing an activity/resource. */
+#region-main-settings-menu>div {
+  top: -60px;
 }
 
 /* Fix overflow in sidebar blocks. */
