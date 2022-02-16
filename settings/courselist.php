@@ -71,7 +71,7 @@ $page->add($setting);
 $name = $themename . '/courselistcolumns';
 $title = get_string('courselistcolumns' , $themename);
 $description = get_string('courselistcolumns_desc', $themename);
-$choices = [1, 2, 3, 4];
+$choices = range(1, 4);
 $default = 2;
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
