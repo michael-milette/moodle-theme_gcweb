@@ -69,6 +69,4 @@ $templatecontext = [
 
     'flatnavigation' => $_PAGE['flatnavigation']
 ];
-
 echo $OUTPUT->render_from_template('theme_gcweb/columns', $templatecontext);
-

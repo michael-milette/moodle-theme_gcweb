@@ -479,12 +479,14 @@ class course_renderer extends \core_course_renderer {
         // Applicable to all course listings.
         if (!empty($this->page->theme->settings->filtercoursesbylang)) {
             // Filter out courses if forced-language doesn't match the current language.
-            $lang = current_language();
+            $lang = strtolower(substr(current_language(), 0, 2));
             foreach($courses as $key => $course) {
-                @$clang = $course->lang; // TODO: Fix ugly hack.
-                if ($course->id != SITEID and !empty($clang) and $clang != $lang) {
-                    unset($courses[$key]);
-                    $recount = true;
+                if (isset($course->lang)) {
+                    $clang = strtolower(substr($course->lang, 0, 2));;
+                    if ($course->id != SITEID and !empty($clang) and $clang != $lang) {
+                        unset($courses[$key]);
+                        $recount = true;
+                    }
                 }
             }
         }

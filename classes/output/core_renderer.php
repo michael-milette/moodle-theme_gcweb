@@ -106,7 +106,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->langmenu = $_PAGE['langmenu'];
         $header->wetboew = $_PAGE['themewww'] . '/framework';
         $header->wwwroot = $CFG->wwwroot;
-        $header->lang = current_language();
+        $header->lang = strtolower(substr(current_language(), 0, 2));
         $header->showsearch = $_PAGE['showsearch'];
         $header->searchurl = $_PAGE['searchurl'];
         $header->searchsettings = $_PAGE['searchsettings'];
@@ -523,8 +523,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $skipfilters = array('activitynames', 'data', 'glossary', 'sectionnames', 'bookchapters', 'urltolink');
 
         // Filter Custom Menu.
-        $custommenuitems = $filtermanager->filter_text($custommenuitems,
-                $this->page->context, $filteroptions, $skipfilters);
+        $custommenuitems = $filtermanager->filter_text($custommenuitems, $this->page->context, $filteroptions, $skipfilters);
         $custommenu = new custom_menu($custommenuitems, current_language());
         return $this->render_custom_menu($custommenu);
     }

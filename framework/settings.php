@@ -38,7 +38,7 @@ $_PAGE['themewww'] = $CFG->wwwroot . '/theme/gcweb';     // Absolute path to thi
 
 // Default settings for page.
 
-$_PAGE['lang'] = current_language();
+$_PAGE['lang'] = strtolower(substr(current_language(), 0, 2));
 $_PAGE['showmegamenu'] = true;
 $_PAGE['showsectmenu'] = false;
 $_PAGE['description'] = '';
@@ -145,8 +145,11 @@ $_PAGE['htmlattributes'] = $OUTPUT->htmlattributes();
 if (strpos($_PAGE['htmlattributes'], 'xml') !== false) { // Trim off: xml:lang="en".
     $_PAGE['htmlattributes'] = substr($_PAGE['htmlattributes'], 0, strpos($_PAGE['htmlattributes'], 'xml:lang="'));
 }
-// Change HTML lang="fr-ca" to just "fr" for compatibility with WET-BOEW in French.
-$_PAGE['htmlattributes'] = str_replace("fr-ca", "fr", $_PAGE['htmlattributes']);
+// Change HTML lang="..." to just 2 letter language code for compatibility with WET-BOEW in French.
+$start = strpos($_PAGE['htmlattributes'], 'lang="') + 6;
+$length = strpos($_PAGE['htmlattributes'], '"', $start + 1) - $start;
+$lang = substr($_PAGE['htmlattributes'], $start, $length);
+$_PAGE['htmlattributes'] = str_replace($lang, substr($lang, 0, 2), $_PAGE['htmlattributes']);
 
 //
 // Nav drawer should be available if shownavdrawer is true or user is greater than student.
