@@ -18,7 +18,7 @@
  * This the "404 Page Not Found" page.
  *
  * @package    theme_gcweb
- * @copyright  2016-2021 TNG Consulting Inc. - www.tngconsulting.ca
+ * @copyright  2016-2022 TNG Consulting Inc. - www.tngconsulting.ca
  * @author     Michael Milette
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

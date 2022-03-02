@@ -18,7 +18,7 @@
  * About this theme.
  *
  * @package    gcweb
- * @copyright  2016-2021 TNG Consulting Inc. <https://www.tngconsulting.ca>
+ * @copyright  2016-2022 TNG Consulting Inc. <https://www.tngconsulting.ca>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

@@ -18,7 +18,7 @@
  * Initialize setting for the WET-BOEW-Moodle GCWeb theme.
  *
  * @package   theme_gcweb
- * @copyright 2016-2021 TNG Consulting Inc.
+ * @copyright 2016-2022 TNG Consulting Inc.
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
