@@ -42,7 +42,7 @@ body {
     background: #243850 !important;
 }
 
-/* Makea little more room in the app-bar. */
+/* Make a little more room in the app-bar. */
 ul.app-list-account {
     margin-left: 0;
 }
@@ -466,6 +466,13 @@ a.disabled {
 /* Default for all links */
 a {
     text-decoration: underline;
+}
+
+/* Logo. */
+@media screen and (max-width: 479px) {
+    #wb-glb-mn, header .brand {
+        width: 100%!important;
+    }
 }
 
 /* Usermenu */
