@@ -468,12 +468,31 @@ a {
     text-decoration: underline;
 }
 
-/* Logo. */
+/* Only on extra small mobile screens... */
 @media screen and (max-width: 479px) {
-    #wb-glb-mn, header .brand {
+    /* Logo. */
+    header .brand.col-md-4.col-xs-5{
         width: 100%!important;
     }
+    /* Hide "Account settings" label on buttons. */
+    .sr-only-xs {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+    }
 }
+
+@media screen and (max-width: 479px)
+#wb-glb-mn, header .brand {
+    width: 100%!important;
+}
+
 
 /* Usermenu */
 .usermenu .icon {
