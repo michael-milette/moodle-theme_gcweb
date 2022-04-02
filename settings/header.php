@@ -41,6 +41,21 @@ if (empty(get_config($themename, 'init')) || (is_siteadmin() && optional_param('
     set_config('prebreadcrumbs', '', $themename); // None.
 }
 
+// Site type indicator.
+$name = $themename . '/sitetype';
+$title = get_string('sitetype' , $themename);
+$description = get_string('sitetype_desc', $themename);
+$choices = [];
+$choices[''] =  get_string('sitetype-prod', $themename);
+$choices['sitetype-test'] = get_string('sitetype-test', $themename);
+$choices['sitetype-dev'] = get_string('sitetype-dev', $themename);
+$choices['sitetype-qa'] = get_string('sitetype-qa', $themename);
+$choices['sitetype-staging'] = get_string('sitetype-staging', $themename);
+$default = '';
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
 // User menu: Show Profile link.
 $name = $themename . '/showumprofilelink';
 $title = get_string('showumprofilelink', $themename);

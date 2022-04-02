@@ -178,6 +178,13 @@ $string['showprofilesection_desc'] = 'Show the whole section.';
 // Header tab.
 //
 $string['header'] = 'Header';
+$string['sitetype'] = 'Site type indicator';
+$string['sitetype_desc'] = 'Select a site type to add a top colour border to all pages. The default shows no border.';
+$string['sitetype-prod'] = 'Production';
+$string['sitetype-test'] = 'Experimental';
+$string['sitetype-dev'] = 'Development';
+$string['sitetype-qa'] = 'Quality assurance';
+$string['sitetype-staging'] = 'Staging';
 $string['showumprofilelink'] = 'Show Profile link';
 $string['showumprofilelink_desc'] = 'Show or hide the Profile link in the User Menu';
 $string['showumlogoutlink'] = 'Show Log Out link';

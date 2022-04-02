@@ -197,8 +197,11 @@ if ($theme->shownavdrawer) {
 
 $extraclasses = [];
 // If course list view layout is set to cards. (ALPHA)
-if($theme->courselistlayout == 'card') {
+if ($theme->courselistlayout == 'card') {
     $extraclasses[] = 'coursecardview';
+}
+if (!empty($theme->sitetype)) {
+    $extraclasses[] = $theme->sitetype;
 }
 $_PAGE['bodyattributes'] = $OUTPUT->body_attributes($extraclasses);
 

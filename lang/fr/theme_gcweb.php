@@ -90,10 +90,6 @@ $string['hideconditionallyhidden'] = 'Masquer les activités cachées sur la pag
 $string['hideconditionallyhidden_desc'] = 'Les activités sur la page d\'accueil masquées de manière conditionnelle ne seront pas visibles sauf si la mode de modification et cette option sont activée.';
 $string['titlesitename'] = 'Ajouter le nom du site titre';
 $string['titlesitename_desc'] = 'Ajouter le nom du site au balise HTML <em lang="en">title</em> de chaque page.';
-// $string['shownavdrawer'] = '';
-// $string['shownavdrawer_desc'] = '';
-// $string['navdraweropen'] = '';
-// $string['navdraweropen_desc'] = '';
 $string['courselistsettings'] = 'Listes des cours';
 // $string['courselistsettings_desc'] = '';
 // Note: If you modify the list of layouts, you must change the language file, settings/general.php,
@@ -182,6 +178,13 @@ $string['filtercoursesbylang_desc'] = 'Les cours dont la langue est imposée, si
 // Header tab.
 //
 $string['header'] = 'En-tête ';
+$string['sitetype'] = 'Indicateur de type de site';
+$string['sitetype_desc'] = 'Sélectionnez un type de site pour ajouter une bordure de couleur supérieure à toutes les pages. Par défaut, il n\'y a pas de bordure.';
+$string['sitetype-prod'] = 'Production';
+$string['sitetype-test'] = 'Expérimental';
+$string['sitetype-dev'] = 'Développement';
+$string['sitetype-qa'] = 'Assurance qualité';
+$string['sitetype-staging'] = 'Mise en scène';
 $string['showumprofilelink'] = 'Afficher le lien de profil ';
 $string['showumprofilelink_desc'] = 'Afficher ou masquer le lien de profil dans le menu utilisateur ';
 $string['showumlogoutlink'] = 'Afficher le lien de déconnexion';
@@ -237,7 +240,7 @@ $string['footer'] = 'Bas de page';
 // $string['footershowmoodlelogo_desc'] = '';
 // $string['footershowmoodledocs'] = '';
 // $string['footershowmoodledocs_desc'] = '';
-$string['footershowhomelink'] = 'Lien d’accueil ';
+$string['footershowhomelink'] = 'Lien d’accueil';
 // $string['footershowhomelink_desc'] = '';
 // $string['footershowlogininfo'] = '';
 // $string['footershowlogininfo_desc'] = '';
@@ -245,6 +248,21 @@ $string['footnote'] = 'Note de bas de page';
 // $string['footnote_desc'] = '';
 $string['footertext'] = 'Pied de page';
 $string['footertextdesc'] = 'Ajoutez du contenu optionnel dans la section pied de page Web.';
+
+//
+// Nav Drawer tab.
+//
+// $string['navdrawersettings'] = '';
+// $string['shownavdrawer'] = '';
+// $string['shownavdrawer_desc'] = '';
+// $string['navdraweropen'] = '';
+// $string['navdraweropen_desc'] = '';
+// $string['coursenavdrawersitehome_desc'] = '';
+// $string['coursenavdrawermyhome_desc'] = '';
+// $string['coursenavdrawercalendar_desc'] = '';
+// $string['coursenavdrawerprivatefiles_desc'] = '';
+// $string['coursenavdrawercontentbank_desc'] = '';
+// $string['coursenavdrawermycourses_desc'] = '';
 
 //
 // About This Theme tab.

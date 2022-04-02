@@ -8,6 +8,28 @@ body {
     background-color: #fff;
 }
 
+/* Site type indicator. */
+body.sitetype-test {
+    border-top: 5px solid #000000;
+}
+body.sitetype-dev {
+    border-top: 5px solid #ed0000;
+}
+body.sitetype-qa {
+    border-top: 5px solid #0000FF;
+}
+body.sitetype-staging {
+    border-top: 5px solid #008a00;
+}
+@media print {
+    body.sitetype-test,
+    body.sitetype-dev,
+    body.sitetype-qa,
+    body.sitetype-staging {
+        border-top: none;
+    }
+}
+
 /* Fix height of page for IE. */
 #page-wrapper {
     height: auto;
