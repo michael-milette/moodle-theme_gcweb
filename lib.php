@@ -165,7 +165,7 @@ function theme_gcweb_get_extra_scss($theme) {
 
     // Show or hide the Moodle logo on the Font Page.
     if (empty($theme->settings->footershowmoodlelogo)) {
-        $customcss .= '.sitelink,';
+        $customcss .= '#page-site-index .sitelink,';
     }
 
     // Nav Drawer - remove some navigation in course.
