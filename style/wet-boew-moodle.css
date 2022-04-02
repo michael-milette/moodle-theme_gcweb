@@ -647,6 +647,34 @@ body.editing .path-course-view li-.activity > div {
     padding: 0 16px;
 }
 
+/* Enhance appearance of "Add an activity or resource" button. */
+#page-course-view-week .mdl-right,
+#page-course-view-topics .mdl-right {
+  text-align: left;
+  margin: 10px 21px 5px 12px;
+}
+#page-course-view-topics .section-modchooser button {
+  text-align: left;
+    border-radius: 0.25rem;
+    color: #3586ce;
+    background-color: #f5f9fd;
+    border-color: #3586ce;
+    border-width: 1px;
+    border-style: solid;
+    width: 100%;
+    border-radius: 4px;
+    padding: 16px;
+}
+#page-course-view-topics .section-modchooser button i {
+    border: 1px solid;
+    padding: 8px 0;
+}
+
+// Edit links - add focus ring.
+a.dropdown-toggle.focus, a.dropdown-toggle:focus {
+  box-shadow: #0535d2 0px 0px 0px 3px;
+}
+
 /* All unordered lists */
 ul {
     margin-left: 4rem;
