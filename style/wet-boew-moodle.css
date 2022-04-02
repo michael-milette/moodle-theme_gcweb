@@ -94,6 +94,7 @@ a.btn-secondary:focus,
 .activityinstance>a:focus,
 .aalink:focus,
 .activityinstance>a:focus,
+#page-footer a:not([class]):focus,
 a:not([class]):focus {
     color: #0535d2;
     background-color: transparent;
@@ -587,10 +588,7 @@ a {
 #wb-info .tool_dataprivacy a:focus,
 #wb-info .purgecaches a:focus,
 #wb-info .tool_usertours-resettourcontainer a:focus {
-    background-color: transparent;
-    outline: 0;
-    -webkit-box-shadow: 0 0 0 0.2rem rgb(15 111 197 / 75%);
-    box-shadow: 0 0 0 0.2rem rgb(15 111 197 / 75%);
+    outline-offset: 1px;
 }
 
 /* Last modified date */
