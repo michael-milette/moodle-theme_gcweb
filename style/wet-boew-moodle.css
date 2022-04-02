@@ -90,10 +90,11 @@ a.btn-secondary:focus,
 }
 /* Breadcrumbs and course activity links. */
 .breadcrumb-item a:focus,
-.aalink.focus,
-.activityinstance>a.focus,
 .aalink:focus,
-.activityinstance>a:focus {
+.activityinstance>a:focus,
+.aalink:focus,
+.activityinstance>a:focus,
+a:not([class]):focus {
     color: #0535d2;
     background-color: transparent;
     -webkit-box-shadow: none;
