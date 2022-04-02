@@ -88,7 +88,8 @@ a.btn-secondary:focus,
     outline: -webkit-focus-ring-color auto 1px;
     outline-offset: -2px;
 }
-/* Course activity links. */
+/* Breadcrumbs and course activity links. */
+.breadcrumb-item a:focus,
 .aalink.focus,
 .activityinstance>a.focus,
 .aalink:focus,
@@ -100,6 +101,9 @@ a.btn-secondary:focus,
     outline: -webkit-focus-ring-color auto 1px;
     outline-offset: 4px;
     outline-color: auto;
+}
+.breadcrumb-item a:focus {
+    outline-offset: 1px;
 }
 
 /* Headings. */
