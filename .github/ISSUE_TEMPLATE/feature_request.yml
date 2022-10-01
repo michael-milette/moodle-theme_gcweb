@@ -57,5 +57,5 @@ body:
     attributes:
       label: Code of Conduct
       options:
-        - label: I have read and agree to the project's code of conduct.
+        - label: I have read and agree to the project's <a href="../blob/master/CODE_OF_CONDUCT.md" target="_blank">code of conduct</a>.
           required: true
