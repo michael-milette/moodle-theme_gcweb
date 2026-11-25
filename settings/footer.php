@@ -1,12 +1,12 @@
 <?php
-// This file is part of the WET-BOEW-Moodle (GCWeb) theme for Moodle - https://moodle.org/
+// This file is part of the GCWeb for Moodle LMS theme for Moodle - https://moodle.org/
 //
-// WET-BOEW-Moodle (GCWeb) is free software: you can redistribute it and/or modify
+// GCWeb for Moodle LMS is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// WET-BOEW-Moodle (GCWeb) is distributed in the hope that it will be useful,
+// GCWeb for Moodle LMS is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
@@ -18,7 +18,7 @@
  * Settings for footer.
  *
  * @package    theme_gcweb
- * @copyright  2016-2022 TNG Consulting Inc. <https://www.tngconsulting.ca>
+ * @copyright  2016-2026 TNG Consulting Inc. <https://www.tngconsulting.ca>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
