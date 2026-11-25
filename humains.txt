@@ -1,7 +1,11 @@
 
 /* EQUIPE DE DEVELOPPEMENT */
-    Développeur principal.
+    Développeur principal
     Michael Milette, TNG Consulting Inc.
+    De: Ottawa, Ontario, Canada
+
+    Développeuse.
+    Ollie Sevill, Governement du Canada
     De: Ottawa, Ontario, Canada
 
     Testeuse de qualité d'assurance
@@ -18,7 +22,7 @@
 
     Testeur de qualité d'assurance
     Yatendra Singh
-    De: Ottawa, Ontario, Canada    
+    De: Ottawa, Ontario, Canada
 
 /* REMERCIMENTS */
     TNG Consulting Inc.
@@ -27,6 +31,9 @@
 
     Innovation, Sciences et Développement économique Canada
     De: Ottawa, Ontario, Canada
+
+    Affaires autochtones et du Nord Canada
+    De: Gatineau, Québec, Canada
 
     Projet WET-BOEW-Moodle
     https://github.com/wet-boew/wet-boew-moodle/

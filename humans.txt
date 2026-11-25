@@ -3,6 +3,10 @@
     Michael Milette, TNG Consulting Inc.
     From: Ottawa, Ontario, Canada
 
+    Developer
+    Ollie Sevill, Government of Canada
+    From: Ottawa, Ontario, Canada
+
     QA Tester
     Natalie Collins, Government of Canada
     From: Ottawa, Ontario, Canada
@@ -17,7 +21,7 @@
 
     Quality Assurance Tester
     Yatendra Singh
-    From: Ottawa, Ontario, Canada    
+    From: Ottawa, Ontario, Canada
 
 /* THANKS */
     TNG Consulting Inc.
@@ -26,6 +30,9 @@
 
     Innovation, Science and Economic Development Canada
     From: Ottawa, Ontario, Canada
+
+    Indigenous and Northern Affairs Canada
+    From: Ottawa, Ontario, Canadas
 
     WET-BOEW-Moodle Project
     https://github.com/wet-boew/wet-boew-moodle/
@@ -42,5 +49,5 @@
 
 /* DEV INFO */
     Language: French / English
-    Technology: Moodle, PHP, MySQL, HTML5, CSS3, jQuery, Bootstrap, Mustache
-    Tools: phpStorm IDE, VSCode, Brackets, Notepad++, Git, Github, Dreamweaver, Photoshop, Colour Contrast Analyser, W3C Validators, WAVE, NVDA, Chromebox, UserWay
+    Technology: Moodle, PHP, MySQL/PostgreSQL, HTML5, CSS3, jQuery, Bootstrap, Mustache
+    Tools: phpStorm IDE, VSCode, Brackets, Notepad++, Git, Github, Dreamweaver, Photoshop, Colour Contrast Analyser, W3C Validators, WAVE, NVDA, Chromebox
