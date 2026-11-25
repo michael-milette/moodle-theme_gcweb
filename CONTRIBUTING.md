@@ -15,11 +15,12 @@ Keep in mind that the maintainers get final say on whether new features will be 
 
 Style Guides
 -------------------
-1. Write in UTF-8 in PHP 7.2, 7.3 and 7.4.
-2. Follow the official[Moodle Coding Style Guide](https://docs.moodle.org/dev/Coding_style).
-3. Fully test your code's functionality with Moodle **Debug Messages** setting set to **DEVELOPER: extra Moodle debug messages for developers** and **Display debug messages** setting checked. There are no errors or warnings at all!
-4. Test your code using the [Moodle Code Checker](https://moodle.org/plugins/local_codechecker) and [Moodle PHPdoc check](https://moodle.org/plugins/local_moodlecheck) plugins. Ensure that there are no errors or warnings at all. Be sure to exclude the /theme/gcweb/framework directory.
-5. Look at the existing style and adhere accordingly.
+1. Write in UTF-8/LF in PHP 8.3 and 8.4.
+2. Write for Moodle 5.3 LTS.
+3. Follow the official[Moodle Coding Style Guide](https://docs.moodle.org/dev/Coding_style).
+4. Fully test your code's functionality with Moodle **Debug Messages** setting set to **DEVELOPER: extra Moodle debug messages for developers** and **Display debug messages** setting checked. There are no errors or warnings at all!
+5. Test your code using the [Moodle Code Checker](https://moodle.org/plugins/local_codechecker) and [Moodle PHPdoc check](https://moodle.org/plugins/local_moodlecheck) plugins. Ensure that there are no errors or warnings at all. Be sure to exclude the /theme/gcweb/framework directory.
+6. Look at the existing style and adhere accordingly.
 
 Fork the Repository
 -------------------

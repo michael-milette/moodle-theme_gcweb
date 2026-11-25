@@ -29,20 +29,20 @@ defined('MOODLE_INTERNAL') || die();
  * Plugin specific.
  *******************************/
 // The name of this plugin.
-$string['pluginname'] = 'WET-BOEW-Moodle: GCWeb ';
-$string['privacy:metadata'] = 'The WET-BOEW-Moodle: GCWeb theme does not store any personal data about any user.';
-$string['configtitle'] = 'WET-BOEW GCWeb';
+$string['pluginname'] = 'GCWeb for Moodle LMS ';
+$string['privacy:metadata'] = 'The GCWeb for Moodle LMS theme does not store any personal data about any user.';
+$string['configtitle'] = 'GCWeb';
 // Description shown in the Theme Selector.
 $string['choosereadme'] = '
 <div class="clearfix">
   <div class="well">
-    <h2><abbr title="Web Experience Toolkit for Moodle">WET-BOEW-MOODLE</abbr> GCWeb theme</h2>
+    <h2>GCWeb for Moodle LMS theme</h2>
     <p><img class="img-polaroid" src="gcweb/pix/screenshot.png" alt=""></p>
   </div>
   <div class="well">
     <h2>Credits</h2>
     <h3>About</h3>
-    <p>WET-BOEW-MOODLE: GCWeb, version [version], is a responsive Moodle theme based on the GCWeb <a href="https://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle core Boost theme.</p>
+    <p>GCWeb for Moodle LMS, version [version], is a responsive Moodle LMS theme based on the GCWeb <a href="https://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">Web Standards for the Government of Canada</a> and the Moodle LMS core Boost theme.</p>
     <p>Authors: Michael Milette, <a href="https://www.tngconsulting.ca">www.tngconsulting.ca</a></p>
     <h3>Bugs Report</h3>
     <p>You can report bugs using the GitHub Issue Tracker at <a href="https://github.com/wet-boew/wet-boew-moodle/issues">github.com/wet-boew/wet-boew-moodle/issues</a>.</p>
@@ -51,8 +51,8 @@ $string['choosereadme'] = '
     <h3>Demonstration</h3>
     <p>A working example of this theme is available at <a href="https://wet-boew-moodle.tngconsulting.ca">wet-boew-moodle.tngconsulting.ca</a>.</p>
     <h3>Terms and conditions of use</h3>
-    <p>Unless otherwise noted, the overall WET-BOEW-MOODLE project, wiki content, documentation, the demonstration site, the WET-BOEW-Moodle Widgets: Working Examples course and source code are Copyright © 2016 onwards by TNG Consulting Inc. Inc.</p>
-    <p>WET-BOEW-MOODLE is provided freely as open-source software. It can be redistributed and/or modified under the terms of the GNU General Public License (GPL) version 3.0. It is distributed in the hope that it will be useful. However, there is no warranty, implied or otherwise, of merchantability or fitness for any purpose. See the GNU General Public License for details.</p>
+    <p>Unless otherwise noted, the overall GCWeb for Moodle LMS theme project, wiki content, documentation, the demonstration site, the WET-BOEW-Moodle Widgets: Working Examples course and source code are Copyright © 2016 onwards by TNG Consulting Inc. Inc.</p>
+    <p>GCWeb for Moodle LMS is provided freely as open-source software. It can be redistributed and/or modified under the terms of the GNU General Public License (GPL) version 3.0. It is distributed in the hope that it will be useful. However, there is no warranty, implied or otherwise, of merchantability or fitness for any purpose. See the GNU General Public License for details.</p>
     <p>Moodle is Copyright © 1999 onwards, Martin Dougiamas with portions contributed/copyrighted by many others and all of it is provided under the terms of the GNU GPL 3.0</p>
     <p>If, for any reason, a copy of the GNU General Public License was not included with this project, you can view it online by going to: <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">www.gnu.org/licenses/gpl-3.0.en.html</a></p>
     <p>The Web Experience Toolkit (WET) is covered under Crown Copyright, Government of Canada, and is distributed under the MIT License: <a href="https://wet-boew.github.io/v4.0-ci/License-en.html">wet-boew.github.io/v4.0-ci/License-en.html</a></p>
